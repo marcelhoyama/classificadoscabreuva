@@ -1,0 +1,39 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 07/10/2018, 12:57:55
+    Author     : marec
+*/
+
+
+.bannercapa{
+    background-image: url(../images/vista-cabreuva.jpg);
+    background-position: center;
+     background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
+    color: #c3e6cb;
+   
+    
+}
+
+#buscador{
+    padding-bottom: 200px;
+    padding-top: 200px;
+}
+
+#footer{
+    padding-top: 10px;
+    
+    padding-left: 10px;
+    padding-right:10px; 
+    background-color: #343a40;
+}
+
+.footer-copyright{
+    margin-top: 70px;
+    padding-bottom: 5px;
+}
