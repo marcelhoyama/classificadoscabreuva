@@ -4,7 +4,10 @@
 
  <div class="form-group">
                 <a href="<?php BASE_URL;?>comercio"><button  class="btn btn-warning">Quero Ver Todos</button></a>
-                </div>
+  <a href="<?php BASE_URL;?>comercio"><button  class="btn btn-warning">Quero Ver as Promoções</button></a>
+      <a href="<?php BASE_URL;?>comercio"><button  class="btn btn-warning">Quero Ver os Eventos</button></a>
+                             
+ </div>
 
 
         <div id="buscador">
@@ -24,16 +27,43 @@
                 </div>
               
             </form>  
-           
+              <div class="row">
+            <div class="col-md">
+                <a href="#"> <img src="assets/images/sem-imagem.gif" id="icone" class="img-thumbnail"/></a>
+              FASTFOOD E RESTAURANTE
+            </div>
+              <div class="col-md">
+
+                <a href=""> <img src="assets/images/sem-imagem.gif" id="icone"  class="img-thumbnail"/></a>
+                   DRINK'S
+            </div>
+             <div class="col-md">
+
+                <a href=""> <img src="assets/images/sem-imagem.gif" id="icone"  class="img-thumbnail"/></a>
+                  DIVERSÃO
+            </div>
+             <div class="col-md">
+
+                <a href=""> <img src="assets/images/sem-imagem.gif" id="icone"  class="img-thumbnail"/></a>
+                    EVENTOS
+            </div>
+             <div class="col-md">
+
+                <a href=""> <img src="assets/images/sem-imagem.gif" id="icone"  class="img-thumbnail"/></a>
+                  
+            </div>
+        </div>
+             <hr>
         </div>
 
 
-
- 
+     
+       
         <div class="row">
+            
             <div class="col-md">
-
-                <a href=""> <img src="assets/images/sem-imagem.gif" class="img-thumbnail"/></a>
+                <span class="badge-danger" data-toggle="modal" data-target=".bs-example-modal-lg">3</span>
+                <a href="#"> <img src="assets/images/sem-imagem.gif" class="img-thumbnail"/></a>
                 comercio 1    
             </div>
              <div class="col-md">
@@ -95,7 +125,13 @@
     <br>
 </section>
 
-
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
 <footer id="footer">
     <div class="container">
     <div class="row">
