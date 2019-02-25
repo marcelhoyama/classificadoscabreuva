@@ -1,25 +1,27 @@
 <?php
 require 'environment.php';
 
-
-
 $config = array();
-
-
-if (ENVIRONMENT == 'development') {
-	define("BASE_URL", "http://localhost/denilsonParceria/");
-	$config['dbname']='denilson_db';
-	$config['host']='localhost';
-	$config['dbuser']='root';
-	$config['dbpass']='';
+if(ENVIRONMENT == 'development'){
+    define("BASE_URL", "http://localhost/classificadoscabreuva/");
+    $config['dbname']='classificadoscabreuva';
+    $config['host']='localhost';
+    $config['dbuser']='root';
+    $config['dbpass']='';
+}else{
+     define("BASE_URL", "http://classificadoscabreuva/");
+  
+    $config['dbname']='classificadoscabreuva';
+    $config['host']='localhost';
+    $config['dbuser']='root';
+    $config['dbpass']='';
 }
-else{
-
-		define("BASE_URL", "http://psmaciel.buscadorcabreuva.com.br/");
-        $config['dbname']='u708362941_psmac';
-	$config['host']='localhost';
-	$config['dbuser']='u708362941_psmac';
-	$config['dbpass']='170655';
+    
+    
+global $db;
+try {
+	$db = new PDO("mysql:dbname=".$config['dbname'].";host=".$config['host'],$config['dbuser'],$config['dbpass']);
+} catch(PDOException $e) {
+	echo "FALHOU: ".$e->getMessage();
+	exit;
 }
-
-

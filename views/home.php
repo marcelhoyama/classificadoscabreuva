@@ -12,7 +12,7 @@
             <form method="POST">
                
                 <div class="form-group">
-                    <h1 class="h1" style="color: #ffe8a1;">  Busca aqui em Cabreúva</h1>
+                    <div class="h1" style="color: #ffe8a1;">  Busca aqui em Cabreúva</div>
                     <input type="text" name="buscar" placeholder="Ex: Carro, lanche ou Nome da loja " class="form-control form-control-lg"/>
                 </div>
                 <div class="alert alert-warning alert-dismissible">
