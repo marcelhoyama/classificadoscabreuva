@@ -53,9 +53,14 @@ and open the template in the editor.
     margin-top: 5px;
     
 }
-#link  a:link, a:hover{
+#link {
+    color: #e9ecef;
     text-decoration: none;
-    text-decoration: underline;
+   
+}
+#link a:hover{
+    color: #c6c8ca;
+    text-transform: uppercase;
 }
 
 #footer{
@@ -65,10 +70,7 @@ and open the template in the editor.
     padding-right:10px; 
     background-color: #343a40;
 }
-#footer  a:link, a:hover{
-    text-decoration: none;
-    text-decoration: underline;
-}
+
 .footer-copyright{
     margin-top: 70px;
     padding-bottom: 5px;

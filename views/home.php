@@ -146,25 +146,26 @@
 <footer id="footer">
     <div class="container">
     <div class="row">
-        <div class="col" style="">
+        <div class="col">
             <h5 class="" style="color:#d1ecf1;"> Redes Sociais dos parceiros</h5>
-            <a href="#"  > <p>Urbano Veiculos</p></a>
-            <a href="#" id="link" > <p id="link">Magazine Luiza</p></a>
+            <a href="#" id="link" > <p>Urbano Veiculos</p></a>
+            <a href="#" id="link"> <p>Magazine Luiza</p></a>
            <a href="#" id="link"> <p>Guguili Baby</p></a>
-           <a href="#" id="link"> <p>Ótica Uniart</p></a>
+           <a href="#" id="link" > <p>Ótica Uniart</p></a>
            <a href="#" id="link"> <p>Rádio Japi</p></a>
           <a href="#" id="link">  <p>DMR Imoveis em Cabreúva</p></a>
         </div>
-        <div class="col " style="background-color: #138496;">
-            <h5 class="white-text">Link</h5>
+        <div class="col ">
+            <h5 class="" style="color:#d1ecf1;">Mais Informações:</h5>
             <ul>
-                <li><a id="link" href="#">link1</a></li>
+                <li><a href="#" id="link">marecrisbr@gmail.com</a></li>
+                 <li><a href="#" id="link">11-97672-6576</a></li>
             </ul>
         </div>
              
     </div>
     <div class="footer-copyright">
-        <a href="#" ><p class="text-center text-warning " >@BuscadorCabreuva 2019</p></a>
+        <a href="#" id="link"><p class="text-center text-warning " >@BuscadorCabreuva 2019</p></a>
     </div>
   </div>
 </footer>
