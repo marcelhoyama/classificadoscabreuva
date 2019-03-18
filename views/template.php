@@ -21,16 +21,19 @@
     <div class="navbar-collapse collapse" id="navbarMenu">
         <ul class="navbar-nav ml-auto" >
              <li class="nav-item"><a href="<?php BASE_URL;?>home" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link ">Anunciar</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Serviços</a></li>
+            
+           
             <li class="nav-item">  <a href="<?php BASE_URL;?>contato" class="nav-link">Contato</a></li>
+            <li class="nav-item">  <a href="<?php BASE_URL; ?>login/entrar" class="nav-link">Entrar</a></li>
+            <li class="nav-item">  <a href="<?php BASE_URL; ?>login/cadastrar" class="nav-link">Cadastrar-se</a></li>
+
         </ul>
     </div> 
 
 </nav> 
         <br>
         <br>
-        home
+        
         
         
         
