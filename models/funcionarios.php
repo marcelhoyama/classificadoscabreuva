@@ -15,19 +15,23 @@ class funcionarios extends model{
     public function logar($email,$senha) {
         try{
             $sql="SELECT * FROM funcionarios WHERE email=:email AND senha=:senha";
-       
+       $sql=$db->prepare($sql);
+       $sql->bindValue(":email",$email);
+       $sql->bindValue(":senha", $senha);
+       $sql->execute();
         
         if($sql->rowCount()>0){
             $sql=$sql->fecth();
         $_SESSION['lg']=$sql['id_funcionarios'];
-        header("Location:".BASE_URL);
+        $ip=$_SERVER['REMOTE_ADDR'];
+        header("Location:".BASE_URL."menuprincipal");
         exit();
     }else{
     
         return "E-mail e/ou senha errados!";
     }
         } catch (Exception $ex) {
-$ex->getMessage();
+            echo 'Falhou:'.$ex->getMessage();
         }
         
     }

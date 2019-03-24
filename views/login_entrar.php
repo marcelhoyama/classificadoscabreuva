@@ -16,7 +16,7 @@
         <label for="senha" class="label ">Senha:</label>
         <input class="form-control" name="senha" id="senha" placeholder="Digite a sua senha" type="password"/>
     </div>
-    <input type="button" class="btn btn-primary" value="Entrar" />     
+    <input type="submit" class="btn btn-primary" value="Entrar" />     
     
     
     

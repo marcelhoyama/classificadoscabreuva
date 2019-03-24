@@ -13,6 +13,16 @@ class loginController extends controller{
     public function entrar() {
         $dados=array();
         
+        if(isset($_POST['email']) && !empty($_POST['email'])){
+            
+            $email= addslashes(trim($_POST['email']));
+            $senha= md5(addslashes(trim($_POST['senha'])));
+            
+            echo 'email'.$email;
+            echo 'senha'.$senha;
+            exit();
+            
+        }
         $this->loadView('login_entrar',$dados);
     }
     
