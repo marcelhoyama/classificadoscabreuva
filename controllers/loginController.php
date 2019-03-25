@@ -18,9 +18,8 @@ class loginController extends controller{
             $email= addslashes(trim($_POST['email']));
             $senha= md5(addslashes(trim($_POST['senha'])));
             
-            echo 'email'.$email;
-            echo 'senha'.$senha;
-            exit();
+           $f=new funcionarios();
+           $f->logar($email, $senha);
             
         }
         $this->loadView('login_entrar',$dados);
