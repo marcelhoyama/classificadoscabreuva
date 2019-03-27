@@ -18,7 +18,7 @@ class funcionarios extends model{
             $sql->bindValue(":ip",$ip);
             $sql->execute();
             if($sql->rowCount() ==0){
-                header("Location:login");
+              header("Location:".BASE_URL."menuprincipal");
                 exit();
             }
         }
@@ -28,19 +28,20 @@ class funcionarios extends model{
     public function logar($email,$senha) {
         try{
             $sql="SELECT * FROM funcionarios WHERE email=:email AND senha=:senha";
-       $sql=$db->prepare($sql);
+       $sql=$this->db->prepare($sql);
        $sql->bindValue(":email",$email);
        $sql->bindValue(":senha", $senha);
        $sql->execute();
         
         if($sql->rowCount()>0){
-            $sql=$sql->fecth();
+            $sql=$sql->fetch();
         $_SESSION['lg']=$sql['id_funcionarios'];
         $ip=$_SERVER['REMOTE_ADDR'];
         
         $sql="UPDATE funcionarios SET ip=:ip WHERE id_funcionarios=:id ";
-        $sql=$db->prepare($sql);
+        $sql=$this->db->prepare($sql);
         $sql->bindValue(":ip",$ip);
+        $sql->bindValue(":id",$_SESSION['lg']);
         $sql->execute();
         if($sql->rowCount()>0){
             

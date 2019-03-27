@@ -3,7 +3,9 @@
 class menuprincipalController extends controller {
 
     public function __construct() {
-       
+     parent::__construct();
+    $f = new funcionarios();
+    $f->verificarLogin();
        
     }
 
