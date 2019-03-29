@@ -2,18 +2,23 @@
 
 class loginController extends controller{
     
-   
+   public function __construct() {
+     parent::__construct();
+    
+       
+    }
     
     public function index(){
     
         $dados= array();
-        
+   
         
                
         $this->loadView('login',$dados);
     }
     
     public function entrar() {
+          
         $dados=array();
         
         if(isset($_POST['email']) && !empty($_POST['email'])){
@@ -22,9 +27,12 @@ class loginController extends controller{
             $senha= md5(addslashes(trim($_POST['senha'])));
             
            $f=new funcionarios();
-           $f->logar($email, $senha);
+           if($f->logar($email, $senha) != TRUE){
+               $dados['erro']= "Senha e ou Email não conferi!! Tente novamente!";
             
         }
+        
+           }
         $this->loadView('login_entrar',$dados);
     }
     

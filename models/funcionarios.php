@@ -5,18 +5,19 @@ class funcionarios extends model{
     
     public function verificarLogin(){
         
-        if(!isset($_SESSION['lg']) || (isset($_SESSION['lg']) && !empty($_SESSION['lg']))){
-            header("Location:".BASE_URL."login");
+        if(!isset($_SESSION['lg']) || (isset($_SESSION['lg']) && empty($_SESSION['lg']))){
+            header("Location:".BASE_URL."login/entrar");
             exit();
         }else{
             $id=$_SESSION['lg'];
             $ip=$_SERVER['REMOTE_ADDR'];
             
-            $sql="SELECT * FROM funcionarios WHERE id_funcionarios =:id AND ip=:ip";
-            $sql=$db->prepare($sql);
+            $sql="SELECT * FROM funcionarios WHERE id_funcionarios=:id AND ip=:ip";
+            $sql=$this->db->prepare($sql);
             $sql->bindValue(":id",$id);
             $sql->bindValue(":ip",$ip);
             $sql->execute();
+           
             if($sql->rowCount() ==0){
               header("Location:".BASE_URL."menuprincipal");
                 exit();
@@ -36,22 +37,22 @@ class funcionarios extends model{
         if($sql->rowCount()>0){
             $sql=$sql->fetch();
         $_SESSION['lg']=$sql['id_funcionarios'];
+        $id=$_SESSION['lg'];
         $ip=$_SERVER['REMOTE_ADDR'];
-        
-        $sql="UPDATE funcionarios SET ip=:ip WHERE id_funcionarios=:id ";
+       
+        $sql="UPDATE funcionarios SET ip=:ip WHERE id_funcionarios=:id";
         $sql=$this->db->prepare($sql);
         $sql->bindValue(":ip",$ip);
-        $sql->bindValue(":id",$_SESSION['lg']);
+        $sql->bindValue(":id",$id);
         $sql->execute();
-        if($sql->rowCount()>0){
-            
-         header("Location:".BASE_URL."menuprincipal");
+        
+                 header("Location:".BASE_URL."menuprincipal");
          exit();
-        }
+        
         
     }else{
     
-        return "E-mail e/ou senha errados!";
+        return FALSE;
     }
         } catch (Exception $ex) {
             echo 'Falhou:'.$ex->getMessage();

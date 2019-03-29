@@ -6,7 +6,11 @@
 
 <form id="contato" method="POST">
     <p class="h1 text-center">Entrar</p>
-    
+       <div class="danger">
+        <?php if (isset($erro) && !empty($erro)): ?>
+            <div class="alert alert-danger"><?php echo $erro; ?></div> 
+        <?php endif; ?>
+    </div>
    
     <div class="form-group">
         <label for="email" class="label ">E-mail:</label>
