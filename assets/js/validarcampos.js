@@ -11,6 +11,7 @@ $(function () {
      $('#metro2').mask('000.000,00', {reverse: true});
      $('#celular').mask('(00) 00000-0000');
     $('#telefone').mask('(00) 0000-0000');
+     $('#nome').mask('SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS');
     
     
    
@@ -41,7 +42,7 @@ $(document).ready(function (){
         
         rules:{
             cpf:{required:true,cpfBR:true},
-            nome:{required:true,isString:true},
+            nome:{required:true},
             telefone:"required",
             email:true
                 

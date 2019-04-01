@@ -11,10 +11,10 @@
                 </div>
          
                 <?php if (isset($erro) && !empty($erro)): ?>
-                <div class="alert alert-warning alert-dismissible">
+                <div class="alert alert-danger">
                      
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong> Não foi possivel encontrar o que digitou!</strong> Deixei seu comentario <a href="#" class="alert-link">aqui</a>
+                
+                <strong> Não foi possivel encontrar o que digitou!</strong> 
                  
                 </div>
                 <?php endif; ?>
@@ -31,7 +31,7 @@
     <div class="input-group">
         <select id="pesquisar" name="pesquisar" class="form-control">
             <option></option>
-            <?php foreach ($viewData['listclientes'] as $value): {?>
+            <?php foreach ($viewData['listarClientes'] as $value): {?>
 
 
  
@@ -68,11 +68,11 @@
              <?php
              
               
-         if($viewData['lista'] == ''){ 
+         if($viewData['listarClientes'] == ''){ 
              
          }else{
          
-               foreach ($viewData['lista'] as $value): {
+               foreach ($viewData['listarClientes'] as $value): {
         
    ?>
                 
