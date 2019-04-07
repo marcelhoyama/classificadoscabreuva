@@ -5,11 +5,14 @@ class clientes extends model{
     
     public function verificarCPF($cpf){
       try{
+                    
           $sql="SELECT cpf FROM clientes WHERE cpf=:cpf";
           $sql= $this->db->prepare($sql);
           $sql->bindValue(":cpf",$cpf);
           $sql->execute();
           if($sql->rowCount()>0){
+              return FALSE;
+          }else{
               return TRUE;
           }
       } catch (Exception $ex) {
@@ -50,8 +53,9 @@ class clientes extends model{
     
         public function cadastrar($id_funcionario,$nome, $email, $telefone, $cpf) {
             try{
-                if(verificarCPF($cpf)==TRUE){
-                $sql="INSERT INTO clientes (id_funcionario,nome,email,telefone,cpf) VALUES (:id_funcionario,:nome,:email,:telefone,:cpf) ";
+                
+        
+                $sql="INSERT INTO clientes (funcionarios_id_funcionarios,nome,email,telefone,cpf) VALUES (:id_funcionario,:nome,:email,:telefone,:cpf) ";
            $sql= $this->db->prepare($sql);
            $sql->bindValue(":id_funcionario",$id_funcionario);
            $sql->bindValue(":nome",$nome);
@@ -62,9 +66,23 @@ class clientes extends model{
            if($sql->rowCount()>0){
                return TRUE;
            }
-                }
+                
+                 
                 } catch (Exception $ex) {
                     echo 'Falhou:'.$ex->getMessage();
+            }
+            
+        }
+        
+        public function listarClientes() {
+            
+            try{
+                $sql="SELECT * FROM clientes";
+                $sql= $this->db->prepare($sql);
+                $sql->execute();
+                
+            } catch (Exception $ex) {
+echo "Falhou:".$ex->getMessage();
             }
             
         }

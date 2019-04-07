@@ -14,10 +14,14 @@ class pesquisar_clientesController extends controller{
 
 $dados=array('listarClientes'=>'','erro'=>'');
 
+  $c =new clientes();
+  
+  $dados['listaClientes']=$c->listarClientes();
+
 if(isset($_POST['buscar']) && !empty($_POST['buscar'])){
     
     $palavra= addslashes(trim($_POST['buscar']));
-    $c =new clientes();
+  
     if($c->pesquisarCliente($palavra)== false){
     
         $dados['erro']='Nada encontrado!';

@@ -5,16 +5,23 @@
 //   }
 //?>
 <title>Cadastrar Clientes</title>
-<div class="container-fluid">
+<div class="container">
     <br><br>
      <h2 class="text-center">Cadastro de Clientes</h2>
     
        <a class="btn badge-info" href="<?php BASE_URL ?>menuprincipal"> Voltar p/Menu Principal</a>
        <br><br>
+      
+          
+          
+        
     <form name="cadastrarclientes" id="cadastrarclientes" class="form-group-sm" method="POST" autocomplete="off" >
-        <label>id funcionario</label>
-           
-        <input name="id_funcionario" type="text" id="id_funcionario" >  
+     
+        <div class="form-group">
+            <label for="id">ID funcionario</label>
+            <input name="id"  id="id" class="form-control" value=" <?php echo $viewData['id_funcionario']; ?>" >  
+       
+        </div>
         <div class="form-group">
               <label for="cpf">CPF*: </label> <label class="text-danger"> campo obrigatorio!</label>
               <input name="cpf" type="text" class="form-control" id="cpf" placeholder="somente numeros" >

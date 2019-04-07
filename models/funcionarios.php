@@ -37,6 +37,7 @@ class funcionarios extends model{
         if($sql->rowCount()>0){
             $sql=$sql->fetch();
         $_SESSION['lg']=$sql['id_funcionarios'];
+        $_SESSION['lgname']=$sql['nome'];
         $id=$_SESSION['lg'];
         $ip=$_SERVER['REMOTE_ADDR'];
        
@@ -65,7 +66,16 @@ class funcionarios extends model{
     
     public function getNome($id) {
         try{
+            $array=array();
              $sql="SELECT nome FROM funcionarios WHERE id_funcionarios=:id";
+             $sql= $this->db->prepare($sql);
+             $sql->bindValue(":id",$id);
+             $sql->execute();
+             if($sql->rowCount()>0){
+             $array=$sql->fetch();
+             $nome=$array['nome'];
+             return $nome;
+             }
         } catch (Exception $ex) {
 
         }

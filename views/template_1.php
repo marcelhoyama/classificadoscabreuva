@@ -32,7 +32,7 @@
                 <li class="nav-item" ><a class="nav-link "href="<?php echo BASE_URL; ?>menuprincipal">Menu Principal <span class="sr-only"></span></a></li>
                 <li class="nav-item dropdown">
 
-                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#"> <?php echo "fulano"; ?>
+                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#"> <?php echo $_SESSION['lgname']; ?>
                         <span class="caret"></span> </a>
                     <ul class="dropdown-menu">
                         <li class="nav-link"><a class="nav-item" href="<?php echo BASE_URL; ?>perfil">Editar Perfil </a></li> 
