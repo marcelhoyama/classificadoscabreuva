@@ -86,4 +86,20 @@ echo "Falhou:".$ex->getMessage();
             }
             
         }
+        
+        public function listarRamo() {
+            $array=array();
+            try{
+                $sql="SELECT * FROM ramo_atividade";
+                $sql= $this->db->prepare($sql);
+                $sql->execute();
+                if($sql->rowCount()>0){
+                    $array=$sql->fetchAll();
+                return $array;
+                    
+                }
+            } catch (Exception $ex) {
+                echo 'Falhou:'.$ex->getMessage();
+            }
+        }
 }

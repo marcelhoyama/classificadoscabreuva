@@ -9,8 +9,18 @@ class homeController extends controller{
         }
     
     public function index(){
-        $dados=array();
+        $dados=array('lista_palavra'=>'');
         
+        
+        if(isset($_POST['buscar']) && !empty($_POST['buscar'])){
+            
+            $palavra= addslashes(trim($_POST['buscar']));
+            
+            $p=new palavras_buscada();
+            
+            $dados['lista_palavra']=$p->buscarPalavra($palavra);
+            
+        }
        
         $this->loadTemplate('home', $dados);
     }

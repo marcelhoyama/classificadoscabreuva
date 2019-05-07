@@ -47,7 +47,7 @@
     </div>
         </form>
         <div class="form-group">
-            <a href="<?php BASE_URL?>cadastrar_clientes"  class="btn btn-primary">Cadastrar Loja</a>
+            <a href="<?php BASE_URL?>cadastrar_loja"  class="btn btn-primary">Cadastrar Loja</a>
                 </div>
     <br>
     <div class="table-responsive">
