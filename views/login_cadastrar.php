@@ -27,6 +27,14 @@
             <label for="email">Email:</label> <label class="text-danger"> campo obrigatorio!</label>
             <input name="email" type="email" class="form-control" id="email" placeholder="digite seu email">
         </div>
+        <div class="radio">
+            <strong>Sexo:</strong>
+            <br>
+            <label><input type="radio" name="sexo" value="0" checked="checked">Mulher</label>
+            <br>
+             <label><input type="radio" name="sexo" value="1"/>Homem</label>
+           
+        </div>
 
       <div class="form-group">
             <label for="senha">Senha:</label> <label class="text-danger"> campo obrigatorio!</label>

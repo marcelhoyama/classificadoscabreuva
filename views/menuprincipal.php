@@ -72,7 +72,7 @@
     
     </div>-->
     <hr class="divider">
-    <div class="row">
+<!--    <div class="row">
   
         <ul class="list-group">
             <li class="list-group-item">
@@ -99,7 +99,7 @@
             <label>Total Bloqueado: </label><span class="badge"> <?php // echo $totalstatusbloqueado['total'];?></span>
         </div>
         </ul>
-    </div>
+    </div>-->
 </div>
   
 

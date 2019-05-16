@@ -24,8 +24,8 @@
             
            
             <li class="nav-item">  <a href="<?php BASE_URL;?>contato" class="nav-link">Contato</a></li>
-            <li class="nav-item">  <a href="<?php BASE_URL; ?>login/entrar" class="nav-link">Entrar</a></li>
-            <li class="nav-item">  <a href="<?php BASE_URL; ?>login/cadastrar" class="nav-link">Cadastrar-se</a></li>
+            <li class="nav-item">  <a href="login/entrar" class="nav-link">Entrar</a></li>
+            <li class="nav-item">  <a href="login/cadastrar" class="nav-link">Cadastrar-se</a></li>
 
         </ul>
     </div> 
