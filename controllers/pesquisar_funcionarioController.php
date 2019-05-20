@@ -4,7 +4,7 @@ class pesquisar_funcionarioController extends controller{
     
     public function index() {
 
-$dados=array();
+$dados=array('lista_funcionario'=>'');
 
 
 

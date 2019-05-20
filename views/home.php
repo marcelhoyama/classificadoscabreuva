@@ -35,7 +35,7 @@
            
          
         </div>
-        <?php if($viewData['lista_palavra']==""): ?>
+        <?php if($viewData['lista_palavra']!=""): ?>
 <table class="table table-hover">
   <thead>
     <tr>

@@ -6,20 +6,15 @@
 //?>
 <title>Cadastrar Clientes</title>
 <div class="container">
-    <br><br>
-     <h2 class="text-center">Cadastro de Clientes</h2>
     
-       <a class="btn badge-info" href="<?php BASE_URL ?>menuprincipal"> Voltar p/Menu Principal</a>
-       <br><br>
+     <h2 class="text-center">Cadastro de Cliente</h2>
+    
       
-          
-          
-        
     <form name="cadastrarclientes" id="cadastrarclientes" class="form-group-sm" method="POST" autocomplete="off" >
      
         <div class="form-group">
             <label for="id">ID funcionario</label>
-            <input name="id"  id="id" class="form-control" value=" <?php echo $viewData['id_funcionario']; ?>" >  
+            <input name="id"  id="id" class="form-control" value=" <?php echo $viewData['id_funcionario']; ?>" disabled="" >  
        
         </div>
         <div class="form-group">
@@ -33,7 +28,7 @@
         <div class="row" > 
         <div class="form-group col-sm-6">
             
-            <label for="fone">Telefone Celular:</label> <label class="text-danger"> campo obrigatorio!</label>
+            <label for="fone">Telefone Celular*:</label> <label class="text-danger"> campo obrigatorio!</label>
             <input name="telefone"  type="tel" class="form-control" id="fone" placeholder="">
         </div>
         

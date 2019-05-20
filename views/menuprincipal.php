@@ -1,11 +1,11 @@
 
 <title>Menu Principal</title>
-<br>
-<br>
+
 <div class="container-fluid">
+
+        <div class="row">
+      
     
-   
-<div class="row" >
     <div class="col-sm-2">
         <div class="thumbnail ">
        <a href="<?php BASE_URL;?>pesquisar_clientes">
@@ -101,7 +101,7 @@
         </ul>
     </div>-->
 </div>
-  
+  </div>
 
 
 

@@ -1,6 +1,5 @@
 <div class="container">
-    <br>
-    <br>
+
     <div id="">
 
             <form method="POST">
@@ -10,14 +9,7 @@
                     <input type="text" name="buscar" placeholder="Nome " class="form-control form-control-lg"/>
                 </div>
          
-                <?php if (isset($erro) && !empty($erro)): ?>
-                <div class="alert alert-warning alert-dismissible">
-                     
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong> Não foi possivel encontrar o que digitou!</strong> Deixei seu comentario <a href="#" class="alert-link">aqui</a>
-                 
-                </div>
-                <?php endif; ?>
+            
                 <div class="form-group">
                     <input class="btn btn-primary" type="submit" value="Buscar"/>
                 </div>
@@ -27,7 +19,7 @@
          
         </div>
     <div class="row">
-       <form method="GET" >
+<!--       <form method="GET" >
     <div class="input-group">
         <select id="pesquisar" name="pesquisar" class="form-control">
             <option></option>
@@ -45,7 +37,7 @@
             </button>
         </span>
     </div>
-        </form>
+        </form>-->
         <div class="form-group">
             <a href="<?php BASE_URL?>cadastrar_loja"  class="btn btn-primary">Cadastrar Loja</a>
                 </div>
@@ -55,12 +47,13 @@
         <thead>
 
             <tr>
-                <th>Nome do Cliente</th>
+                <th>Nome da Loja</th>
                 <th>Status</th>
                 <th>Telefone</th>
                 <th>E-mail</th>
                 <th>Total de Promoção</th>
                  <th>Total de Eventos</th>
+                 <th>Dono da loja</th>
                  <th>Ações</th>
             </tr>
         </thead>
@@ -69,11 +62,11 @@
              <?php
              
               
-         if($viewData['lista'] == ''){ 
+         if($viewData['listarlojas'] == ''){ 
              
          }else{
          
-               foreach ($viewData['lista'] as $value): {
+               foreach ($viewData['listarlojas'] as $value): {
         
    ?>
                 
@@ -87,6 +80,7 @@
                 <td><?php echo $value['email'] ?></td>
                 <td><span class="badge"><?php echo $value['totalimovel'] ?></span></td>
                  <td><span class="badge"><?php echo $value['totalimovel'] ?></span></td>
+                    <td><span class="badge"><?php echo $value['totalimovel'] ?></span></td>
                 <td><a href="<?php BASE_URL;?>editarclientes?id=<?php echo $value['id'];?> "><button class="btn btn-warning">Editar</button></a>
                     <a href="<?php BASE_URL; ?>menuprincipalcliente?id=<?php echo $value['id'];?>"><button class="btn btn-primary">Ver loja</button></a>
                <a href="<?php BASE_URL; ?>cadastrarloja?id=<?php echo $value['id'];?>"><button class="btn btn-primary">+ Loja</button></a>

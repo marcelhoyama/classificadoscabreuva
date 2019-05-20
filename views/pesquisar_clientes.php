@@ -1,12 +1,11 @@
 <div class="container">
-    <br>
-    <br>
+    
     <div id="">
 
             <form method="POST">
                
                 <div class="form-group">
-                    <div class="h1">  Busca aqui Clientes</div>
+                    <div class="h1">  Buscar Cliente</div>
                     <input type="text" name="buscar" placeholder="Nome " class="form-control form-control-lg"/>
                 </div>
          
@@ -27,25 +26,7 @@
          
         </div>
     <div class="row">
-       <form method="GET" >
-    <div class="input-group">
-        <select id="pesquisar" name="pesquisar" class="form-control">
-            <option></option>
-            <?php foreach ($viewData['listarClientes'] as $value): {?>
-
-
- 
-            <option value="<?php echo $value['nome'];?>"> <?php echo $value['nome'];?></option>
- <?php }endforeach; ?>
-        </select>
-        
-        <span class="input-group-btn">
-            <button class="btn btn-primary" type="submit">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>Pesquisar
-            </button>
-        </span>
-    </div>
-        </form>
+   
         <div class="form-group">
             <a href="<?php BASE_URL?>cadastrar_clientes"  class="btn btn-primary">Cadastrar Clientes</a>
                 </div>

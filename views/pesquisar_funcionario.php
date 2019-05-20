@@ -1,12 +1,11 @@
 <div class="container">
-    <br>
-    <br>
+  
     <div id="">
 
-<!--            <form method="POST">
+         <form method="POST">
                
                 <div class="form-group">
-                    <div class="h1">  Buscar Lojas</div>
+                    <div class="h1">  Buscar Funcionário</div>
                     <input type="text" name="buscar" placeholder="Nome " class="form-control form-control-lg"/>
                 </div>
          
@@ -22,31 +21,16 @@
                     <input class="btn btn-primary" type="submit" value="Buscar"/>
                 </div>
               
-            </form>  -->
+            </form>  
            
          
         </div>
     <div class="row">
-       <form method="GET" >
-    <div class="input-group">
-        <select id="pesquisar" name="pesquisar" class="form-control">
-            <option></option>
-            <?php foreach ($viewData['listclientes'] as $value): {?>
-
-
- 
-            <option value="<?php echo $value['nome'];?>"> <?php echo $value['nome'];?></option>
- <?php }endforeach; ?>
-        </select>
-        
-        <span class="input-group-btn">
-            <button class="btn btn-primary" type="submit">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>Pesquisar
-            </button>
-        </span>
-    </div>
-        </form>
+     
       
+        <div class="form-group">
+            <a href="<?php BASE_URL?>cadastrar_funcionario"  class="btn btn-primary">Cadastrar Funcionário</a>
+                </div>
     <br>
     <div class="table-responsive">
     <table class="table">
@@ -66,7 +50,7 @@
              <?php
              
               
-         if($viewData['lista'] == ''){ 
+         if($viewData['lista_funcionario'] == ''){ 
              
          }else{
          
