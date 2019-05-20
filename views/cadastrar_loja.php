@@ -3,9 +3,7 @@
 
 
 <div class="container">
-     <div class="form-group">
-    <a class="btn btn-default" href="<?php BASE_URL ?>menuprincipal"> Voltar p/Menu Principal</a>
-</div>
+    
     <div class="text-center h3">Cadastrar Loja</div>
    
     <form id="cadastrarimovel" method="POST" enctype="multipart/form-data">
@@ -27,7 +25,7 @@
   
       <br>
       <div class="row">
-                     <div class="form-group">
+                     <div class="form-group col-sm-3">
                          <label for="status">Anunciar no site:</label> <label class="text-danger">obrigatorio*</label></br>
                 <div class="checkbox-inline">
                     <label><input type="radio" name="status" id="status" value="Liberado"  >Liberar</label> 
@@ -55,7 +53,7 @@
       
 
         <div class="row">
-            <div class="form-group col-sm-3">
+            <div class="form-group col-sm-4">
                 <label for="id_tipo_assunto">Tipo de Ramo:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade">?</a></label>
                 <select name="id_tipo_assunto" class="form-control" id="id_tipo_assunto">
                     <option></option>
@@ -159,7 +157,7 @@
     </div>
   </div>
 </div>   
-            <div class="form-group col-sm-3">
+            <div class="form-group col-sm-4">
                 <label for="nome_fantasia">Nome fantasia:</label>  <label class="text-danger">campo obrigatorio*</label>
                 <input name="nome_fantasia" class="form-control" id="nome_fantasia">
 
