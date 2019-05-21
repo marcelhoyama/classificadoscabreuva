@@ -33,9 +33,9 @@ class clientes extends model{
         public function pesquisarCliente($palavra) {
             try{
                 $array=array();
-                $sql="SELECT * FROM clientes WHERE nome LIKE '%:palavra' ";
+                $sql="SELECT * FROM clientes WHERE nome LIKE :palavra";
                 $sql= $this->db->prepare($sql);
-                $sql->bindValue(":palavra",$palavra);
+                $sql->bindValue(":palavra",$palavra."%");
                 $sql->execute();
                 
                 if($sql->rowCount()>0){
@@ -80,7 +80,13 @@ class clientes extends model{
                 $sql="SELECT * FROM clientes";
                 $sql= $this->db->prepare($sql);
                 $sql->execute();
-                
+                if($sql->rowCount()>0){
+                    
+                     $array=$sql->fetchAll();
+                    return $array;
+                }else{
+                    return false;
+                }
             } catch (Exception $ex) {
 echo "Falhou:".$ex->getMessage();
             }

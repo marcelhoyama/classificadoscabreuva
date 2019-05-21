@@ -77,7 +77,7 @@ class funcionarios extends model{
              return $nome;
              }
         } catch (Exception $ex) {
-
+echo "Falhou:".$ex->getMessage();
         }
        
     }
@@ -86,9 +86,15 @@ class funcionarios extends model{
         try{
             $array=array();
             $sql="SELECT * FROM funcionarios WHERE id_funcionarios=:id";
-            
+            $sql= $this->db->prepare($sql);
+             $sql->bindValue(":id",$id);
+             $sql->execute();
+             if($sql->rowCount()>0){
+             $array=$sql->fetch();
+             return $array;
+             }
         } catch (Exception $ex) {
-
+echo "Falhou:".$ex->getMessage();
         }
     }
     

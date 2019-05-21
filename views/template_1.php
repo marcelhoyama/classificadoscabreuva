@@ -1,8 +1,10 @@
-
+<!DOCTYPE html> 
+<html lang="pt-br">
+    
 
 <head>
-
-   
+  <meta charset="UTF=8"/>
+   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"/>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style.css"/>
@@ -63,9 +65,10 @@
     </div>
     <div class="w3-col s8 w3-bar">
       <span>Bem vindo, <strong> <?php echo $_SESSION['lgname']; ?></strong></span><br>
-     
-      <a href="<?php echo BASE_URL; ?>perfil" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+      <form method="GET">
+      <a href="<?php echo BASE_URL; ?>perfil?id=<?php echo $_SESSION['lg']; ?>" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+    </form>
     </div>
   </div>
   <hr>
@@ -129,4 +132,7 @@ function w3_close() {
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/script.js"></script>
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.mask.js"></script>
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/validarcampos.js"></script>
+
+   
+</html>
 

@@ -54,12 +54,12 @@
 
         <div class="row">
             <div class="form-group col-sm-4">
-                <label for="id_tipo_assunto">Tipo de Ramo:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade">?</a></label>
+                <label for="id_tipo_assunto">Tipo de Ramo:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info">ajuda ?</a></label>
                 <select name="id_tipo_assunto" class="form-control" id="id_tipo_assunto">
                     <option></option>
                     
                     <?php foreach ($viewData['listarRamo'] as $value) : { ?>
-                            <option value="<?php echo $value['id']; ?>"><?php echo $value['nome']; ?></option>
+                            <option value="<?php echo $value['id']; ?>"><?php echo $value['nome'];?></option>
 
                         <?php  } endforeach; ?>  
                  </select>
@@ -157,20 +157,20 @@
     </div>
   </div>
 </div>   
-            <div class="form-group col-sm-4">
+          
+        </div>     
+
+        <div class="form-group">
                 <label for="nome_fantasia">Nome fantasia:</label>  <label class="text-danger">campo obrigatorio*</label>
                 <input name="nome_fantasia" class="form-control" id="nome_fantasia">
 
                
             </div>
-            <div class="form-group col-sm-5">
+            <div class="form-group ">
                 <label for="razao_social">Razão Social:</label><label class="text-danger">Campo Obrigatorio*</label>
                 <input name="razao_social" class="form-control" id="razao_social">
                   
             </div>
-        </div>     
-
-      
 
       
         
@@ -203,7 +203,7 @@
             </div>
         <div class="form-group col-sm-3">
                 <label for="whatsapp">Whatsapp:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="whatsapp" type="text" class="form-control" id="whatsapp" placeholder=""/>
+                <input name="whatsapp" type="text" class="form-control" id="telefone1" placeholder=""/>
             </div>
         </div>
         <div class="row">
@@ -222,6 +222,7 @@
         </div>
           <div class="form-group">
             <label for="descricao">Breve descrição do seu nicho:</label> 
+            <a href="https://viverdeblog.com/nicho-de-mercado/" target="_blank" class="text-info" >ajuda?</a> 
 
             <textarea class="form-control" name="descricao" type="text" id="descricao" rows="15"></textarea>
         </div>
