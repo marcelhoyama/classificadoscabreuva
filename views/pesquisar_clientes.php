@@ -68,7 +68,7 @@
                 <td><span class="badge"></span></td>
                 <td><a href="<?php BASE_URL;?>editarclientes?id=<?php echo $value['id_clientes'];?> "><button class="btn btn-warning">Editar</button></a>
                     <a href="<?php BASE_URL; ?>menuprincipalcliente?id=<?php echo $value['id_clientes'];?>"><button class="btn btn-primary">Ver loja</button></a>
-               <a href="<?php BASE_URL; ?>cadastrarloja?id=<?php echo $value['id_clientes'];?>"><button class="btn btn-primary">+ Loja</button></a>
+               <a href="<?php BASE_URL; ?>cadastrar_outra_loja?id=<?php echo $value['id_clientes'];?>"><button class="btn btn-primary">+ Loja</button></a>
               
                 </td>
             </tr>

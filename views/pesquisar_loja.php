@@ -39,7 +39,7 @@
     </div>
         </form>-->
         <div class="form-group">
-            <a href="<?php BASE_URL?>cadastrar_loja"  class="btn btn-primary">Cadastrar Loja</a>
+            <a href="<?php BASE_URL?>cadastrar_loja_nova"  class="btn btn-primary">Cadastrar Loja</a>
                 </div>
     <br>
     <div class="table-responsive">
@@ -83,7 +83,7 @@
                     <td><span class="badge"><?php echo $value['totalimovel'] ?></span></td>
                 <td><a href="<?php BASE_URL;?>editarclientes?id=<?php echo $value['id'];?> "><button class="btn btn-warning">Editar</button></a>
                     <a href="<?php BASE_URL; ?>menuprincipalcliente?id=<?php echo $value['id'];?>"><button class="btn btn-primary">Ver loja</button></a>
-               <a href="<?php BASE_URL; ?>cadastrarloja?id=<?php echo $value['id'];?>"><button class="btn btn-primary">+ Loja</button></a>
+               <a href="<?php BASE_URL; ?>cadastrar_loja?id=<?php echo $value['id'];?>"><button class="btn btn-primary">+ Loja</button></a>
               
                 </td>
             </tr>

@@ -1,6 +1,6 @@
 <?php
 
-class cadastrar_lojaController extends controller {
+class cadastrar_outra_lojaController extends controller {
 
     public function __construct() {
         parent::__construct();
@@ -9,7 +9,7 @@ class cadastrar_lojaController extends controller {
     }
 
     public function index() {
-        $dados = array('erro' => '', 'ok' => '','listarRamo'=>'','listarCliente'=>'');
+        $dados = array('erro' => '', 'ok' => '','listarRamo'=>'','dadosCliente'=>'');
 
 $f=new funcionarios();
 $id=$_SESSION['lg'];
@@ -19,12 +19,13 @@ $c =new clientes();
      
 $dados['listarRamo']=$c->listarRamo();
 
-if(isset($_GET['id']) && !empty($_GET['id'])){
-    $id=$_GET['id'];
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    
+
     $c = new clientes();
-    $dados['nomeCliente']=$c->getName($id);
-}
-       
+    $dados['dadosCliente']=$c->getDados($id);
+
+}      
         if (isset($_POST['cpf']) && !empty($_POST['cpf']) && isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['telefone']) && !empty($_POST['telefone'])) {
             $nome = addslashes(trim($_POST['nome']));
             $telefone = addslashes(trim($_POST['telefone']));
@@ -53,7 +54,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 
 
 
-        $this->loadTemplate_1('cadastrar_loja', $dados);
+        $this->loadTemplate_1('cadastrar_outra_loja', $dados);
     }
 
 }

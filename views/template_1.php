@@ -80,12 +80,12 @@
     <a href="<?php BASE_URL;?>pesquisar_clientes" class="w3-bar-item w3-button w3-padding active"><i class="fa fa-users fa-fw"></i>  Clientes</a>
     <a href="<?php BASE_URL;?>pesquisar_funcionario" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Funcionários</a>
     <a href="<?php BASE_URL;?>pesquisar_loja" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Lojas</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
+<!--    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>-->
   </div>
 </nav>
 

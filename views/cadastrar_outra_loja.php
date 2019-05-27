@@ -1,23 +1,25 @@
 
-<title>Cadastrar Loja</title>
+<title>Cadastrar outra Loja</title>
 
-
+<?php $cliente=$viewData['dadosCliente'];?>
 <div class="container">
     
-    <div class="text-center h3">Cadastrar Loja</div>
+    <div class="text-center h3">Cadastrar Outra Loja do(a)<?php echo $cliente['nome'];?> </div>
    
     <form id="cadastrarimovel" method="POST" enctype="multipart/form-data">
         <div class="row">
             
         <div class="control-group col-sm-3">
-                 <label for="">Funcionário:</label> <label class="text-danger"></label></br>
+                 <label for="">Usuário:</label> <label class="text-danger"></label></br>
                
             <input type="text" class="form-control"  name="funcionario_id" value="<?php echo $viewData['nomefunc'];?> " disabled="">
         </div>
-             <div class="control-group col-sm-3">
-                 <label for="">Nome do Cliente:</label> <label class="text-danger"></label></br>
-               
-            <input type="text" class="form-control"  name="nome_fantasia" value="<?php echo $viewData['nomeCliente'];?> " disabled="">
+             <div class="control-group col-sm-6">
+                 <label for="">Nome do Cliente Existente:</label> <label class="text-danger"></label></br>
+                     <input type="text" class="form-control"  name="nome" value="<?php echo $cliente['nome'];?> " disabled="">
+      
+                 <input type="text" class="form-control"  name="id_cliente" value="<?php echo $cliente['id_clientes'];?> " disabled="">
+      
         </div>
         </div>
           <div class="danger">
