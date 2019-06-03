@@ -9,23 +9,17 @@ class clientes extends model {
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":cpf", $cpf);
             $sql->execute();
-            if ($sql->rowCount() > 0) {
-                return FALSE;
+            if ($sql->rowCount() == 0) {
+                
             } else {
-                return TRUE;
+                return "Já existe um cadastro! ";
             }
         } catch (Exception $ex) {
             echo 'Falhou:' . $ex->getMessage();
         }
     }
 
-    public function verificarExiste($cpf) {
-        try {
-            
-        } catch (Exception $ex) {
-            
-        }
-    }
+  
 
     public function pesquisarCliente($palavra) {
         try {
@@ -49,8 +43,12 @@ class clientes extends model {
 
     public function cadastrar($id_funcionario, $nome, $email, $telefone, $cpf) {
         try {
-
-
+ $sql = "SELECT cpf FROM clientes WHERE cpf=:cpf";
+            $sql = $this->db->prepare($sql);
+            $sql->bindValue(":cpf", $cpf);
+            $sql->execute();
+            if ($sql->rowCount() == 0) {
+                
             $sql = "INSERT INTO clientes (funcionarios_id_funcionarios,nome,email,telefone,cpf) VALUES (:id_funcionario,:nome,:email,:telefone,:cpf) ";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":id_funcionario", $id_funcionario);
@@ -60,8 +58,15 @@ class clientes extends model {
             $sql->bindValue(":cpf", $cpf);
             $sql->execute();
             if ($sql->rowCount() > 0) {
-                return TRUE;
+               header("Location:".BASE_URL."pesquisar_clientes");
+                exit();
+            }else{
+                return "Não foi posssivel cadastrar! Verifique os campos se estão preenchidos corretamente e tente novamente!";
             }
+            } else {
+                return "Já existe um cadastro! ";
+            }
+
         } catch (Exception $ex) {
             echo 'Falhou:' . $ex->getMessage();
         }
