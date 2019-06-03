@@ -9,12 +9,12 @@
                              
  </div>
 
-
+    <img src="<?php BASE_URL;?>assets/images/vista-cabreuva.jpg" class="" alt="Imagem responsiva" width="100%" height="250">
+             
         <div id="buscador">
 
             <form method="POST">
-               
-                <div class="form-group">
+               <div class="form-group">
                     <div class="h1">  Busca aqui em Cabreúva</div>
                     <input type="text" name="buscar" placeholder="Ex: Carro, lanche ou Nome da loja " class="form-control form-control-lg"/>
                 </div>
