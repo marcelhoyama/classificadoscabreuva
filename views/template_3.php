@@ -22,7 +22,7 @@
 
 <!-- Footer -->
 <footer class="w3-center w3-light-grey w3-padding-32">
-  <p>Desenvolvido por <a href="https://www.devmg.pe.hu" title="Marcel Hoyama" target="_blank" class="w3-hover-text-green">Marcel Hoyama</a></p>
+  <p>Desenvolvido por <a href="http://www.devmg.pe.hu" title="Marcel Hoyama" target="_blank" class="w3-hover-text-green">Marcel Hoyama</a></p>
 </footer>
 
 </body>

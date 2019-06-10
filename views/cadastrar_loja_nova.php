@@ -26,7 +26,13 @@
                  </select>
            
         </div>
-        </div>
+            <div class="control-group col-sm-6">
+                <br>
+                <label for="">Não tem cadastro do cliente,cadastre aqui </label>
+                <a  class="form-control btn btn-primary" href="<?php BASE_URL;?>cadastrar_clientes"> + Cliente</a>
+ 
+            </div>
+            </div>
           <div class="danger">
             <?php if (isset($erro) && !empty($erro)): ?>
                 <div class="alert alert-danger"><?php echo $erro; ?></div> 

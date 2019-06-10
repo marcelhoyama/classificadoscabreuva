@@ -7,7 +7,7 @@
     
     <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/vLHiTQFQwnM?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
     <div class="form-group">
-        <label for="assunto " class="label ">Assunto:</label> <label class="text-danger"> campo obrigatorio!</label>
+        <label for="assunto " class="label ">Selecione o Assunto:</label> <label class="text-danger"> campo obrigatorio!</label>
         <select class="form-control" name="assunto" id="assunto">
             <option></option>
             <option>Quer Anunciar</option>
@@ -16,19 +16,19 @@
         </select>
     </div>
     <div class="form-group">
-        <label for="mensagem " class="label ">Mensagem:</label> <label class="text-danger"> campo obrigatorio!</label>
+        <label for="mensagem " class="label "></label> <label class="text-danger"> campo obrigatorio!</label>
         <textarea class="form-control" name="mensagem" id="mensagem" placeholder="Digite sua mensagem" type="text"></textarea>
     </div>
     <div class="form-group">
-        <label for="nome" class="label ">Nome:</label> <label class="text-danger"> campo obrigatorio!</label>
+        <label for="nome" class="label "></label> <label class="text-danger"> campo obrigatorio!</label>
         <input class="form-control" name="nome" id="nome" placeholder="Digite o nome completo" type="text"/>
     </div>
     <div class="form-group">
-        <label for="email" class="label ">E-mail:</label> <label class="text-danger"> campo obrigatorio!</label>
+        <label for="email" class="label "></label> <label class="text-danger"> campo obrigatorio!</label>
         <input class="form-control" name="email" id="email" placeholder="Digite seu e-mail proprio" type="text"/>
     </div>
     <div class="form-group">
-        <label for="telefone" class="label ">Telefone:</label> <label class="text-danger"> campo obrigatorio!</label>
+        <label for="telefone" class="label "></label> <label class="text-danger"> campo obrigatorio!</label>
         <input class="form-control" name="telefone" id="telefone" placeholder="Digite o numero telefone com DDD" type="text"/>
     </div>
     <input type="button" class="btn btn-primary" value="Enviar" />     
@@ -39,15 +39,15 @@
 
 <div class="form-group">
         <address class="text-info address">
-            <h2>Onde nos encontrar?</h2>    
+            <h2>Nosso Contato?</h2>    
             Endereço: <?php echo $value=$viewData['endereco']; ?></br>
            
             Celular: <?php echo $value = $viewData['celular']; ?><span><img src="<?php BASE_URL;?>assets/images/whatsapp.png " width="30" height="30"/></span></br>
             Email: <?php echo $value = $viewData['email']; ?></br>
             <a href="https://www.facebook.com/macielprestacaoservico/" class="navbar-nav"><img src="<?php BASE_URL; ?>assets/images/facebookcolor.png" width="32" height="32" style="margin-top: 8px" class="float-right"/></a><br><br>
 
-            Horário de Funcionamento: 
-            <?php echo $value = $viewData['horario']; ?></br>
+<!--            Horário de Funcionamento: 
+            <?php echo $value = $viewData['horario']; ?></br>-->
         </address>
         <hr/>
         <img src="<?php BASE_URL ?>assets/images/sem-imagem.gif" width="300" height="300" class="img-rounded img-responsive">
