@@ -96,7 +96,7 @@
                 </tbody>
             </table>
         <?php endif; ?>
-        <div class="row">
+<!--        <div class="row">
             <div id="linha" class="h3 text-center "> Categorias</div> 
         </div>
         <div class="row">
@@ -189,7 +189,7 @@
             </div>
 
 
-        </div>
+        </div>-->
 
 
     </div>
