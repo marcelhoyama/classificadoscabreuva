@@ -2,8 +2,8 @@
 
 $(function () {
     $('#cpf').mask('000.000.000-00', {reverse: true});
-    $('#fone').mask('(00) 00000-0000');
-    $('#fonefixo').mask('(00) 0000-0000');
+ 
+   
     $('#cep').mask('00.000-000');
     $('#valor').mask('000.000.000.000.000,00', {reverse: true});
     $('#valor2').mask('000.000.000.000.000,00', {reverse: true});

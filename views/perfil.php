@@ -10,7 +10,7 @@
 
 	<div class="form-group">
 		<label for="telefone">Telefone:</label>
-		<input name="telefone" id="telefone" class="form-control" value="<?php echo $info['telefone']; ?>"/>
+		<input name="telefone" id="celular" class="form-control" value="<?php echo $info['telefone']; ?>"/>
 	</div>
     <div class="form-group">
 		<label for="endereco">Endereço:</label>

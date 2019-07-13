@@ -38,7 +38,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             }
             
                $id_funcionario= addslashes(trim($_POST['id']));
-            
+            //senao existe vai cadastrar
                if($c->verificarCPF($cpf)==TRUE){
             if($c->cadastrar($id_funcionario,$nome, $email, $telefone, $cpf)== TRUE){
                 header("Location:".BASE_URL."pesquisar_clientes");
