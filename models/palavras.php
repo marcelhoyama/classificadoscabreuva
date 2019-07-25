@@ -1,8 +1,8 @@
 <?php
 
-class palavras_buscada extends model {
+class palavras extends model {
 
-    public function cadastrarPalavra($palavra) {
+    public function cadastrarPalavra($palavra,$id_loja) {
         try {
            $sql = "INSERT INTO palavras_buscadas (palavra) VALUES (:palavra)";
            $sql=$this->db->prepare($sql);

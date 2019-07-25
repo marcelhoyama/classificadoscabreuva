@@ -4,21 +4,22 @@
 <?php $cliente=$viewData['dadosCliente'];?>
 <div class="container">
     
-    <div class="text-center h3">Cadastrar Outra Loja do(a)<?php echo $cliente['nome'];?> </div>
+    <div class="text-center h3">Cadastrar uma ou Outra Loja do(a)<?php echo $cliente['nome'];?> </div>
    
     <form id="cadastrarimovel" method="POST" enctype="multipart/form-data">
         <div class="row">
             
         <div class="control-group col-sm-3">
-                 <label for="">Usuário:</label> <label class="text-danger"></label></br>
+                 <label for="">Nome do Usuário:</label> <label class="text-danger"></label></br>
                
-            <input type="text" class="form-control"  name="funcionario_id" value="<?php echo $viewData['nomefunc'];?> " disabled="">
+                 <input type="text" class="form-control"  name="id_func" value="<?php echo $viewData['id_funcionario'];?> " disabled="">
         </div>
              <div class="control-group col-sm-6">
-                 <label for="">Nome do Cliente Existente:</label> <label class="text-danger"></label></br>
-                     <input type="text" class="form-control"  name="nome" value="<?php echo $cliente['nome'];?> " disabled="">
+                 <label for="">Nome do Cliente:</label> <label class="text-danger"></label></br>
+                     <input type="text" class="form-control"  name="nome_cliente" value="<?php echo $cliente['nome'];?> " disabled="">
+                     
       
-                 <input type="text" class="form-control"  name="id_cliente" value="<?php echo $cliente['id_clientes'];?> " disabled="">
+                     <input type="text" class="form-control"  name="id_cliente" value="<?php echo $cliente['id_clientes'];?> " hidden="">
       
         </div>
         </div>
@@ -38,22 +39,22 @@
                      <div class="form-group col-sm-3">
                          <label for="status">Anunciar no site:</label> <label class="text-danger">obrigatorio*</label></br>
                 <div class="checkbox-inline">
-                    <label><input type="radio" name="status" id="status" value="Liberado"  >Liberar</label> 
+                    <label><input type="radio" name="situacao" id="status" value="0"  >Liberar</label> 
                     </div>
 
                     <div class="checkbox-inline">
-                        <label><input type="radio" name="status" id="status" value="Bloqueado" checked="checked">Bloquear</label>
+                        <label><input type="radio" name="situacao" id="status" value="1" checked="checked">Bloquear</label>
                     </div>
               </div>
            <div class="form-group col-sm-3">
-                <label for="chave1">Palavra chave1:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="chave1" class="form-control" id="chave1">
+                <label for="chave1">Somente 5 Palavra chave separe por virgula nada mais:</label>  <label class="text-danger">campo obrigatorio*</label>
+                <textarea name="chave1" class="form-control" id="chave1" rows="10"></textarea>
 
                
             </div>
            <div class="form-group col-sm-3">
-                <label for="chave2">Palava chave2:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="chave2" class="form-control" id="chave2">
+                <label for="site">Site:</label>  <label class="text-danger"></label>
+                <input name="site" class="form-control" id="site">
 
                
             </div>
@@ -64,8 +65,41 @@
 
         <div class="row">
             <div class="form-group col-sm-4">
-                <label for="id_tipo_assunto">Tipo de Ramo:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info">ajuda ?</a></label>
-                <select name="id_tipo_assunto" class="form-control" id="id_tipo_assunto">
+                <label for="id_tipo_ramo">Tipo de Ramo1:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info">ajuda ?</a></label>
+                <select name="id_tipo_ramo1" class="form-control" id="id_tipo_ramo">
+                    <option></option>
+                    
+                    <?php foreach ($viewData['listarRamo'] as $value) : { ?>
+                            <option value="<?php echo $value['id']; ?>"><?php echo $value['nome'];?></option>
+
+                        <?php  } endforeach; ?>  
+                 </select>
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="id_tipo_ramo">Tipo de Ramo2:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info">ajuda ?</a></label>
+                <select name="id_tipo_ramo2" class="form-control" id="id_tipo_ramo">
+                    <option></option>
+                    
+                    <?php foreach ($viewData['listarRamo'] as $value) : { ?>
+                            <option value="<?php echo $value['id']; ?>"><?php echo $value['nome'];?></option>
+
+                        <?php  } endforeach; ?>  
+                 </select>
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="id_tipo_ramo">Tipo de Ramo3:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info">ajuda ?</a></label>
+                <select name="id_tipo_ramo3" class="form-control" id="id_tipo_ramo">
+                    <option></option>
+                    
+                    <?php foreach ($viewData['listarRamo'] as $value) : { ?>
+                            <option value="<?php echo $value['id']; ?>"><?php echo $value['nome'];?></option>
+
+                        <?php  } endforeach; ?>  
+                 </select>
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="id_tipo_ramo">Tipo de Ramo4:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info">ajuda ?</a></label>
+                <select name="id_tipo_ramo4" class="form-control" id="id_tipo_ramo">
                     <option></option>
                     
                     <?php foreach ($viewData['listarRamo'] as $value) : { ?>
@@ -147,7 +181,7 @@
 
 
 
-<li>alimentação;;</li>
+<li>alimentação;</li>
 
 <li>transporte;</li>
 
@@ -212,21 +246,21 @@
                 <input name="telefone2" type="text" class="form-control" id="telefone2" placeholder=""/>
             </div>
         <div class="form-group col-sm-3">
-                <label for="whatsapp">Whatsapp:</label>  <label class="text-danger">campo obrigatorio*</label>
+                <label for="whatsapp">Whatsapp(link api):</label>  <label class="text-danger">campo obrigatorio*</label>
                 <input name="whatsapp" type="text" class="form-control" id="telefone1" placeholder=""/>
             </div>
         </div>
         <div class="row">
         <div class="form-group col-sm-3">
-                <label for="email">E-mail:</label>  <label class="text-danger"></label>
+                <label for="email">E-mail (válido):</label>  <label class="text-danger"></label>
                 <input name="email" type="text" class="form-control" id="email" placeholder=""/>
             </div>
         <div class="form-group col-sm-3">
-                <label for="facebook">Facebook:</label>  <label class="text-danger"></label>
+                <label for="facebook">Facebook (link):</label>  <label class="text-danger"></label>
                 <input name="facebook" type="text" class="form-control" id="facebook" placeholder=""/>
             </div>
         <div class="form-group col-sm-3">
-                <label for="youtube">Youtube:</label>  <label class="text-danger"></label>
+                <label for="youtube">Youtube (link):</label>  <label class="text-danger"></label>
                 <input name="youtube" type="text" class="form-control" id="youtube" placeholder=""/>
             </div>
         </div>

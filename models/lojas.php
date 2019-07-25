@@ -3,17 +3,17 @@
 class lojas extends model{
     
     
-    public function verificarCPF($cpf){
+    public function verificarCnpj($cnpj){
       try{
                     
-          $sql="SELECT cpf FROM clientes WHERE cpf=:cpf";
+          $sql="SELECT cnpj FROM lojas WHERE cnpj=:cnpj";
           $sql= $this->db->prepare($sql);
-          $sql->bindValue(":cpf",$cpf);
+          $sql->bindValue(":cnpj",$cnpj);
           $sql->execute();
           if($sql->rowCount()>0){
-              return FALSE;
-          }else{
               return TRUE;
+          }else{
+              return FALSE;
           }
       } catch (Exception $ex) {
           echo 'Falhou:'.$ex->getMessage();
@@ -21,9 +21,17 @@ class lojas extends model{
         }
         
     
-        public function verificarExiste($cpf) {
+        public function cadastrarRamo($id_loja,$id_ramo) {
             try{
+                $sql="INSERT INTO loja_ramo ($id_loja,$id_ramo) VALUES (:id_loja, :id_ramo)";
+                  $sql= $this->db->prepare($sql);
+                $sql->bindValue(":id_loja",$id_loja);
+                $sql->binValue(":id_ramo",$id_ramo);
                 
+                $sql->execute();
+                if($sql->rowCount()>0){
+                    return TRUE;
+                }
             } catch (Exception $ex) {
 
             }
@@ -55,16 +63,41 @@ class lojas extends model{
             try{
                 
         
-                $sql="INSERT INTO clientes (funcionarios_id_funcionarios,nome,email,telefone,cpf) VALUES (:id_funcionario,:nome,:email,:telefone,:cpf) ";
+                $sql="INSERT INTO clientes (funcionarios_id_funcionarios,clientes_id_clientes,nome,razao_social,cnpj,endereco,telefone1,telefone2,status,whatsapp,email,facebook,youtube,site,descricao,chamada,url_imagem_principal) VALUES (:id_funcionario,:id_cliente,:nome,:razao_social,:cnpj,:endereco,:telefone1,:telefone2,:status,:whatsapp,:email,:facebook,:youtube,:site,:descricao,:chamada,:url_imagem_principal) ";
            $sql= $this->db->prepare($sql);
-           $sql->bindValue(":id_funcionario",$id_funcionario);
-           $sql->bindValue(":nome",$nome);
+           $sql->bindValue(":funcionarios_id_funcionarios",$id_funcionario);
+           $sql->bindValue(":clientes_id_cliente",$id_cliente);
+           $sql->bindValue(":nome_fantasia",$nome);
+            $sql->bindValue(":razao_social",$razao_social);
+             $sql->bindValue(":cnpj",$cnpj);
+              $sql->bindValue(":endereco",$endereco);
+           $sql->bindValue(":telefone1",$telefone1);
+           $sql->bindValue(":telefone2",$telefone2);
+           $sql->bindValue(":status",$status);
+           $sql->bindValue(":whatsapp",$whatsapp);
            $sql->bindValue(":email",$email);
-           $sql->bindValue(":telefone",$telefone);
-           $sql->bindValue(":cpf",$cpf);
+           $sql->bindValue(":facebook",$facebook);
+           $sql->bindValue(":youtube",$youtube);
+           $sql->bindValue(":site",$site);
+           $sql->bindValue(":descricao",$descricao);
+           $sql->bindValue(":chamada",$chamada);
+           $sql->bindValue(":url_imagem_principal",$url_imagem_principal);
+           $sql->bindValue(":chave1",$chave1);
            $sql->execute();
            if($sql->rowCount()>0){
-               return TRUE;
+               $id_loja=$sql->lastInsertId();
+               return $id_loja;                      
+//           $sql = "INSERT INTO palavras_buscadas (palavra,loja_id_loja) VALUES (:palavra,:id_loja)";
+//           $sql=$this->db->prepare($sql);
+//            $sql->bindValue(":palavra", $palavra);
+//                   $sql->bindValue(":id_loja", $id_loja);
+//            $sql->execute();
+            
+          
+        
+           
+        
+    
            }
                 
                  
