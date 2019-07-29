@@ -22,18 +22,20 @@ class cadastrar_outra_lojaController extends controller {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
 
 
-            $c = new clientes();
-            $dados['dadosCliente'] = $c->getDados($id);
+           $id_cliente= addslashes(trim($_GET['id']));
+            $dados['dadosCliente'] = $c->getDados($id_cliente);
+         
         }
         if (isset($_POST['nome_fantasia']) && !empty($_POST['nome_fantasia']) && isset($_POST['endereco']) && !empty($_POST['endereco']) && isset($_POST['telefone1']) && !empty($_POST['telefone1'])) {
-            echo"FANTASIA <br>" . $nome_fantasia = addslashes(trim($_POST['nome_fantasia']));
+            echo"FANTASIA <br>" . $nome = addslashes(trim($_POST['nome_fantasia']));
             echo"<br>R SOCIAL<br>" . $razao_social = addslashes(trim($_POST['razao_social']));
+            echo"<br>CNPJ<br>" . $cnpj = addslashes(trim($_POST['cnpj']));
             echo "<br>end<br>" . $endereco = addslashes(trim($_POST['endereco']));
             echo"<br>bairro<br>" . $bairro = addslashes(trim($_POST['bairro']));
             echo"<br>Cidade<br>" . $cidade = addslashes(trim($_POST['cidade']));
             echo "<br>tel1<br>" . $telefone1 = addslashes(trim($_POST['telefone1']));
             echo "<br>Tel2<br>" . $telefone2 = addslashes(trim($_POST['telefone2']));
-            echo "<br>situacao<br>" . $situacao = addslashes(trim($_POST['situacao']));
+            echo "<br>situacao<br>" . $status = addslashes(trim($_POST['situacao']));
             echo "<br>whats<br>" . $whatsapp = addslashes(trim($_POST['whatsapp']));
             echo "<br>email<br>" . $email = addslashes(trim($_POST['email']));
             echo "<br>facebook<br>" . $facebook = addslashes(trim($_POST['facebook']));
@@ -49,31 +51,31 @@ class cadastrar_outra_lojaController extends controller {
 
             echo"<br>idcliente<br>" . $id_cliente = addslashes(trim($_POST['id_cliente']));
 
-            echo "<br>id func<br>" . $id_funcionario = addslashes(trim($_POST['id_func']));
+//            echo "<br>id func<br>" . $id_funcionario = addslashes(trim($_POST['id_func']));
             echo "<br>tipo ramo<br>" . $id_ramo1 = addslashes(trim($_POST['id_tipo_ramo1']));
             echo "<br>tipo ramo<br>" . $id_ramo2 = addslashes(trim($_POST['id_tipo_ramo2']));
             echo "<br>tipo ramo<br>" . $id_ramo3 = addslashes(trim($_POST['id_tipo_ramo3']));
             echo "<br>tipo ramo<br>" . $id_ramo4 = addslashes(trim($_POST['id_tipo_ramo4']));
+$url_imagem_principal='';
+$id_funcionario='1';
 
-
-
-            exit();
+          
             $loja = new lojas();
             //senao existe vai cadastrar
-            if ($loja->verificarLoja($cnpj) == TRUE) {
-                if ($id_loja=$loja->cadastrar($id_funcionario, $id_cliente, $nome_fantasia, $razao_social, $cnpj, $endereco, $telefone1, $telefone2, $situacao, $whatsapp, $email, $facebook, $youtube, $site, $descricao, $chamada, $url_imagem_principal) == TRUE) {
+            if ($loja->verificarCnpj($cnpj) == FALSE) {
+                if ($id_loja=$loja->cadastrar($id_funcionario, $id_cliente, $nome, $razao_social, $cnpj, $endereco, $telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube, $site, $descricao, $chamada, $chave1, $url_imagem_principal,$id_ramo1,$id_ramo2,$id_ramo3,$id_ramo4) == TRUE) {
 //                   $id_loja= $loja->cadastrar($id_funcionario, $id_cliente, $nome_fantasia, $razao_social, $cnpj, $endereco, $telefone1, $telefone2, $situacao, $whatsapp, $email, $facebook, $youtube, $site, $descricao, $chamada, $url_imagem_principal);
 //                   
-
-                    if ($loja->cadastrarRamo($id_loja, $id_ramo1) == TRUE) {
-                        if ($loja->cadastrarRamo($id_loja, $id_ramo2) == TRUE) {
-                            if ($loja->cadastrarRamo($id_loja, $id_ramo3) == TRUE) {
-                                if ($loja->cadastrarRamo($id_loja, $id_ramo4) == TRUE) {
-                                    
-                                }
-                            }
-                        }
-                    }
+//loja pode ter mais de um tipo de atividade(ramo) limite 4
+//                    if ($loja->cadastrarRamo($id_loja, $id_ramo1) == TRUE) {
+//                        if ($loja->cadastrarRamo($id_loja, $id_ramo2) == TRUE) {
+//                            if ($loja->cadastrarRamo($id_loja, $id_ramo3) == TRUE) {
+//                                if ($loja->cadastrarRamo($id_loja, $id_ramo4) == TRUE) {
+//                                    
+//                                }
+//                            }
+//                        }
+//                    }
                     
                      header("Location:" . BASE_URL . "pesquisar_clientes");
                 } else {

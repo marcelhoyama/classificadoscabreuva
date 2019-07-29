@@ -15,8 +15,10 @@ class pesquisar_clientesController extends controller{
 $dados=array('erro'=>'');
 
   $c =new clientes();
+  echo "<pre>";
+  print_r($dados['listarClientes']=$c->listarClientes());
+  echo'</pre>';
   
-  $dados['listarClientes']=$c->listarClientes();
 
 if(isset($_POST['buscar']) && !empty($_POST['buscar'])){
     

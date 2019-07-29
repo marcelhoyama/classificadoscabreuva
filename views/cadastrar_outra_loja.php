@@ -215,7 +215,10 @@
                 <input name="razao_social" class="form-control" id="razao_social">
                   
             </div>
-
+  <div class="form-group">
+                <label for="cnpj">CNPJ :</label>  <label class="text-danger">campo obrigatorio*</label>
+                <input name="cnpj" type="text" class="form-control" id="cnpj" placeholder="" />
+            </div>
       
         
             <div class="form-group">

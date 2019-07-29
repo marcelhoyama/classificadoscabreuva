@@ -75,7 +75,7 @@ class clientes extends model {
     public function listarClientes() {
         $array = array();
         try {
-            $sql = "SELECT * FROM clientes";
+            $sql = "SELECT *,lojas.id_loja id_lojas FROM clientes INNER JOIN lojas ON lojas.clientes_id_clientes=clientes.id_clientes";
             $sql = $this->db->prepare($sql);
             $sql->execute();
             if ($sql->rowCount() > 0) {
