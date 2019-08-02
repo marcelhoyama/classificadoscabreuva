@@ -61,30 +61,30 @@ class lojas extends model {
 
             $sql = "INSERT INTO lojas (funcionarios_id_funcionarios,clientes_id_clientes,nome_fantasia,razao_social,cnpj,endereco,telefone1,telefone2,status,whatsapp,email,facebook,youtube,site,descricao,chamada,palavra_chave1,url_imagem_principal) VALUES (:id_funcionario,:id_cliente,:nome,:razao_social,:cnpj,:endereco,:telefone1,:telefone2,:status,:whatsapp,:email,:facebook,:youtube,:site,:descricao,:chamada,:chave1,:url_imagem_principal) ";
             $sql = $this->db->prepare($sql);
-            $sql->bindValue(":id_funcionario", $id_funcionario);
-            $sql->bindValue(":id_cliente", $id_cliente);
-            $sql->bindValue(":nome", $nome);
-            $sql->bindValue(":razao_social", $razao_social);
-            $sql->bindValue(":cnpj", $cnpj);
-            $sql->bindValue(":endereco", $endereco);
-            $sql->bindValue(":telefone1", $telefone1);
-            $sql->bindValue(":telefone2", $telefone2);
-            $sql->bindValue(":status", $status);
-            $sql->bindValue(":whatsapp", $whatsapp);
-            $sql->bindValue(":email", $email);
-            $sql->bindValue(":facebook", $facebook);
-            $sql->bindValue(":youtube", $youtube);
-            $sql->bindValue(":site", $site);
-            $sql->bindValue(":descricao", $descricao);
-            $sql->bindValue(":chamada", $chamada);
-              $sql->bindValue(":chave1", $chave1);
-            $sql->bindValue(":url_imagem_principal", $url_imagem_principal);
+            $sql->bindParam(":id_funcionario", $id_funcionario);
+            $sql->bindParam(":id_cliente", $id_cliente);
+            $sql->bindParam(":nome", $nome);
+            $sql->bindParam(":razao_social", $razao_social);
+            $sql->bindParam(":cnpj", $cnpj);
+            $sql->bindParam(":endereco", $endereco);
+            $sql->bindParam(":telefone1", $telefone1);
+            $sql->bindParam(":telefone2", $telefone2);
+            $sql->bindParam(":status", $status);
+            $sql->bindParam(":whatsapp", $whatsapp);
+            $sql->bindParam(":email", $email);
+            $sql->bindParam(":facebook", $facebook);
+            $sql->bindParam(":youtube", $youtube);
+            $sql->bindParam(":site", $site);
+            $sql->bindParam(":descricao", $descricao);
+            $sql->bindParam(":chamada", $chamada);
+              $sql->bindParam(":chave1", $chave1);
+            $sql->bindParam(":url_imagem_principal", $url_imagem_principal);
           
             $sql->execute();
-             $id_loja= lastInsertId($sql); 
+             
             if ($sql->rowCount() > 0) {
                
-                
+                $id_loja= LAST_INSERT_ID(); 
   $sql = "INSERT INTO loja_ramo ($id_loja,$id_ramo1) VALUES (:id_loja, :id_ramo)";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":id_loja", $id_loja);
