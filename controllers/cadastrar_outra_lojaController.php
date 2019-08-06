@@ -63,7 +63,9 @@ $url_imagem_principal='';
             $loja = new lojas();
             //senao existe vai cadastrar
             if ($loja->verificarCnpj($cnpj) == FALSE) {
-                if ($id_loja=$loja->cadastrar($id_funcionario, $id_cliente, $nome, $razao_social, $cnpj, $endereco, $telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube, $site, $descricao, $chamada, $chave1, $url_imagem_principal,$id_ramo1,$id_ramo2,$id_ramo3,$id_ramo4) == TRUE) {
+                if ($id_loja=$loja->cadastrar($id_funcionario, $id_cliente, $nome, $razao_social, $cnpj, $endereco, $telefone1, $telefone2,
+                        $status, $whatsapp, $email, $facebook, $youtube, $site, $descricao, $chamada, $chave1, $url_imagem_principal,$id_ramo1,$id_ramo2,
+                        $id_ramo3,$id_ramo4) == TRUE) {
 //                   $id_loja= $loja->cadastrar($id_funcionario, $id_cliente, $nome_fantasia, $razao_social, $cnpj, $endereco, $telefone1, $telefone2, $situacao, $whatsapp, $email, $facebook, $youtube, $site, $descricao, $chamada, $url_imagem_principal);
 //                   
 //loja pode ter mais de um tipo de atividade(ramo) limite 4

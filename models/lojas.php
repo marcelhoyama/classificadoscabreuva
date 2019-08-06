@@ -55,11 +55,16 @@ class lojas extends model {
         }
     }
 
-    public function cadastrar($id_funcionario, $id_cliente, $nome, $razao_social, $cnpj, $endereco, $telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube, $site, $descricao, $chamada, $chave1, $url_imagem_principal,$id_ramo1,$id_ramo2,$id_ramo3,$id_ramo4) {
+    public function cadastrar($id_funcionario, $id_cliente, $nome, $razao_social, $cnpj, $endereco, $telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube, $site, $descricao, $chamada, $chave1, $url_imagem_principal, $id_ramo1, $id_ramo2, $id_ramo3, $id_ramo4) {
         try {
 
+            echo "entrou no model cadastrar loja";
 
-            $sql = "INSERT INTO lojas (funcionarios_id_funcionarios,clientes_id_clientes,nome_fantasia,razao_social,cnpj,endereco,telefone1,telefone2,status,whatsapp,email,facebook,youtube,site,descricao,chamada,palavra_chave1,url_imagem_principal) VALUES (:id_funcionario,:id_cliente,:nome,:razao_social,:cnpj,:endereco,:telefone1,:telefone2,:status,:whatsapp,:email,:facebook,:youtube,:site,:descricao,:chamada,:chave1,:url_imagem_principal) ";
+            echo $sql = "INSERT INTO lojas SET (funcionarios_id_funcionarios,clientes_id_clientes,nome_fantasia,razao_social,cnpj,"
+            . "endereco,telefone1,telefone2,status,whatsapp,email,facebook,youtube,site,descricao,chamada,palavra_chave1,url_imagem_principal) "
+            . "VALUES (:id_funcionario,:id_cliente,:nome,:razao_social,:cnpj,:endereco,:telefone1,:telefone2,:status,:whatsapp,:email,"
+            . ":facebook,:youtube,:site,:descricao,:chamada,:chave1,:url_imagem_principal) ";
+
             $sql = $this->db->prepare($sql);
             $sql->bindParam(":id_funcionario", $id_funcionario);
             $sql->bindParam(":id_cliente", $id_cliente);
@@ -77,48 +82,47 @@ class lojas extends model {
             $sql->bindParam(":site", $site);
             $sql->bindParam(":descricao", $descricao);
             $sql->bindParam(":chamada", $chamada);
-              $sql->bindParam(":chave1", $chave1);
+            $sql->bindParam(":chave1", $chave1);
             $sql->bindParam(":url_imagem_principal", $url_imagem_principal);
-          
-            $sql->execute();
-             
-            if ($sql->rowCount() > 0) {
-               
-                $id_loja= LAST_INSERT_ID(); 
-  $sql = "INSERT INTO loja_ramo ($id_loja,$id_ramo1) VALUES (:id_loja, :id_ramo)";
-            $sql = $this->db->prepare($sql);
-            $sql->bindValue(":id_loja", $id_loja);
-            $sql->binValue(":id_ramo", $id_ramo1);
 
             $sql->execute();
+            exit;
             if ($sql->rowCount() > 0) {
-                $sql = "INSERT INTO loja_ramo ($id_loja,$id_ramo2) VALUES (:id_loja, :id_ramo)";
-            $sql = $this->db->prepare($sql);
-            $sql->bindValue(":id_loja", $id_loja);
-            $sql->binValue(":id_ramo", $id_ramo2);
 
-            $sql->execute();
-            if ($sql->rowCount() > 0) {
-                $sql = "INSERT INTO loja_ramo ($id_loja,$id_ramo3) VALUES (:id_loja, :id_ramo)";
-            $sql = $this->db->prepare($sql);
-            $sql->bindValue(":id_loja", $id_loja);
-            $sql->binValue(":id_ramo", $id_ramo3);
+                $id_loja = LAST_INSERT_ID();
+                $sql = "INSERT INTO loja_ramo ($id_loja,$id_ramo1) VALUES (:id_loja, :id_ramo)";
+                $sql = $this->db->prepare($sql);
+                $sql->bindValue(":id_loja", $id_loja);
+                $sql->binValue(":id_ramo", $id_ramo1);
 
-            $sql->execute();
-            if ($sql->rowCount() > 0) {
-                 $sql = "INSERT INTO loja_ramo ($id_loja,$id_ramo4) VALUES (:id_loja, :id_ramo)";
-            $sql = $this->db->prepare($sql);
-            $sql->bindValue(":id_loja", $id_loja);
-            $sql->binValue(":id_ramo", $id_ramo4);
+                $sql->execute();
+                if ($sql->rowCount() > 0) {
+                    $sql = "INSERT INTO loja_ramo ($id_loja,$id_ramo2) VALUES (:id_loja, :id_ramo)";
+                    $sql = $this->db->prepare($sql);
+                    $sql->bindValue(":id_loja", $id_loja);
+                    $sql->binValue(":id_ramo", $id_ramo2);
 
-            $sql->execute();
-            if ($sql->rowCount() > 0) {
-               
-            }
-            }
-            }
-            
-            }
+                    $sql->execute();
+                    if ($sql->rowCount() > 0) {
+                        $sql = "INSERT INTO loja_ramo ($id_loja,$id_ramo3) VALUES (:id_loja, :id_ramo)";
+                        $sql = $this->db->prepare($sql);
+                        $sql->bindValue(":id_loja", $id_loja);
+                        $sql->binValue(":id_ramo", $id_ramo3);
+
+                        $sql->execute();
+                        if ($sql->rowCount() > 0) {
+                            $sql = "INSERT INTO loja_ramo ($id_loja,$id_ramo4) VALUES (:id_loja, :id_ramo)";
+                            $sql = $this->db->prepare($sql);
+                            $sql->bindValue(":id_loja", $id_loja);
+                            $sql->binValue(":id_ramo", $id_ramo4);
+
+                            $sql->execute();
+                            if ($sql->rowCount() > 0) {
+                                
+                            }
+                        }
+                    }
+                }
             }
         } catch (Exception $ex) {
             echo 'Falhou:' . $ex->getMessage();
