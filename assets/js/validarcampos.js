@@ -18,6 +18,24 @@ $(function () {
 });
 
 $(document).ready(function (){
+    
+          $('#login').validate({
+        
+        rules:{
+            email:{required:true,isString:true},
+            email:true,
+            senha:"required"
+            
+            
+                
+            
+        },
+        messages:{
+          
+                
+            
+        }
+    });
    
    $('#cadastrarusuarios').validate({
         
@@ -189,23 +207,7 @@ $(document).ready(function (){
     });
     
     
-          $('#tenhointeressado').validate({
-        
-        rules:{
-            nome:{required:true,isString:true},
-            email:true,
-            fonefixo:"required",
-            celular:"required"
-            
-                
-            
-        },
-        messages:{
-          
-                
-            
-        }
-    });
+    
     
         $('#perfil').validate({
         

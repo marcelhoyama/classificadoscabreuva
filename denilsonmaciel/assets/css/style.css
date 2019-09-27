@@ -1,0 +1,65 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 13/09/2018, 20:13:36
+    Author     : marcel hoyama
+*/
+
+
+.header{
+    background-image: url(../images/youtube.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
+    color: #fff;
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+.texto{
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+.container1{
+    background-image: url(../images/parceria.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+
+.texto1{
+   padding-top: 200px;
+    padding-bottom: 200px; 
+}
+
+.container2{
+    background-image: url(../images/representante.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+.texto2{
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+
+.footer{
+    background-color: #1b1e21;
+    color:#fff;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.rodape{
+    text-align: center;
+}

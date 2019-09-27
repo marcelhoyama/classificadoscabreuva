@@ -44,7 +44,7 @@
            
             Celular: <?php echo $value = $viewData['celular']; ?><span><img src="<?php BASE_URL;?>assets/images/whatsapp.png " width="30" height="30"/></span></br>
             Email: <?php echo $value = $viewData['email']; ?></br>
-            <a href="https://www.facebook.com/macielprestacaoservico/" class="navbar-nav"><img src="<?php BASE_URL; ?>assets/images/facebookcolor.png" width="32" height="32" style="margin-top: 8px" class="float-right"/></a><br><br>
+            <a href="https://www.facebook.com/denilsonmacielps/" class="navbar-nav"><img src="<?php BASE_URL; ?>assets/images/facebookcolor.png" width="80" height="80" style="margin-top: 8px" class="float-right"/></a><br><br>
 
 <!--            Horário de Funcionamento: 
             <?php echo $value = $viewData['horario']; ?></br>-->

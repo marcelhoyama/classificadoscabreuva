@@ -16,7 +16,7 @@ class menuprincipalController extends controller {
 
      
 
-        $this->loadTemplate_1('menuprincipal', $dados);
+        $this->loadView('menuprincipal', $dados);
     }
 
 }

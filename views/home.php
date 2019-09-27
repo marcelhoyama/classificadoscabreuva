@@ -1,14 +1,17 @@
 
 
-    <div class="container">
-
+    <div class="container my-5">
+        <div class="row">
+            <div class="col mt-3">
         <div class="form-group">
             <a href="<?php BASE_URL; ?>comercio"><button  class="btn btn-warning">Quero Ver Todos</button></a>
             <a href="<?php BASE_URL; ?>comercio"><button  class="btn btn-warning">Quero Ver as Promoções</button></a>
             <a href="<?php BASE_URL; ?>comercio"><button  class="btn btn-warning">Quero Ver os Eventos</button></a>
 
         </div>
-        <div id="carouselSite" class="carousel slide carousel-fade" data-ride="carousel">
+                </div>
+            </div>
+<!--        <div id="carouselSite" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="d-block w-100 active" src="<?php BASE_URL; ?>assets/images/banner-1.jpg" alt="Imagem responsiva" width="100%" height="250">
@@ -38,14 +41,15 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Próximo</span>
             </a>
-        </div>
+        </div>-->
 
-
+ <div class="h1 text-center mt-5"> Buscador Cabreúva</div>
+ <div class="h5 text-center">Encontre Lojas e Serviços</div>
         <div id="buscador">
 
             <form method="POST">
                 <div class="form-group">
-                    <div class="h1 text-center">  Busca aqui em Cabreúva</div>
+                   
                     <input type="text" name="buscar" placeholder="Ex: Carro, lanche ou Nome da loja " class="form-control form-control-lg"/>
                 </div>
 
@@ -66,13 +70,15 @@
 
         </div>
         <?php if ($viewData['lista_palavra'] != ""): ?>
+  <div class="h1 text-center"> Resultado</div>
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Loja</th>
+                        <th scope="col">Horario</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,53 +87,57 @@
                         <td>Mark</td>
                         <td>Otto</td>
                         <td>@mdo</td>
+                        <td><a class="btn btn-warning">Visitar</a></td>
                     </tr>
                     <tr>
                         <th scope="row">2</th>
                         <td>Jacob</td>
                         <td>Thornton</td>
                         <td>@fat</td>
+                        <td><a class="btn btn-warning">Visitar</a></td>
                     </tr>
                     <tr>
                         <th scope="row">3</th>
                         <td colspan="2">Larry the Bird</td>
                         <td>@twitter</td>
+                        <td><a class="btn btn-warning">Visitar</a></td>
                     </tr>
+                    
                 </tbody>
             </table>
         <?php endif; ?>
+        <div class="row">
+            <div id="linha" class="h3 text-center "></div> 
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <a href="<?php BASE_URL;?>food"> <img src="assets/images/fastfood-cabreuva.jpg" id="icone" class="img-thumbnail"/></a>
+                FASTFOOD <span class="badge badge-dark">3</span>
+            </div>
+            <div class="col-md">
+
+                <a href=""> <img src="assets/images/drink-cabreuva.jpg" id="icone"  class="img-thumbnail"/></a>
+                DRINK'S<span class="badge badge-dark">8</span>
+            </div>
+            <div class="col-md">
+
+                <a href=""> <img src="assets/images/diversao-cabreuva.png" id="icone"  class="img-thumbnail"/></a>
+                DIVERSÃO<span class="badge badge-dark">9</span>
+            </div>
+            <div class="col-md">
+
+                <a href=""> <img src="assets/images/evento-cabreuva.jpg" id="icone"  class="img-thumbnail"/></a>
+                EVENTOS<span class="badge badge-dark">Dark</span>
+            </div>
+            <div class="col-md">
+
+                <a href=""> <img src="assets/images/restaurante-cabreuva.png" id="icone"  class="img-thumbnail"/></a>
+                RESTAURANTES<span class="badge badge-dark">Dark</span>
+            </div>
+        </div>
+        
+
 <!--        <div class="row">
-            <div id="linha" class="h3 text-center "> Categorias</div> 
-        </div>
-        <div class="row">
-            <div class="col-md">
-                <a href="#"> <img src="assets/images/sem-imagem.gif" id="icone" class="img-thumbnail"/></a>
-                FASTFOOD <span>3</span>
-            </div>
-            <div class="col-md">
-
-                <a href=""> <img src="assets/images/sem-imagem.gif" id="icone"  class="img-thumbnail"/></a>
-                DRINK'S
-            </div>
-            <div class="col-md">
-
-                <a href=""> <img src="assets/images/sem-imagem.gif" id="icone"  class="img-thumbnail"/></a>
-                DIVERSÃO
-            </div>
-            <div class="col-md">
-
-                <a href=""> <img src="assets/images/sem-imagem.gif" id="icone"  class="img-thumbnail"/></a>
-                EVENTOS
-            </div>
-            <div class="col-md">
-
-                <a href=""> <img src="assets/images/sem-imagem.gif" id="icone"  class="img-thumbnail"/></a>
-                RESTAURANTES
-            </div>
-        </div>
-        <hr>
-
-        <div class="row">
             <div id="linha" class="h3 text-center "> Novos Comercios</div> 
         </div>
         <div class="row">
@@ -202,29 +212,4 @@
         </div>
     </div>
 </div>
-<footer id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h5 class="" style="color:#d1ecf1;"> Redes Sociais dos parceiros</h5>
-                <a href="http://www.urbanoveiculos.com.br" id="link" > <p>Urbano Veiculos</p></a>
-                <a href="#" id="link"> <p>Casa Ração Santos</p></a>
-                <a href="#" id="link"> <p>Guguili Baby</p></a>
-                <a href="#" id="link" > <p>Ótica Uniart</p></a>
-                <a href="#" id="link"> <p>Rádio Japi</p></a>
-                <a href="#" id="link">  <p>DMR Imoveis em Cabreúva</p></a>
-            </div>
-            <div class="col ">
-                <h5 class="" style="color:#d1ecf1;">Mais Informações:</h5>
-                <ul>
-                    <li><a href="#" id="link">marecrisbr@gmail.com</a></li>
-                    <li><a href="#" id="link">11-97672-6576</a></li>
-                </ul>
-            </div>
 
-        </div>
-        <div class="footer-copyright">
-            <a href="#" id="link"><p class="text-center text-warning " >@BuscadorCabreuva 2019</p></a>
-        </div>
-    </div>
-</footer>

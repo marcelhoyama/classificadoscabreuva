@@ -6,7 +6,7 @@ class funcionarios extends model{
     public function verificarLogin(){
         
         if(!isset($_SESSION['lg']) || (isset($_SESSION['lg']) && empty($_SESSION['lg']))){
-            header("Location:".BASE_URL."login/entrar");
+            header("Location:".BASE_URL."login_entrar");
             exit();
         }else{
             $id=$_SESSION['lg'];

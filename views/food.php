@@ -1,98 +1,233 @@
+<div id="food">
+    
+    <div class="container mt-5">
+    <div class="row">
+        
+        <div class="col-md">
+            <div class="card mt-3 border-1" >
+                <img class="card-img-top" type="button" src="<?php BASE_URL; ?>assets/images/oticaUniart/logo.png" id="icone" alt=""data-toggle="modal" data-target=".bd-example-modal-xl" >
+                <div class="card-body">
+                    <h4>comercio <i class="fas fa-hamburger"></i> <i class="far fa-credit-card"></i></h4>
+                    <p class="card-text"><i class="far fa-frown" style='font-size:24px'><span class="badge badge-pill badge-warning">?</span></i> <i class="far fa-meh" style='font-size:24px'><span class="badge badge-pill badge-warning">?</span></i> <i class="far fa-smile" style='font-size:24px'><span class="badge badge-pill badge-warning">?</span></i></p> 
+                   <p class="card-text"> <i class="fas fa-map-marker-alt"></i> Local:</p>
+                    <p class="card-text"> <i class="fa fa-clock"></i> Horario:</p>
+                   <p class="card-text"><i class="fa fa-phone fa-rotate-90"></i> Contato:</p>
+                    <div class="w3-col s4 ">
+                  
+                    
+    
+                    </div>
+                   
+                    <div class="row">
+                        
+                        <a href="#"><img src="<?php BASE_URL; ?>assets/images/facebookcolor.png" class="rounded-circle"alt=""></a>                
+                                 
+                        <a href="#"><img src="<?php BASE_URL; ?>assets/images/instagram-cabreuva.png" class="rounded-circle" width="24" height="24" alt=""></a>       
+                                     
+            <a href="#"><img src="<?php BASE_URL; ?>assets/images/whatsapp-cabreuva.png" class="rounded-circle" width="24" height="24" alt=""></a>  
+            <a href="#"><img src="<?php BASE_URL; ?>assets/images/mail-cabreuva.png" class="rounded-circle" width="24" height="24" alt=""></a>
+            <a href="#"><img src="<?php BASE_URL; ?>assets/images/youtube-cabreuva.png" class="rounded-circle" width="24" height="24" alt=""></a>
+            <button type="button" class="btn btn-primary btn-sm ml-auto" data-toggle="modal" data-target="#exampleModalScrollable" title="Preços deixe seu email">Cardápio</button>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        
+         <div class="col-md">
+            <div class="card mt-3">
+                <img class="card-img-top" src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" id="icone" alt="">
+                <div class="card-body">
+                    <h4>comercio</h4>
+                    <p class="card-text">Pedreiro</p>
+                    <p class="card-text">Horario:</p>
+                    <p class="card-text">Contato:</p>
+                    <a href="#" class="btn btn-primary">Ver mais</a>
+                </div>
+            </div> 
+        </div>
+        
+         <div class="col-md">
+            <div class="card mt-3">
+                <img class="card-img-top" src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" id="icone" alt="">
+                <div class="card-body">
+                    <h4>comercio</h4>
+                    <p class="card-text">Padaria</p>
+                    <p class="card-text">Horario:</p>
+                    <p class="card-text">Contato:</p>
+                    <a href="#" class="btn btn-primary">Ver mais</a>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <div class="row">
+        
+        <div class="col-md">
+            <div class="card mt-3">
+                <img class="card-img-top" src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" id="icone" alt="">
+                <div class="card-body">
+                    <h4>comercio</h4>
+                    <p class="card-text">Lanche</p>
+                    <p class="card-text">Horario:</p>
+                    <p class="card-text">Contato:</p>
+                    <div class="w3-col s4 ">
+                    <a href="<?php BASE_URL;?>food" class="btn btn-primary">Ver mais</a>
+                    
+    
+                    </div>
+                    <br>
+                    <div class="w3-col ">
+                        
+                    <a href="#" class="btn btn-warning rounded">Evento<span class="badge badge-light">1</span>
+                        <span class="sr-only">Mensagens não lidas</span>    </a>                
+                     <a href="#" class="btn btn-warning rounded">Promoção<span class="badge badge-light">1</span>
+                        <span class="sr-only">Mensagens não lidas</span>    </a>
+                         <a href="#" class="btn btn-warning rounded">Brinde<span class="badge badge-light">1</span>
+                        <span class="sr-only">Mensagens não lidas</span>    </a>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        
+         <div class="col-md">
+            <div class="card mt-3">
+                <img class="card-img-top" src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" id="icone" alt="">
+                <div class="card-body">
+                    <h4>comercio</h4>
+                    <p class="card-text">Pedreiro</p>
+                    <p class="card-text">Horario:</p>
+                    <p class="card-text">Contato:</p>
+                    <a href="#" class="btn btn-primary">Ver mais</a>
+                </div>
+            </div> 
+        </div>
+        
+         <div class="col-md">
+            <div class="card mt-3">
+                <img class="card-img-top" src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" id="icone" alt="">
+                <div class="card-body">
+                    <h4>comercio</h4>
+                    <p class="card-text">Padaria</p>
+                    <p class="card-text">Horario:</p>
+                    <p class="card-text">Contato:</p>
+                    <a href="#" class="btn btn-primary">Ver mais</a>
+                </div>
+            </div> 
+        </div>
+    </div>
+    
+</div>
+</div>
 
 
-
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
-    <a href="#home" class="w3-bar-item w3-button">Pizzaria, Restaurante, Lanchonete etc</a>
-    <!-- Right-sided navbar links. Hide them on small screens -->
-    <div class="w3-right w3-hide-small">
-        <a href="<?php BASE_URL;?>home" class="w3-bar-item w3-button">BuscadorCabreúva</a>
-      <a href="#about" class="w3-bar-item w3-button">Sobre</a>
-      <a href="#menu" class="w3-bar-item w3-button">Menu</a>
-      <a href="#contact" class="w3-bar-item w3-button">Contato</a>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Loja - Produtos ou serviços os principais</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <li>Banana
+banana, chocolate, castanha de caju e canela
+          </li>
+          <li>
+Brigadeiro
+Calda de brigadeiro com granulado.
+          </li>
+<li>
+Brigadeiro
+Calda de brigadeiro com granulado.
+          </li>
+      <li>Banana
+banana, chocolate, castanha de caju e canela
+          </li>
+          <li>
+Brigadeiro
+Calda de brigadeiro com granulado.
+          </li>
+<li>
+Brigadeiro
+Calda de brigadeiro com granulado.
+          </li>
+      <li>Banana
+banana, chocolate, castanha de caju e canela
+          </li>
+          <li>
+Brigadeiro
+Calda de brigadeiro com granulado.
+          </li>
+<li>
+Brigadeiro
+Calda de brigadeiro com granulado.
+          </li>
+         <form>
+             <h6 class="mt-3">Preço - deixe seu contato logo enviaremos pra você</h6>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Email:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Whastapp:</label>
+            <input class="form-control" id="message-text">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary">Enviar</button>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Header -->
-<header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
-  <img class="w3-image" src="<?php BASE_URL; ?>assets/images/prato.jpg" alt="Hamburger Catering" width="1600" height="800">
-  <div class="w3-display-bottomleft w3-padding-large w3-opacity">
-    <h1 class="w3-xxlarge">Pizzaria, Restaurante, Lanchonete etc</h1>
-  </div>
-</header>
+<!-- Extra large modal -->
 
-<!-- Page content -->
-<div class="w3-content" style="max-width:1100px">
-
-  <!-- About Section -->
-  <div class="w3-row w3-padding-64" id="about">
-    <div class="w3-col m6 w3-padding-large w3-hide-small">
-     <img src="<?php BASE_URL; ?>assets/images/seu.jpg"class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
-    </div>
-
-    <div class="w3-col m6 w3-padding-large">
-      <h1 class="w3-center">Sobre Nós</h1><br>
-      <h5 class="w3-center">Tradição desde 1989</h5>
-      <p class="w3-large">The Catering was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.We only use <span class="w3-tag w3-light-grey">seasonal</span> ingredients.</p>
-      <p class="w3-large w3-text-grey w3-hide-medium">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-  </div>
-  
-  <hr>
-  
-  <!-- Menu Section -->
-  <div class="w3-row w3-padding-64" id="menu">
-    <div class="w3-col l6 w3-padding-large">
-      <h1 class="w3-center">Menu</h1><br>
-      <h4>Almoço</h4>
-      <p class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
-    
-      <h4>Salada de frutas</h4>
-      <p class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
-    
-      <h4>Pratos quentes</h4>
-      <p class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
-    
-      <h4>Pratos Frios</h4>
-      <p class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
-    
-      <h4>Sucos Naturais</h4>
-      <p class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>    
-    </div>
-    
-    <div class="w3-col l6 w3-padding-large">
-      <img src="<?php BASE_URL; ?>assets/images/menu.jpg" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%">
-    </div>
-  </div>
-
-  <hr>
-
-  <!-- Contact Section -->
-  <div class="w3-container w3-padding-64" id="contact">
-    <h1>Contato</h1><br>
-    <p>We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste. Do not hesitate to contact us.</p>
-    <p class="w3-text-blue-grey w3-large"><b>Restaurante, Rua Luiz Nunes, 536 - Jacaré - Cabreúva/SP</b></p>
-    <p>Maiores Informações Ligue 00553123-2323 ou email catering@catering.com</p>
- <div class="mapa">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.2430705558018!2d-47.061580185550774!3d-23.270615956803372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf39559edb3f41%3A0xaa7afbcc1a60b7b6!2sRua+Iugusl%C3%A1via%2C+89%2C+Cabre%C3%BAva+-+SP%2C+13315-000!5e0!3m2!1spt-BR!2sbr!4v1552525165104" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="bd-example">
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="<?php BASE_URL; ?>assets/images/oticaUniart/loja.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Loja</h5>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </div>
-        <div class="mapamobile">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.2430705558018!2d-47.061580185550774!3d-23.270615956803372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf39559edb3f41%3A0xaa7afbcc1a60b7b6!2sRua+Iugusl%C3%A1via%2C+89%2C+Cabre%C3%BAva+-+SP%2C+13315-000!5e0!3m2!1spt-BR!2sbr!4v1552525165104" width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </div>
+      <div class="carousel-item">
+        <img src="<?php BASE_URL; ?>assets/images/oticaUniart/ambiente.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Ambiente</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
-        <div class="mapamobile2">
-           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.2430705558018!2d-47.061580185550774!3d-23.270615956803372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf39559edb3f41%3A0xaa7afbcc1a60b7b6!2sRua+Iugusl%C3%A1via%2C+89%2C+Cabre%C3%BAva+-+SP%2C+13315-000!5e0!3m2!1spt-BR!2sbr!4v1552525165104" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </div>
+      <div class="carousel-item">
+        <img src="<?php BASE_URL; ?>assets/images/oticaUniart/familia.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>A Familia</h5>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
         </div>
-        <div class="mapamobile3">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.2430705558018!2d-47.061580185550774!3d-23.270615956803372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf39559edb3f41%3A0xaa7afbcc1a60b7b6!2sRua+Iugusl%C3%A1via%2C+89%2C+Cabre%C3%BAva+-+SP%2C+13315-000!5e0!3m2!1spt-BR!2sbr!4v1552525165104" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
+      </div>
     </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
-  
-<!-- End page content -->
 </div>
-
-
-
-
+    </div>
+  </div>
+</div>

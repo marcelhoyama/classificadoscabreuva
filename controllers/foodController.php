@@ -13,7 +13,7 @@ class foodController extends controller{
         
       
        
-        $this->loadTemplate_3('food', $dados);
+        $this->loadTemplate('food', $dados);
     }
 }
 

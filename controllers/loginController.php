@@ -10,18 +10,10 @@ class loginController extends controller{
     
     public function index(){
     
-        $dados= array();
-   
         
-               
-        $this->loadView('login',$dados);
-    }
-    
-    public function entrar() {
-          
         $dados=array();
         
-        if(isset($_POST['email']) && !empty($_POST['email'])){
+        if(isset($_POST['email']) && !empty($_POST['email']) || isset($_POST['senha']) && !empty($_POST['senha'])) {
             
             $email= addslashes(trim($_POST['email']));
             $senha= md5(addslashes(trim($_POST['senha'])));
@@ -33,14 +25,10 @@ class loginController extends controller{
         }
         
            }
-        $this->loadView('login_entrar',$dados);
-    }
+        $this->loadTemplate('login_entrar',$dados);
+   
     
-     public function cadastrar() {
-        $dados=array();
-        
-        $this->loadView('login_cadastrar',$dados);
-    }
+  
     
 }
 

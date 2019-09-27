@@ -8,7 +8,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style.css"/>
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/w3.css"/>
+
     <link href="<?php echo BASE_URL; ?>assets/css/normalize.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 

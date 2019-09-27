@@ -4,12 +4,12 @@ require 'environment.php';
 $config = array();
 if(ENVIRONMENT == 'development'){
     define("BASE_URL", "http://localhost/classificadoscabreuva/");
-    $config['dbname']='classificadoscabreuva';
+    $config['dbname']='buscadorcabreuva';
     $config['host']='localhost';
     $config['dbuser']='root';
     $config['dbpass']='';
 }else{
-     define("BASE_URL", "http://classificadoscabreuva/");
+     define("BASE_URL", "http://buscadorcabreuva.com.br/");
   
     $config['dbname']='classificadoscabreuva';
     $config['host']='localhost';
