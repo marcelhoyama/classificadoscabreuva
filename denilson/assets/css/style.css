@@ -20,11 +20,13 @@ and open the template in the editor.
 
 .footer{
     background-color: #384d54;
-    padding: 5px;
+    padding: 40px;
     
 }
 
-footer{
+.footer a:link, a:visited{
+    text-decoration: none;
+    color:white;
   
 }
 .footer-copyright{

@@ -33,7 +33,7 @@
 
 
     
-<h1 class="text-center">Serviços e Produtos</h1>
+<h1 class="text-center my-5">Serviços e Produtos</h1>
 <div class="row">
     
     <div class="col">
@@ -67,7 +67,7 @@
 </div>
     </div>
    </div>
-  <h1 class="text-center">A Equipe </h1>
+  <h1 class="text-center my-5">A Equipe </h1>
 <div class="row">
     
     <div class="col">

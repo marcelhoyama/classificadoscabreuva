@@ -55,12 +55,12 @@
         <div class="row">
             <div class="col ml-3">
                 <h5 class="" style="color:#d1ecf1;"> Redes Sociais dos parceiros</h5>
-                <a href="#" id="link" > <p>Urbano Veiculos</p></a>
-                <a href="#" id="link"> <p>Casa Ração Santos</p></a>
+                <a href="#" id="link" > <p>Lopes Veiculos</p></a>
+                <a href="#" id="link"> <p>JundFloor Pisos e Móveis-Cabreúva(Jacaré)</p></a>
                 <a href="#" id="link"> <p>Guguili Baby</p></a>
                 <a href="#" id="link" > <p>Ótica Uniart</p></a>
-                <a href="#" id="link"> <p>Rádio Japi</p></a>
-                <a href="#" id="link">  <p>DMR Imoveis em Cabreúva</p></a>
+                <a href="#" id="link"> <p>IPC - Instituto Projeto Ceifeiros</p></a>
+                <a href="https://www.dmrimoveiscabreuva.com.br" id="link">  <p>DMR Imoveis em Cabreúva</p></a>
             </div>
             <div class="col ">
                 <h5 class="" style="color:#d1ecf1;">Mais Informações:</h5>
