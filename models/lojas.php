@@ -58,7 +58,29 @@ class lojas extends model {
     public function cadastrar($id_funcionario, $id_cliente, $nome, $razao_social, $cnpj, $endereco, $telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube, $site, $descricao, $chamada, $chave1, $url_imagem_principal, $id_ramo1, $id_ramo2, $id_ramo3, $id_ramo4) {
         try {
 
-            echo "entrou no model cadastrar loja";
+            echo "entrou no model cadastrar loja............................";
+           echo "<br>".   $id_funcionario;
+               echo  "<br>".   $id_cliente;
+               echo  "<br>".     $nome;
+               echo  "<br>".     $razao_social; 
+               echo   "<br>".    $cnpj;
+               echo "<br>".      $endereco; 
+                   echo"<br>".   $telefone1; 
+                   echo"<br>".   $telefone2; 
+                   echo"<br>".   $status; 
+                   echo"<br>".   $whatsapp; 
+                   echo"<br>".   $email;
+                   echo"<br>".   $facebook; 
+                   echo"<br>".   $youtube; 
+                   echo"<br>".   $site; 
+                   echo"<br>".   $descricao; 
+                   echo"<br>".   $chamada; 
+                   echo"<br>".   $chave1; 
+                   echo"<br>".   $url_imagem_principal; 
+                   echo "<br>".  $id_ramo1; 
+                   echo"<br>".   $id_ramo2; 
+                   echo "<br>".  $id_ramo3; 
+                   echo"<br>".   $id_ramo4;
 
             echo $sql = "INSERT INTO lojas SET (funcionarios_id_funcionarios,clientes_id_clientes,nome_fantasia,razao_social,cnpj,"
             . "endereco,telefone1,telefone2,status,whatsapp,email,facebook,youtube,site,descricao,chamada,palavra_chave1,url_imagem_principal) "
@@ -86,16 +108,18 @@ class lojas extends model {
             $sql->bindParam(":url_imagem_principal", $url_imagem_principal);
 
             $sql->execute();
-            exit;
+           
             if ($sql->rowCount() > 0) {
 
-                $id_loja = LAST_INSERT_ID();
+              echo "ultimo id".  $id_loja = LAST_INSERT_ID();
+              exit;
                 $sql = "INSERT INTO loja_ramo ($id_loja,$id_ramo1) VALUES (:id_loja, :id_ramo)";
                 $sql = $this->db->prepare($sql);
                 $sql->bindValue(":id_loja", $id_loja);
                 $sql->binValue(":id_ramo", $id_ramo1);
 
                 $sql->execute();
+                
                 if ($sql->rowCount() > 0) {
                     $sql = "INSERT INTO loja_ramo ($id_loja,$id_ramo2) VALUES (:id_loja, :id_ramo)";
                     $sql = $this->db->prepare($sql);

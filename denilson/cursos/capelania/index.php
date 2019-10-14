@@ -64,7 +64,8 @@
       <!-- Masthead Subheading -->
       <p class="masthead-subheading font-weight-light mb-0">Seja ser voluntários do trabalho de Capelania ou Capelão,indepedente da religião</p>
 
-      <a class="btn btn-success btn-lg my-5" type="button" href="formulario.php">Quero Participar do Curso</a>
+      <a class="btn btn-success btn-lg mt-5" type="button" href="formulario.php">Quero Participar do Curso</a>
+      <div class="text-center">À vista R$ 400,00</div>
     </div>
   </header>
 
@@ -206,7 +207,7 @@
         <div class="col">
           <p class="lead">Se inscreva clicando no botão " Quero participar do curso" preencha o formulário, para reservar sua vaga! Receberá as informações sobre o cadastro. </p>
           <li><strong class="text-uppercase">As aulas são presenciais</strong> com carga horária de 40 horas.</li>
-          <li>O horário de 19:00 ás 21:00 - todas as Terças-feiras ou horário a combinar</li>
+          <li>O horário de 19:00 ás 21:00 - todas as Quinta-feiras ou horário a combinar</li>
           <li>Terá o Certificado e a credencial após termino e aprovação do exame.</li>
           <li>Material fica ao critério do aluno(a) cobrado junto com mensalidade ou a parte.</li>
           <div class="h5 mt-5">Requisitos: </div>

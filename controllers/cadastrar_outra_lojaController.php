@@ -52,10 +52,10 @@ class cadastrar_outra_lojaController extends controller {
             echo"<br>idcliente<br>" . $id_cliente = addslashes(trim($_POST['id_cliente']));
 
             echo "<br>id func<br>" . $id_funcionario = $id;
-            echo "<br>tipo ramo<br>" . $id_ramo1 = addslashes(trim($_POST['id_tipo_ramo1']));
-            echo "<br>tipo ramo<br>" . $id_ramo2 = addslashes(trim($_POST['id_tipo_ramo2']));
-            echo "<br>tipo ramo<br>" . $id_ramo3 = addslashes(trim($_POST['id_tipo_ramo3']));
-            echo "<br>tipo ramo<br>" . $id_ramo4 = addslashes(trim($_POST['id_tipo_ramo4']));
+            echo "<br>tipo ramo1<br>" . $id_ramo1 = addslashes(trim($_POST['id_tipo_ramo1']));
+            echo "<br>tipo ramo2<br>" . $id_ramo2 = addslashes(trim($_POST['id_tipo_ramo2']));
+            echo "<br>tipo ramo3<br>" . $id_ramo3 = addslashes(trim($_POST['id_tipo_ramo3']));
+            echo "<br>tipo ramo4<br>" . $id_ramo4 = addslashes(trim($_POST['id_tipo_ramo4']));
 $url_imagem_principal='';
 
 

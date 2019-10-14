@@ -89,6 +89,13 @@ if (isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['telefone'])
                 <img src="img/portfolio/logo-ipc.png" class="img-fluid" width="200">
                 <H1 class="text-center my-5">Cadastro do Curso de Capelania Básica</H1>
             </div>
+                         <p class="text-center text-danger">*Esses dados serão para confirmar sua vaga e atraves dele entraremos em contato para o processo das aulas!</p>
+                <div class=" h4 text-center text-danger">FORMA DE PAGAMENTO</div>
+      <p class="text-center">À Vista no local ou por depósito bancário Banco: Itau </p>
+      <p class="text-center">Ag: 7883 </p>
+          <p class="text-center">Conta Corrente: 25909-0 
+              <p class="text-center">Denilson Maciel  CNPJ 32.235.778/0001-76
+              </p><p class="text-center">R$ 400,00 sem/material ou R$ 435,00 com/material</p>
             <h5 class=" text-center text-danger mb-3">Todos os campos são obrigatorio*</h5>
             <form method="POST" id="cadastrarusuarios">
                 <div class="form-group">
@@ -105,7 +112,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['telefone'])
                 </div>
                 <div class="form-group">
                     <label for="celular">Telefone whastapp*</label>
-                    <input type="text" class="form-control" id="celular" placeholder="somente numeros" name="telefone">
+                    <input type="text" class="form-control" id="celular" placeholder="numero DDD + numeros" name="telefone">
                 </div>
 
                 <button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
@@ -116,13 +123,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['telefone'])
               <?php if($ok==''){}else{ ?>
                 <div class="alert alert-success mt-3"><?php echo $ok?></div> <?php } ?>
 
-                <p class="text-center text-danger my-5">*Esses dados serão para confirmar sua vaga e atraves dele entraremos em contato para o processo das aulas!</p>
-                <div class=" h5 text-center text-danger">FORMA DE PAGAMENTO</div>
-      <p class="text-center">À Vista no local ou por depósito bancário Banco: Itau </p>
-      <p class="text-center">Ag: 7883 </p>
-          <p class="text-center">Conta Corrente: 25909-0 
-              <p class="text-center">Denilson Maciel  CNPJ 32.235.778/0001-76
-</p>
+   
 <h5 class=" text-center text-danger">E NÃO ESQUEÇA de enviar a copia do comprovante pelo email ou whatsapp</h5>
                 <h5 class="text-center mt-3">Duvidas!  Ligue 11-97462-9961 / E-mail: macieldenilson@gmail.com </h5>
 
