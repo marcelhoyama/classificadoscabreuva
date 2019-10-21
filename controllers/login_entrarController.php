@@ -20,7 +20,7 @@ class login_entrarController extends controller{
             
            $f=new funcionarios();
            if($f->logar($email, $senha) != TRUE){
-               $dados['erro']= "Senha e ou Email não conferi!! Tente novamente!";
+               $dados['erro']= "Senha e ou Email não conferi!!";
             
         }
         }      

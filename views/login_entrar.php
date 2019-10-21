@@ -58,6 +58,7 @@
                 </div>
                 <div class="col-md-6 login-form-2">
                     <h3>Login Cliente</h3>
+                    <h5 class="text-center text-white">comerciantes /prestadores de serviço</h5>
                     <form method="POST" id="login">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Seu Email *" name="email" value="" />
