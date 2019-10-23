@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top ">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top mb-5">
             <a class="navbar-brand" href="https://www.facebook.com/denilsonmacielps">   
                 <img src="<?php BASE_URL; ?>assets/images/facebookcolor.png" width="30" height="30" class="d-inline-block align-top" alt="">
             </a><a class="navbar-brand" href="<?php BASE_URL;?>home">Buscador Cabreúva</a>
@@ -33,7 +33,7 @@
 
         </nav> 
        
-
+        <div class="mb-5"></div>
 
 
 
@@ -44,8 +44,8 @@
         <div class="row">
             <div class="col">
                 <h5 class="" style="color:#d1ecf1;"> Redes Sociais dos parceiros</h5>
-                <a href="http://www.urbanoveiculos.com.br" id="link" > <p>Urbano Veiculos</p></a>
-                <a href="#" id="link"> <p>Casa Ração Santos</p></a>
+                <a href="#" id="link" > <p>Lopes Veiculos</p></a>
+                <a href="#" id="link"> <p>IPC - Isntituto Projeto Ceifeiros</p></a>
                 <a href="#" id="link"> <p>Guguili Baby</p></a>
                 <a href="#" id="link" > <p>Ótica Uniart</p></a>
                 <a href="#" id="link"> <p>Rádio Japi</p></a>
@@ -71,6 +71,14 @@
       
 
         <script type="text/javascript" scr="<?php BASE_URL; ?>assets/js/script.js"></script>
+        <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery-3.1.1.min.js"></script>
+
+<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.validate.js"></script>
+<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/additional-methods.min.js"></script>
+<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/messages_pt_BR.min.js"></script>
+<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/script.js"></script>
+<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.mask.js"></script>
+<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/validarcampos.js"></script>
     </body>
 
 

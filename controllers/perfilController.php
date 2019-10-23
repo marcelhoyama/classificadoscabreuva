@@ -3,8 +3,8 @@ class perfilController extends controller {
 
     public function __construct() {
         parent::__construct();
-//        $u = new usuarios();
-//        $u->verificarLogin();
+        $f = new funcionarios();
+        $f->verificarLogin();
     }
 
     public function index() {
@@ -12,34 +12,36 @@ class perfilController extends controller {
         	'usuario_nome' => '',
             'info'=>''
         );
-        $u = new funcionarios();
-
+        $f = new funcionarios();
+$id=$_GET['id'];
         if(isset($_POST['nome']) && !empty($_POST['nome'])) {
 
             $nome = addslashes($_POST['nome']);
-            $bio = addslashes($_POST['bio']);
+            $telefone = addslashes($_POST['telefone']);
+            $endereco = addslashes($_POST['endereco']);
+            $sexo = addslashes($_POST['sexo']);
 
-            $u->updatePerfil(array(
-                'nome' => $nome,
-                'bio' => $bio
-            ));
+          
+            
 
             if(isset($_POST['senha']) && !empty($_POST['senha'])) {
                 $senha = md5($_POST['senha']);
 
-                $u->updatePerfil(array(
-                    'senha' => $senha
-                ));
+                $f->updatePerfilSenha($id,$senha);
+                
+            }else{
+                  $f->updatePerfil($id,$nome,$telefone,$endereco,$sexo);
             }
 
         }
 
         if(!empty($_GET['id'])){
             $id=$_GET['id'];
-        $dados['usuario_nome'] = $u->getNome($_SESSION['lgname']);
+           
+        $dados['usuario_nome'] = $f->getName($_SESSION['lgname']);
         
-        $dados['info'] = $u->getDados($id);
-       
+       $dados['info'] = $f->getDados($id);
+      
         }
         $this->loadTemplate_1('perfil', $dados);
     }

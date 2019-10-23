@@ -20,14 +20,14 @@
             </li> 
 
             <li class="nav-item" >
-                <a class="nav-link "href="<?php echo BASE_URL; ?>menuprincipal_func">Menu Principal <span class="sr-only"></span></a>
+                <a class="nav-link "href="<?php echo BASE_URL; ?>menuprincipal_loja">Menu Principal <span class="sr-only"></span></a>
             </li>
 
             <li class="nav-item dropdown">
 
                 <a class="nav-link dropdown-toggle " data-toggle="dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <?php echo $_SESSION['lgname']; ?> </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="<?php echo BASE_URL; ?>perfil?id=<?php echo $_SESSION['lg']; ?>">Editar Perfil </a> 
+                    <a class="dropdown-item" href="<?php echo BASE_URL; ?>perfil_cliente">Editar Perfil </a> 
                     <a class="dropdown-item" href="<?php echo BASE_URL; ?>login/sair">Sair </a>
                </div>
             </li>
@@ -36,9 +36,9 @@
     </div> 
 
 </nav>
-
+<div class="container">
 <form method="POST">
-    <div class="container">
+    
         <h1>Editar Perfil</h1>
 	<div class="form-group">
 		<label for="nome">Nome:</label>
@@ -52,14 +52,6 @@
     <div class="form-group">
 		<label for="endereco">Endereço:</label>
 		<input name="endereco" id="endereco" class="form-control" value="<?php echo $info['endereco']; ?>"/>
-	</div>
-            <div class="form-group">
-		<label for="bairro">Bairro:</label>
-		<input name="bairro" id="bairro" class="form-control" value="<?php echo $info['bairro']; ?>"/>
-	</div>
-            <div class="form-group">
-		<label for="cidade">Cidade:</label>
-		<input name="cidade" id="cidade" class="form-control" value="<?php echo $info['cidade']; ?>"/>
 	</div>
 
 	<div class="form-group">

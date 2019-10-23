@@ -11,6 +11,10 @@ class menuprincipal_lojaController extends controller {
         $dados = array('erro' => '');
        
        
+$c= new clientes();
+$id=$_SESSION['lgCliente'];
+
+$dados['info']=$c->getDados($_SESSION['lgCliente']);
 
      
 

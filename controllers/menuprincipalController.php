@@ -4,8 +4,8 @@ class menuprincipalController extends controller {
 
     public function __construct() {
      parent::__construct();
-    $f = new funcionarios();
-    $f->verificarLogin();
+    $u = new usuarios();
+    $u->verificarLogin();
        
     }
 
@@ -16,7 +16,7 @@ class menuprincipalController extends controller {
 
      
 
-        $this->loadView('menuprincipal', $dados);
+        $this->loadTemplate_3('menuprincipal', $dados);
     }
 
 }

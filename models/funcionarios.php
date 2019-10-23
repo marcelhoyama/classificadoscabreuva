@@ -19,7 +19,7 @@ class funcionarios extends model{
             $sql->execute();
            
             if($sql->rowCount() ==0){
-              header("Location:".BASE_URL."menuprincipal");
+              header("Location:".BASE_URL."menuprincipal_func");
                 exit();
             }
         }
@@ -28,6 +28,7 @@ class funcionarios extends model{
     
     public function logar($email,$senha) {
         try{
+            
             $sql="SELECT * FROM funcionarios WHERE email=:email AND senha=:senha";
        $sql=$this->db->prepare($sql);
        $sql->bindValue(":email",$email);
@@ -47,7 +48,7 @@ class funcionarios extends model{
         $sql->bindValue(":id",$id);
         $sql->execute();
         
-                 header("Location:".BASE_URL."menuprincipal");
+                 header("Location:".BASE_URL."menuprincipal_func");
          exit();
         
         
@@ -64,7 +65,7 @@ class funcionarios extends model{
         
     }
     
-    public function getNome($id) {
+    public function getName($id) {
         try{
             $array=array();
              $sql="SELECT nome FROM funcionarios WHERE id_funcionarios=:id";
@@ -96,6 +97,48 @@ echo "Falhou:".$ex->getMessage();
         } catch (Exception $ex) {
 echo "Falhou:".$ex->getMessage();
         }
+    }
+    
+    public function updatePerfil($id,$nome,$telefone,$endereco,$sexo) {
+        try{
+            $array=array();
+            $sql="UPDATE funcionarios SET nome=:nome, telefone=:telefone, endereco=:endereco, sexo=:sexo WHERE id_funcionarios=:id";
+            $sql= $this->db->prepare($sql);
+              $sql->bindValue(":id",$id);
+            $sql->bindValue(":nome",$nome);
+            $sql->bindValue(":telefone",$telefone);
+            $sql->bindValue(":endereco",$endereco);
+             $sql->bindValue(":sexo",$sexo);
+              $sql->bindValue(":senha",$senha);
+             
+           $sql->execute();
+        
+                 header("Location:".BASE_URL."perfil?id=".$id);
+         exit();
+        } catch (Exception $ex) {
+echo "Falhou:".$ex->getMessage();
+        }
+        
+    }
+     public function updatePerfilSenha($id,$nome,$telefone,$endereco,$sexo,$senha) {
+        try{
+            
+            $sql="UPDATE funcionarios SET nome=:nome, telefone=:telefone, endereco=:endereco, sexo=:sexo, senha=:senha WHERE id_funcionarios=:id";
+            $sql= $this->db->prepare($sql);
+               $sql->bindValue(":id",$id);
+            $sql->bindValue(":nome",$nome);
+            $sql->bindValue(":telefone",$telefone);
+            $sql->bindValue(":endereco",$endereco);
+             $sql->bindValue(":sexo",$sexo);
+              $sql->bindValue(":senha",$senha);
+           $sql->execute();
+        
+                 header("Location:".BASE_URL."perfil?id=".$id);
+         exit();
+        } catch (Exception $ex) {
+echo "Falhou:".$ex->getMessage();
+        }
+        
     }
     
 }

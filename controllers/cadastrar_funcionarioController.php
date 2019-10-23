@@ -15,7 +15,7 @@ $f=new funcionarios();
 $id=$_SESSION['lg'];
     $dados['nomefunc']=$f->getNome($id);
    $dados['id_funcionario']=$id;     
-$c =new clientes();
+
      
 
        
@@ -32,8 +32,8 @@ $c =new clientes();
             
                $id_funcionario= addslashes(trim($_POST['id']));
             
-               if($c->verificarCPF($cpf)==TRUE){
-            if($c->cadastrar($id_funcionario,$nome, $email, $telefone, $cpf)== TRUE){
+               if($f->verificarCPF($cpf)==TRUE){
+            if($f->cadastrar($id_funcionario,$nome, $email, $telefone, $cpf)== TRUE){
                 header("Location:".BASE_URL."pesquisar_clientes");
             }else{
                 $dados['erro'] ="Não foi posssivel cadastrar! Verifique os campos e tente novamente!";

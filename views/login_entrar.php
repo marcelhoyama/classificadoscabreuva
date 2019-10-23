@@ -42,6 +42,7 @@
                 <div class="col-md-6 login-form-1">
                     <h3>Login Usuário</h3>
                     <form method="POST" id="login">
+                        <input type="text" name="user" value="usuario" hidden="hidden"/>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Seu Email *" name="email" value="" />
                         </div>
@@ -52,7 +53,7 @@
                             <input type="submit" class="btnSubmit" value="Login" />
                         </div>
                         <div class="form-group">
-                            <a href="#" class="ForgetPwd">Esqueceu a senha?</a>
+                            <a href="#" class="ForgetPwd">Esqueceu a senha?</a><a href="<?php BASE_URL;?>login_cadastrar" class="ForgetPwd" >  Cadastrar-se</a>
                         </div>
                     </form>
                 </div>
@@ -60,6 +61,12 @@
                     <h3>Login Cliente</h3>
                     <h5 class="text-center text-white">comerciantes /prestadores de serviço</h5>
                     <form method="POST" id="login">
+                        <div class="radio">
+                            <label class="text-white">Tipo de Usuário</label>
+                            <input type="radio" name="user" value="cliente" checked="" /><label class="text-white">Cliente</label>
+                            <input type="radio" name="user" value="funcionario" /><label>Adm</label>
+                        </div>
+                       
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Seu Email *" name="email" value="" />
                         </div>
@@ -71,7 +78,7 @@
                         </div>
                         <div class="form-group">
 
-                            <a href="#" class="ForgetPwd" value="Login">Esqueceu a senha?</a>
+                            <a href="#" class="ForgetPwd" value="Login">Esqueceu a senha?  </a><a href="<?php BASE_URL;?>login_cadastrar_cliente" class="ForgetPwd" >  Cadastrar-se</a>
                         </div>
                     </form>
                 </div>

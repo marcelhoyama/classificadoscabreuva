@@ -6,7 +6,7 @@
   <meta charset="UTF=8"/>
    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"/>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style.css"/>
    
     <link href="<?php echo BASE_URL; ?>assets/css/normalize.css" rel="stylesheet" type="text/css">
@@ -21,39 +21,7 @@
 <body>
    <br>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
-           <button class="w3-bar-item btn btn-default w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();">  <span class="navbar-toggler-icon"></span></button>
-     
-        <a class="navbar-brand" href="<?php BASE_URL; ?>home">   
-            <img src="<?php BASE_URL; ?>assets/images/facebookcolor.png" width="30" height="30" class="d-inline-block align-top" alt="">
-            Buscador Cabreúva</a>
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse" id="navbarMenu">
-            <ul class="navbar-nav ml-auto" >
-               
-                <li class="nav-item"><a class="nav-link " href="<?php echo BASE_URL; ?>pesquisarimoveis">Anúnciados <span class="sr-only"></span></a></li>
-                <li class="nav-item"><a class="nav-link " href="<?php echo BASE_URL; ?>pesquisarinteressados">Interessados</a></li> 
-
-                <li class="nav-item" ><a class="nav-link "href="<?php echo BASE_URL; ?>menuprincipal">Menu Principal <span class="sr-only"></span></a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo BASE_URL; ?>login/sair">Sair<span class="sr-only"></span> </a></li>
-<!--                <li class="nav-item dropdown">
-
-                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#"> <?php echo $_SESSION['lgname']; ?>
-                        <span class="caret"></span> </a>
-                    <ul class="dropdown-menu">
-                        <li class="nav-link"><a class="nav-item" href="<?php echo BASE_URL; ?>perfil">Editar Perfil </a></li> 
-                        <li class="nav-link"> <a class="nav-item" href="<?php echo BASE_URL; ?>login/sair">Sair </a></li>
-                    </ul>
-
-
-                </li>-->
-                
-            </ul>
-        </div> 
-
-    </nav> 
+ 
     <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
     <br>
@@ -66,7 +34,7 @@
     <div class="w3-col s8 w3-bar">
       <span>Bem vindo, <strong> <?php echo $_SESSION['lgname']; ?></strong></span><br>
       <form method="GET">
-      <a href="<?php echo BASE_URL; ?>perfil?id=<?php echo $_SESSION['lg']; ?>" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+          <a href="<?php echo BASE_URL; ?>perfil?id=<?php if(!empty($_SESSION['lg'])){echo $_SESSION['lg'];}elseif(!empty ($_SESSION['lgCliente'])){ echo $_SESSION['lgCliente'];}else{$_SESSION['lgUsuario'];} ?>" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
     </form>
     </div>
@@ -123,9 +91,9 @@ function w3_close() {
 }
 </script>
 
-<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.validate.js"></script>
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/additional-methods.min.js"></script>
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/messages_pt_BR.min.js"></script>

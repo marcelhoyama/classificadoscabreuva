@@ -4,8 +4,8 @@ class cadastrar_clientesController extends controller {
 
     public function __construct() {
         parent::__construct();
-        $f = new funcionarios();
-        $f->verificarLogin();
+//        $f = new funcionarios();
+//        $f->verificarLogin();
     }
 
     public function index() {

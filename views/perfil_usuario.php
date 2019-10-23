@@ -20,14 +20,14 @@
             </li> 
 
             <li class="nav-item" >
-                <a class="nav-link "href="<?php echo BASE_URL; ?>menuprincipal_func">Menu Principal <span class="sr-only"></span></a>
+                <a class="nav-link "href="<?php echo BASE_URL; ?>menuprincipal_loja">Menu Principal <span class="sr-only"></span></a>
             </li>
 
             <li class="nav-item dropdown">
 
                 <a class="nav-link dropdown-toggle " data-toggle="dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <?php echo $_SESSION['lgname']; ?> </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="<?php echo BASE_URL; ?>perfil?id=<?php echo $_SESSION['lg']; ?>">Editar Perfil </a> 
+                    <a class="dropdown-item" href="<?php echo BASE_URL; ?>perfil_usuario">Editar Perfil </a> 
                     <a class="dropdown-item" href="<?php echo BASE_URL; ?>login/sair">Sair </a>
                </div>
             </li>
@@ -53,14 +53,6 @@
 		<label for="endereco">Endereço:</label>
 		<input name="endereco" id="endereco" class="form-control" value="<?php echo $info['endereco']; ?>"/>
 	</div>
-            <div class="form-group">
-		<label for="bairro">Bairro:</label>
-		<input name="bairro" id="bairro" class="form-control" value="<?php echo $info['bairro']; ?>"/>
-	</div>
-            <div class="form-group">
-		<label for="cidade">Cidade:</label>
-		<input name="cidade" id="cidade" class="form-control" value="<?php echo $info['cidade']; ?>"/>
-	</div>
 
 	<div class="form-group">
             <label for="senha">Senha:</label><label for="senha">Se for alterar preencha!</label>
@@ -72,24 +64,16 @@
 		<?php echo $info['email']; ?>
 	</div>
 
-	<div class="radio form-group">
+	<div class="radio">
 		<strong>Sexo:</strong><br/>
-                <label>Feminino</label>
-                <input type="radio" name="sexo"<?php
-                if($info['sexo'] == '0'):?>
-                       checked=""
-                    <?php else: ?>
-                >
-                <?php endif ?>
-                
-                <label>Masculino</label>
-                <input type="radio" name="sexo" <?php
-                if($info['sexo'] == '1') :?>
-                       checked=""
-                             <?php else: ?>
-                >
-                <?php endif ?>
-        </div><br>
+		<?php
+		if($info['sexo'] == '0') {
+			echo 'Feminino';
+		} else {
+			echo 'Masculino';
+		}
+		?>
+	</div>
 
 	<button type="submit" class="btn btn-success">Salvar</button>
 
