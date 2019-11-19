@@ -15,7 +15,7 @@ class menuprincipal_funcController extends controller {
 
      
 
-        $this->loadTemplate_1('menuprincipal_func', $dados);
+        $this->loadTemplate_func('menuprincipal_func', $dados);
     }
 
 }

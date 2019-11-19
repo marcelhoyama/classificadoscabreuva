@@ -121,21 +121,21 @@
           <!-- ### $Sidebar Menu ### -->
           <ul class="navbar-nav ">
             <li class="nav-item actived">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="<?php BASE_URL; ?>menuprincipal">
                
                Dashboard
               </a>
             </li>
             <li class="nav-item">
-              <a class='sidebar-link' href="email.html">
+              <a class='nav-link' href="<?php BASE_URL;?>restaurante">
                 <span class="icon-holder">
-                  <i class="c-brown-500 ti-email"></i>
+                  <i class="fas fa-utensils"></i>
                 </span>
                 <span class="title">Restaurante</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class='sidebar-link' href="compose.html">
+              <a class='sidebar-link' href="<?php BASE_URL;?>food">
                 <span class="icon-holder">
                   <i class="c-blue-500 ti-share"></i>
                 </span>

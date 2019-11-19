@@ -49,18 +49,18 @@
 		<label for="telefone">Telefone:</label>
 		<input name="telefone" id="celular" class="form-control" value="<?php echo $info['telefone']; ?>"/>
 	</div>
-    <div class="form-group">
+   <div class="form-group">
 		<label for="endereco">Endereço:</label>
 		<input name="endereco" id="endereco" class="form-control" value="<?php echo $info['endereco']; ?>"/>
 	</div>
-            <div class="form-group">
+         <!--    <div class="form-group">
 		<label for="bairro">Bairro:</label>
 		<input name="bairro" id="bairro" class="form-control" value="<?php echo $info['bairro']; ?>"/>
 	</div>
             <div class="form-group">
 		<label for="cidade">Cidade:</label>
 		<input name="cidade" id="cidade" class="form-control" value="<?php echo $info['cidade']; ?>"/>
-	</div>
+	</div>-->
 
 	<div class="form-group">
             <label for="senha">Senha:</label><label for="senha">Se for alterar preencha!</label>

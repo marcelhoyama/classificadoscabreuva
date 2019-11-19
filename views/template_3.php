@@ -25,8 +25,8 @@
         <div class="navbar-collapse collapse" id="navbarMenu">
             <ul class="navbar-nav ml-auto" >
                
-                <li class="nav-item"><a class="nav-link " href="<?php echo BASE_URL; ?>pesquisarimoveis">Anúnciados <span class="sr-only"></span></a></li>
-                <li class="nav-item"><a class="nav-link " href="<?php echo BASE_URL; ?>pesquisarinteressados">Interessados</a></li> 
+                <li class="nav-item"><a class="nav-link " href="<?php echo BASE_URL; ?>promocao">Promoções <span class="sr-only"></span></a></li>
+                <li class="nav-item"><a class="nav-link " href="<?php echo BASE_URL; ?>pesquisarinteressados">Horarios</a></li> 
 
                 <li class="nav-item" ><a class="nav-link "href="<?php echo BASE_URL; ?>menuprincipal">Menu Principal <span class="sr-only"></span></a></li>
               

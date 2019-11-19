@@ -13,7 +13,7 @@ class cadastrar_loja_novaController extends controller {
 
 $f=new funcionarios();
 $id=$_SESSION['lg'];
-    $dados['nomefunc']=$f->getNome($id);
+    $dados['nomefunc']=$f->getName($id);
    $dados['id_funcionario']=$id;     
 $c =new clientes();
      

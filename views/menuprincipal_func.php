@@ -46,8 +46,8 @@
 <div class="row" >
     <div class="col-sm-2">
         <div class="thumbnail ">
-       <a href="<?php BASE_URL;?>cadastrar_clientes">
-        <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" alt="cadastrar imoveis" width="128" height="128">
+       <a href="<?php BASE_URL;?>cadastrar_loja_nova">
+        <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" alt="cadastrar nova loja" width="128" height="128">
     
        </a>  
             <div class="h6"> Cadastrar Loja</div>  

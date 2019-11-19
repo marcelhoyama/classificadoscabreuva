@@ -43,7 +43,7 @@ $id=$_GET['id'];
        $dados['info'] = $f->getDados($id);
       
         }
-        $this->loadTemplate_1('perfil', $dados);
+        $this->loadTemplate_func('perfil', $dados);
     }
 
 }
