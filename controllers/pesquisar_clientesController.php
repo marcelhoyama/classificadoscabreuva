@@ -28,13 +28,15 @@ if(isset($_POST['buscar']) && !empty($_POST['buscar'])){
     
         $dados['erro']='Nada encontrado!';
     } else {
-       $dados['listarClientes']= $c->pesquisarCliente($palavra);
+     $dados['listarClientes']= $c->pesquisarCliente($palavra);
+     
+     
     }
     
 }
 
 
-$this->loadTemplate_1('pesquisar_clientes', $dados);
+$this->loadTemplate_func('pesquisar_clientes', $dados);
         
     }
 }

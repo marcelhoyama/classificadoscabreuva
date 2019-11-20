@@ -2,7 +2,7 @@
 <title>Menu Principal Loja</title>
 <br>
 <br>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
 
     <a class="navbar-brand" href="<?php BASE_URL; ?>home">   
         <img src="<?php BASE_URL; ?>assets/images/facebookcolor.png" width="30" height="30" class="d-inline-block align-top" alt="Facebook Buscador Cabreuva">
@@ -39,7 +39,7 @@
 
     </div> 
 
-</nav>
+</nav>-->
 <div class="container-fluid">
     
    

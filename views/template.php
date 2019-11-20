@@ -23,7 +23,7 @@
             <div class="navbar-collapse collapse" id="navbarMenu">
                 <ul class="navbar-nav ml-auto" >
                     <li class="nav-item"><a href="<?php BASE_URL; ?>home" class="nav-link">Home</a></li>
-                     <li class="nav-item"><a href="<?php BASE_URL; ?>denilson" class="nav-link">Denilson Maciel</a></li>
+                     <li class="nav-item"><a href="https://www.denilsonmaciel.buscadorcabreuva.com.br" class="nav-link">Denilson Maciel</a></li>
                     <li class="nav-item">  <a href="<?php BASE_URL; ?>contato" class="nav-link">Contato</a></li>
                   <li class="nav-item">  <a href="<?php BASE_URL; ?>login_entrar" class="nav-link">Entrar</a></li>
          <!--             <li class="nav-item">  <a href="login/cadastrar" class="nav-link">Cadastrar-se</a></li>-->
@@ -45,11 +45,12 @@
             <div class="col">
                 <h5 class="" style="color:#d1ecf1;"> Redes Sociais dos parceiros</h5>
                 <a href="#" id="link" > <p>Lopes Veiculos</p></a>
-                <a href="#" id="link"> <p>IPC - Isntituto Projeto Ceifeiros</p></a>
+                <a href="#" id="link"> <p>IPC - Instituto Projeto Ceifeiros</p></a>
                 <a href="#" id="link"> <p>Guguili Baby</p></a>
                 <a href="#" id="link" > <p>Ótica Uniart</p></a>
                 <a href="#" id="link"> <p>Rádio Japi</p></a>
-                <a href="#" id="link">  <p>DMR Imoveis em Cabreúva</p></a>
+                <a href="https://www.dmrimoveiscabreuva.com.br" id="link">  <p>DMR Imoveis em Cabreúva</p></a>
+                <a href="http://www.didipedras.com.br" id="link">  <p>Didipedras Cabreúva</p></a>
             </div>
             <div class="col ">
                 <h5 class="" style="color:#d1ecf1;">Mais Informações:</h5>

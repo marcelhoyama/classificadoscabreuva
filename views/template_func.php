@@ -14,12 +14,13 @@
     
 
 </head>
+
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mb-5">
            <button class="w3-bar-item btn btn-default w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open()">  <span class="navbar-toggler-icon"></span></button>
      
         <a class="navbar-brand" href="<?php BASE_URL; ?>home">   
-            <img src="<?php BASE_URL; ?>assets/images/facebookcolor.png" width="30" height="30" class="d-inline-block align-top" alt="">
-            Buscador Cabreúva</a>
+            <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" width="30" height="30" class="d-inline-block align-top" alt="">
+            </a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -48,6 +49,7 @@
         </div> 
 
     </nav>
+  
 <body>
     <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>

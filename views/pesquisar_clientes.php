@@ -1,8 +1,9 @@
 <div class="container">
+  
+    
+    <div class="mt-5">
 
-    <div id="">
-
-        <form method="POST">
+        <form method="POST" class="mt-5">
 
             <div class="form-group">
                 <div class="h1">  Buscar Cliente</div>
@@ -50,8 +51,8 @@
                     if ($viewData['listarClientes'] == '') {
                         
                     } else {
-
-                        foreach ($viewData['listarClientes'] as $value): {
+                      
+                        foreach ($viewData['listarClientes'] as $key => $value): {
                                 ?>
 
 
@@ -59,10 +60,10 @@
                                     <td>
                                         <?php echo $value['nome']; ?>
                                     </td>
-                                    <td><?php echo $value['situacao']; ?></td>
+                                    <td><?php echo $value['status']; ?></td>
                                     <td><?php echo $value['telefone'] ?> </td>
                                     <td><?php echo $value['email'] ?></td>
-                        <td><span class="badge"><?php echo $value['id_loja'];?></span></td>
+                        <td><span class="badge"><?php echo $value['quantidade'];?></span></td>
                                     <td><a href="<?php BASE_URL; ?>editar-clientes-<?php echo $value['id_clientes']; ?> "><button class="btn btn-warning">Editar</button></a>
                                         <a href="<?php BASE_URL; ?>menuprincipalcliente?id=<?php echo $value['id_clientes']; ?>"><button class="btn btn-primary">Ver loja</button></a>
                                         <a href="<?php BASE_URL; ?>cadastrar_outra_loja?id=<?php echo $value['id_clientes']; ?>"><button class="btn btn-primary">+ Loja</button></a>

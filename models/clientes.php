@@ -75,15 +75,19 @@ class clientes extends model {
 
     public function pesquisarCliente($palavra) {
         try {
-            $array = array();
-            $sql = "SELECT * FROM clientes WHERE nome LIKE :palavra";
+            $array=array();
+            $array1 = array();
+            $array2=array();
+            $sql = "SELECT *,COUNT(l.id_loja) as quantidade FROM clientes C LEFT JOIN loja l ON c.id_clientes=l.clientes_id_clientes WHERE c.nome LIKE :palavra";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":palavra", $palavra . "%");
             $sql->execute();
 
             if ($sql->rowCount() > 0) {
 
-                $array = $sql->fetchAll();
+                $array = $sql->fetchAll(PDO::FETCH_ASSOC);
+                
+            
                 return $array;
             } else {
                 return false;
@@ -99,6 +103,7 @@ class clientes extends model {
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":email", $email);
             $sql->execute();
+            //caso retorne 0 quer dizer que não existe o email
             if ($sql->rowCount() == 0) {
               
                 $id_funcionario = 1;
@@ -275,6 +280,22 @@ class clientes extends model {
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }
+        
+    }
+    
+    public function qtdLojaCliente($id) {
+       try{
+           $sql="SELECT COUNT(id_loja) AS 'quantidade' FROM loja WHERE clientes_id_clientes = :id";
+           $sql=$this->db->prepare($sql);
+           $sql-> bindValue('id',$id);
+           $sql->execute();
+           
+            if ($sql->rowCount() > 0) {
+                $array= $sql->fetch();
+            }
+       } catch (Exception $ex) {
+
+       } 
         
     }
 }
