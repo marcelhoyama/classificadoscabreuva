@@ -11,14 +11,14 @@ class menuprincipal_lojaController extends controller {
         $dados = array('erro' => '');
        
        
-$c= new clientes();
-$id=$_SESSION['lgCliente'];
-
-$dados['info']=$c->getDados($_SESSION['lgCliente']);
+//$c= new clientes();
+//$id=$_SESSION['lgCliente'];
+//
+//$dados['info']=$c->getDados($_SESSION['lgCliente']);
 
      
 
-        $this->loadTemplate_1('menuprincipal_loja', $dados);
+        $this->loadTemplate_func('menuprincipal_loja', $dados);
     }
 
 }

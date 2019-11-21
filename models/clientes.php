@@ -78,7 +78,7 @@ class clientes extends model {
             $array=array();
             $array1 = array();
             $array2=array();
-            $sql = "SELECT *,COUNT(l.id_loja) as quantidade FROM clientes C LEFT JOIN loja l ON c.id_clientes=l.clientes_id_clientes WHERE c.nome LIKE :palavra";
+            $sql = "SELECT *,c.email email,c.status status FROM clientes C LEFT JOIN loja l ON c.id_clientes=l.clientes_id_clientes WHERE c.nome LIKE :palavra";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":palavra", $palavra . "%");
             $sql->execute();
@@ -97,9 +97,10 @@ class clientes extends model {
         }
     }
 
-    public function cadastrar($ramo, $nome, $sexo, $email, $senha, $telefone) {
+    public function cadastrar($nome, $email, $telefone, $sexo, $status) {
         try {
-            $sql = "SELECT email FROM clientes WHERE email=:email";
+            
+            $sql = "SELECT email FROM clientes WHERE email=:email ";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":email", $email);
             $sql->execute();
@@ -107,15 +108,16 @@ class clientes extends model {
             if ($sql->rowCount() == 0) {
               
                 $id_funcionario = 1;
-                $sql = "INSERT INTO clientes SET funcionarios_id_funcionarios=:id_funcionario,ramo=:ramo,nome=:nome,telefone=:telefone,sexo=:sexo,email=:email,senha=:senha ";
+                $sql = "INSERT INTO clientes SET funcionarios_id_funcionarios=:id_funcionario,nome=:nome,telefone=:telefone,sexo=:sexo,email=:email, status=:status ";
                 $sql = $this->db->prepare($sql);
                 $sql->bindValue(":id_funcionario", $id_funcionario);
-                $sql->bindValue(":ramo", $ramo);
+               
                 $sql->bindValue(":nome", $nome);
                 $sql->bindValue(":sexo", $sexo);
                 $sql->bindValue(":email", $email);
-                $sql->bindValue(":senha", $senha);
+               // $sql->bindValue(":senha", $senha);
                 $sql->bindValue(":telefone", $telefone);
+                $sql->bindValue(":status",$status);
   
                 $sql->execute();
                 if ($sql->rowCount() > 0) {

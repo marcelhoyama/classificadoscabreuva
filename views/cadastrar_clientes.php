@@ -13,14 +13,14 @@
     <form name="cadastrarclientes" id="cadastrarclientes" class="form-group-sm" method="POST" autocomplete="off" >
      
         <div class="form-group">
-            <label for="id">ID funcionario</label>
-            <input name="id"  id="id" class="form-control" value=" <?php echo $viewData['id_funcionario']; ?>" disabled="" >  
+            <!--<label for="id">ID funcionario</label>-->
+            <input name="id"  id="id" class="form-control" value=" <?php echo $viewData['id_funcionario']; ?>" disabled=""  hidden="">  
        
         </div>
-        <div class="form-group">
+<!--        <div class="form-group">
               <label for="cpf">CPF*: </label> <label class="text-danger"> campo obrigatorio!</label>
               <input name="cpf" type="text" class="form-control" id="cpf" placeholder="somente numeros" >
-        </div>
+        </div>-->
         <div class="form-group">
             <label for="nome">Nome*:</label> <label class="text-danger"> campo obrigatorio!</label>
             <input name="nome" type="text" class="form-control" id="nome" placeholder="digite seu nome completo">
@@ -29,14 +29,22 @@
         <div class="form-group col-sm-6">
             
             <label for="fone">Telefone Celular*:</label> <label class="text-danger"> campo obrigatorio!</label>
-            <input name="telefone"  type="tel" class="form-control" id="fone" placeholder="">
+            <input name="telefone"  type="tel" class="form-control" id="telefone" placeholder="">
         </div>
         
         </div>
+<div class="form-group">
+    <label for="sexo">Sexo:</label> <label class="text-danger"> campo obrigatorio!</label>
+    <select name="sexo" class="form-control" required="">
+        <option value="1" selected="">Masculino</option>
+        <option value="0">Feminino</option>
+    </select>
+    
+</div>
 
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input name="email" type="email" class="form-control" id="email" placeholder="digite seu email">
+            <label for="email">Email:</label> <label class="text-danger"> campo obrigatorio!</label>
+            <input name="email" type="email" class="form-control" id="email" placeholder="digite seu email" required="">
         </div>
 
       

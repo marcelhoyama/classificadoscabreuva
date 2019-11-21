@@ -62,6 +62,7 @@ $(document).ready(function (){
 //            cpf:{required:true,cpfBR:true},
             nome:{required:true},
             telefone:"required",
+            email:"required",
             email:true
                 
             

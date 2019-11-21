@@ -19,22 +19,24 @@ class cadastrar_clientesController extends controller {
 
 
 
-        if (isset($_POST['cpf']) && !empty($_POST['cpf']) && isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['telefone']) && !empty($_POST['telefone'])) {
+        if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['telefone']) && !empty($_POST['telefone'])) {
             $nome = addslashes(trim($_POST['nome']));
             $telefone = addslashes(trim($_POST['telefone']));
             $email = addslashes(trim($_POST['email']));
-            $cpf = addslashes(trim($_POST['cpf']));
+            $sexo = addslashes(trim($_POST['sexo']));
+            $status='1';
+            //legenda status:  1=ativo , 2 inativo, 3 bloqueado
 
-            $cpf = explode('.', $cpf);
-            foreach ($cpf as $value) {
-                echo $cpf = str_replace("-", "", $value);
-            }
+//            $cpf = explode('.', $cpf);
+//            foreach ($cpf as $value) {
+//                echo $cpf = str_replace("-", "", $value);
+//            }
 
-            $id_funcionario = addslashes(trim($_POST['id']));
+            //$id_funcionario = addslashes(trim($_POST['id']));
 
 
 
-            $dados['erro'] = $c->cadastrar($id_funcionario, $nome, $email, $telefone, $cpf);
+            $dados['erro'] = $c->cadastrar($nome, $email, $telefone, $sexo, $status);
         }
 
 
