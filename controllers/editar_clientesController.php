@@ -13,7 +13,7 @@ class editar_clientesController extends controller {
 
         $f = new funcionarios();
         $id = $_SESSION['lg'];
-        $dados['nomefunc'] = $f->getNome($id);
+        $dados['nomefunc'] = $f->getName($id);
         $dados['id_funcionario'] = $id;
         $c = new clientes();
 
@@ -26,26 +26,34 @@ $dados['dadosCliente']=$c->getDados($id);
     $dados['erro']="Cliente não encontrado! Tente Novamente.";
 }
 
- if (isset($_POST['cpf']) && !empty($_POST['cpf']) && isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['telefone']) && !empty($_POST['telefone'])&& isset($_POST['email']) && !empty($_POST['email'])) {
+ if (isset($_POST['sexo']) && !empty($_POST['sexo']) && isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['telefone']) && !empty($_POST['telefone'])&& isset($_POST['email']) && !empty($_POST['email'])) {
             $nome = addslashes(trim($_POST['nome']));
             $telefone = addslashes(trim($_POST['telefone']));
             $email = addslashes(trim($_POST['email']));
-            $cpf = addslashes(trim($_POST['cpf']));
+            $sexo = addslashes(trim($_POST['sexo']));
+            $status= addslashes(trim($_POST['status']));
             
 
-            $cpf = explode('.', $cpf);
-            foreach ($cpf as $value) {
-                echo $cpf = str_replace("-", "", $value);
-            }
+//            $cpf = explode('.', $cpf);
+//            foreach ($cpf as $value) {
+//                echo $cpf = str_replace("-", "", $value);
+//            }
 
            
 
 
 
-            $dados['erro'] = $c->editar($id_cliente, $nome, $email, $telefone, $cpf);
+            $dados['erro'] = $c->editar($id_cliente, $nome, $email, $telefone, $sexo, $status);
+            
+            if(isset($_POST['senha']) && !empty($_POST['senha']) ){
+                $senha=md5($_POST['senha']);
+                
+                //$this->editar($senha); 
+                
+            }
         }
 
-        $this->loadTemplate_1('editar_clientes', $dados);
+        $this->loadTemplate_func('editar_clientes', $dados);
     }
 
 }

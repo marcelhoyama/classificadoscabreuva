@@ -135,6 +135,41 @@ class clientes extends model {
         }
     }
 
+    
+    
+      public function editar($id,$nome, $email, $telefone, $sexo, $status) {
+        try {
+        
+           
+              
+                $id_funcionario = 1;
+                $sql = "UPDATE clientes SET nome=:nome,telefone=:telefone,sexo=:sexo,email=:email, status=:status WHERE id_clientes=:id";
+                $sql = $this->db->prepare($sql);
+               
+               
+                $sql->bindValue(":nome", $nome);
+                $sql->bindValue(":sexo", $sexo);
+                $sql->bindValue(":email", $email);
+               // $sql->bindValue(":senha", $senha);
+                $sql->bindValue(":telefone", $telefone);
+                $sql->bindValue(":status",$status);
+                $sql->bindValue(":id",$id);
+                $sql->execute();
+                if ($sql->rowCount() > 0) {
+                   
+                    header("Location:" . BASE_URL . "menuprincipal_loja");
+                    exit();
+                } else {
+                    return "Não foi posssivel Atualizar! Verifique os campos se estão preenchidos corretamente e tente novamente!";
+                }
+           
+        } catch (Exception $ex) {
+            echo 'Falhou:' . $ex->getMessage();
+        }
+    }
+    
+    
+    
     public function listarClientes() {
         $array = array();
         try {
@@ -216,7 +251,7 @@ class clientes extends model {
             $sql->execute();
             if ($sql->rowCount() > 0) {
 
-                $array = $sql->fetch();
+                $array = $sql->fetch(PDO::FETCH_ASSOC);
 
                 return $array;
             } else {
@@ -296,7 +331,7 @@ class clientes extends model {
                 $array= $sql->fetch();
             }
        } catch (Exception $ex) {
-
+echo "Falhou:".$ex->getMessage();
        } 
         
     }
