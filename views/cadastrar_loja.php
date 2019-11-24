@@ -9,12 +9,12 @@
     <form id="cadastrarimovel" method="POST" enctype="multipart/form-data">
         <div class="row">
             
-        <div class="control-group col-sm-3">
+        <div class="control-group col-sm">
                  <label for="">Funcionário:</label> <label class="text-danger"></label></br>
                
             <input type="text" class="form-control"  name="funcionario_id" value="<?php echo $viewData['nomefunc'];?> " disabled="">
         </div>
-             <div class="control-group col-sm-3">
+             <div class="control-group col-sm">
                  <label for="">Nome do Cliente:</label> <label class="text-danger"></label></br>
                
             <input type="text" class="form-control"  name="nome_fantasia" value="<?php echo $viewData['nomeCliente'];?> " disabled="">
@@ -62,12 +62,12 @@
 
         <div class="row">
             <div class="form-group col-sm-4">
-                <label for="id_tipo_assunto">Tipo de Ramo:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info">ajuda ?</a></label>
+                <label for="id_tipo_assunto">Tipo de Categoria:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info">ajuda ?</a></label>
                 <select name="id_tipo_assunto" class="form-control" id="id_tipo_assunto">
                     <option></option>
                     
-                    <?php foreach ($viewData['listarRamo'] as $value) : { ?>
-                            <option value="<?php echo $value['id']; ?>"><?php echo $value['nome'];?></option>
+                    <?php foreach ($viewData['listarCategoria'] as $value) : { ?>
+                            <option value="<?php echo $value['id_categorias']; ?>"><?php echo $value['nome'];?></option>
 
                         <?php  } endforeach; ?>  
                  </select>
@@ -78,7 +78,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Ajuda no tipo de Ramo escolher!</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Ajuda no tipo de Categoria escolher!</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -86,7 +86,7 @@
       <div class="modal-body">
           <p>  O que vem antes, o ramo ou a atividade? Se você se encontra, agora, no momento da escolha pelo ramo de atividade, vamos te auxiliar a encontrar o ramo ideal para a sua atividade. Ficou confuso? A gente explica!</p>
 
-<p>Ramos
+<p>Categoria
     <strong>Empresas industriais:</strong> são aquelas que transformam matérias-primas, manualmente ou com auxílio de máquinas e ferramentas, fabricando mercadorias. Abrangem desde o artesanato até a moderna produção de instrumentos eletrônicos.
 <li>Fábrica de móveis artesanais;</li>
 
@@ -106,6 +106,7 @@
  <li>Armarinho;</li>
 
  <li>Loja de ferragem.</li>
+ <li>acessórios.</li>
 
  <p><strong>Empresas de prestação de serviços:</strong> são aquelas onde as atividades não resultam na entrega de mercadorias, mas da oferta do próprio trabalho ao consumidor.
  <li>Lavanderia;</li>
@@ -115,51 +116,12 @@
  <li>Hospital;</li>
 
 <li> Escola.</li>
-      </p>
-
-      <p> <strong>Atividades
-              Dentro das atividades existem vários ramos</strong> que podem ser explorados por uma empresa, como por exemplo:
-
- 
-
-<li>gráfica;</li>
-<li>calçado;</li>
-<li>vestuário;</li>
-<li>bebidas;</li>
 <li>mobiliário;</li>
-<li>couros;</li>
-<li>metalurgia;</li>
-<li>mecânica.</li>
- 
-
-<li>veículos;</li>
-<li>tecidos;</li>
-
-<li>combustíveis;</li>
-
-<li>ferragens;</li>
-
-<li>roupas;</li>
-
-<li>acessórios.</li>
-
-
-
-<li>alimentação;;</li>
-
-<li>transporte;</li>
-
-<li>turismo;</li>
-
-<li>saúde;</li>
-
-<li>educação;</li>
-
-<li>lazer.</li>
-      </p>
+<li>gráfica;</li>
+    
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
        
       </div>
     </div>
@@ -199,6 +161,7 @@
             </div>
                   
         </div>
+      <div class="h5 mt-5">Seus contatos e canais de redes sociais </div>
         <div class="row">
     
         <div class="form-group col-sm-3">
@@ -216,6 +179,7 @@
         </div>
         <div class="row">
         <div class="form-group col-sm-3">
+            
                 <label for="email">E-mail:</label>  <label class="text-danger"></label>
                 <input name="email" type="text" class="form-control" id="email" placeholder=""/>
             </div>
@@ -228,17 +192,36 @@
                 <input name="youtube" type="text" class="form-control" id="youtube" placeholder=""/>
             </div>
         </div>
+      <div class="row">
+        <div class="form-group col-sm-3">
+                <label for="instagram">Instagram:</label>  <label class="text-danger"></label>
+                <input name="instagram" type="text" class="form-control" id="instagram" placeholder=""/>
+            </div>
+        <div class="form-group col-sm-3">
+                <label for="site">Site:</label>  <label class="text-danger"></label>
+                <input name="site" type="text" class="form-control" id="site" placeholder=""/>
+            </div>
+      </div>
+      <div class="h4 mt-5">Tenha em mente em UM produto ou serviço para cada solução que você tem! Para cada tipos de pessoas! </div>
           <div class="form-group">
             <label for="descricao">Breve descrição do seu nicho:</label> 
+           
             <a href="https://viverdeblog.com/nicho-de-mercado/" target="_blank" class="text-info" >ajuda?</a> 
-
-            <textarea class="form-control" name="descricao" type="text" id="descricao" rows="15"></textarea>
+ <div class="h5">o seu possivel cliente (generalizar - aqueles mais procurados) ,tem uma dor que encaixe na sua solução?</div>
+ <textarea class="form-control" name="descricao" type="text" id="descricao" rows="15" placeholder="crie no maximo em 140 caracteres"></textarea>
         </div>
 
            <div class="form-group">
             <label for="chamada">Breve Chamada pra atrair clientes:</label> 
-
+ <div class="h5">Diferencie-se dos seus concorrentes, qual são as suas particulariedades?</div>
             <textarea class="form-control" name="chamada" type="text" id="chamada" rows="15"></textarea>
+        </div>
+       
+      <!--precisa ver como fica no banco de dados-->
+        <div class="form-group">
+            <label for="chamada">Conte com provas concretas ou evidencias de seus resultados:</label> 
+            <div class="h5">Fotos,videos, comentarios</div><div class="h6">coloque os link onde estão.</div>
+            <textarea class="form-control" name="prova" type="text" id="chamada" rows="15"></textarea>
         </div>
        
         <div class="well">
@@ -252,13 +235,41 @@
 
        
 <div class="well">
-
+<!--precisa ver como fica no banco de dados-->
         <div class="form-group">
-            <label for="arquivos">Adicionar no MAXIMO 35 Fotos do :</label>
+            <label for="arquivos">Adicionar no MAXIMO 35 Fotos do ambiente:</label>
             <input id="fotos" name="arquivos[]" type="file"  multiple=""/>
 
         </div>
 </div>
+      <div class="well">
+<!--precisa ver como fica no banco de dados-->
+        <div class="form-group">
+            <label for="arquivos">Adicionar  Fotos de cada um do(s) funcionarios e donos:</label>
+            <input id="fotos" name="arquivos[]" type="file"  multiple=""/>
+
+        </div>
+</div>
+      <!--area de links de videos-->
+      <div class="h5 mt-5">Videos de apresentação, seus produtos/serviços, chamada de ação</div>
+      <div class="h6">Post os links</div>
+      <div class="row">
+          
+           <div class="form-group col-sm-3">
+            
+                <label for="apresentacao">Apresentação:</label>  <label class="text-danger"></label>
+                <input name="apresentacao" type="text" class="form-control" id="apresentacao" placeholder=""/>
+            </div>
+        <div class="form-group col-sm-3">
+                <label for="produtos">Produtos:</label>  <label class="text-danger"></label>
+                <input name="produtos" type="text" class="form-control" id="produtos" placeholder=""/>
+            </div>
+        <div class="form-group col-sm-3">
+                <label for="acao">Chamada de ação:</label>  <label class="text-danger"></label>
+                <input name="acao" type="text" class="form-control" id="acao" placeholder=""/>
+            </div>
+      </div>
+      <!--progresso de preenchimento-->
      <div class="progress progress-striped active">
          <div class="progress-bar"  style="width: 0%">
              

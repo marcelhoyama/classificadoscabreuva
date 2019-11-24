@@ -157,7 +157,7 @@ class clientes extends model {
                 $sql->execute();
                 if ($sql->rowCount() > 0) {
                    
-                    header("Location:" . BASE_URL . "menuprincipal_loja");
+                    header("Location:" . BASE_URL . "menuprincipal_func");
                     exit();
                 } else {
                     return "Não foi posssivel Atualizar! Verifique os campos se estão preenchidos corretamente e tente novamente!";

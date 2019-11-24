@@ -66,7 +66,7 @@
             <option value='2'>Inativo</option>
                 <option value='3'>Bloqueado</option><?php }
             
-            if("2"== $cliente['status'])
+            elseif("2"== $cliente['status'])
                 { ?> <option value="<?php echo $cliente['status']; ?>" selected=""> <?php echo 'Inativo';?> </option>
             <option value='1'>Ativo</option>
                 <option value='3'>Bloqueado</option><?php }

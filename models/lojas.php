@@ -225,4 +225,20 @@ class lojas extends model {
         }
     }
 
+    
+    public function listarCategoria() {
+        try {
+            $array=array();
+        $sql="SELECT * FROM categorias";
+        $sql=$this->db->prepare($sql);
+        $sql->execute();
+        if($sql->rowCount()>0){
+            $array =$sql->fetchAll();
+            return $array;
+        }
+        } catch (Exception $ex) {
+            
+        }
+        
+    }
 }

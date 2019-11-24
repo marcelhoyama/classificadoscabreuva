@@ -13,16 +13,16 @@ class cadastrar_lojaController extends controller {
 
 $f=new funcionarios();
 $id=$_SESSION['lg'];
-    $dados['nomefunc']=$f->getNome($id);
+    $dados['nomefunc']=$f->getName($id);
    $dados['id_funcionario']=$id;     
 $c =new clientes();
-     
+    $l= new lojas(); 
 $dados['listarRamo']=$c->listarRamo();
-
-if(isset($_GET['id']) && !empty($_GET['id'])){
-    $id=$_GET['id'];
+$dados['listarCategoria']=$l->listarCategoria();
+if(isset($_GET['id_cliente']) && !empty($_GET['id_cliente'])){
+    $id_cliente=$_GET['id_cliente'];
     $c = new clientes();
-    $dados['nomeCliente']=$c->getName($id);
+    $dados['nomeCliente']=$c->getName($id_cliente);
 }
        
         if (isset($_POST['cpf']) && !empty($_POST['cpf']) && isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['telefone']) && !empty($_POST['telefone'])) {
@@ -53,7 +53,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 
 
 
-        $this->loadTemplate_1('cadastrar_loja', $dados);
+        $this->loadTemplate_func('cadastrar_loja', $dados);
     }
 
 }

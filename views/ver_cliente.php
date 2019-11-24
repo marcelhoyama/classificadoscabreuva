@@ -17,32 +17,32 @@
             <label><?php echo $viewData['id_funcionario']; ?></label>  
        
         </div>
-        <div class="form-group">
-              <label for="cpf">CPF*: </label> 
-              <label><?php echo $viewData['cpf']; ?></label>
         </div>
+          <?php $cliente=$viewData['dadosCliente'];?>
+        <div class="row">
         <div class="form-group">
             <label for="nome">Nome*:</label> 
-            <label><?php echo $viewData['nome']; ?></label>
+            <label class=""><?php echo $cliente['nome']; ?></label>
+        </div>
         </div>
         <div class="row" > 
         <div class="form-group col-sm-6">
             
             <label for="fone">Telefone Celular*:</label> 
-            <label><?php echo $viewData['telefone']; ?></label>
+            <label><?php echo $cliente['telefone']; ?></label>
         </div>
         
         </div>
 
         <div class="form-group">
             <label for="email">Email:</label>
-             <label><?php echo $viewData['email']; ?></label>
+             <label><?php echo $cliente['email']; ?></label>
         </div>
 
         </div>
 
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Cadastrar">
+            <a href="<?php BASE_URL; ?>cadastrar_loja?id_cliente=<?php echo $cliente['id_clientes']; ?>" class="btn btn-primary">Cadastrar Loja</a> 
 
 
         </div>
