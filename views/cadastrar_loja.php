@@ -17,7 +17,8 @@
              <div class="control-group col-sm">
                  <label for="">Nome do Cliente:</label> <label class="text-danger"></label></br>
                
-            <input type="text" class="form-control"  name="nome_fantasia" value="<?php echo $viewData['nomeCliente'];?> " disabled="">
+            <input type="text" class="form-control"  name="nome_cliente" value="<?php echo $viewData['nomeCliente'];?> " disabled="">
+               <input type="text" class="form-control"  name="id_cliente" value="<?php echo $viewData['id_cliente'];?> " hidden="">
         </div>
         </div>
           <div class="danger">
@@ -36,11 +37,11 @@
                      <div class="form-group col-sm-3">
                          <label for="status">Anunciar no site:</label> <label class="text-danger">obrigatorio*</label></br>
                 <div class="checkbox-inline">
-                    <label><input type="radio" name="status" id="status" value="Liberado"  >Liberar</label> 
+                    <label><input type="radio" name="anuncio_site" id="status" value="Liberado"  >Liberar</label> 
                     </div>
 
                     <div class="checkbox-inline">
-                        <label><input type="radio" name="status" id="status" value="Bloqueado" checked="checked">Bloquear</label>
+                        <label><input type="radio" name="anuncio_site" id="status" value="Bloqueado" checked="checked">Bloquear</label>
                     </div>
               </div>
            <div class="form-group col-sm-3">
@@ -62,8 +63,8 @@
 
         <div class="row">
             <div class="form-group col-sm-4">
-                <label for="id_tipo_assunto">Tipo de Categoria:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info">ajuda ?</a></label>
-                <select name="id_tipo_assunto" class="form-control" id="id_tipo_assunto">
+                <label for="tipo_categoria">Tipo de Categoria:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info">ajuda ?</a></label>
+                <select name="tipo_categoria" class="form-control" id="tipo_categoria">
                     <option></option>
                     
                     <?php foreach ($viewData['listarCategoria'] as $value) : { ?>
@@ -245,8 +246,8 @@
       <div class="well">
 <!--precisa ver como fica no banco de dados-->
         <div class="form-group">
-            <label for="arquivos">Adicionar  Fotos de cada um do(s) funcionarios e donos:</label>
-            <input id="fotos" name="arquivos[]" type="file"  multiple=""/>
+            <label for="arquivos2">Adicionar  Fotos de cada um do(s) funcionarios e donos:</label>
+            <input id="fotos2" name="arquivos2[]" type="file"  multiple=""/>
 
         </div>
 </div>
