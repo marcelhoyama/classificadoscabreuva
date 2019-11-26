@@ -26,7 +26,7 @@ class cadastrar_lojaController extends controller {
             $dados['id_cliente'] = $id_cliente;
         }
 
-        if (isset($_POST['anuncio_site']) && !empty($_POST['anuncio_site']) && isset($_POST['nome_cliente']) && !empty($_POST['nome_cliente']) && isset($_POST['telefone1']) && !empty($_POST['telefone1']) && isset($_POST['tipo_categoria']) && !empty($_POST['tipo_categoria']) && isset($_POST['nome_fantasia']) && !empty($_POST['nome_fantasia']) && isset($_POST['endereco']) && !empty($_POST['endereco']) && isset($_POST['descricao']) && !empty($_POST['descricao']) && isset($_POST['chamada']) && !empty($_POST['chamada'])) {
+        if (isset($_POST['anuncio_site']) && !empty($_POST['anuncio_site']) && (isset($_POST['telefone1']) && !empty($_POST['telefone1'])) && (isset($_POST['tipo_categoria']) && !empty($_POST['tipo_categoria'])) && (isset($_POST['nome_fantasia']) && !empty($_POST['nome_fantasia'])) && (isset($_POST['endereco']) && !empty($_POST['endereco'])) && (isset($_POST['descricao']) && !empty($_POST['descricao'])) && (isset($_POST['chamada']) && !empty($_POST['chamada']))) {
 
             //  variavel $id é do funcionario
             // variavel $id_cliente é do cliente
@@ -52,6 +52,8 @@ class cadastrar_lojaController extends controller {
             $produtos = addslashes(trim($_POST['produtos']));
             $acao = addslashes(trim($_POST['acao']));
             $status='0';
+            $palavrachave= addslashes(trim($_POST['palavrachave']));
+            $titulo=$nome_fantasia;
 
 //            $cpf=explode('.', $cpf);
 //            foreach ($cpf as $value) {
@@ -102,7 +104,7 @@ class cadastrar_lojaController extends controller {
 
 
             $l = new lojas();
-           if($l->cadastrar($id_funcionario, $id_cliente, $nome, $razao_social, $cnpj, $endereco, $telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube, $site, $descricao, $chamada, $chave1, $foto, $fotos)==TRUE){
+           if($l->cadastrar($id_funcionario, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria, $descricao, $chamada, $prova, $foto,$fotos,$fotos2, $apresentacao, $produtos, $acao,$palavrachave,$titulo)==TRUE){
        $dados['ok'] ="Cadastrado com Sucesso! Pode cadastrar mais um novo.";
                //  header("Location:".BASE_URL."pesquisarimoveis");
            }else{

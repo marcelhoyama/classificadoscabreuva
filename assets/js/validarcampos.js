@@ -91,19 +91,17 @@ $(document).ready(function (){
         }
     });
     
-     $('#cadastrarimovel').validate({
+     $('#cadastrarloja').validate({
         
         rules:{
             status:"required",
-            tipovia:{required:true},
-            endereco:{required:true,isString:true},
-            numero:"required",
+            anuncio_site:{required:true},
+            endereco:{required:true},
+            tipo_categoria:"required",
            bairro:{required:true,isString:true},
             cidade:{required:true,isString:true},
-            estado:"required",
-            tipoimovel:"required",
-            id_tipo_assunto:"required",
-            nivel:"required"
+            telefone1:"required",
+            descricao:"required"
                 
             
         },

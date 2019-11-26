@@ -12,12 +12,10 @@ class pesquisar_clientesController extends controller{
     }
     public function index() {
 
-$dados=array('erro'=>'');
+$dados=array('erro'=>'','listarClientes'=>'');
 
   $c =new clientes();
-  echo "<pre>";
-  print_r($dados['listarClientes']=$c->listarClientes());
-  echo'</pre>';
+
   
 
 if(isset($_POST['buscar']) && !empty($_POST['buscar'])){
@@ -33,6 +31,8 @@ if(isset($_POST['buscar']) && !empty($_POST['buscar'])){
      
     }
     
+}else{
+    $dados['listarClientes']=$c->listarClientes();
 }
 
 

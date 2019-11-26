@@ -51,8 +51,8 @@
                 <th>Status</th>
                 <th>Telefone</th>
                 <th>E-mail</th>
-                <th>Total de Promoção</th>
-                 <th>Total de Eventos</th>
+                <th>Categoria</th>
+                 <th>Anunciar no site</th>
                  <th>Dono da loja</th>
                  <th>Ações</th>
             </tr>
@@ -73,15 +73,15 @@
             
             <tr>
                 <td>
-             <?php echo $value['nome'];?>
+             <?php echo $value['nome_fantasia'];?>
                     </td>
-                    <td><?php echo $value['situacao']; ?></td>
-                <td><?php echo $value['telefone'] ?> </td>
+                    <td><?php echo $value['status']; ?></td>
+                <td><?php echo $value['telefone1'] ?> </td>
                 <td><?php echo $value['email'] ?></td>
-                <td><span class="badge"><?php echo $value['totalimovel'] ?></span></td>
-                 <td><span class="badge"><?php echo $value['totalimovel'] ?></span></td>
-                    <td><span class="badge"><?php echo $value['totalimovel'] ?></span></td>
-                <td><a href="<?php BASE_URL;?>editarclientes?id=<?php echo $value['id'];?> "><button class="btn btn-warning">Editar</button></a>
+                <td><span class="badge"><?php echo $value['categoria'] ?></span></td>
+                 <td><span class="badge"><?php echo $value['anuncio_site'] ?></span></td>
+                    <td><span class="badge"><?php echo $value['clientes_id_clientes'] ?></span></td>
+                <td><a href="<?php BASE_URL;?>editarloja?id=<?php echo $value['id_loja'];?> "><button class="btn btn-warning">Editar</button></a>
                     <a href="<?php BASE_URL; ?>menuprincipalcliente?id=<?php echo $value['id'];?>"><button class="btn btn-primary">Ver loja</button></a>
                <a href="<?php BASE_URL; ?>cadastrar_loja?id=<?php echo $value['id'];?>"><button class="btn btn-primary">+ Loja</button></a>
               

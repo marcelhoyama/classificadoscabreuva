@@ -6,7 +6,7 @@
     
     <div class="text-center h3">Cadastrar Loja</div>
    
-    <form id="cadastrarimovel" method="POST" enctype="multipart/form-data">
+    <form id="cadastrarloja" method="POST" enctype="multipart/form-data">
         <div class="row">
             
         <div class="control-group col-sm">
@@ -17,8 +17,8 @@
              <div class="control-group col-sm">
                  <label for="">Nome do Cliente:</label> <label class="text-danger"></label></br>
                
-            <input type="text" class="form-control"  name="nome_cliente" value="<?php echo $viewData['nomeCliente'];?> " disabled="">
-               <input type="text" class="form-control"  name="id_cliente" value="<?php echo $viewData['id_cliente'];?> " hidden="">
+            <input type="text" class="form-control"  name="nome_cliente" value="<?php echo $viewData['nomeCliente'];?> " disabled>
+               <input type="text" class="form-control"  name="id_cliente" value="<?php echo $viewData['id_cliente'];?> " disabled="">
         </div>
         </div>
           <div class="danger">
@@ -44,17 +44,13 @@
                         <label><input type="radio" name="anuncio_site" id="status" value="Bloqueado" checked="checked">Bloquear</label>
                     </div>
               </div>
-           <div class="form-group col-sm-3">
-                <label for="chave1">Palavra chave1:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="chave1" class="form-control" id="chave1">
+           <div class="form-group col">
+               <div class="h6">Detalhes dos produtos ou serviço que você tem, separe por virgula cada palavra!</div>
+                <label for="palavrachave">Palavra chave:</label>  <label class="text-danger">campo obrigatorio*</label>
+                <textarea name="palavrachave" class="form-control" id="palavrachave" rows="15"></textarea>
 
                
-            </div>
-           <div class="form-group col-sm-3">
-                <label for="chave2">Palava chave2:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="chave2" class="form-control" id="chave2">
-
-               
+       
             </div>
           
             </div>
@@ -134,7 +130,7 @@
         <div class="form-group">
                 <label for="nome_fantasia">Nome fantasia:</label>  <label class="text-danger">campo obrigatorio*</label>
                 <input name="nome_fantasia" class="form-control" id="nome_fantasia">
-
+<!--vai ser o titulo tambem no slug-->
                
             </div>
             <div class="form-group ">
