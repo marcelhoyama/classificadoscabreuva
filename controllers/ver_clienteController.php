@@ -9,7 +9,7 @@ class ver_clienteController extends controller {
     }
 
     public function index() {
-        $dados = array('erro' => '', 'ok' => '');
+        $dados = array('erro' => '', 'ok' => '','qtdLojas'=>'');
 
 $f=new funcionarios();
 $id=$_SESSION['lg'];
@@ -23,13 +23,18 @@ $c =new clientes();
        
             $id_cliente=$_GET['id'];
             $dados['dadosCliente']=$c->getDados($id_cliente);
+       
+            
+            $dados['qtdLojas']=$c->qtdLojaCliente($id_cliente);
+            
+            
         }
         
 
 
 
 
-        $this->loadTemplate_1('ver_cliente', $dados);
+        $this->loadTemplate_func('ver_cliente', $dados);
     }
 
 }

@@ -245,13 +245,13 @@ class clientes extends model {
     public function getDados($id) {
         $array = array();
         try {
-            $sql = "SELECT * FROM clientes WHERE id_clientes=:id";
+            $sql = "SELECT *,COUNT(l.clientes_id_clientes) as quantidade FROM clientes c RIGHT JOIN loja l ON c.id_clientes=l.clientes_id_clientes WHERE c.id_clientes=:id";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(':id', $id);
             $sql->execute();
             if ($sql->rowCount() > 0) {
 
-                $array = $sql->fetch(PDO::FETCH_ASSOC);
+               $array = $sql->fetch(PDO::FETCH_ASSOC);
 
                 return $array;
             } else {
@@ -322,13 +322,13 @@ class clientes extends model {
     
     public function qtdLojaCliente($id) {
        try{
-           $sql="SELECT COUNT(id_loja) AS 'quantidade' FROM loja WHERE clientes_id_clientes = :id";
+           $sql="SELECT *,COUNT(id_loja) AS 'quantidade' FROM loja WHERE clientes_id_clientes = :id";
            $sql=$this->db->prepare($sql);
            $sql-> bindValue('id',$id);
            $sql->execute();
            
             if ($sql->rowCount() > 0) {
-                $array= $sql->fetch();
+               print_r($array= $sql->fetchAll(PDO::FETCH_ASSOC));
             }
        } catch (Exception $ex) {
 echo "Falhou:".$ex->getMessage();

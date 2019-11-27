@@ -38,6 +38,7 @@
             <label for="email">Email:</label>
              <label><?php echo $cliente['email']; ?></label>
         </div>
+        <div class="h6">Tem no total de loja: <?php echo $cliente['quantidade'] ?></div>
 
         </div>
 
@@ -66,24 +67,19 @@
       <th scope="col">Status</th>
     </tr>
   </thead>
+
   <tbody>
-    <tr>
+     <?php $lojas=$viewData['qtdLojas'];
+    { ?>
+         <tr>
       <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+      <td><?php echo $viewData['nome_fantasia'] ?></td>
+      <td><?php echo $lojas['telefone1'] ?></td>
+      <td><?php echo $lojas['status'] ?></td>
+    </tr>  
+     <?php  }?>
+   
+    
   </tbody>
 </table>
                 </form>
