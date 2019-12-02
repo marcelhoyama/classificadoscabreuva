@@ -65,19 +65,27 @@
       <th scope="col">Loja</th>
       <th scope="col">Telefone</th>
       <th scope="col">Status</th>
+      <th scope="col">Ações</th>
     </tr>
   </thead>
 
   <tbody>
+  
      <?php $lojas=$viewData['qtdLojas'];
-    { ?>
-         <tr>
+    
+ foreach ($lojas as $value) {
+    
+ 
+     ?>
+        
+  <tr>
       <th scope="row">1</th>
-      <td><?php echo $viewData['nome_fantasia'] ?></td>
-      <td><?php echo $lojas['telefone1'] ?></td>
-      <td><?php echo $lojas['status'] ?></td>
+      <td><?php echo $value['nome_fantasia'] ?></td>
+      <td><?php echo $value['telefone1'] ?></td>
+      <td><?php echo $value['status'] ?></td>
+      <td><a class="btn btn-warning"href="<?php BASE_URL;?>editar_loja?id_loja=<?php echo $value['id_loja']?>&id_cliente=<?php echo $cliente['id_clientes']; ?>">Editar</a></td>
     </tr>  
-     <?php  }?>
+ <?php } ?>
    
     
   </tbody>

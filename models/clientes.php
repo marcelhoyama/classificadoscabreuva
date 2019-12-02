@@ -328,7 +328,8 @@ class clientes extends model {
            $sql->execute();
            
             if ($sql->rowCount() > 0) {
-               print_r($array= $sql->fetchAll(PDO::FETCH_ASSOC));
+               $array= $sql->fetchAll(PDO::FETCH_ASSOC);
+               return $array;
             }
        } catch (Exception $ex) {
 echo "Falhou:".$ex->getMessage();
