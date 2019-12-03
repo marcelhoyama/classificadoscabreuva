@@ -35,7 +35,7 @@ class editar_lojaController extends controller {
             $dados['dadosLoja']=$l->getDados($id_loja);
             
             $dados['totalFotos']=$l->totalFotos($id_loja);
-            $dados['listfotos']=$l->listarLojas($id_loja);
+            $dados['listfotos']=$l->listarFotos($id_loja);
         }
 
         if (isset($_POST['anuncio_site']) && !empty($_POST['anuncio_site']) && (isset($_POST['telefone1']) && !empty($_POST['telefone1'])) && (isset($_POST['tipo_categoria']) && !empty($_POST['tipo_categoria'])) && (isset($_POST['nome_fantasia']) && !empty($_POST['nome_fantasia'])) && (isset($_POST['endereco']) && !empty($_POST['endereco'])) && (isset($_POST['descricao']) && !empty($_POST['descricao'])) && (isset($_POST['chamada']) && !empty($_POST['chamada']))) {
@@ -114,7 +114,7 @@ class editar_lojaController extends controller {
             }
 // fim do envio de imagem;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
+            print_r($fotos);
             $l = new lojas();
            if($l->editar($id_loja,$id_funcionario, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria, $descricao, $chamada, $prova, $foto,$fotos,$fotos2, $apresentacao, $produtos, $acao,$palavrachave,$titulo)==TRUE){
       // $dados['ok'] ="Atualizado com Sucesso!";

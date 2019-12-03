@@ -245,8 +245,8 @@ class lojas extends model {
 
      public function editar($id_loja,$id, $id_cliente, $anuncio_site, $nome_fantasia, $razao_social, $endereco, $bairro, $cidade, $telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube, $instagram, $site, $tipo_categoria,$descricao, $chamada, $prova, $foto, $fotos, $fotos2, $apresentacao, $produtos, $acao, $palavrachave, $titulo) {
         try {
-
             
+    
 
             if (!empty($foto['tmp_name'][0])) {
 
@@ -279,28 +279,17 @@ class lojas extends model {
                     imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
                     imagejpeg($img, $diretorio . $tmpname, 80);
                 }
-            }
-
-            $slug = '';
-           
-            if (isset($titulo) && !empty($titulo)) {
-            
-                $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($titulo)));
-                $sql = "SELECT slug FROM loja WHERE slug='$slug' AND id_loja !=$id_loja ";
-                $sql = $this->db->prepare($sql);
-                $sql->execute();
-                if ($sql->rowCount() > 0) {
-                     
-$erro= 'Já existe esse nome fantasia! tente outro nome de fantasia ';
-
-return $erro;
                     
-                } else {
+           
+            
+                    
+               
 
 
                      $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave WHERE id_loja=:id_loja ";
                     
-
+echo 'veio no link imagem';
+exit;
                     $sql = $this->db->prepare($sql);
                     $sql->bindParam(":id_loja",$id_loja);
                     $sql->bindParam(":id_funcionario", $id);
@@ -333,17 +322,58 @@ return $erro;
                     $sql->bindParam(":titulo", $titulo);
                     $sql->execute();
 
+                
+                  
+                    
+                } else {
+
+
+                     $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave WHERE id_loja=:id_loja ";
+                    
+
+                    $sql = $this->db->prepare($sql);
+                    $sql->bindParam(":id_loja",$id_loja);
+                    $sql->bindParam(":id_funcionario", $id);
+                    $sql->bindParam(":id_cliente", $id_cliente);
+                    $sql->bindParam(":anuncio_site", $anuncio_site);
+                    $sql->bindParam(":tipo_categoria", $tipo_categoria);
+                    $sql->bindParam(":nome_fantasia", $nome_fantasia);
+                    $sql->bindParam(":razao_social", $razao_social);
+                    $sql->bindParam(":endereco", $endereco);
+                    $sql->bindParam(":bairro", $bairro);
+                    $sql->bindParam(":cidade", $cidade);
+                    $sql->bindParam(":telefone1", $telefone1);
+                    $sql->bindParam(":telefone2", $telefone2);
+                    $sql->bindParam(":status", $status);
+                    $sql->bindParam(":whatsapp", $whatsapp);
+                    $sql->bindParam(":email", $email);
+                    $sql->bindParam(":facebook", $facebook);
+                    $sql->bindParam(":youtube", $youtube);
+                    $sql->bindParam(":instagram", $instagram);
+                    $sql->bindParam(":site", $site);
+                    $sql->bindParam(":descricao", $descricao);
+                    $sql->bindParam(":chamada", $chamada);
+                    $sql->bindParam(":prova", $prova);
+                    $sql->bindParam(":apresentacao", $apresentacao);
+                    $sql->bindParam(":produto", $produtos);
+                    $sql->bindParam(":acao", $acao);
+                    $sql->bindParam(":palavrachave", $palavrachave);
+                     $sql->bindParam(":slug", $slug);
+                    $sql->bindParam(":titulo", $titulo);
+                   
+                    $sql->execute();
+                }
                     
                     if ($sql->rowCount() > 0) {
  if (count($fotos) > 0) {
-     echo 'entrou em fotos';
-     exit;                       
+                                                                                                               
      for ($q = 0; $q < count($fotos['tmp_name']); $q++) {
 
                                                 $tipo2 = $fotos['type'][$q];
 
 
                                                 if (in_array($tipo2, array('image/jpeg', 'image/png'))) {
+   
 
                                                     $tmpname = md5(time() . rand(0, 999)) . '.jpg';
                                                     $diretorio = "upload/";
@@ -372,12 +402,16 @@ return $erro;
                                                     imagejpeg($img, $diretorio . $tmpname, 80);
 
                                                     $sql = "INSERT INTO url_imagens SET loja_id_loja='$id_loja', url='$tmpname'";
+      
 
                                                     $sql = $this->db->query($sql);
+                                                       $sql->execute();
                                                     if ($sql->rowCount() > 0) {
                                                         //return true;
                                                     } else {
-                                                        //return FALSE;
+                                                        //return FALSE; 
+                                                        echo 'nao cadastrou a foto';
+                                                        exit;
                                                     }
                                                 }
                                             }
@@ -420,6 +454,7 @@ return $erro;
                                     $sql = "INSERT INTO url_equipes SET loja_id_loja='$id_loja', url='$tmpname'";
 
                                     $sql = $this->db->query($sql);
+                                       $sql->execute();
                                     if ($sql->rowCount() > 0) {
 
 
@@ -431,12 +466,27 @@ return $erro;
                             }
                         }
                     }
-                }
-            }
+                
+//            if (isset($titulo) && !empty($titulo)) {
+//            
+//                $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($titulo)));
+//                $sql = "SELECT slug FROM loja WHERE slug='$slug' AND id_loja !=$id_loja ";
+//                $sql = $this->db->prepare($sql);
+//                $sql->execute();
+//                if ($sql->rowCount() > 0) {
+//                     
+//$erro= 'Já existe esse nome fantasia! tente outro nome de fantasia ';
+//
+//                return $erro;
+//                
+//                }
+//            }
+            
         } catch (Exception $ex) {
             echo 'Falhou:' . $ex->getMessage();
         }
     }
+    
 
     public function listarClientes() {
 
@@ -598,7 +648,7 @@ echo "Falhou:" . $ex->getMessage();
          try{
              $total=array();
                $sql="SELECT * FROM url_imagens WHERE loja_id_loja=:id_loja ORDER BY id_url_imagens ASC";
-         $sql= $this->prepare($sql);
+         $sql= $this->db->prepare($sql);
          $sql->bindValue(":id_loja",$id_loja);
          $sql->execute();
          if($sql->rowCount()>0){
