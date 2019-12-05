@@ -38,13 +38,30 @@
         <div class="row">
             <div class="form-group col-sm-3">
                 <label for="status">Anunciar no site:</label> <label class="text-danger">obrigatorio*</label></br>
-                <div class="checkbox-inline">
-                    <label><input type="radio" name="anuncio_site" id="status" value="Liberado"  >Liberar</label> 
+                
+                
+                <?php if($lojas['anuncio_site']==0){?>
+                    
+                    <div class="checkbox-inline">
+                        <label><input type="radio" name="anuncio_site" id="status" value="0" checked="checked" >Liberar</label> 
                 </div>
 
                 <div class="checkbox-inline">
-                    <label><input type="radio" name="anuncio_site" id="status" value="Bloqueado" checked="checked">Bloquear</label>
+                    <label><input type="radio" name="anuncio_site" id="status" value="1 checked="checked">Bloquear</label>
+                </div> 
+                    
+                    
+          <?php      }else{?>
+               
+                  <div class="checkbox-inline">
+                        <label><input type="radio" name="anuncio_site" id="status" value="0" >Liberar</label> 
                 </div>
+
+                <div class="checkbox-inline">
+                    <label><input type="radio" name="anuncio_site" id="status" value="1 checked="checked">Bloquear</label>
+                </div> 
+          <?php } ?>
+                
             </div>
             <div class="form-group col">
                 <div class="h6">Detalhes dos produtos ou serviço que você tem, separe por virgula cada palavra!</div>
@@ -225,7 +242,7 @@
             </textarea>
         </div>
 
-        <div class="well">
+        <div class="jumbotron">
             <div class="form-group">
                 <label for="arquivo1">Adicionar UMA Foto da frente da Loja</label>
                 <input name="arquivo1" type="file" />
@@ -263,7 +280,7 @@
 
 
 
-        <div class="well">
+        <div class="jumbotron">
             <!--precisa ver como fica no banco de dados-->
             <div class="form-group">
                 <label for="arquivos">Adicionar no MAXIMO 35 Fotos do ambiente,sendo que, redimensionamento IDEAL 960x720 e tamanho total de imagens não ultrapassar 128 MB :</label>
@@ -281,21 +298,20 @@
 
 <hr>
 <div class="row">
-
+    
     <?php if (!empty($viewData['listfotos'])): ?>
 
         <?php foreach ($viewData['listfotos'] as $fotos): ?>
 
-            <div class=" col">
+            <div class="col-sm">
 
-                <div class="thumbnail" id="imagem-editar" >     
-                    <img src="<?php BASE_URL; ?>upload/<?php echo $fotos['url']; ?>" id="imagem-editar">
+                   
+                    <img src="<?php BASE_URL; ?>upload/<?php echo $fotos['url']; ?>"  class="img-thumbnail" id="imagem-editar">
 
-                </div>
+                
                 <a href="<?php BASE_URL; ?>deletarfoto?id=<?php echo $fotos['id_url_imagens']; ?>" class="btn btn-danger mt-1 mb-3 ">Excluir Imagem</a>
 
-            </div>
-
+</div>
             <?php
         endforeach;
     endif;
@@ -303,7 +319,7 @@
 
 </div>
 
-<div class="well">
+<div class="jumbotron">
     <!--precisa ver como fica no banco de dados-->
     <div class="form-group">
         <label for="arquivos2">Adicionar  Fotos de cada um do(s) funcionarios e donos:</label>

@@ -9,7 +9,7 @@ class editar_lojaController extends controller {
     }
 
     public function index() {
-        $dados = array('erro' => '', 'ok' => '', 'listarRamo' => '', 'listarCliente' => '');
+        $dados = array('erro' => '', 'ok' => '', 'listarRamo' => '', 'listarCliente' => '','dadosLoja'=>'','istfotos'=>'');
 
         $f = new funcionarios();
         $id = $_SESSION['lg'];
@@ -114,7 +114,7 @@ class editar_lojaController extends controller {
             }
 // fim do envio de imagem;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-            print_r($fotos);
+
             $l = new lojas();
            if($l->editar($id_loja,$id_funcionario, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria, $descricao, $chamada, $prova, $foto,$fotos,$fotos2, $apresentacao, $produtos, $acao,$palavrachave,$titulo)==TRUE){
       // $dados['ok'] ="Atualizado com Sucesso!";

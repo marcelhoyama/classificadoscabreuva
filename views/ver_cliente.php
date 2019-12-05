@@ -7,7 +7,7 @@
 <title>Dados do Cliente</title>
 <div class="container">
     
-     <h2 class="text-center">Dados do Cliente</h2>
+     <h2 class="text-center">Dados Geral do Cliente</h2>
     
       
     <form name="cadastrarclientes" id="cadastrarclientes" class="form-group-sm" method="POST" autocomplete="off" >
@@ -26,22 +26,24 @@
         </div>
         </div>
         <div class="row" > 
-        <div class="form-group col-sm-6">
+        <div class="form-group">
             
             <label for="fone">Telefone Celular*:</label> 
             <label><?php echo $cliente['telefone']; ?></label>
         </div>
         
         </div>
-
+        <div class="row">
         <div class="form-group">
             <label for="email">Email:</label>
              <label><?php echo $cliente['email']; ?></label>
         </div>
-        <div class="h6">Tem no total de loja: <?php echo $cliente['quantidade'] ?></div>
+            </div>
+        
+        <div class="h6 text-center">Tem no total de loja: <?php echo $cliente['quantidade'] ?></div>
 
-        </div>
-
+        
+        <div class="h7 text-center">Legenda: 0 Ativo / 1 Inativo / 2 Bloqueado</div>
         <div class="form-group">
             <a href="<?php BASE_URL; ?>cadastrar_loja?id_cliente=<?php echo $cliente['id_clientes']; ?>" class="btn btn-primary">Cadastrar Loja</a> 
 

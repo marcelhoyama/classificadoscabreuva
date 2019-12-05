@@ -31,7 +31,7 @@
                 <li class="nav-item"><a class="nav-link " href="<?php echo BASE_URL; ?>pesquisarinteressados">Interessados</a></li> 
   <li class="nav-item"><a class="nav-link " href="<?php echo BASE_URL; ?>pesquisar_loja">Pesquisar Loja/Serviço</a></li> 
 
-                <li class="nav-item" ><a class="nav-link "href="<?php echo BASE_URL; ?>menuprincipal">Menu Principal <span class="sr-only"></span></a></li>
+                <li class="nav-item" ><a class="nav-link "href="<?php echo BASE_URL; ?>menuprincipal_func">Menu Principal <span class="sr-only"></span></a></li>
               
                 <li class="nav-item dropdown">
 
@@ -55,9 +55,9 @@
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
     <br>
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:200px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
-    <div class="w3-col s4 ">
+    <div class="w3-col s4 mt-5">
       <img src="<?php echo BASE_URL; ?>assets/images/sem-imagem.gif" class="w3-circle w3-margin-right " style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar">
@@ -73,10 +73,13 @@
     <h5>Painel de Controle</h5>
  
   <div class="w3-bar-block">
-    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="<?php BASE_URL;?>pesquisar_clientes" class="w3-bar-item w3-button w3-padding active"><i class="fa fa-users fa-fw"></i>  Clientes</a>
-    <a href="<?php BASE_URL;?>pesquisar_funcionario" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Funcionários</a>
-    <a href="<?php BASE_URL;?>pesquisar_loja" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Lojas</a>
+      <li><a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a></li>
+    
+      <li> <a href="<?php BASE_URL;?>pesquisar_clientes" class="w3-bar-item w3-button w3-padding active"><i class="fa fa-users fa-fw"></i>  Clientes</a></li>
+      
+      <li>  <a href="<?php BASE_URL;?>pesquisar_funcionario" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Funcionários</a></li>
+      
+      <li><a href="<?php BASE_URL;?>pesquisar_loja" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Lojas</a></li>
 <!--    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
@@ -86,15 +89,15 @@
   </div>
 </nav>
  <div class="container">
-    <div class="" style="margin-left:300px;margin-top:80px;">
+    <div class="" style="margin-left:200px;margin-top:-200px; ">
   <!--  aqui onde vai o corpo das paginas do sistema -->
     <?php $this->loadViewInTemplate($viewName, $viewData); ?>
 
     </div>
  </div>
 <!-- Footer -->
-<footer class="w3-center w3-light-grey w3-padding-32">
-  <p>Desenvolvido por <a href="http://www.buscadorcabreuva.com.br" title="ps-maciel publicidade" target="_blank" class="w3-hover-text-green">Marcel Hoyama</a></p>
+<footer class="text-center ">
+  <p>Desenvolvido por <a href="https://www.buscadorcabreuva.com.br" title="ps-maciel publicidade" target="_blank" class="w3-hover-text-green">Marcel Hoyama</a></p>
 </footer>
 
 </body>
