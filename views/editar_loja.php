@@ -38,30 +38,30 @@
         <div class="row">
             <div class="form-group col-sm-3">
                 <label for="status">Anunciar no site:</label> <label class="text-danger">obrigatorio*</label></br>
-                
-                
-                <?php if($lojas['anuncio_site']==0){?>
-                    
+
+
+                <?php if ($lojas['anuncio_site'] == 0) { ?>
+
                     <div class="checkbox-inline">
                         <label><input type="radio" name="anuncio_site" id="status" value="0" checked="checked" >Liberar</label> 
-                </div>
+                    </div>
 
-                <div class="checkbox-inline">
-                    <label><input type="radio" name="anuncio_site" id="status" value="1 checked="checked">Bloquear</label>
-                </div> 
-                    
-                    
-          <?php      }else{?>
-               
-                  <div class="checkbox-inline">
+                    <div class="checkbox-inline">
+                        <label><input type="radio" name="anuncio_site" id="status" value="1" >Bloquear</label>
+                    </div> 
+
+
+                <?php } else { ?>
+
+                    <div class="checkbox-inline">
                         <label><input type="radio" name="anuncio_site" id="status" value="0" >Liberar</label> 
-                </div>
+                    </div>
 
-                <div class="checkbox-inline">
-                    <label><input type="radio" name="anuncio_site" id="status" value="1 checked="checked">Bloquear</label>
-                </div> 
-          <?php } ?>
-                
+                    <div class="checkbox-inline">
+                        <label><input type="radio" name="anuncio_site" id="status" value="1 "checked="checked">Bloquear</label>
+                    </div> 
+                <?php } ?>
+
             </div>
             <div class="form-group col">
                 <div class="h6">Detalhes dos produtos ou serviço que você tem, separe por virgula cada palavra!</div>
@@ -80,12 +80,37 @@
             <div class="form-group col-sm-4">
                 <label for="tipo_categoria">Tipo de Categoria:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL ?>ramo_atividade" class="text-info">ajuda ?</a></label>
                 <select name="tipo_categoria" class="form-control" id="tipo_categoria">
-                    <option></option>
 
-                    <?php foreach ($viewData['listarCategoria'] as $value) : { ?>
-                            <option value="<?php echo $value['id_categorias']; ?>"><?php echo $value['nome']; ?></option>
 
-                        <?php } endforeach; ?>  
+                    <?php if ($lojas['categoria'] == 14) { ?> 
+                    <option value="<?php echo $lojas['categoria']; ?>" selected="selected">Empresa Industrial </option>
+                        <option value="15">Empresa Comercial</option>
+
+                        <option value="16">Empresa prestação de Serviço</option>
+
+
+                    <?php } ?>
+                    <?php if ($lojas['categoria'] == 15) { ?> 
+                        <option value="<?php echo $lojas['categoria']; ?>">Empresa Comercial selected="selected"</option>
+                        <option value="14">Empresa industrial</option>
+
+
+
+                        <option value="16">Empresa prestação de Serviço</option>
+
+
+                    <?php } ?>    
+                    <?php if ($lojas['categoria'] == 16) { ?> 
+                        <option value="<?php echo $lojas['categoria']; ?>" selected="selected">Empresa prestação de serviço </option>
+                        <option value="14">Empresa industrial</option>
+
+                        <option value="15">Empresa Comercial</option>
+
+
+
+
+
+                    <?php } ?>
                 </select>
             </div>
 
@@ -296,114 +321,114 @@
         </div>
 
 
-<hr>
-<div class="row">
-    
-    <?php if (!empty($viewData['listfotos'])): ?>
+        <hr>
+        <div class="row">
 
-        <?php foreach ($viewData['listfotos'] as $fotos): ?>
+            <?php if (!empty($viewData['listfotos'])): ?>
 
-            <div class="col-sm">
+                <?php foreach ($viewData['listfotos'] as $fotos): ?>
 
-                   
-                    <img src="<?php BASE_URL; ?>upload/<?php echo $fotos['url']; ?>"  class="img-thumbnail" id="imagem-editar">
-
-                
-                <a href="<?php BASE_URL; ?>deletarfoto?id=<?php echo $fotos['id_url_imagens']; ?>" class="btn btn-danger mt-1 mb-3 ">Excluir Imagem</a>
-
-</div>
-            <?php
-        endforeach;
-    endif;
-    ?>
-
-</div>
-
-<div class="jumbotron">
-    <!--precisa ver como fica no banco de dados-->
-    <div class="form-group">
-        <label for="arquivos2">Adicionar  Fotos de cada um do(s) funcionarios e donos:</label>
-        <input id="fotos2" name="arquivos2[]" type="file"  multiple=""/>
-
-    </div>
-</div>
-<!--area de links de videos-->
-<div class="h5 mt-5">Videos de apresentação, seus produtos/serviços, chamada de ação</div>
-<div class="h6">Post os links</div>
-<div class="row">
-
-    <div class="form-group col-sm-3">
-
-        <label for="apresentacao">Apresentação:</label>  <label class="text-danger"></label>
-        <input name="apresentacao" type="text" class="form-control" id="apresentacao" value="<?php echo $lojas['link_apresentacao'] ?>"/>
-    </div>
-    <div class="form-group col-sm-3">
-        <label for="produtos">Produtos:</label>  <label class="text-danger"></label>
-        <input name="produtos" type="text" class="form-control" id="produtos" value="<?php echo $lojas['link_produto'] ?>"/>
-    </div>
-    <div class="form-group col-sm-3">
-        <label for="acao">Chamada de ação:</label>  <label class="text-danger"></label>
-        <input name="acao" type="text" class="form-control" id="acao" value="<?php echo $lojas['link_acao'] ?>"/>
-    </div>
-</div>
-
-<!--progresso de preenchimento-->
-<div class="progress progress-striped active">
-    <div class="progress-bar"  style="width: 0%">
+                    <div class="col-sm">
 
 
-    </div>
+                        <img src="<?php BASE_URL; ?>upload/<?php echo $fotos['url']; ?>"  class="img-thumbnail" id="imagem-editar">
 
 
-</div>
-<div class="form-group">
-    <button type="submit" class="btn btn-primary upload" >Atualizar</button> 
+                        <a href="<?php BASE_URL; ?>deletarfoto?id=<?php echo $fotos['id_url_imagens']; ?>" class="btn btn-danger mt-1 mb-3 ">Excluir Imagem</a>
+
+                    </div>
+                    <?php
+                endforeach;
+            endif;
+            ?>
+
+        </div>
+
+        <div class="jumbotron">
+            <!--precisa ver como fica no banco de dados-->
+            <div class="form-group">
+                <label for="arquivos2">Adicionar  Fotos de cada um do(s) funcionarios e donos:</label>
+                <input id="fotos2" name="arquivos2[]" type="file"  multiple=""/>
+
+            </div>
+        </div>
+        <!--area de links de videos-->
+        <div class="h5 mt-5">Videos de apresentação, seus produtos/serviços, chamada de ação</div>
+        <div class="h6">Post os links</div>
+        <div class="row">
+
+            <div class="form-group col-sm-3">
+
+                <label for="apresentacao">Apresentação:</label>  <label class="text-danger"></label>
+                <input name="apresentacao" type="text" class="form-control" id="apresentacao" value="<?php echo $lojas['link_apresentacao'] ?>"/>
+            </div>
+            <div class="form-group col-sm-3">
+                <label for="produtos">Produtos:</label>  <label class="text-danger"></label>
+                <input name="produtos" type="text" class="form-control" id="produtos" value="<?php echo $lojas['link_produto'] ?>"/>
+            </div>
+            <div class="form-group col-sm-3">
+                <label for="acao">Chamada de ação:</label>  <label class="text-danger"></label>
+                <input name="acao" type="text" class="form-control" id="acao" value="<?php echo $lojas['link_acao'] ?>"/>
+            </div>
+        </div>
+
+        <!--progresso de preenchimento-->
+        <div class="progress progress-striped active">
+            <div class="progress-bar"  style="width: 0%">
 
 
-</div>
-</form>
-
-<script type="text/javascript">
-    $(function () {
+            </div>
 
 
-        $('.cadastrarimovel').on('submit', function (e) {
-            e.preventDefault();
-            var form = $('.cadastrarimovel')[0];
-            var data = new FormData(form);
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary upload" >Atualizar</button> 
+
+
+        </div>
+    </form>
+
+    <script type="text/javascript">
+        $(function () {
+
+
+            $('.cadastrarimovel').on('submit', function (e) {
+                e.preventDefault();
+                var form = $('.cadastrarimovel')[0];
+                var data = new FormData(form);
 
 
 
 
-            $.ajax({
-                type: 'POST',
-                url: 'cadastrarimovelController',
-                data: data,
-                contentType: false,
-                processData: false,
-                success: function (msg) {
-                    alert(msg);
-                }
+                $.ajax({
+                    type: 'POST',
+                    url: 'cadastrarimovelController',
+                    data: data,
+                    contentType: false,
+                    processData: false,
+                    success: function (msg) {
+                        alert(msg);
+                    }
+
+                });
+
+
+
 
             });
-
-
-
-
         });
-    });
-</script>
+    </script>
 
-<div class="danger">
-    <?php if (isset($erro) && !empty($erro)): ?>
-        <div class="alert alert-danger"><?php echo $erro; ?></div> 
-    <?php endif; ?>
-</div>
-<div class="danger">
-    <?php if (isset($ok) && !empty($ok)): ?>
-        <div class="alert alert-success"><?php echo $ok; ?></div> 
-    <?php endif; ?>
-</div>
+    <div class="danger">
+        <?php if (isset($erro) && !empty($erro)): ?>
+            <div class="alert alert-danger"><?php echo $erro; ?></div> 
+        <?php endif; ?>
+    </div>
+    <div class="danger">
+        <?php if (isset($ok) && !empty($ok)): ?>
+            <div class="alert alert-success"><?php echo $ok; ?></div> 
+        <?php endif; ?>
+    </div>
 
 
 </div>

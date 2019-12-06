@@ -9,7 +9,7 @@ class editar_lojaController extends controller {
     }
 
     public function index() {
-        $dados = array('erro' => '', 'ok' => '', 'listarRamo' => '', 'listarCliente' => '','dadosLoja'=>'','istfotos'=>'');
+        $dados = array('erro' => '', 'ok' => '','dadosLoja'=>'','listfotos'=>'');
 
         $f = new funcionarios();
         $id = $_SESSION['lg'];
@@ -17,7 +17,7 @@ class editar_lojaController extends controller {
         $dados['id_funcionario'] = $id;
         $c = new clientes();
         $l = new lojas();
-        $dados['listarRamo'] = $c->listarRamo();
+      
         $dados['listarCategoria'] = $l->listarCategoria();
         
         if (isset($_GET['id_cliente']) && !empty($_GET['id_cliente'])) {
@@ -38,11 +38,18 @@ class editar_lojaController extends controller {
             $dados['listfotos']=$l->listarFotos($id_loja);
         }
 
-        if (isset($_POST['anuncio_site']) && !empty($_POST['anuncio_site']) && (isset($_POST['telefone1']) && !empty($_POST['telefone1'])) && (isset($_POST['tipo_categoria']) && !empty($_POST['tipo_categoria'])) && (isset($_POST['nome_fantasia']) && !empty($_POST['nome_fantasia'])) && (isset($_POST['endereco']) && !empty($_POST['endereco'])) && (isset($_POST['descricao']) && !empty($_POST['descricao'])) && (isset($_POST['chamada']) && !empty($_POST['chamada']))) {
+        
+        if     ((isset($_POST['anuncio_site']) && !empty($_POST['anuncio_site'])) || 
+                (isset($_POST['telefone1']) && !empty($_POST['telefone1'])) || 
+                (isset($_POST['tipo_categoria']) && !empty($_POST['tipo_categoria'])) || 
+                (isset($_POST['nome_fantasia']) && !empty($_POST['nome_fantasia'])) || 
+                (isset($_POST['endereco']) && !empty($_POST['endereco'])) || 
+                (isset($_POST['descricao']) && !empty($_POST['descricao'])) || 
+                (isset($_POST['chamada']) && !empty($_POST['chamada']))) {
 
             //  variavel $id é do funcionario
             // variavel $id_cliente é do cliente
-            $anuncio_site = addslashes(trim($_POST['anuncio_site']));
+       $anuncio_site = addslashes(trim($_POST['anuncio_site']));
             $tipo_categoria = addslashes(trim($_POST['tipo_categoria']));
             $nome_fantasia = addslashes(trim($_POST['nome_fantasia']));
             $razao_social = addslashes(trim($_POST['razao_social']));
@@ -96,8 +103,8 @@ class editar_lojaController extends controller {
         if (isset($_FILES['arquivos'])) {
             
             $fotos = $_FILES['arquivos'];
-           
-               
+            
+            echo'<br>passou isset arquivos=fotos';   
             }else{
 
             $fotos = array();
@@ -122,8 +129,8 @@ class editar_lojaController extends controller {
            }else{
                $dados['erro'] ="Confira todos os campos!";
            }
-        }
-
+       
+                }
             $this->loadTemplate_func('editar_loja', $dados);
         }
     }

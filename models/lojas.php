@@ -319,13 +319,14 @@ class lojas extends model {
                 $sql->bindParam(":url_imagem_principal", $tmpname);
                 $sql->bindParam(":slug", $slug);
                 $sql->bindParam(":titulo", $titulo);
-                $sql->execute();
+                
             } else {
 
 $slug= $this->slugNotRepetir($titulo,$id_loja);
+
                 $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave WHERE id_loja=:id_loja ";
 
-
+               
                 $sql = $this->db->prepare($sql);
                 $sql->bindParam(":id_loja", $id_loja);
                 $sql->bindParam(":id_funcionario", $id);
@@ -355,14 +356,15 @@ $slug= $this->slugNotRepetir($titulo,$id_loja);
                 $sql->bindParam(":palavrachave", $palavrachave);
                 $sql->bindParam(":slug", $slug);
                 $sql->bindParam(":titulo", $titulo);
-
-                $sql->execute();
+               
+               
+               
             }
-
+ $sql->execute();
             if ($sql->rowCount() > 0) {
-             
+               
                 if (count($fotos) > 0) {
-                 
+                
                     for ($q = 0; $q < count($fotos['tmp_name']); $q++) {
 
                         $tipo2 = $fotos['type'][$q];
@@ -405,7 +407,10 @@ $slug= $this->slugNotRepetir($titulo,$id_loja);
                             $sql->bindValue(":url",$tmpname);
                             $sql->execute();
                             if ($sql->rowCount() > 0) {
-                                 if (count($fotos2) > 0) {
+                                return TRUE;
+                         
+                }
+                       if (count($fotos2) > 0) {
 
                     for ($q2 = 0; $q2 < count($fotos2['tmp_name']); $q2++) {
 
@@ -445,17 +450,111 @@ $slug= $this->slugNotRepetir($titulo,$id_loja);
                             $sql = $this->db->query($sql);
                             $sql->execute();
                             if ($sql->rowCount() > 0) {
-                                
+                                return TRUE;
                             } 
                             } 
                         }
                     }
-                }
-               
                         }
                     }
                 }
-            }
+           return TRUE;
+                }
+                 if (count($fotos) > 0) {
+                
+                    for ($q = 0; $q < count($fotos['tmp_name']); $q++) {
+
+                        $tipo2 = $fotos['type'][$q];
+
+
+                        if (in_array($tipo2, array('image/jpeg', 'image/png'))) {
+
+
+                            $tmpname = md5(time() . rand(0, 999)) . '.jpg';
+                            $diretorio = "upload/";
+
+                            move_uploaded_file($fotos['tmp_name'][$q], $diretorio . $tmpname);
+
+                            list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
+                            $ratio = $width_orig / $height_orig;
+//limite permitido proporcional
+                            $width = 960;
+                            $height = 720;
+                            if ($width / $height > $ratio) {
+                                $width = $height + $ratio;
+                            } else {
+                                $height = $width / $ratio;
+                            }
+
+                            $img = imagecreatetruecolor($width, $height);
+                            if ($fotos['type'][$q] == 'image/jpeg') {
+                                $origi = imagecreatefromjpeg($diretorio . $tmpname);
+                            } elseif ($tipo2 == 'image/png') {
+                                $origi = imagecreatefrompng($diretorio . $tmpname);
+                            }
+
+                            imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
+                            imagejpeg($img, $diretorio . $tmpname, 80);
+
+                            $sql = "INSERT INTO url_imagens SET loja_id_loja=:loja_id_loja, url=:url";
+
+
+                            $sql = $this->db->prepare($sql);
+                            $sql->bindValue(":loja_id_loja",$id_loja);
+                            $sql->bindValue(":url",$tmpname);
+                            $sql->execute();
+                            if ($sql->rowCount() > 0) {
+                                return TRUE;
+                         
+                }
+                       if (count($fotos2) > 0) {
+
+                    for ($q2 = 0; $q2 < count($fotos2['tmp_name']); $q2++) {
+
+                        $tipo3 = $fotos2['type'][$q2];
+
+
+                        if (in_array($tipo3, array('image/jpeg', 'image/png'))) {
+
+                            $tmpname = md5(time() . rand(0, 999)) . '.jpg';
+                            $diretorio = "upload/equipes/";
+
+                            move_uploaded_file($fotos2['tmp_name'][$q2], $diretorio . $tmpname);
+
+                            list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
+                            $ratio = $width_orig / $height_orig;
+//limite permitido proporcional
+                            $width = 960;
+                            $height = 720;
+                            if ($width / $height > $ratio) {
+                                $width = $height + $ratio;
+                            } else {
+                                $height = $width / $ratio;
+                            }
+
+                            $img = imagecreatetruecolor($width, $height);
+                            if ($fotos2['type'][$q2] == 'image/jpeg') {
+                                $origi = imagecreatefromjpeg($diretorio . $tmpname);
+                            } elseif ($tipo3 == 'image/png') {
+                                $origi = imagecreatefrompng($diretorio . $tmpname);
+                            }
+
+                            imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
+                            imagejpeg($img, $diretorio . $tmpname, 80);
+
+                            $sql = "INSERT INTO url_equipes SET loja_id_loja='$id_loja', url='$tmpname'";
+
+                            $sql = $this->db->query($sql);
+                            $sql->execute();
+                            if ($sql->rowCount() > 0) {
+                                return TRUE;
+                            } 
+                            } 
+                        }
+                    }
+                        }
+                    }
+                }
 
 
         } catch (Exception $ex) {
@@ -503,21 +602,7 @@ try{
         }
     }
 
-    public function listarRamo() {
-        $array = array();
-        try {
-            $sql = "SELECT * FROM ramo_atividade";
-            $sql = $this->db->prepare($sql);
-            $sql->execute();
-            if ($sql->rowCount() > 0) {
-                $array = $sql->fetchAll();
-                return $array;
-            }
-        } catch (Exception $ex) {
-            echo 'Falhou:' . $ex->getMessage();
-        }
-    }
-
+  
     public function listarCliente($id) {
         $array = array();
         try {
