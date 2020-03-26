@@ -67,8 +67,8 @@ width: 100%;
 
 
 #buscador{
-    padding-bottom: 200px;
-    padding-top: 85px;
+   /* padding-bottom: 200px;
+    padding-top: 85px;*/
 }
 
 #linha{
@@ -125,7 +125,7 @@ width: 100%;
     display:none;
 }
 .login-container{
-    margin-top: 5%;
+    margin-top: 15%;
     margin-bottom: 5%;
 }
 .login-form-1{
@@ -145,8 +145,13 @@ width: 100%;
     text-align: center;
     color: #fff;
 }
+.login-form-2 h1{
+    text-align: center;
+    color: #fff;
+}
 .login-container form{
-    padding: 10%;
+    /* padding: 10%;
+*/
 }
 .btnSubmit
 {

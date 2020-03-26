@@ -1,16 +1,7 @@
 
 
-    <div class="container my-5">
-        <div class="row">
-            <div class="col mt-3">
-        <div class="form-group">
-            <a href="<?php BASE_URL; ?>comercio"><button  class="btn btn-warning">Quero Ver Todos</button></a>
-            <a href="<?php BASE_URL; ?>comercio"><button  class="btn btn-warning">Quero Ver as Promoções</button></a>
-            <a href="<?php BASE_URL; ?>comercio"><button  class="btn btn-warning">Quero Ver os Eventos</button></a>
-
-        </div>
-                </div>
-            </div>
+    <div class="container">
+       
 <!--        <div id="carouselSite" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -42,7 +33,8 @@
                 <span class="sr-only">Próximo</span>
             </a>
         </div>-->
-
+<div class="jumbotron">
+    
  <div class="h1 text-center mt-5"> Buscador Cabreúva</div>
  <div class="h5 text-center">Encontre Lojas e Serviços</div>
         <div id="buscador">
@@ -66,8 +58,19 @@
                 </div>
 
             </form>  
+            </div>
+</div>
 
+ <div class="row">
+            <div class="col mt-3">
+        <div class="form-group">
+            <a href="<?php BASE_URL; ?>comercio"><button  class="btn btn-warning">Quero Ver Todos</button></a>
+            <a href="<?php BASE_URL; ?>comercio"><button  class="btn btn-warning">Quero Ver as Promoções</button></a>
+            <a href="<?php BASE_URL; ?>comercio"><button  class="btn btn-warning">Quero Ver os Eventos</button></a>
 
+        </div>
+                </div>
+            </div>
         </div>
         <?php if ($viewData['lista_palavra'] != ""): ?>
   <div class="h1 text-center"> Resultado</div>
@@ -112,27 +115,27 @@
         <div class="row">
             <div class="col-md">
                 <a href="<?php BASE_URL;?>food"> <img src="assets/images/fastfood-cabreuva.jpg" id="icone" class="img-thumbnail"/></a>
-                FASTFOOD <span class="badge badge-dark">3</span>
+                Comidas <span class="badge badge-dark">3</span>
             </div>
             <div class="col-md">
 
                 <a href=""> <img src="assets/images/drink-cabreuva.jpg" id="icone"  class="img-thumbnail"/></a>
-                DRINK'S<span class="badge badge-dark">8</span>
+                Serviços<span class="badge badge-dark">8</span>
             </div>
             <div class="col-md">
 
                 <a href=""> <img src="assets/images/diversao-cabreuva.png" id="icone"  class="img-thumbnail"/></a>
-                DIVERSÃO<span class="badge badge-dark">9</span>
+                Diversão<span class="badge badge-dark">9</span>
             </div>
             <div class="col-md">
 
                 <a href=""> <img src="assets/images/evento-cabreuva.jpg" id="icone"  class="img-thumbnail"/></a>
-                EVENTOS<span class="badge badge-dark">Dark</span>
+                Eventos<span class="badge badge-dark">Dark</span>
             </div>
             <div class="col-md">
 
                 <a href=""> <img src="assets/images/restaurante-cabreuva.png" id="icone"  class="img-thumbnail"/></a>
-                RESTAURANTES<span class="badge badge-dark">Dark</span>
+                Outros<span class="badge badge-dark">Dark</span>
             </div>
         </div>
         
