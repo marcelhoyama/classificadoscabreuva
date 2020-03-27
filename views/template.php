@@ -24,7 +24,7 @@
                 <ul class="navbar-nav ml-auto" >
                     <li class="nav-item"><a href="<?php BASE_URL; ?>home" class="nav-link">Home</a></li>
                      <li class="nav-item"><a href="<?php BASE_URL; ?>comerciante/" class="nav-link">Comerciante</a></li>
-                    <li class="nav-item">  <a href="<?php BASE_URL; ?>contato" class="nav-link">Prestador de Serviço</a></li>
+                    <li class="nav-item">  <a href="<?php BASE_URL; ?>prestacao-servico" class="nav-link">Prestador de Serviço</a></li>
                   <li class="nav-item">  <a href="<?php BASE_URL; ?>login_entrar" class="nav-link">Entrar</a></li>
          <!--             <li class="nav-item">  <a href="login/cadastrar" class="nav-link">Cadastrar-se</a></li>-->
 
