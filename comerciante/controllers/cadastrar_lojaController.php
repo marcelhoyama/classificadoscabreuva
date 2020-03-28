@@ -4,17 +4,17 @@ class cadastrar_lojaController extends controller {
 
     public function __construct() {
         parent::__construct();
-        $f = new funcionarios();
-        $f->verificarLogin();
+        $c = new clientes();
+        $c->verificarLogin();
     }
 
     public function index() {
         $dados = array('erro' => '', 'ok' => '', 'listarRamo' => '', 'listarCliente' => '');
 
-        $f = new funcionarios();
-        $id = $_SESSION['lg'];
-        $dados['nomefunc'] = $f->getName($id);
-        $dados['id_funcionario'] = $id;
+//        $f = new funcionarios();
+//        $id = $_SESSION['lg'];
+//        $dados['nomefunc'] = $f->getName($id);
+//        $dados['id_funcionario'] = $id;
         $c = new clientes();
         $l = new lojas();
         $dados['listarRamo'] = $c->listarRamo();
@@ -112,7 +112,7 @@ class cadastrar_lojaController extends controller {
            }
         }
 
-            $this->loadTemplate_func('cadastrar_loja', $dados);
+            $this->loadTemplate_3('cadastrar_loja', $dados);
         }
     }
     

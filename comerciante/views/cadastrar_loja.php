@@ -7,21 +7,8 @@
     <div class="text-center h3">Cadastrar Loja</div>
    
     <form id="cadastrarloja" method="POST" enctype="multipart/form-data">
-        <div class="row">
-            
-        <div class="control-group col-sm">
-                 <label for="">Funcionário:</label> <label class="text-danger"></label></br>
-               
-            <input type="text" class="form-control"  name="funcionario_id" value="<?php echo $viewData['nomefunc'];?> " disabled="">
-        </div>
-             <div class="control-group col-sm">
-                 <label for="">Nome do Cliente:</label> <label class="text-danger"></label></br>
-               
-            <input type="text" class="form-control"  name="nome_cliente" value="<?php echo $viewData['nomeCliente'];?> " disabled>
-               <input type="text" class="form-control"  name="id_cliente" value="<?php echo $viewData['id_cliente'];?> " disabled="">
-        </div>
-        </div>
-          <div class="danger">
+          
+        <div class="danger">
             <?php if (isset($erro) && !empty($erro)): ?>
                 <div class="alert alert-danger"><?php echo $erro; ?></div> 
             <?php endif; ?>
@@ -31,6 +18,23 @@
                 <div class="alert alert-success"><?php echo $ok; ?></div> 
             <?php endif; ?>
         </div>
+        
+        <div class="row">
+            
+        <div class="control-group col-sm">
+                 <label for="">CNPJ:</label> <label class="text-danger"></label></br>
+               
+            <input type="text" class="form-control"  name="cnpj" >
+        </div>
+<!--             <div class="control-group col-sm">
+                 <label for="">Razão Social:</label> <label class="text-danger"></label></br>
+               
+            <input type="text" class="form-control"  name="rsocial" >
+               <label for="">Nome Fantasia:</label> <label class="text-danger"></label></br>
+               <input type="text" class="form-control"  name="fantasia">
+        </div>-->
+        </div>
+    
   
       <br>
       <div class="row">

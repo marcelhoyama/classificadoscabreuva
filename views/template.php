@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF=8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"/>
-        <link rel="stylesheet" href="<?php BASE_URL; ?>assets/css/bootstrap.min_1.css"/>
+        <link rel="stylesheet" href="<?php BASE_URL; ?>assets/css/bootstrap.min.css"/>
          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/2c2e52caea.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="<?php BASE_URL; ?>assets/css/style.css"/>
@@ -39,16 +39,17 @@
 
 
         <?php $this->loadViewInTemplate($viewName, $viewData); ?>
+          </body>
         <footer id="footer" class="footer">
     <div class="container">
         <div class="row">
             <div class="col">
                 <h5 class="" style="color:#d1ecf1;"> Redes Sociais dos parceiros</h5>
-                <a href="#" id="link" > <p>Lopes Veiculos</p></a>
+         
                 <a href="#" id="link"> <p>IPC - Instituto Projeto Ceifeiros</p></a>
                 <a href="#" id="link"> <p>Guguili Baby</p></a>
                 <a href="#" id="link" > <p>Ótica Uniart</p></a>
-                <a href="#" id="link"> <p>Rádio Japi</p></a>
+           
                 <a href="https://www.dmrimoveiscabreuva.com.br" id="link">  <p>DMR Imoveis em Cabreúva</p></a>
                 <a href="http://www.didipedras.com.br" id="link">  <p>Didipedras Cabreúva</p></a>
             </div>
@@ -71,8 +72,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
       
 
-        <script type="text/javascript" scr="<?php BASE_URL; ?>assets/js/script.js"></script>
-        <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery-3.1.1.min.js"></script>
+       
+<!--        <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery-3.1.1.min.js"></script>-->
 
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.validate.js"></script>
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/additional-methods.min.js"></script>
@@ -80,7 +81,7 @@
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/script.js"></script>
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.mask.js"></script>
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/validarcampos.js"></script>
-    </body>
+
 
 
 

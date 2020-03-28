@@ -11,7 +11,7 @@ class login_entrarController extends controller {
         $dados = array();
 
 
-        if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['user']) && !empty($_POST['user'])) {
+        if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) && !empty($_POST['senha'])) {
 
             if ($_POST['user'] == 'usuario') {
                 $email = addslashes(trim($_POST['email']));

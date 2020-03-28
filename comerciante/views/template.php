@@ -8,13 +8,13 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style.css"/>
+<link rel="stylesheet" href="<?php BASE_URL; ?>assets/css/style.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <div class="container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" href="<?php BASE_URL; ?>..">
          <img src="<?php BASE_URL; ?>assets/images/logo.png" width="80" height="60" class="d-inline-block " alt="Buscador Cabreúva">
   Buscador Cabreúva</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,21 +26,21 @@
         <a class="nav-link" href="<?php BASE_URL; ?>home">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php BASE_URL; ?>servicos">Serviços</a>
+        <a class="nav-link" href="<?php BASE_URL; ?>login_entrar">Já sou Cadastrado</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Fazer parte</a>
+        <a class="nav-link btn-danger" href="#">Fazer parte</a>
       </li>
-      <li class="nav-item dropdown">
+<!--      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Contato
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-<!--          <a class="dropdown-item" href="#">Orçamento</a>-->
+          <a class="dropdown-item" href="#">Orçamento</a>
           <a class="dropdown-item" href="#">Parceria</a>
           
         </div>
-      </li>
+      </li>-->
     </ul>
   </div>
 </nav>

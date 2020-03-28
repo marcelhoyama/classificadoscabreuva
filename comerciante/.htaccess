@@ -3,5 +3,22 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
 
+#RewriteEngine On
+
+
+
+
+# DO NOT REMOVE THIS LINE AND THE LINES BELOW SSL_REDIRECT:buscadorcabreuva.com.br
+#RewriteEngine On
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{HTTP:X-Forwarded-Proto} !https
+#RewriteCond %{HTTPS} off
+#RewriteCond %{HTTP_HOST} ^buscadorcabreuva.com.br$
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# DO NOT REMOVE THIS LINE AND THE LINES ABOVE SSL_REDIRECT:buscadorcabreuva.com.br
+
+
+#RewriteRule ^(.*)$ /comerciante/index.php?url=$1 [QSA,L]
 
 

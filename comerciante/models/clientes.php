@@ -109,7 +109,7 @@ class clientes extends model {
           
                 if($senha == $resenha){
             
-                $sql = "INSERT INTO clientes SET nome=:nome,telefone=:telefone,sexo=:sexo,email=:email,senha=:senha,data=:data,status=:status ";
+                $sql = "INSERT INTO clientes SET nome=:nome,telefone=:telefone,sexo=:sexo,email=:email,senha=:senha ";
                 $sql = $this->db->prepare($sql);
                 
                
@@ -122,29 +122,12 @@ class clientes extends model {
                 $sql->bindValue(":senha", $senha);
                  
                 $sql->bindValue(":telefone", $telefone);
-                 $sql->bindValue(":data",'now()');
-                   $sql->bindValue(":status",1);
+               
     
                 $sql->execute();
            
                 if ($sql->rowCount() > 0) {
-                     $id = $this->db->lastInsertId();
-                        $sql = "SELECT * FROM clientes WHERE id_clientes=$id";
-                        $sql = $this->db->prepare($sql);
-                        $sql->execute();
-                        $sql = $sql->fetch();
-                        $_SESSION['lgCliente'] = $sql['id_clientes'];
-                        $_SESSION['lgname'] = $sql['nome'];
-                        $id = $_SESSION['lgCliente'];
-                        $ip = $_SERVER['REMOTE_ADDR'];
-
-                        $sql = "UPDATE clientes SET ip=:ip WHERE id_clientes=:id";
-                        $sql = $this->db->prepare($sql);
-                        $sql->bindValue(":ip", $ip);
-                        $sql->bindValue(":id", $id);
-                        $sql->execute();
-
-                       
+                   
                     header("Location:" . BASE_URL . "menuprincipal_loja");
                     exit();
                 } else {

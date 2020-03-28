@@ -71,7 +71,7 @@
         </div>
                 </div>
             </div>
-        </div>
+       
         <?php if ($viewData['lista_palavra'] != ""): ?>
   <div class="h1 text-center"> Resultado</div>
             <table class="table table-hover">
@@ -204,7 +204,7 @@
 
         </div>-->
 
-
+ 
     </div>
     <br>
 

@@ -5,7 +5,7 @@
     
         
         
-    <p class="h1 text-center">Bem-vindo ao Buscador Cabreúva</p>
+    <p class="h1 text-center">Bem-vindo,comerciante/prestador serviço! Ao Buscador Cabreúva</p>
        <div class="danger">
         <?php if (isset($erro) && !empty($erro)): ?>
             <div class="alert alert-danger"><?php echo $erro; ?></div> 
@@ -16,7 +16,7 @@
 <div class="container login-container">
             <div class="row">
                 <div class="col-md-6 ml-auto login-form-2">
-                    <h1>Falta pouco para buscar que precisa!</h1>
+                   
                     <h3>Entre com seus dados</h3>
                     <form method="POST" id="login">
                         <input type="text" name="user" value="usuario" hidden="hidden"/>
@@ -30,27 +30,14 @@
                             <input type="submit" class="btnSubmit" value="Entrar" />
                         </div>
                         <div class="form-group">
-                            <a href="#" class="ForgetPwd">Esqueceu a senha?</a><a href="#"  class="ForgetPwd" data-toggle="modal" data-target="#janela" >  Cadastrar-se</a>
+                            <a href="#" class="ForgetPwd">Esqueceu a senha?</a><a href="<?php BASE_URL;?>login_comerciante"  class="ForgetPwd"  >  Cadastrar-se</a>
                         </div>
                    
                     
                     
                     </form>
                     
-                        <div class="modal fade" id="janela">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5>Qual seu perfil?</h5>
-                                        <button class="close" data-dismiss="modal"><span>&times;</span></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <a href="<?php BASE_URL;?>login_comerciante" class="btn btn-primary">Comerciante/Serviço</a>
-                                        <a href="<?php BASE_URL;?>login_consumidor" class="btn btn-primary">Consumidor</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       
                 </div>
             
             </div>
