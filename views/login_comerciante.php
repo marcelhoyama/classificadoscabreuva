@@ -4,7 +4,7 @@
 
 <div class="container">
     
-   <h2 class="text-center">Cadastrar-se</h2>
+   <h2 class="text-center">Olá, comerciante/ Prestador de Serviço! Cadastra-se</h2>
     
        <br><br>
     <form name="cadastrarusuarios" id="cadastrarusuarios" class="form-group-sm" method="POST" autocomplete="off" >
@@ -18,7 +18,7 @@
         <div class="form-group">
             
             <label for="fone">Telefone Celular:</label> <label class="text-danger"> campo obrigatorio!</label>
-            <input name="telefone"  type="tel" class="form-control" id="fone" placeholder="DDD + numero">
+            <input name="telefone"  type="tel" class="form-control" id="celular" placeholder="DDD + numero">
         </div>
         
       
@@ -37,13 +37,13 @@
         </div>
 
       <div class="form-group">
-            <label for="senha">Senha:</label> <label class="text-danger"> campo obrigatorio!</label>
-            <input name="senha" type="password" class="form-control" id="senha" >
+            <label for="senha">Senha* (minimo 6 caracteres):</label> <label class="text-danger"> campo obrigatorio!</label>
+            <input name="senha" type="password" class="form-control" id="senha" maxlength="6" >
         </div>
         
         <div class="form-group">
             <label for="senha">Repita a Senha:</label> <label class="text-danger"> campo obrigatorio!</label>
-            <input name="resenha" type="password" class="form-control" id="resenha" placeholder="repita a senha">
+            <input name="resenha" type="password" class="form-control" id="resenha" placeholder="repita a senha" maxlength="6">
         </div>
 
         <div class="form-group">
@@ -67,7 +67,7 @@
 
 </div>
   
-<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery-3.1.1.min.js"></script> <!--! validacao somente com essa versao jquery311 -->
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.validate.js"></script>

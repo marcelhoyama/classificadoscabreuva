@@ -97,29 +97,35 @@ class clientes extends model {
         }
     }
 
-    public function cadastrar($nome, $email, $telefone, $sexo, $status) {
+    public function cadastrar($nome, $email, $telefone, $sexo, $senha, $resenha) {
         try {
-            
+           
             $sql = "SELECT email FROM clientes WHERE email=:email ";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":email", $email);
             $sql->execute();
             //caso retorne 0 quer dizer que não existe o email
             if ($sql->rowCount() == 0) {
-              
-                $id_funcionario = 1;
-                $sql = "INSERT INTO clientes SET funcionarios_id_funcionarios=:id_funcionario,nome=:nome,telefone=:telefone,sexo=:sexo,email=:email, status=:status ";
+          
+                if($senha == $resenha){
+            
+                $sql = "INSERT INTO clientes SET nome=:nome,telefone=:telefone,sexo=:sexo,email=:email,senha=:senha ";
                 $sql = $this->db->prepare($sql);
-                $sql->bindValue(":id_funcionario", $id_funcionario);
+                
                
                 $sql->bindValue(":nome", $nome);
+               
                 $sql->bindValue(":sexo", $sexo);
+               
                 $sql->bindValue(":email", $email);
-               // $sql->bindValue(":senha", $senha);
+               
+                $sql->bindValue(":senha", $senha);
+                 
                 $sql->bindValue(":telefone", $telefone);
-                $sql->bindValue(":status",$status);
-  
+               
+    
                 $sql->execute();
+           
                 if ($sql->rowCount() > 0) {
                    
                     header("Location:" . BASE_URL . "menuprincipal_loja");
@@ -127,6 +133,7 @@ class clientes extends model {
                 } else {
                     return "Não foi posssivel cadastrar! Verifique os campos se estão preenchidos corretamente e tente novamente!";
                 }
+            }
             } else {
                 return "Já existe um cadastro! ";
             }
