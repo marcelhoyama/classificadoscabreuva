@@ -23,7 +23,7 @@
         <div class="row">
             
         <div class="control-group col-sm">
-                 <label for="">CNPJ:</label> <label class="text-danger">se não tiver CNPJ use seu CPF</label></br>
+                 <label for="">CNPJ:</label> <label class="text-danger">se não tiver registro CNPJ use seu CPF</label></br>
                
                  <input type="text" class="form-control"  name="cnpj" placeholder="somente numeros" >
                    <label for="">CPF:</label> <label class="text-danger"></label></br>
@@ -44,13 +44,13 @@
       <br>
       <div class="row">
                      <div class="form-group col-sm-3">
-                         <label for="status">Anunciar no site:</label> <label class="text-danger">obrigatorio*</label></br>
+                         <label for="status">Anunciar a loja/serviço no site:</label> <label class="text-danger">obrigatorio*</label></br>
                 <div class="checkbox-inline">
-                    <label><input type="radio" name="anuncio_site" id="status" value="Liberado"  >Liberar</label> 
+                    <label><input type="radio" name="anuncio_site" id="status" value="0"  >Liberar</label> 
                     </div>
 
                     <div class="checkbox-inline">
-                        <label><input type="radio" name="anuncio_site" id="status" value="Bloqueado" checked="checked">Bloquear</label>
+                        <label><input type="radio" name="anuncio_site" id="status" value="1" checked="checked">Bloquear</label>
                     </div>
               </div>
            <div class="form-group col">

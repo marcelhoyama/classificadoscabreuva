@@ -5,14 +5,32 @@ class lojas extends model {
     public function verificarCnpj($cnpj) {
         try {
 
-            $sql = "SELECT cnpj FROM lojas WHERE cnpj=:cnpj";
+            $sql = "SELECT cnpj FROM loja WHERE cnpj=:cnpj";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":cnpj", $cnpj);
             $sql->execute();
             if ($sql->rowCount() > 0) {
-                return TRUE;
+                return "Já existe esse CNPJ!";
+                exit;
             } else {
-                return FALSE;
+                
+            }
+        } catch (Exception $ex) {
+            echo 'Falhou:' . $ex->getMessage();
+        }
+    }
+
+    public function verificarCPF($cpf) {
+        try {
+
+            $sql = "SELECT cpf FROM clientes WHERE cpf=:cpf";
+            $sql = $this->db->prepare($sql);
+            $sql->bindValue(":cpf", $cpf);
+            $sql->execute();
+            if ($sql->rowCount() == 0) {
+                
+            } else {
+                return "Já existe um cadastro! ";
             }
         } catch (Exception $ex) {
             echo 'Falhou:' . $ex->getMessage();
@@ -55,10 +73,19 @@ class lojas extends model {
         }
     }
 
-    public function cadastrar($id, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria , $foto,$fotos,$fotos2,$palavrachave,$titulo,$cnpj) {
+    public function cadastrar($id_funcionario, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria , $foto,$fotos,$fotos2,$palavrachave,$titulo,$cnpj,$cpf) {
         try {
-
-
+ if (!empty($cnpj)) {
+             $sql = "SELECT cnpj FROM loja WHERE cnpj=:cnpj";
+            $sql = $this->db->prepare($sql);
+            $sql->bindValue(":cnpj", $cnpj);
+            $sql->execute();
+            if ($sql->rowCount() > 0) {
+                return "Já existe esse CNPJ!";
+                
+            } else {
+                
+            
 
             if (!empty($foto['tmp_name'][0])) {
 
@@ -93,146 +120,149 @@ class lojas extends model {
                 }
             }
 
-            $slug = '';
-            if (isset($titulo)) {
-                $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($titulo)));
-                $sql = "SELECT slug FROM loja WHERE slug LIKE '$slug%' ";
-                $sql = $this->db->prepare($sql);
-                $sql->execute();
-                if ($sql->rowCount() > 0) {
-                    return "Já exite esse titulo(nome fantasia)";
-                } else {
 
 
-
-                    $sql = "INSERT INTO loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj,data=:data ";
-
-
+                $slug = '';
+                if (isset($titulo)) {
+                    $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($titulo)));
+                    $sql = "SELECT slug FROM loja WHERE slug LIKE '$slug%' ";
                     $sql = $this->db->prepare($sql);
-                    $sql->bindParam(":id_funcionario", $id);
-                    $sql->bindParam(":id_cliente", $id_cliente);
-                    $sql->bindParam(":anuncio_site", $anuncio_site);
-                    $sql->bindParam(":tipo_categoria", $tipo_categoria);
-                    $sql->bindParam(":nome_fantasia", $nome_fantasia);
-                    $sql->bindParam(":razao_social", $razao_social);
-                    $sql->bindParam(":endereco", $endereco);
-                    $sql->bindParam(":bairro", $bairro);
-                    $sql->bindParam(":cidade", $cidade);
-                    $sql->bindParam(":telefone1", $telefone1);
-                    $sql->bindParam(":telefone2", $telefone2);
-                    $sql->bindParam(":status", $status);
-                    $sql->bindParam(":whatsapp", $whatsapp);
-                    $sql->bindParam(":email", $email);
-                    $sql->bindParam(":facebook", $facebook);
-                    $sql->bindParam(":youtube", $youtube);
-                    $sql->bindParam(":instagram", $instagram);
-                    $sql->bindParam(":site", $site);
-                    $sql->bindParam(":descricao", $descricao);
-                    $sql->bindParam(":chamada", $chamada);
-                    $sql->bindParam(":prova", $prova);
-                    $sql->bindParam(":apresentacao", $apresentacao);
-                    $sql->bindParam(":produto", $produtos);
-                    $sql->bindParam(":acao", $acao);
-                    $sql->bindParam(":palavrachave", $palavrachave);
-                    $sql->bindParam(":url_imagem_principal", $tmpname);
-                    $sql->bindParam(":slug", $slug);
-                    $sql->bindParam(":titulo", $titulo);
-                    $sql->bindParam(":cnpj",$cnpj);
-                    $sql->bindParam(":data", 'NOW()');
                     $sql->execute();
-
-                    $id = $this->db->lastInsertId();
                     if ($sql->rowCount() > 0) {
-
-                        if (count($fotos2) > 0) {
-
-                            for ($q = 0; $q < count($fotos2['tmp_name']); $q++) {
-
-                                $tipo3 = $fotos2['type'][$q];
+                        return "Já exite esse titulo(nome fantasia)";
+                    } else {
 
 
-                                if (in_array($tipo3, array('image/jpeg', 'image/png'))) {
 
-                                    $tmpname = md5(time() . rand(0, 999)) . '.jpg';
-                                    $diretorio = "upload/equipes/";
+                        $sql = "INSERT INTO loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj,data=:data ";
 
-                                    move_uploaded_file($fotos2['tmp_name'][$q], $diretorio . $tmpname);
 
-                                    list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
-                                    $ratio = $width_orig / $height_orig;
+                        $sql = $this->db->prepare($sql);
+                        $sql->bindParam(":id_funcionario", $id_funcionario);
+                        $sql->bindParam(":id_cliente", $id_cliente);
+                        $sql->bindParam(":anuncio_site", $anuncio_site);
+                        $sql->bindParam(":tipo_categoria", $tipo_categoria);
+                        $sql->bindParam(":nome_fantasia", $nome_fantasia);
+                        $sql->bindParam(":razao_social", $razao_social);
+                        $sql->bindParam(":endereco", $endereco);
+                        $sql->bindParam(":bairro", $bairro);
+                        $sql->bindParam(":cidade", $cidade);
+                        $sql->bindParam(":telefone1", $telefone1);
+                        $sql->bindParam(":telefone2", $telefone2);
+                        $sql->bindParam(":status", $status);
+                        $sql->bindParam(":whatsapp", $whatsapp);
+                        $sql->bindParam(":email", $email);
+                        $sql->bindParam(":facebook", $facebook);
+                        $sql->bindParam(":youtube", $youtube);
+                        $sql->bindParam(":instagram", $instagram);
+                        $sql->bindParam(":site", $site);
+                        $sql->bindParam(":descricao", $descricao);
+                        $sql->bindParam(":chamada", $chamada);
+                        $sql->bindParam(":prova", $prova);
+                        $sql->bindParam(":apresentacao", $apresentacao);
+                        $sql->bindParam(":produto", $produtos);
+                        $sql->bindParam(":acao", $acao);
+                        $sql->bindParam(":palavrachave", $palavrachave);
+                        $sql->bindParam(":url_imagem_principal", $tmpname);
+                        $sql->bindParam(":slug", $slug);
+                        $sql->bindParam(":titulo", $titulo);
+                        $sql->bindParam(":cnpj", $cnpj);
+                        $sql->bindParam(":data", 'NOW()');
+                        $sql->execute();
+
+                        $id = $this->db->lastInsertId();
+                        if ($sql->rowCount() > 0) {
+
+                            if (count($fotos2) > 0) {
+
+                                for ($q = 0; $q < count($fotos2['tmp_name']); $q++) {
+
+                                    $tipo3 = $fotos2['type'][$q];
+
+
+                                    if (in_array($tipo3, array('image/jpeg', 'image/png'))) {
+
+                                        $tmpname = md5(time() . rand(0, 999)) . '.jpg';
+                                        $diretorio = "upload/equipes/";
+
+                                        move_uploaded_file($fotos2['tmp_name'][$q], $diretorio . $tmpname);
+
+                                        list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
+                                        $ratio = $width_orig / $height_orig;
 //limite permitido proporcional
-                                    $width = 960;
-                                    $height = 720;
-                                    if ($width / $height > $ratio) {
-                                        $width = $height + $ratio;
-                                    } else {
-                                        $height = $width / $ratio;
-                                    }
+                                        $width = 960;
+                                        $height = 720;
+                                        if ($width / $height > $ratio) {
+                                            $width = $height + $ratio;
+                                        } else {
+                                            $height = $width / $ratio;
+                                        }
 
-                                    $img = imagecreatetruecolor($width, $height);
-                                    if ($fotos2['type'][$q] == 'image/jpeg') {
-                                        $origi = imagecreatefromjpeg($diretorio . $tmpname);
-                                    } elseif ($tipo == 'image/png') {
-                                        $origi = imagecreatefrompng($diretorio . $tmpname);
-                                    }
+                                        $img = imagecreatetruecolor($width, $height);
+                                        if ($fotos2['type'][$q] == 'image/jpeg') {
+                                            $origi = imagecreatefromjpeg($diretorio . $tmpname);
+                                        } elseif ($tipo == 'image/png') {
+                                            $origi = imagecreatefrompng($diretorio . $tmpname);
+                                        }
 
-                                    imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
-                                    imagejpeg($img, $diretorio . $tmpname, 80);
+                                        imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
+                                        imagejpeg($img, $diretorio . $tmpname, 80);
 
-                                    $sql = "INSERT INTO url_equipes SET loja_id_loja='$id', url='$tmpname'";
+                                        $sql = "INSERT INTO url_equipes SET loja_id_loja='$id', url='$tmpname'";
 
-                                    $sql = $this->db->query($sql);
-                                    if ($sql->rowCount() > 0) {
-
-
-                                        if (count($fotos) > 0) {
-
-                                            for ($q = 0; $q < count($fotos['tmp_name']); $q++) {
-
-                                                $tipo2 = $fotos['type'][$q];
+                                        $sql = $this->db->query($sql);
+                                        if ($sql->rowCount() > 0) {
 
 
-                                                if (in_array($tipo2, array('image/jpeg', 'image/png'))) {
+                                            if (count($fotos) > 0) {
 
-                                                    $tmpname = md5(time() . rand(0, 999)) . '.jpg';
-                                                    $diretorio = "upload/";
+                                                for ($q = 0; $q < count($fotos['tmp_name']); $q++) {
 
-                                                    move_uploaded_file($fotos['tmp_name'][$q], $diretorio . $tmpname);
+                                                    $tipo2 = $fotos['type'][$q];
 
-                                                    list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
-                                                    $ratio = $width_orig / $height_orig;
+
+                                                    if (in_array($tipo2, array('image/jpeg', 'image/png'))) {
+
+                                                        $tmpname = md5(time() . rand(0, 999)) . '.jpg';
+                                                        $diretorio = "upload/";
+
+                                                        move_uploaded_file($fotos['tmp_name'][$q], $diretorio . $tmpname);
+
+                                                        list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
+                                                        $ratio = $width_orig / $height_orig;
 //limite permitido proporcional
-                                                    $width = 960;
-                                                    $height = 720;
-                                                    if ($width / $height > $ratio) {
-                                                        $width = $height + $ratio;
-                                                    } else {
-                                                        $height = $width / $ratio;
-                                                    }
+                                                        $width = 960;
+                                                        $height = 720;
+                                                        if ($width / $height > $ratio) {
+                                                            $width = $height + $ratio;
+                                                        } else {
+                                                            $height = $width / $ratio;
+                                                        }
 
-                                                    $img = imagecreatetruecolor($width, $height);
-                                                    if ($fotos['type'][$q] == 'image/jpeg') {
-                                                        $origi = imagecreatefromjpeg($diretorio . $tmpname);
-                                                    } elseif ($tipo == 'image/png') {
-                                                        $origi = imagecreatefrompng($diretorio . $tmpname);
-                                                    }
+                                                        $img = imagecreatetruecolor($width, $height);
+                                                        if ($fotos['type'][$q] == 'image/jpeg') {
+                                                            $origi = imagecreatefromjpeg($diretorio . $tmpname);
+                                                        } elseif ($tipo == 'image/png') {
+                                                            $origi = imagecreatefrompng($diretorio . $tmpname);
+                                                        }
 
-                                                    imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
-                                                    imagejpeg($img, $diretorio . $tmpname, 80);
+                                                        imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
+                                                        imagejpeg($img, $diretorio . $tmpname, 80);
 
-                                                    $sql = "INSERT INTO url_imagens SET loja_id_loja='$id', url='$tmpname'";
+                                                        $sql = "INSERT INTO url_imagens SET loja_id_loja='$id', url='$tmpname'";
 
-                                                    $sql = $this->db->query($sql);
-                                                    if ($sql->rowCount() > 0) {
-                                                        //return true;
-                                                    } else {
-                                                        //return FALSE;
+                                                        $sql = $this->db->query($sql);
+                                                        if ($sql->rowCount() > 0) {
+                                                            //return true;
+                                                        } else {
+                                                            //return FALSE;
+                                                        }
                                                     }
                                                 }
                                             }
+                                        } else {
+                                            //return FALSE;
                                         }
-                                    } else {
-                                        //return FALSE;
                                     }
                                 }
                             }
@@ -240,14 +270,187 @@ class lojas extends model {
                     }
                 }
             }
+           
+            }else{
+                 if (!empty($cpf)) {
+                   $sql = "SELECT cpf FROM clientes WHERE cpf=:cpf";
+            $sql = $this->db->prepare($sql);
+            $sql->bindValue(":cpf", $cpf);
+            $sql->execute();
+            if ($sql->rowCount() > 0) {
+                 return "Já existe esse CPF! ";
+            } else {
+               
+          echo 'passou no verificar cpf';
+exit; 
+                $sql = "UPDATE clientes SET cpf=:cpf  WHERE id_clientes=:id_cliente";
+                $sql = $this->db->prepare($sql);
+
+                $sql->bindValue(":id_cliente", $id_cliente);
+                $sql->bindValue(":cpf", $cpf);
+                $sql->execute();
+            if ($sql->rowCount() > 0) {
+
+
+                $slug = '';
+                if (isset($titulo)) {
+                    $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($titulo)));
+                    $sql = "SELECT slug FROM loja WHERE slug LIKE '$slug%' ";
+                    $sql = $this->db->prepare($sql);
+                    $sql->execute();
+                    if ($sql->rowCount() > 0) {
+                        return "Já exite esse titulo(nome fantasia)";
+                    } else {
+
+
+
+                        $sql = "INSERT INTO loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,data=:data ";
+
+
+                        $sql = $this->db->prepare($sql);
+                        $sql->bindParam(":id_funcionario", $id_funcionario);
+                        $sql->bindParam(":id_cliente", $id_cliente);
+                        $sql->bindParam(":anuncio_site", $anuncio_site);
+                        $sql->bindParam(":tipo_categoria", $tipo_categoria);
+                        $sql->bindParam(":nome_fantasia", $nome_fantasia);
+                        $sql->bindParam(":razao_social", $razao_social);
+                        $sql->bindParam(":endereco", $endereco);
+                        $sql->bindParam(":bairro", $bairro);
+                        $sql->bindParam(":cidade", $cidade);
+                        $sql->bindParam(":telefone1", $telefone1);
+                        $sql->bindParam(":telefone2", $telefone2);
+                        $sql->bindParam(":status", $status);
+                        $sql->bindParam(":whatsapp", $whatsapp);
+                        $sql->bindParam(":email", $email);
+                        $sql->bindParam(":facebook", $facebook);
+                        $sql->bindParam(":youtube", $youtube);
+                        $sql->bindParam(":instagram", $instagram);
+                        $sql->bindParam(":site", $site);
+                        $sql->bindParam(":descricao", $descricao);
+                        $sql->bindParam(":chamada", $chamada);
+                        $sql->bindParam(":prova", $prova);
+                        $sql->bindParam(":apresentacao", $apresentacao);
+                        $sql->bindParam(":produto", $produtos);
+                        $sql->bindParam(":acao", $acao);
+                        $sql->bindParam(":palavrachave", $palavrachave);
+                        $sql->bindParam(":url_imagem_principal", $tmpname);
+                        $sql->bindParam(":slug", $slug);
+                        $sql->bindParam(":titulo", $titulo);
+                       
+                        $sql->bindParam(":data", 'NOW()');
+                        $sql->execute();
+
+                        $id = $this->db->lastInsertId();
+                        if ($sql->rowCount() > 0) {
+
+                            if (count($fotos2) > 0) {
+
+                                for ($q = 0; $q < count($fotos2['tmp_name']); $q++) {
+
+                                    $tipo3 = $fotos2['type'][$q];
+
+
+                                    if (in_array($tipo3, array('image/jpeg', 'image/png'))) {
+
+                                        $tmpname = md5(time() . rand(0, 999)) . '.jpg';
+                                        $diretorio = "upload/equipes/";
+
+                                        move_uploaded_file($fotos2['tmp_name'][$q], $diretorio . $tmpname);
+
+                                        list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
+                                        $ratio = $width_orig / $height_orig;
+//limite permitido proporcional
+                                        $width = 960;
+                                        $height = 720;
+                                        if ($width / $height > $ratio) {
+                                            $width = $height + $ratio;
+                                        } else {
+                                            $height = $width / $ratio;
+                                        }
+
+                                        $img = imagecreatetruecolor($width, $height);
+                                        if ($fotos2['type'][$q] == 'image/jpeg') {
+                                            $origi = imagecreatefromjpeg($diretorio . $tmpname);
+                                        } elseif ($tipo == 'image/png') {
+                                            $origi = imagecreatefrompng($diretorio . $tmpname);
+                                        }
+
+                                        imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
+                                        imagejpeg($img, $diretorio . $tmpname, 80);
+
+                                        $sql = "INSERT INTO url_equipes SET loja_id_loja='$id', url='$tmpname'";
+
+                                        $sql = $this->db->query($sql);
+                                        if ($sql->rowCount() > 0) {
+
+
+                                            if (count($fotos) > 0) {
+
+                                                for ($q = 0; $q < count($fotos['tmp_name']); $q++) {
+
+                                                    $tipo2 = $fotos['type'][$q];
+
+
+                                                    if (in_array($tipo2, array('image/jpeg', 'image/png'))) {
+
+                                                        $tmpname = md5(time() . rand(0, 999)) . '.jpg';
+                                                        $diretorio = "upload/";
+
+                                                        move_uploaded_file($fotos['tmp_name'][$q], $diretorio . $tmpname);
+
+                                                        list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
+                                                        $ratio = $width_orig / $height_orig;
+//limite permitido proporcional
+                                                        $width = 960;
+                                                        $height = 720;
+                                                        if ($width / $height > $ratio) {
+                                                            $width = $height + $ratio;
+                                                        } else {
+                                                            $height = $width / $ratio;
+                                                        }
+
+                                                        $img = imagecreatetruecolor($width, $height);
+                                                        if ($fotos['type'][$q] == 'image/jpeg') {
+                                                            $origi = imagecreatefromjpeg($diretorio . $tmpname);
+                                                        } elseif ($tipo == 'image/png') {
+                                                            $origi = imagecreatefrompng($diretorio . $tmpname);
+                                                        }
+
+                                                        imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
+                                                        imagejpeg($img, $diretorio . $tmpname, 80);
+
+                                                        $sql = "INSERT INTO url_imagens SET loja_id_loja='$id', url='$tmpname'";
+
+                                                        $sql = $this->db->query($sql);
+                                                        if ($sql->rowCount() > 0) {
+                                                            //return true;
+                                                        } else {
+                                                            //return FALSE;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            //return FALSE;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            }
+            }
+            }
+            
         } catch (Exception $ex) {
             echo 'Falhou:' . $ex->getMessage();
         }
     }
 
-    public function editar($id_loja, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria, $foto,$fotos,$fotos2,$palavrachave,$titulo,$cnpj) {
+    public function editar($id_loja, $id_cliente, $anuncio_site, $nome_fantasia, $razao_social, $endereco, $bairro, $cidade, $telefone1, $telefone2='', $status, $whatsapp='', $email='', $facebook='', $youtube='', $instagram='', $site='', $tipo_categoria, $foto, $fotos, $fotos2, $palavrachave='', $titulo='', $cnpj='') {
         try {
-
 
 
             if (!empty($foto['tmp_name'][0])) {
@@ -285,15 +488,15 @@ class lojas extends model {
 
 
 
-                $slug=$this->slugNotRepetir($titulo,$id_loja);
+                $slug = $this->slugNotRepetir($titulo, $id_loja);
 
 
-                $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj WHERE id_loja=:id_loja ";
+                $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj WHERE id_loja=:id_loja ";
 
-             
+
                 $sql = $this->db->prepare($sql);
                 $sql->bindParam(":id_loja", $id_loja);
-                $sql->bindParam(":id_funcionario", $id);
+              
                 $sql->bindParam(":id_cliente", $id_cliente);
                 $sql->bindParam(":anuncio_site", $anuncio_site);
                 $sql->bindParam(":tipo_categoria", $tipo_categoria);
@@ -322,17 +525,16 @@ class lojas extends model {
                 $sql->bindParam(":slug", $slug);
                 $sql->bindParam(":titulo", $titulo);
                 $sql->bindParam(":cnpj", $cnpj);
-                
             } else {
 
-$slug= $this->slugNotRepetir($titulo,$id_loja);
+               $slug = $this->slugNotRepetir($titulo, $id_loja);
 
-                $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj WHERE id_loja=:id_loja ";
+                $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj WHERE id_loja=:id_loja ";
 
-               
+
                 $sql = $this->db->prepare($sql);
                 $sql->bindParam(":id_loja", $id_loja);
-                $sql->bindParam(":id_funcionario", $id);
+                
                 $sql->bindParam(":id_cliente", $id_cliente);
                 $sql->bindParam(":anuncio_site", $anuncio_site);
                 $sql->bindParam(":tipo_categoria", $tipo_categoria);
@@ -359,15 +561,13 @@ $slug= $this->slugNotRepetir($titulo,$id_loja);
                 $sql->bindParam(":palavrachave", $palavrachave);
                 $sql->bindParam(":slug", $slug);
                 $sql->bindParam(":titulo", $titulo);
-               $sql->bindParam(":cnpj", $cnpj);
-               
-               
+                $sql->bindParam(":cnpj", $cnpj);
             }
- $sql->execute();
+            $sql->execute();
             if ($sql->rowCount() > 0) {
-               
+
                 if (count($fotos) > 0) {
-                
+
                     for ($q = 0; $q < count($fotos['tmp_name']); $q++) {
 
                         $tipo2 = $fotos['type'][$q];
@@ -406,187 +606,182 @@ $slug= $this->slugNotRepetir($titulo,$id_loja);
 
 
                             $sql = $this->db->prepare($sql);
-                            $sql->bindValue(":loja_id_loja",$id_loja);
-                            $sql->bindValue(":url",$tmpname);
+                            $sql->bindValue(":loja_id_loja", $id_loja);
+                            $sql->bindValue(":url", $tmpname);
                             $sql->execute();
                             if ($sql->rowCount() > 0) {
                                 return TRUE;
-                         
-                }
-                       if (count($fotos2) > 0) {
+                            }
+                            if (count($fotos2) > 0) {
 
-                    for ($q2 = 0; $q2 < count($fotos2['tmp_name']); $q2++) {
+                                for ($q2 = 0; $q2 < count($fotos2['tmp_name']); $q2++) {
 
-                        $tipo3 = $fotos2['type'][$q2];
+                                    $tipo3 = $fotos2['type'][$q2];
 
 
-                        if (in_array($tipo3, array('image/jpeg', 'image/png'))) {
+                                    if (in_array($tipo3, array('image/jpeg', 'image/png'))) {
 
-                            $tmpname = md5(time() . rand(0, 999)) . '.jpg';
-                            $diretorio = "upload/equipes/";
+                                        $tmpname = md5(time() . rand(0, 999)) . '.jpg';
+                                        $diretorio = "upload/equipes/";
 
-                            move_uploaded_file($fotos2['tmp_name'][$q2], $diretorio . $tmpname);
+                                        move_uploaded_file($fotos2['tmp_name'][$q2], $diretorio . $tmpname);
 
-                            list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
-                            $ratio = $width_orig / $height_orig;
+                                        list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
+                                        $ratio = $width_orig / $height_orig;
 //limite permitido proporcional
-                            $width = 960;
-                            $height = 720;
-                            if ($width / $height > $ratio) {
-                                $width = $height + $ratio;
-                            } else {
-                                $height = $width / $ratio;
+                                        $width = 960;
+                                        $height = 720;
+                                        if ($width / $height > $ratio) {
+                                            $width = $height + $ratio;
+                                        } else {
+                                            $height = $width / $ratio;
+                                        }
+
+                                        $img = imagecreatetruecolor($width, $height);
+                                        if ($fotos2['type'][$q2] == 'image/jpeg') {
+                                            $origi = imagecreatefromjpeg($diretorio . $tmpname);
+                                        } elseif ($tipo3 == 'image/png') {
+                                            $origi = imagecreatefrompng($diretorio . $tmpname);
+                                        }
+
+                                        imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
+                                        imagejpeg($img, $diretorio . $tmpname, 80);
+
+                                        $sql = "INSERT INTO url_equipes SET loja_id_loja='$id_loja', url='$tmpname'";
+
+                                        $sql = $this->db->query($sql);
+                                        $sql->execute();
+                                        if ($sql->rowCount() > 0) {
+                                            return TRUE;
+                                        }
+                                    }
+                                }
                             }
-
-                            $img = imagecreatetruecolor($width, $height);
-                            if ($fotos2['type'][$q2] == 'image/jpeg') {
-                                $origi = imagecreatefromjpeg($diretorio . $tmpname);
-                            } elseif ($tipo3 == 'image/png') {
-                                $origi = imagecreatefrompng($diretorio . $tmpname);
-                            }
-
-                            imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
-                            imagejpeg($img, $diretorio . $tmpname, 80);
-
-                            $sql = "INSERT INTO url_equipes SET loja_id_loja='$id_loja', url='$tmpname'";
-
-                            $sql = $this->db->query($sql);
-                            $sql->execute();
-                            if ($sql->rowCount() > 0) {
-                                return TRUE;
-                            } 
-                            } 
-                        }
-                    }
                         }
                     }
                 }
-           return TRUE;
-                }
-                 if (count($fotos) > 0) {
-                
-                    for ($q = 0; $q < count($fotos['tmp_name']); $q++) {
+                return TRUE;
+            }
+            if (count($fotos) > 0) {
 
-                        $tipo2 = $fotos['type'][$q];
+                for ($q = 0; $q < count($fotos['tmp_name']); $q++) {
 
-
-                        if (in_array($tipo2, array('image/jpeg', 'image/png'))) {
+                    $tipo2 = $fotos['type'][$q];
 
 
-                            $tmpname = md5(time() . rand(0, 999)) . '.jpg';
-                            $diretorio = "upload/";
+                    if (in_array($tipo2, array('image/jpeg', 'image/png'))) {
 
-                            move_uploaded_file($fotos['tmp_name'][$q], $diretorio . $tmpname);
 
-                            list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
-                            $ratio = $width_orig / $height_orig;
+                        $tmpname = md5(time() . rand(0, 999)) . '.jpg';
+                        $diretorio = "upload/";
+
+                        move_uploaded_file($fotos['tmp_name'][$q], $diretorio . $tmpname);
+
+                        list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
+                        $ratio = $width_orig / $height_orig;
 //limite permitido proporcional
-                            $width = 960;
-                            $height = 720;
-                            if ($width / $height > $ratio) {
-                                $width = $height + $ratio;
-                            } else {
-                                $height = $width / $ratio;
-                            }
+                        $width = 960;
+                        $height = 720;
+                        if ($width / $height > $ratio) {
+                            $width = $height + $ratio;
+                        } else {
+                            $height = $width / $ratio;
+                        }
 
-                            $img = imagecreatetruecolor($width, $height);
-                            if ($fotos['type'][$q] == 'image/jpeg') {
-                                $origi = imagecreatefromjpeg($diretorio . $tmpname);
-                            } elseif ($tipo2 == 'image/png') {
-                                $origi = imagecreatefrompng($diretorio . $tmpname);
-                            }
+                        $img = imagecreatetruecolor($width, $height);
+                        if ($fotos['type'][$q] == 'image/jpeg') {
+                            $origi = imagecreatefromjpeg($diretorio . $tmpname);
+                        } elseif ($tipo2 == 'image/png') {
+                            $origi = imagecreatefrompng($diretorio . $tmpname);
+                        }
 
-                            imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
-                            imagejpeg($img, $diretorio . $tmpname, 80);
+                        imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
+                        imagejpeg($img, $diretorio . $tmpname, 80);
 
-                            $sql = "INSERT INTO url_imagens SET loja_id_loja=:loja_id_loja, url=:url";
-
-
-                            $sql = $this->db->prepare($sql);
-                            $sql->bindValue(":loja_id_loja",$id_loja);
-                            $sql->bindValue(":url",$tmpname);
-                            $sql->execute();
-                            if ($sql->rowCount() > 0) {
-                                return TRUE;
-                         
-                }
-                       if (count($fotos2) > 0) {
-
-                    for ($q2 = 0; $q2 < count($fotos2['tmp_name']); $q2++) {
-
-                        $tipo3 = $fotos2['type'][$q2];
+                        $sql = "INSERT INTO url_imagens SET loja_id_loja=:loja_id_loja, url=:url";
 
 
-                        if (in_array($tipo3, array('image/jpeg', 'image/png'))) {
+                        $sql = $this->db->prepare($sql);
+                        $sql->bindValue(":loja_id_loja", $id_loja);
+                        $sql->bindValue(":url", $tmpname);
+                        $sql->execute();
+                        if ($sql->rowCount() > 0) {
+                            return TRUE;
+                        }
+                        if (count($fotos2) > 0) {
 
-                            $tmpname = md5(time() . rand(0, 999)) . '.jpg';
-                            $diretorio = "upload/equipes/";
+                            for ($q2 = 0; $q2 < count($fotos2['tmp_name']); $q2++) {
 
-                            move_uploaded_file($fotos2['tmp_name'][$q2], $diretorio . $tmpname);
+                                $tipo3 = $fotos2['type'][$q2];
 
-                            list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
-                            $ratio = $width_orig / $height_orig;
+
+                                if (in_array($tipo3, array('image/jpeg', 'image/png'))) {
+
+                                    $tmpname = md5(time() . rand(0, 999)) . '.jpg';
+                                    $diretorio = "upload/equipes/";
+
+                                    move_uploaded_file($fotos2['tmp_name'][$q2], $diretorio . $tmpname);
+
+                                    list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
+                                    $ratio = $width_orig / $height_orig;
 //limite permitido proporcional
-                            $width = 960;
-                            $height = 720;
-                            if ($width / $height > $ratio) {
-                                $width = $height + $ratio;
-                            } else {
-                                $height = $width / $ratio;
+                                    $width = 960;
+                                    $height = 720;
+                                    if ($width / $height > $ratio) {
+                                        $width = $height + $ratio;
+                                    } else {
+                                        $height = $width / $ratio;
+                                    }
+
+                                    $img = imagecreatetruecolor($width, $height);
+                                    if ($fotos2['type'][$q2] == 'image/jpeg') {
+                                        $origi = imagecreatefromjpeg($diretorio . $tmpname);
+                                    } elseif ($tipo3 == 'image/png') {
+                                        $origi = imagecreatefrompng($diretorio . $tmpname);
+                                    }
+
+                                    imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
+                                    imagejpeg($img, $diretorio . $tmpname, 80);
+
+                                    $sql = "INSERT INTO url_equipes SET loja_id_loja='$id_loja', url='$tmpname'";
+
+                                    $sql = $this->db->query($sql);
+                                    $sql->execute();
+                                    if ($sql->rowCount() > 0) {
+                                        return TRUE;
+                                    }
+                                }
                             }
-
-                            $img = imagecreatetruecolor($width, $height);
-                            if ($fotos2['type'][$q2] == 'image/jpeg') {
-                                $origi = imagecreatefromjpeg($diretorio . $tmpname);
-                            } elseif ($tipo3 == 'image/png') {
-                                $origi = imagecreatefrompng($diretorio . $tmpname);
-                            }
-
-                            imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
-                            imagejpeg($img, $diretorio . $tmpname, 80);
-
-                            $sql = "INSERT INTO url_equipes SET loja_id_loja='$id_loja', url='$tmpname'";
-
-                            $sql = $this->db->query($sql);
-                            $sql->execute();
-                            if ($sql->rowCount() > 0) {
-                                return TRUE;
-                            } 
-                            } 
-                        }
-                    }
                         }
                     }
                 }
-
-
+            }
+            return TRUE;
         } catch (Exception $ex) {
             echo 'Falhou:' . $ex->getMessage();
         }
     }
 
-    public function slugNotRepetir($titulo,$id_loja) {
-try{
-        if (isset($titulo) && !empty($titulo)) {
-            
+    public function slugNotRepetir($titulo, $id_loja) {
+        try {
+            if (isset($titulo) && !empty($titulo)) {
+
                 $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($titulo)));
                 $sql = "SELECT slug FROM loja WHERE slug='$slug' AND id_loja !='$id_loja' ";
                 $sql = $this->db->prepare($sql);
                 $sql->execute();
                 if ($sql->rowCount() == 0) {
-                     
 
 
-                return $slug;
-                
+
+                    return $slug;
                 }
             }
-} catch (Exception $ex) {
- echo "Falhou:" . $ex->getMessage();
-}
-    
-        
+        } catch (Exception $ex) {
+            echo "Falhou:" . $ex->getMessage();
+        }
     }
+
     public function listarClientes() {
 
         try {
@@ -605,7 +800,6 @@ try{
         }
     }
 
-  
     public function listarCliente($id) {
         $array = array();
         try {
@@ -696,7 +890,7 @@ try{
     public function getDados($id_loja) {
         try {
             $array = array();
-            $sql = "SELECT * FROM loja l LEFT JOIN url_imagens u ON l.id_loja= u.loja_id_loja LEFT JOIN url_equipes e ON e.loja_id_loja=l.id_loja WHERE l.id_loja=:id_loja";
+            $sql = "SELECT * FROM loja l LEFT JOIN url_imagens u ON l.id_loja= u.loja_id_loja LEFT JOIN url_equipes e ON e.loja_id_loja=l.id_loja INNER JOIN categorias c ON c.id_categorias=l.categoria WHERE l.id_loja=:id_loja GROUP BY l.id_loja";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":id_loja", $id_loja);
             $sql->execute();

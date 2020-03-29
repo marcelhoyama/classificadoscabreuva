@@ -341,13 +341,13 @@ class clientes extends model {
 
     public function getIdLojaCliente($id_cliente) {
         try {
-            $sql = "SELECT *  FROM loja WHERE clientes_id_clientes = :id";
+            $sql = "SELECT *  FROM loja INNER JOIN clientes on clientes.id_clientes=loja.clientes_id_clientes   WHERE clientes_id_clientes = :id";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(':id', $id_cliente);
             $sql->execute();
 
             if ($sql->rowCount() > 0) {
-                $array = $sql->fetchAll(PDO::FETCH_ASSOC);
+                $array = $sql->fetch(PDO::FETCH_ASSOC);
                 return $array;
             }
         } catch (Exception $ex) {

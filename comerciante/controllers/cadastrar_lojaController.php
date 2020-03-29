@@ -48,6 +48,8 @@ class cadastrar_lojaController extends controller {
             $youtube = addslashes(trim($_POST['youtube']));
             $instagram = addslashes(trim($_POST['instagram']));
             $site = addslashes(trim($_POST['site']));
+            $cnpj = addslashes(trim($_POST['cnpj']));
+            $cpf = addslashes(trim($_POST['cpf']));
 //            $descricao = addslashes(trim($_POST['descricao']));
 //            $chamada = addslashes(trim($_POST['chamada']));
 //            $prova = addslashes(trim($_POST['prova']));
@@ -110,11 +112,11 @@ class cadastrar_lojaController extends controller {
             
 //            $l->cadastrar($id_funcionario, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria, $descricao, $chamada, $prova, $foto,$fotos,$fotos2, $apresentacao, $produtos, $acao,$palavrachave,$titulo);
             
-           if($l->cadastrar($id_funcionario, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria , $foto,$fotos,$fotos2,$palavrachave,$titulo)==TRUE){
-       $dados['ok'] ="Cadastrado com Sucesso! Pode cadastrar mais um novo. Ou voltar no menu <a href='<?php echo".BASE_URL."menuprincipal_loja ?>'";
+           if($dados['erro']=$l->cadastrar($id_funcionario, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria , $foto,$fotos,$fotos2,$palavrachave,$titulo,$cnpj,$cpf)){
+      
                
            }else{
-               $dados['erro'] ="Confira todos os campos!";
+                $dados['ok'] ="Cadastrado com Sucesso! Pode cadastrar mais um novo. Ou voltar no menu <a href='<?php echo".BASE_URL."menuprincipal_loja?>'>Principal </a>";
            }
         }
 

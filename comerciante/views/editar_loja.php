@@ -20,15 +20,16 @@
         </div>
         
          <?php $cliente=$viewData['dadosLoja'];?>
+        <?php $dadoscliente=$viewData['lojacliente'];?>
         <div class="row">
             
         <div class="control-group col-sm">
-                 <label for="">CNPJ:</label> <label class="text-danger">se não tiver CNPJ use seu CPF</label></br>
+                 <label for="">CNPJ:</label> <label class="text-danger"></label></br>
                
-                 <input type="text" class="form-control"  name="cnpj" value="<?php echo $cliente['cnpj']; ?>" >
+                 <input type="text" class="form-control"  name="cnpj" value="<?php echo $cliente['cnpj']; ?>" disabled="" >
                   <label for="">CPF:</label> <label class="text-danger"></label></br>
                
-                 <input type="text" class="form-control"  name="cpf" placeholder="somente numeros" >
+                  <input type="text" class="form-control"  name="cpf" value="<?php echo $dadoscliente['cpf']; ?>" disabled="" >
      
         </div>
 <!--             <div class="control-group col-sm">
@@ -44,16 +45,20 @@
       <br>
       <div class="row">
                      <div class="form-group col-sm-3">
-                         <label for="status">Anunciar no site:</label> <label class="text-danger">obrigatorio*</label></br>
+                         <label for="status">Anunciar loja/serviço no site:</label> <label class="text-danger">obrigatorio*</label></br>
                 <div class="checkbox-inline">
-                    <label><input type="radio" name="anuncio_site" id="status" <?php if( $cliente['anuncio_site']=="0"): ?> checked=""  >Liberar</label> 
-                    </div>
-                         <?php else: ?>
-<?php endif ?>
+                    <label>
+                        <input type="radio" name="anuncio_site" id="status" value="0" <?php echo ($cliente['anuncio_site'] == "0")? 'checked':''; ?> >
+                        Liberar
+                    </label> 
+                       
+   
+                </div>
+                 
                     <div class="checkbox-inline">
-                        <label><input type="radio" name="anuncio_site" id="status"  <?php if(  $cliente['anuncio_site']=="1"): ?> checked=""  <?php else: ?>>Bloquear</label>
+                        <label><input type="radio" name="anuncio_site" id="status" value="1" <?php echo ($cliente['anuncio_site'] == "1")? 'checked':''; ?> >Bloquear</label>
                     </div>
-                          <?php endif ?>
+                        
               </div>
            <div class="form-group col">
                <div class="h6">Detalhes dos produtos ou serviço que você tem, separe por virgula cada palavra!</div>
@@ -72,10 +77,10 @@
             <div class="form-group col-sm-4">
                 <label for="tipo_categoria">Tipo de Categoria:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info">ajuda ?</a></label>
                 <select name="tipo_categoria" class="form-control" id="tipo_categoria">
-                    <option value="<?php echo $cliente['categoria'];?>"></option>
+                   
                     
                     <?php foreach ($viewData['listarCategoria'] as $value) : { ?>
-                            <option value="<?php echo $value['id_categorias']; ?>"><?php echo $value['nome'];?></option>
+                            <option value="<?php echo $value['id_categorias']; ?>" <?php echo ($cliente['id_categorias'] == $value['id_categorias'] )? 'selected="selected"':''; ?>     ><?php echo $value['nome'];?></option>
 
                         <?php  } endforeach; ?>  
                  </select>

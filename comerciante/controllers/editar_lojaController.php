@@ -15,17 +15,18 @@ class editar_lojaController extends controller {
 //        $id = $_SESSION['lg'];
 //        $dados['nomefunc'] = $f->getName($id);
 //        $dados['id_funcionario'] = $id;
-        $c = new clientes();
+        
         $l = new lojas();
       
         $dados['listarCategoria'] = $l->listarCategoria();
         
            if (isset($_GET['id_cliente']) && !empty($_GET['id_cliente'])) {
             $id_cliente = $_GET['id_cliente'];
-            $c = new clientes();
+            
             $dados['nomeCliente'] = $c->getName($id_cliente);
             $dados['id_cliente'] = $id_cliente;
         $dados['lojacliente']=$c->getIdLojaCliente($id_cliente);
+      
             
         }
 
@@ -127,7 +128,7 @@ class editar_lojaController extends controller {
             $l = new lojas();
             
             
-            if($l->editar($id_loja, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria, $foto,$fotos,$fotos2,$palavrachave,$titulo,$cnpj)==TRUE){
+            if($l->editar($id_loja, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria, $foto,$fotos,$fotos2,$palavrachave,$titulo,$cnpj)){
       // $dados['ok'] ="Atualizado com Sucesso!";
                  header("Location:".BASE_URL."editar_loja?id_loja=".$id_loja."&id_cliente=".$id_cliente);
            }else{
