@@ -1,10 +1,10 @@
 
-<title>Cadastrar Loja</title>
+<title>Editar Loja</title>
 
 
 <div class="container">
     
-    <div class="text-center h3">Cadastrar Loja</div>
+    <div class="text-center h3">Editar Loja</div>
    
     <form id="cadastrarloja" method="POST" enctype="multipart/form-data">
           
@@ -19,14 +19,14 @@
             <?php endif; ?>
         </div>
         
-         <?php // $cliente=$viewData['lojacliente'];?>
+         <?php $cliente=$viewData['dadosLoja'];?>
         <div class="row">
             
         <div class="control-group col-sm">
                  <label for="">CNPJ:</label> <label class="text-danger">se não tiver CNPJ use seu CPF</label></br>
                
-                 <input type="text" class="form-control"  name="cnpj" placeholder="somente numeros" >
-                   <label for="">CPF:</label> <label class="text-danger"></label></br>
+                 <input type="text" class="form-control"  name="cnpj" value="<?php echo $cliente['cnpj']; ?>" >
+                  <label for="">CPF:</label> <label class="text-danger"></label></br>
                
                  <input type="text" class="form-control"  name="cpf" placeholder="somente numeros" >
      
@@ -40,23 +40,25 @@
         </div>-->
         </div>
     
-  
+ 
       <br>
       <div class="row">
                      <div class="form-group col-sm-3">
                          <label for="status">Anunciar no site:</label> <label class="text-danger">obrigatorio*</label></br>
                 <div class="checkbox-inline">
-                    <label><input type="radio" name="anuncio_site" id="status" value="Liberado"  >Liberar</label> 
+                    <label><input type="radio" name="anuncio_site" id="status" <?php if( $cliente['anuncio_site']=="0"): ?> checked=""  >Liberar</label> 
                     </div>
-
+                         <?php else: ?>
+<?php endif ?>
                     <div class="checkbox-inline">
-                        <label><input type="radio" name="anuncio_site" id="status" value="Bloqueado" checked="checked">Bloquear</label>
+                        <label><input type="radio" name="anuncio_site" id="status"  <?php if(  $cliente['anuncio_site']=="1"): ?> checked=""  <?php else: ?>>Bloquear</label>
                     </div>
+                          <?php endif ?>
               </div>
            <div class="form-group col">
                <div class="h6">Detalhes dos produtos ou serviço que você tem, separe por virgula cada palavra!</div>
                 <label for="palavrachave">Palavra chave:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <textarea name="palavrachave" class="form-control" id="palavrachave" rows="15"></textarea>
+                <textarea name="palavrachave" class="form-control" id="palavrachave" rows="15"><?php echo $cliente['palavrachave'];?></textarea>
 
                
        
@@ -70,10 +72,10 @@
             <div class="form-group col-sm-4">
                 <label for="tipo_categoria">Tipo de Categoria:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info">ajuda ?</a></label>
                 <select name="tipo_categoria" class="form-control" id="tipo_categoria">
-                    <option></option>
+                    <option value="<?php echo $cliente['categoria'];?>"></option>
                     
                     <?php foreach ($viewData['listarCategoria'] as $value) : { ?>
-                            <option value="<?php echo $value['id_categorias']; ?>"><?php echo $value['nome']; ?></option>
+                            <option value="<?php echo $value['id_categorias']; ?>"><?php echo $value['nome'];?></option>
 
                         <?php  } endforeach; ?>  
                  </select>
@@ -138,13 +140,13 @@
 
         <div class="form-group">
                 <label for="nome_fantasia">Nome fantasia:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="nome_fantasia" class="form-control" id="nome_fantasia" >
+                <input name="nome_fantasia" class="form-control" id="nome_fantasia" value="<?php echo $cliente['nome_fantasia'] ?>">
 <!--vai ser o titulo tambem no slug-->
                
             </div>
             <div class="form-group ">
                 <label for="razao_social">Razão Social:</label><label class="text-danger">Campo Obrigatorio*</label>
-                <input name="razao_social" class="form-control" id="razao_social" >
+                <input name="razao_social" class="form-control" id="razao_social" value="<?php echo $cliente['razao_social'];?>">
                   
             </div>
 
@@ -152,65 +154,60 @@
         
             <div class="form-group">
                 <label for="endereco">Endereço:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="endereco" type="text" class="form-control" id="endereco" placeholder="endereço do comercio" />
+                <input name="endereco" type="text" class="form-control" id="endereco" value="<?php echo $cliente['endereco'];?>" />
             </div>
             <div class="row">
             <div class="form-group col-sm-3">
                 <label for="bairro">Bairro:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="bairro" type="text" class="form-control" id="bairro"  />
+                <input name="bairro" type="text" class="form-control" id="bairro" value="<?php echo $cliente['bairro'];?>" />
             </div>
 
        
             <div class="form-group col-sm-3">
                 <label for="cidade">Cidade:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="cidade" type="text" class="form-control" id="cidade" />
+                <input name="cidade" type="text" class="form-control" id="cidade" value="<?php echo $cliente['cidade'];?>"/>
             </div>
                   
         </div>
-      
-      <div class="h5 mt-5"> Horario de Funcionamento</div>
-            <div class="row"> 
-          
-      </div>
       <div class="h5 mt-5">Seus contatos e canais de redes sociais </div>
         <div class="row">
     
-        <div class="form-group col-sm-6">
+       <div class="form-group col-sm-6">
                 <label for="telefone1">Telefone 1:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="telefone1" type="text" class="form-control" id="telefone1" placeholder="DDD+somente numeros" />
+                <input name="telefone1" type="text" class="form-control" id="telefone1" value="<?php echo $cliente['telefone1'];?>"/>
             </div>
         <div class="form-group col-sm-6">
                 <label for="telefone2">Telefone 2:</label>  <label class="text-danger"></label>
-                <input name="telefone2" type="text" class="form-control" id="telefone2" placeholder="DDD+somente numeros" />
+                <input name="telefone2" type="text" class="form-control" id="telefone2" value="<?php echo $cliente['telefone2'];?>"/>
             </div>
         <div class="form-group col-sm-6">
                 <label for="whatsapp">Whatsapp:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="whatsapp" type="text" class="form-control" id="telefone1" placeholder="DDD+numeros"/>
+                <input name="whatsapp" type="text" class="form-control" id="telefone1" value="<?php echo $cliente['whatsapp'];?>"/>
             </div>
         </div>
         <div class="row">
-        <div class="form-group col-sm-6">
+      <div class="form-group col-sm-6">
             
                 <label for="email">E-mail:</label>  <label class="text-danger"></label>
-                <input name="email" type="text" class="form-control" id="email" placeholder="exemplo: comercio@email.com"/>
+                <input name="email" type="text" class="form-control" id="email" value="<?php echo $cliente['email'];?>"/>
             </div>
-        <div class="form-group col-sm-6">
+      <div class="form-group col-sm-6">
                 <label for="facebook">Facebook:</label>  <label class="text-danger"></label>
-                <input name="facebook" type="text" class="form-control" id="facebook" placeholder="link do fanpage"/>
+                <input name="facebook" type="text" class="form-control" id="facebook" value="<?php echo $cliente['facebook'];?>"/>
             </div>
         <div class="form-group col-sm-6">
                 <label for="youtube">Youtube:</label>  <label class="text-danger"></label>
-                <input name="youtube" type="text" class="form-control" id="youtube" placeholder="link do canal"/>
+                <input name="youtube" type="text" class="form-control" id="youtube" value="<?php echo $cliente['youtube'];?>"/>
             </div>
         </div>
       <div class="row">
         <div class="form-group col-sm-6">
                 <label for="instagram">Instagram:</label>  <label class="text-danger"></label>
-                <input name="instagram" type="text" class="form-control" id="instagram" placeholder="link do canal"/>
+                <input name="instagram" type="text" class="form-control" id="instagram" value="<?php echo $cliente['instagram'];?>"/>
             </div>
         <div class="form-group col-sm-6">
                 <label for="site">Site:</label>  <label class="text-danger"></label>
-                <input name="site" type="text" class="form-control" id="site" placeholder="link do seu site"/>
+                <input name="site" type="text" class="form-control" id="site" value="<?php echo $cliente['site'];?>"/>
             </div>
       </div>
 <!--      <div class="h4 mt-5">Tenha em mente em UM produto ou serviço para cada solução que você tem! Para cada tipos de pessoas! </div>
@@ -219,20 +216,20 @@
            
             <a href="https://viverdeblog.com/nicho-de-mercado/" target="_blank" class="text-info" >ajuda?</a> 
  <div class="h5">o seu possivel cliente (generalizar - aqueles mais procurados) ,tem uma dor que encaixe na sua solução?</div>
- <textarea class="form-control" name="descricao" type="text" id="descricao" rows="15" placeholder="crie no maximo em 140 caracteres"></textarea>
+ <textarea class="form-control" name="descricao" type="text" id="descricao" rows="15" placeholder="crie no maximo em 140 caracteres"><?php echo $cliente['descricao'];?></textarea>
         </div>
 
            <div class="form-group">
             <label for="chamada">Breve Chamada pra atrair clientes:</label> 
  <div class="h5">Diferencie-se dos seus concorrentes, qual são as suas particulariedades?</div>
-            <textarea class="form-control" name="chamada" type="text" id="chamada" rows="15"></textarea>
+            <textarea class="form-control" name="chamada" type="text" id="chamada" rows="15"><?php echo $cliente['chamada'];?></textarea>
         </div>
        
       precisa ver como fica no banco de dados
         <div class="form-group">
             <label for="chamada">Conte com provas concretas ou evidencias de seus resultados:</label> 
             <div class="h5">Fotos,videos, comentarios</div><div class="h6">coloque os link onde estão.</div>
-            <textarea class="form-control" name="prova" type="text" id="chamada" rows="15"></textarea>
+            <textarea class="form-control" name="prova" type="text" id="chamada" rows="15"><?php echo $cliente['prova'];?></textarea>
         </div>-->
        
         <div class="well">
@@ -269,15 +266,15 @@ precisa ver como fica no banco de dados
            <div class="form-group col-sm-3">
             
                 <label for="apresentacao">Apresentação:</label>  <label class="text-danger"></label>
-                <input name="apresentacao" type="text" class="form-control" id="apresentacao" />
+                <input name="apresentacao" type="text" class="form-control" id="apresentacao" value="<?php echo $cliente['link_apresentacao'];?>"/>
             </div>
         <div class="form-group col-sm-3">
                 <label for="produtos">Produtos:</label>  <label class="text-danger"></label>
-                <input name="produtos" type="text" class="form-control" id="produtos" />
+                <input name="produtos" type="text" class="form-control" id="produtos" value="<?php echo $cliente['link_produto'];?>"/>
             </div>
         <div class="form-group col-sm-3">
                 <label for="acao">Chamada de ação:</label>  <label class="text-danger"></label>
-                <input name="acao" type="text" class="form-control" id="acao"/>
+                <input name="acao" type="text" class="form-control" id="acao" value="<?php echo $cliente['link_acao'];?>"/>
             </div>
       </div>-->
       <!--progresso de preenchimento-->
@@ -290,7 +287,7 @@ precisa ver como fica no banco de dados
              
      </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary upload" >Cadastrar</button> 
+            <button type="submit" class="btn btn-primary upload" >Atualizar</button> 
 
 
         </div>

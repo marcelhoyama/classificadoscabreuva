@@ -4,14 +4,16 @@
     <div class="jumbotron">
         <h1>O seu Comercio aparece no Buscador Cabreúva</h1>
         <h4>Cadastre seu comercio e tenha os beneficios</h4>
-        <button class="btn btn-light">Começar o Cadastro</button>
+        <a href="<?php BASE_URL;?>login_comerciante" class="btn btn-primary">Começar o Cadastro</a>
 </div>
     </div>
 
 <div class="row" id="conteudo1">
  
     <div class="col">
+        <h3>Passo 1</h3>
        <div class="card" style="width: 18rem;">
+           
   <div class="card-body">
     <h5 class="card-title text-dark">Cadastro</h5>
    
@@ -21,6 +23,7 @@
 </div>
     </div>
     <div class="col">
+           <h3>Passo 2</h3>
         <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title text-dark">Configuração</h5>
@@ -30,20 +33,22 @@
   </div>
 </div>
         </div>
+    <div class="col">
+       <h3>Passo 3</h3>
         <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title text-dark">Os beneficios </h5>
     
-    <p class="card-text text-dark">Feito isso, escolha os beneficios do seu plano escolhido</p>
-    <li class="text-dark">Confiança e ética</li>
+    <p class="card-text text-dark">Em manutenção</p>
+<!--    <li class="text-dark">Confiança e ética</li>
     <li class="text-dark">O humano e o bem estar como prioridade</li>
     <li class="text-dark">Responsabilidade Social e respeito mútuo </li>
     <li class="text-dark">Profissionalismo e Responsabilidade</li>
     <li class="text-dark">Legalidade</li>
-    <li class="text-dark">Ações eficazes e de qualidade para desempenhar suas funções.</li>
+    <li class="text-dark">Ações eficazes e de qualidade para desempenhar suas funções.</li>-->
   </div>
 </div>
-   
+   </div>
        
 
   
@@ -109,7 +114,7 @@
     
     <h1>O buscador cabreúva é perfeito para seu comercio ou serviço para  se alanvacar.</h1>
     
-    <button class="btn btn-light">Quero fazer parte</button>
+    <a href="<?php BASE_URL; ?>login_comerciante"class="btn btn-light">Quero fazer parte</a>
     
     
     <!--    <div class="col">
@@ -157,7 +162,7 @@
 <div class="row" id="conteudo1" >
     
     <h2> Tire suas duvidas frequentes</h2>
-   
+    <div class="col">
     <div id="accordion">
         <div class="card">
             <div class="card-header">
@@ -177,5 +182,5 @@ Importante: Os planos só está disponível para o comercio ou serviço em Cabre
                 </div>
         </div>
     </div>
-
+    </div>
 </div>

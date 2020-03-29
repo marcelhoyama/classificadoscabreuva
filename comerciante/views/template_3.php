@@ -38,7 +38,7 @@
                     <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#"> <?php echo $_SESSION['lgname']; ?>
                         <span class="caret"></span> </a>
                     <ul class="dropdown-menu">
-                        <li class="nav-link"><a class="nav-item" href="<?php echo BASE_URL; ?>perfil?id=<?php echo $_SESSION['lgCliente'];?>">Editar Perfil </a></li> 
+                        <li class="nav-link"><a class="nav-item" href="<?php echo BASE_URL; ?>perfil_cliente?id=<?php echo $_SESSION['lgCliente'];?>">Editar Perfil </a></li> 
                         <li class="nav-link"> <a class="nav-item" href="<?php echo BASE_URL; ?>login/sair">Sair </a></li>
                     </ul>
 

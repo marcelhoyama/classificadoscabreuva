@@ -55,7 +55,7 @@ class lojas extends model {
         }
     }
 
-    public function cadastrar($id, $id_cliente, $anuncio_site, $nome_fantasia, $razao_social, $endereco, $bairro, $cidade, $telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube, $instagram, $site, $tipo_categoria, $descricao, $chamada, $prova, $foto, $fotos, $fotos2, $apresentacao, $produtos, $acao, $palavrachave, $titulo) {
+    public function cadastrar($id, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria , $foto,$fotos,$fotos2,$palavrachave,$titulo,$cnpj) {
         try {
 
 
@@ -105,7 +105,7 @@ class lojas extends model {
 
 
 
-                    $sql = "INSERT INTO loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave ";
+                    $sql = "INSERT INTO loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj,data=:data ";
 
 
                     $sql = $this->db->prepare($sql);
@@ -137,6 +137,8 @@ class lojas extends model {
                     $sql->bindParam(":url_imagem_principal", $tmpname);
                     $sql->bindParam(":slug", $slug);
                     $sql->bindParam(":titulo", $titulo);
+                    $sql->bindParam(":cnpj",$cnpj);
+                    $sql->bindParam(":data", 'NOW()');
                     $sql->execute();
 
                     $id = $this->db->lastInsertId();
@@ -243,7 +245,7 @@ class lojas extends model {
         }
     }
 
-    public function editar($id_loja, $id, $id_cliente, $anuncio_site, $nome_fantasia, $razao_social, $endereco, $bairro, $cidade, $telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube, $instagram, $site, $tipo_categoria, $descricao, $chamada, $prova, $foto, $fotos, $fotos2, $apresentacao, $produtos, $acao, $palavrachave, $titulo) {
+    public function editar($id_loja, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria, $foto,$fotos,$fotos2,$palavrachave,$titulo,$cnpj) {
         try {
 
 
@@ -286,7 +288,7 @@ class lojas extends model {
                 $slug=$this->slugNotRepetir($titulo,$id_loja);
 
 
-                $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave WHERE id_loja=:id_loja ";
+                $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj WHERE id_loja=:id_loja ";
 
              
                 $sql = $this->db->prepare($sql);
@@ -319,12 +321,13 @@ class lojas extends model {
                 $sql->bindParam(":url_imagem_principal", $tmpname);
                 $sql->bindParam(":slug", $slug);
                 $sql->bindParam(":titulo", $titulo);
+                $sql->bindParam(":cnpj", $cnpj);
                 
             } else {
 
 $slug= $this->slugNotRepetir($titulo,$id_loja);
 
-                $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave WHERE id_loja=:id_loja ";
+                $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj WHERE id_loja=:id_loja ";
 
                
                 $sql = $this->db->prepare($sql);
@@ -356,7 +359,7 @@ $slug= $this->slugNotRepetir($titulo,$id_loja);
                 $sql->bindParam(":palavrachave", $palavrachave);
                 $sql->bindParam(":slug", $slug);
                 $sql->bindParam(":titulo", $titulo);
-               
+               $sql->bindParam(":cnpj", $cnpj);
                
                
             }
@@ -649,7 +652,7 @@ try{
             $sql = $this->db->prepare($sql);
             $sql->execute();
             if ($sql->rowCount() > 0) {
-                $array = $sql->fetchAll();
+                $array = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $array;
             }
         } catch (Exception $ex) {

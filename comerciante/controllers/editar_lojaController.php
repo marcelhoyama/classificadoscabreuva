@@ -4,28 +4,31 @@ class editar_lojaController extends controller {
 
     public function __construct() {
         parent::__construct();
-        $f = new funcionarios();
-        $f->verificarLogin();
+        $c = new clientes();
+        $c->verificarLogin();
     }
 
     public function index() {
         $dados = array('erro' => '', 'ok' => '','dadosLoja'=>'','listfotos'=>'');
 
-        $f = new funcionarios();
-        $id = $_SESSION['lg'];
-        $dados['nomefunc'] = $f->getName($id);
-        $dados['id_funcionario'] = $id;
+        $c = new clientes();
+//        $id = $_SESSION['lg'];
+//        $dados['nomefunc'] = $f->getName($id);
+//        $dados['id_funcionario'] = $id;
         $c = new clientes();
         $l = new lojas();
       
         $dados['listarCategoria'] = $l->listarCategoria();
         
-        if (isset($_GET['id_cliente']) && !empty($_GET['id_cliente'])) {
+           if (isset($_GET['id_cliente']) && !empty($_GET['id_cliente'])) {
             $id_cliente = $_GET['id_cliente'];
-            
+            $c = new clientes();
             $dados['nomeCliente'] = $c->getName($id_cliente);
             $dados['id_cliente'] = $id_cliente;
+        $dados['lojacliente']=$c->getIdLojaCliente($id_cliente);
+            
         }
+
         
         if(isset($_GET['id_loja']) && !empty($_GET['id_loja'])){
          
@@ -43,9 +46,7 @@ class editar_lojaController extends controller {
                 (isset($_POST['telefone1']) && !empty($_POST['telefone1'])) || 
                 (isset($_POST['tipo_categoria']) && !empty($_POST['tipo_categoria'])) || 
                 (isset($_POST['nome_fantasia']) && !empty($_POST['nome_fantasia'])) || 
-                (isset($_POST['endereco']) && !empty($_POST['endereco'])) || 
-                (isset($_POST['descricao']) && !empty($_POST['descricao'])) || 
-                (isset($_POST['chamada']) && !empty($_POST['chamada']))) {
+                (isset($_POST['endereco']) && !empty($_POST['endereco'])) ) {
 
             //  variavel $id é do funcionario
             // variavel $id_cliente é do cliente
@@ -64,12 +65,13 @@ class editar_lojaController extends controller {
             $youtube = addslashes(trim($_POST['youtube']));
             $instagram = addslashes(trim($_POST['instagram']));
             $site = addslashes(trim($_POST['site']));
-            $descricao = addslashes(trim($_POST['descricao']));
-            $chamada = addslashes(trim($_POST['chamada']));
-            $prova = addslashes(trim($_POST['prova']));
-            $apresentacao = addslashes(trim($_POST['apresentacao']));
-            $produtos = addslashes(trim($_POST['produtos']));
-            $acao = addslashes(trim($_POST['acao']));
+            $cnpj= addslashes(trim($_POST['cnpj']));
+//            $descricao = addslashes(trim($_POST['descricao']));
+//            $chamada = addslashes(trim($_POST['chamada']));
+//            $prova = addslashes(trim($_POST['prova']));
+//            $apresentacao = addslashes(trim($_POST['apresentacao']));
+//            $produtos = addslashes(trim($_POST['produtos']));
+//            $acao = addslashes(trim($_POST['acao']));
             $status='0';
             $palavrachave= addslashes(trim($_POST['palavrachave']));
             $titulo=$nome_fantasia;
@@ -79,7 +81,7 @@ class editar_lojaController extends controller {
 //             echo   $cpf= str_replace("-", "", $value);
 //            }
 
-            $id_funcionario = $id;
+         
 //            ainda nao vai usar CPF
 //               if($c->verificarCPF($cpf)==TRUE){
 //            if($c->cadastrar($id_funcionario,$nome, $email, $telefone, $cpf)== TRUE){
@@ -123,15 +125,27 @@ class editar_lojaController extends controller {
 
 
             $l = new lojas();
-           if($l->editar($id_loja,$id_funcionario, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria, $descricao, $chamada, $prova, $foto,$fotos,$fotos2, $apresentacao, $produtos, $acao,$palavrachave,$titulo)==TRUE){
+            
+            
+            if($l->editar($id_loja, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria, $foto,$fotos,$fotos2,$palavrachave,$titulo,$cnpj)==TRUE){
       // $dados['ok'] ="Atualizado com Sucesso!";
                  header("Location:".BASE_URL."editar_loja?id_loja=".$id_loja."&id_cliente=".$id_cliente);
            }else{
                $dados['erro'] ="Confira todos os campos!";
            }
+            
+            
+            
+            
+//           if($l->editar($id_loja, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria, $descricao, $chamada, $prova, $foto,$fotos,$fotos2, $apresentacao, $produtos, $acao,$palavrachave,$titulo)==TRUE){
+//      // $dados['ok'] ="Atualizado com Sucesso!";
+//                 header("Location:".BASE_URL."editar_loja?id_loja=".$id_loja."&id_cliente=".$id_cliente);
+//           }else{
+//               $dados['erro'] ="Confira todos os campos!";
+//           }
        
                 }
-            $this->loadTemplate_func('editar_loja', $dados);
+            $this->loadTemplate_3('editar_loja', $dados);
         }
     }
     

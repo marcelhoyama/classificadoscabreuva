@@ -19,10 +19,21 @@ class perfil_clienteController extends controller {
             $nome = addslashes($_POST['nome']);
             $telefone = addslashes($_POST['telefone']);
              $endereco = addslashes($_POST['endereco']);
-             if(isset($_POST['senha']) && !empty($_POST['senha'])) {
-            echo $senha = md5($_POST['senha']);
-             $dados['erro']= $u->updatePerfilSenha($id, $nome, $telefone, $endereco,$senha);
-             }else{
+             
+            
+             
+                if (!empty($_POST['senha']) && !empty($_POST['resenha'])) {
+
+            if (strlen($_POST['senha']) == 6 && strlen($_POST['resenha']) == 6) {
+
+                if ($_POST['senha'] == $_POST['resenha']) {
+                    
+                     $senha = md5($_POST['senha']);
+                       $dados['erro']= $u->updatePerfilSenha($id, $nome, $telefone, $endereco,$senha);
+            
+                }
+                }
+            }else{
            
               $dados['erro']= $u->updatePerfil($id, $nome, $telefone, $endereco);
           
@@ -38,7 +49,7 @@ class perfil_clienteController extends controller {
         $dados['info'] = $u->getDados($id);
        
         }
-        $this->loadTemplate_1('perfil', $dados);
+        $this->loadTemplate_3('perfil_cliente', $dados);
     }
 
 }

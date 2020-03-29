@@ -19,14 +19,17 @@ class cadastrar_lojaController extends controller {
         $l = new lojas();
         $dados['listarRamo'] = $c->listarRamo();
         $dados['listarCategoria'] = $l->listarCategoria();
+        
         if (isset($_GET['id_cliente']) && !empty($_GET['id_cliente'])) {
             $id_cliente = $_GET['id_cliente'];
             $c = new clientes();
             $dados['nomeCliente'] = $c->getName($id_cliente);
             $dados['id_cliente'] = $id_cliente;
+//        $dados['lojacliente']=$c->getIdLojaCliente($id_cliente);
+            
         }
 
-        if (isset($_POST['anuncio_site']) && !empty($_POST['anuncio_site']) && (isset($_POST['telefone1']) && !empty($_POST['telefone1'])) && (isset($_POST['tipo_categoria']) && !empty($_POST['tipo_categoria'])) && (isset($_POST['nome_fantasia']) && !empty($_POST['nome_fantasia'])) && (isset($_POST['endereco']) && !empty($_POST['endereco'])) && (isset($_POST['descricao']) && !empty($_POST['descricao'])) && (isset($_POST['chamada']) && !empty($_POST['chamada']))) {
+        if (isset($_POST['anuncio_site']) && !empty($_POST['anuncio_site']) && (isset($_POST['telefone1']) && !empty($_POST['telefone1'])) && (isset($_POST['tipo_categoria']) && !empty($_POST['tipo_categoria'])) && (isset($_POST['nome_fantasia']) && !empty($_POST['nome_fantasia'])) && (isset($_POST['endereco']) && !empty($_POST['endereco']))) {
 
             //  variavel $id é do funcionario
             // variavel $id_cliente é do cliente
@@ -45,12 +48,12 @@ class cadastrar_lojaController extends controller {
             $youtube = addslashes(trim($_POST['youtube']));
             $instagram = addslashes(trim($_POST['instagram']));
             $site = addslashes(trim($_POST['site']));
-            $descricao = addslashes(trim($_POST['descricao']));
-            $chamada = addslashes(trim($_POST['chamada']));
-            $prova = addslashes(trim($_POST['prova']));
-            $apresentacao = addslashes(trim($_POST['apresentacao']));
-            $produtos = addslashes(trim($_POST['produtos']));
-            $acao = addslashes(trim($_POST['acao']));
+//            $descricao = addslashes(trim($_POST['descricao']));
+//            $chamada = addslashes(trim($_POST['chamada']));
+//            $prova = addslashes(trim($_POST['prova']));
+//            $apresentacao = addslashes(trim($_POST['apresentacao']));
+//            $produtos = addslashes(trim($_POST['produtos']));
+//            $acao = addslashes(trim($_POST['acao']));
             $status='0';
             $palavrachave= addslashes(trim($_POST['palavrachave']));
             $titulo=$nome_fantasia;
@@ -60,7 +63,7 @@ class cadastrar_lojaController extends controller {
 //             echo   $cpf= str_replace("-", "", $value);
 //            }
 
-            $id_funcionario = $id;
+            $id_funcionario = 1;
 //            ainda nao vai usar CPF
 //               if($c->verificarCPF($cpf)==TRUE){
 //            if($c->cadastrar($id_funcionario,$nome, $email, $telefone, $cpf)== TRUE){
@@ -104,9 +107,12 @@ class cadastrar_lojaController extends controller {
 
 
             $l = new lojas();
-           if($l->cadastrar($id_funcionario, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria, $descricao, $chamada, $prova, $foto,$fotos,$fotos2, $apresentacao, $produtos, $acao,$palavrachave,$titulo)==TRUE){
-       $dados['ok'] ="Cadastrado com Sucesso! Pode cadastrar mais um novo.";
-               //  header("Location:".BASE_URL."pesquisarimoveis");
+            
+//            $l->cadastrar($id_funcionario, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria, $descricao, $chamada, $prova, $foto,$fotos,$fotos2, $apresentacao, $produtos, $acao,$palavrachave,$titulo);
+            
+           if($l->cadastrar($id_funcionario, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria , $foto,$fotos,$fotos2,$palavrachave,$titulo)==TRUE){
+       $dados['ok'] ="Cadastrado com Sucesso! Pode cadastrar mais um novo. Ou voltar no menu <a href='<?php echo".BASE_URL."menuprincipal_loja ?>'";
+               
            }else{
                $dados['erro'] ="Confira todos os campos!";
            }

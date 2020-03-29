@@ -16,8 +16,12 @@ $id=$_SESSION['lgCliente'];
 
 $dados['info']=$c->getDados($_SESSION['lgCliente']);
 
-     
+$l=new lojas();
 
+$dados['totalloja']=$c->qtdLojaCliente($id);
+$dados['lojas']=$c->getIdLojaCliente($id);
+
+       
         $this->loadTemplate_3('menuprincipal_loja', $dados);
     }
 

@@ -51,6 +51,7 @@
 
 
         </div>
+           <div class="h6">Ao prosseguir, aceito que o Buscador Cabreúva entre em contato comigo por telefone, e-mail ou WhatsApp (incluindo mensagens automáticas para fins comerciais).</div> 
         <div class="danger">
             <?php if (isset($erro) && !empty($erro)): ?>
                 <div class="alert alert-danger"><?php echo $erro; ?></div> 

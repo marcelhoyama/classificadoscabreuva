@@ -75,9 +75,9 @@ class clientes extends model {
 
     public function pesquisarCliente($palavra) {
         try {
-            $array=array();
+            $array = array();
             $array1 = array();
-            $array2=array();
+            $array2 = array();
             $sql = "SELECT *,c.email email,c.status status FROM clientes C LEFT JOIN loja l ON c.id_clientes=l.clientes_id_clientes WHERE c.nome LIKE :palavra";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":palavra", $palavra . "%");
@@ -86,8 +86,8 @@ class clientes extends model {
             if ($sql->rowCount() > 0) {
 
                 $array = $sql->fetchAll(PDO::FETCH_ASSOC);
-                
-            
+
+
                 return $array;
             } else {
                 return false;
@@ -99,41 +99,43 @@ class clientes extends model {
 
     public function cadastrar($nome, $email, $telefone, $sexo, $senha, $resenha) {
         try {
-           
+
             $sql = "SELECT email FROM clientes WHERE email=:email ";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":email", $email);
             $sql->execute();
             //caso retorne 0 quer dizer que não existe o email
             if ($sql->rowCount() == 0) {
-          
-                if($senha == $resenha){
-            
-                $sql = "INSERT INTO clientes SET nome=:nome,telefone=:telefone,sexo=:sexo,email=:email,senha=:senha ";
-                $sql = $this->db->prepare($sql);
-                
-               
-                $sql->bindValue(":nome", $nome);
-               
-                $sql->bindValue(":sexo", $sexo);
-               
-                $sql->bindValue(":email", $email);
-               
-                $sql->bindValue(":senha", $senha);
-                 
-                $sql->bindValue(":telefone", $telefone);
-               
-    
-                $sql->execute();
-           
-                if ($sql->rowCount() > 0) {
-                   
-                    header("Location:" . BASE_URL . "menuprincipal_loja");
-                    exit();
-                } else {
-                    return "Não foi posssivel cadastrar! Verifique os campos se estão preenchidos corretamente e tente novamente!";
+
+                if ($senha == $resenha) {
+
+                    $sql = "INSERT INTO clientes SET nome=:nome,telefone=:telefone,sexo=:sexo,email=:email,senha=:senha,data=:data ";
+                    $sql = $this->db->prepare($sql);
+
+
+                    $sql->bindValue(":nome", $nome);
+
+                    $sql->bindValue(":sexo", $sexo);
+
+                    $sql->bindValue(":email", $email);
+
+                    $sql->bindValue(":senha", $senha);
+
+                    $sql->bindValue(":telefone", $telefone);
+                     $sql->bindValue(":data", 'NOW()');
+                      
+
+
+                    $sql->execute();
+
+                    if ($sql->rowCount() > 0) {
+
+                        header("Location:" . BASE_URL . "menuprincipal_loja");
+                        exit();
+                    } else {
+                        return "Não foi posssivel cadastrar! Verifique os campos se estão preenchidos corretamente e tente novamente!";
+                    }
                 }
-            }
             } else {
                 return "Já existe um cadastro! ";
             }
@@ -142,41 +144,36 @@ class clientes extends model {
         }
     }
 
-    
-    
-      public function editar($id,$nome, $email, $telefone, $sexo, $status) {
+    public function editar($id, $nome, $email, $telefone, $sexo, $status) {
         try {
-        
-           
-              
-                $id_funcionario = 1;
-                $sql = "UPDATE clientes SET nome=:nome,telefone=:telefone,sexo=:sexo,email=:email, status=:status WHERE id_clientes=:id";
-                $sql = $this->db->prepare($sql);
-               
-               
-                $sql->bindValue(":nome", $nome);
-                $sql->bindValue(":sexo", $sexo);
-                $sql->bindValue(":email", $email);
-               // $sql->bindValue(":senha", $senha);
-                $sql->bindValue(":telefone", $telefone);
-                $sql->bindValue(":status",$status);
-                $sql->bindValue(":id",$id);
-                $sql->execute();
-                if ($sql->rowCount() > 0) {
-                   
-                    header("Location:" . BASE_URL . "menuprincipal_func");
-                    exit();
-                } else {
-                    return "Não foi posssivel Atualizar! Verifique os campos se estão preenchidos corretamente e tente novamente!";
-                }
-           
+
+
+
+            $id_funcionario = 1;
+            $sql = "UPDATE clientes SET nome=:nome,telefone=:telefone,sexo=:sexo,email=:email, status=:status WHERE id_clientes=:id";
+            $sql = $this->db->prepare($sql);
+
+
+            $sql->bindValue(":nome", $nome);
+            $sql->bindValue(":sexo", $sexo);
+            $sql->bindValue(":email", $email);
+             //$sql->bindValue(":senha", $senha);
+            $sql->bindValue(":telefone", $telefone);
+            $sql->bindValue(":status", $status);
+            $sql->bindValue(":id", $id);
+            $sql->execute();
+            if ($sql->rowCount() > 0) {
+
+                header("Location:" . BASE_URL . "menuprincipal_func");
+                exit();
+            } else {
+                return "Não foi posssivel Atualizar! Verifique os campos se estão preenchidos corretamente e tente novamente!";
+            }
         } catch (Exception $ex) {
             echo 'Falhou:' . $ex->getMessage();
         }
     }
-    
-    
-    
+
     public function listarClientes() {
         $array = array();
         try {
@@ -258,7 +255,7 @@ class clientes extends model {
             $sql->execute();
             if ($sql->rowCount() > 0) {
 
-               $array = $sql->fetch(PDO::FETCH_ASSOC);
+                $array = $sql->fetch(PDO::FETCH_ASSOC);
 
                 return $array;
             } else {
@@ -268,79 +265,94 @@ class clientes extends model {
             echo "Falhou:" . $ex->getMessage();
         }
     }
-    
-    
-    public function updatePerfil($id,$nome,$telefone,$endereco) {
-          $array = array();
+
+    public function updatePerfil($id, $nome, $telefone, $endereco) {
+        $array = array();
         try {
-          t;
-            $sql = "UPDATE clientes SET nome=:nome, telefone=:telefone, endereco=:endereco, senha=:senha WHERE id_clientes=:id";
+            t;
+            $sql = "UPDATE clientes SET nome=:nome, telefone=:telefone, endereco=:endereco WHERE id_clientes=:id";
             $sql = $this->db->prepare($sql);
-            
+
             $sql->bindValue(':id', $id);
             $sql->bindValue(':nome', $nome);
             $sql->bindValue(':telefone', $telefone);
             $sql->bindValue(':endereco', $endereco);
-        
-            
+             
+
+
             $sql->execute();
             if ($sql->rowCount() > 0) {
 
                 $array = $sql->fetch();
 
-                 header("Location:" . BASE_URL . "perfil_cliente?id=".$id);
-                    exit();
+                header("Location:" . BASE_URL . "perfil_cliente?id=" . $id);
+                exit();
             } else {
-                return false;
+                return "Não foi possivel atualizar, verifique os campos se estão corretos!";
             }
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }
-        
     }
-     public function updatePerfilSenha($id,$nome,$telefone,$endereco,$senha) {
-          $array = array();
+
+    public function updatePerfilSenha($id, $nome, $telefone, $endereco, $senha) {
+        $array = array();
         try {
-          t;
+            t;
             $sql = "UPDATE clientes SET nome=:nome, telefone=:telefone, endereco=:endereco, senha=:senha WHERE id_clientes=:id";
             $sql = $this->db->prepare($sql);
-            
+
             $sql->bindValue(':id', $id);
             $sql->bindValue(':nome', $nome);
             $sql->bindValue(':telefone', $telefone);
             $sql->bindValue(':endereco', $endereco);
-             $sql->bindValue(':senha', $senha);
-            
+            $sql->bindValue(':senha', $senha);
+
             $sql->execute();
             if ($sql->rowCount() > 0) {
 
                 $array = $sql->fetch();
 
-                 header("Location:" . BASE_URL . "perfil_cliente?id=".$id);
-                    exit();
+                header("Location:" . BASE_URL . "perfil_cliente?id=" . $id);
+                exit();
             } else {
-                return false;
+                 return "Não foi possivel atualizar, verifique os campos se estão corretos!";
             }
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }
-        
     }
-    
+
     public function qtdLojaCliente($id) {
-       try{
-           $sql="SELECT *,COUNT(id_loja) AS 'quantidade' FROM loja WHERE clientes_id_clientes = :id";
-           $sql=$this->db->prepare($sql);
-           $sql-> bindValue('id',$id);
-           $sql->execute();
-           
+        try {
+            $sql = "SELECT id_loja,nome_fantasia,COUNT(id_loja) AS 'quantidade' FROM loja WHERE clientes_id_clientes = :id";
+            $sql = $this->db->prepare($sql);
+            $sql->bindValue('id', $id);
+            $sql->execute();
+
             if ($sql->rowCount() > 0) {
-               $array= $sql->fetchAll(PDO::FETCH_ASSOC);
-               return $array;
+                $array = $sql->fetch(PDO::FETCH_ASSOC);
+                return $array;
             }
-       } catch (Exception $ex) {
-echo "Falhou:".$ex->getMessage();
-       } 
-        
+        } catch (Exception $ex) {
+            echo "Falhou:" . $ex->getMessage();
+        }
     }
+
+    public function getIdLojaCliente($id_cliente) {
+        try {
+            $sql = "SELECT *  FROM loja WHERE clientes_id_clientes = :id";
+            $sql = $this->db->prepare($sql);
+            $sql->bindValue(':id', $id_cliente);
+            $sql->execute();
+
+            if ($sql->rowCount() > 0) {
+                $array = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $array;
+            }
+        } catch (Exception $ex) {
+             echo "Falhou:" . $ex->getMessage();
+        }
+    }
+
 }

@@ -33,7 +33,7 @@
 
         </nav> 
        
-        <div class="mb-5"></div>
+        <div class="row mb-5">.</div> <!-- espaçamento entre nav e banner-->
 
 
 
@@ -57,13 +57,13 @@
                 <h5 class="" style="color:#d1ecf1;">Mais Informações:</h5>
                 <ul>
                     <li><a href="#" id="link">marecrisbr@gmail.com</a></li>
-                    <li><a href="#" id="link">11-97672-6576</a></li>
+                    <li><a href="https://api.whatsapp.com/send?phone=5511976726576&text=Quero%20Saber%20do%20Site%20Buscador%20Cabre%C3%BAva!" id="link"> <p>11-97672-6576 Marcel</p> </a></li>
                 </ul>
             </div>
 
         </div>
         <div class="footer-copyright">
-            <a href="#" id="link"><p class="text-center text-warning " >@BuscadorCabreuva 2019</p></a>
+            <a href="http://www.devmg.pe.hu" id="link"><p class="text-center text-warning " >@BuscadorCabreuva 2020</p></a>
         </div>
     </div>
 </footer>
