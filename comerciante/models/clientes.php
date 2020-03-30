@@ -195,7 +195,7 @@ class clientes extends model {
     public function listarRamo() {
         $array = array();
         try {
-            $sql = "SELECT * FROM ramo_atividade";
+            $sql = "SELECT * FROM ramo";
             $sql = $this->db->prepare($sql);
             $sql->execute();
             if ($sql->rowCount() > 0) {
@@ -347,7 +347,7 @@ class clientes extends model {
             $sql->execute();
 
             if ($sql->rowCount() > 0) {
-                $array = $sql->fetch(PDO::FETCH_ASSOC);
+                $array = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $array;
             }
         } catch (Exception $ex) {

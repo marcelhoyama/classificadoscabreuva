@@ -75,12 +75,12 @@
 
         <div class="row">
             <div class="form-group col-sm-4">
-                <label for="tipo_categoria">Tipo de Categoria:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info">ajuda ?</a></label>
+                <label for="tipo_categoria">Tipo do Ramo:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info">ajuda ?</a></label>
                 <select name="tipo_categoria" class="form-control" id="tipo_categoria">
                    
                     
                     <?php foreach ($viewData['listarCategoria'] as $value) : { ?>
-                            <option value="<?php echo $value['id_categorias']; ?>" <?php echo ($cliente['id_categorias'] == $value['id_categorias'] )? 'selected="selected"':''; ?>     ><?php echo $value['nome'];?></option>
+                            <option value="<?php echo $value['id_ramo']; ?>" <?php echo ($cliente['id_ramo'] == $value['id_ramo'] )? 'selected="selected"':''; ?>     ><?php echo $value['nome'];?></option>
 
                         <?php  } endforeach; ?>  
                  </select>

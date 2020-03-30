@@ -13,10 +13,11 @@ class homeController extends controller{
         
         
         if(isset($_POST['buscar']) && !empty($_POST['buscar'])){
-            
+           
             $palavra= addslashes(trim($_POST['buscar']));
             
-            $p=new palavras_buscada();
+            $p=new palavras();
+             echo "entrou controller-palavra foi=".$palavra;
             
             $dados['lista_palavra']=$p->buscarPalavra($palavra);
             

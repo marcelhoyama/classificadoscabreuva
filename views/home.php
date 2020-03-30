@@ -73,7 +73,7 @@
             </div>
        
         <?php if ($viewData['lista_palavra'] != ""): ?>
-  <div class="h1 text-center"> Resultado</div>
+<div class="h1 text-center"> Resultado</div>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -84,30 +84,25 @@
                         <th scope="col">Ação</th>
                     </tr>
                 </thead>
+<?php foreach ($viewData['lista_palavra']as $value) { ?>
+                
+           
+  
                 <tbody>
                     <tr>
                         <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td><a class="btn btn-warning">Visitar</a></td>
+                        <td><?php echo $value['nome_fantasia'] ?></td>
+                         <td><?php echo $value['horario'] ?></td>
+                         <td><?php echo $value['telefone1'] ?></td>
+                         
+                        
+                         <td><a href="<?php BASE_URL;?>"class="btn btn-warning">Visitar</a></td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td><a class="btn btn-warning">Visitar</a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td><a class="btn btn-warning">Visitar</a></td>
-                    </tr>
+               
                     
                 </tbody>
             </table>
+           <?php }?>
         <?php endif; ?>
         <div class="row">
             <div id="linha" class="h3 text-center "></div> 

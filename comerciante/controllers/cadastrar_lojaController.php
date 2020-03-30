@@ -18,7 +18,7 @@ class cadastrar_lojaController extends controller {
         $c = new clientes();
         $l = new lojas();
         $dados['listarRamo'] = $c->listarRamo();
-        $dados['listarCategoria'] = $l->listarCategoria();
+       
         
         if (isset($_GET['id_cliente']) && !empty($_GET['id_cliente'])) {
             $id_cliente = $_GET['id_cliente'];

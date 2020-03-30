@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div class="col-sm-2">
+<!--        <div class="col-sm-2">
             <div class="thumbnail ">
                 <a href="#" data-toggle="modal" data-target="#editarloja">
                     <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" alt="atualizar seu comercio" width="128" height="128">
@@ -52,24 +52,24 @@
 
             </div>
         </div>
-
-        <!--        <div class="col-sm-2">
+-->
+             <div class="col-sm-2">
                     <div class="thumbnail" >
-                        <a href="<?php BASE_URL; ?>pesquisarimoveis"  >
+                        <a href="<?php BASE_URL; ?>cadastrar_funcionamento?id_cliente=<?php echo $_SESSION['lgCliente']; ?>" >
                             <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" alt="pesquisar imoveis" width="128" height="128">
                         </a>
-                        <div class="h6"> Cadastrar Promoção</div>  
+                        <div class="h6"> Cadastrar Horario de Funcionamento</div>  
                     </div>
                 </div>
         
                 <div class="col-sm-2">
                     <div class="thumbnail">
-                        <a href="<?php BASE_URL; ?>pesquisarinteressados">
+                        <a href="<?php BASE_URL; ?>cadastrar_ramo">
                             <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" alt="pesquisar interessados" width="128" height="128">
                         </a>
-                        <div class="h6"> Cadastrar Evento</div>  
+                        <div class="h6"> Cadastrar Tipo de Ramo</div>  
                     </div>
-                </div>  -->
+                </div>  
 
     </div>
 
@@ -102,6 +102,41 @@
             <?php $totalstatusbloqueado = $viewData['totalbloqueado']; ?> 
                          <label>Total Bloqueado: </label><span class="badge"> <?php // echo $totalstatusbloqueado['total'];  ?></span>-->
     </div>
+      
+<div class="h1 text-center"> Seu Comercio</div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Loja</th>
+                        
+                        <th scope="col">Endereço</th>
+                        <th scope="col">Ação</th>
+                    </tr>
+                </thead>
+<?php foreach ($viewData['lojas']as $value) { ?>
+                
+           
+  
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><?php echo $value['nome_fantasia'] ?></td>
+                        
+                         <td><?php echo $value['endereco'] ?></td>
+                         
+                        
+                         <td><a href="<?php BASE_URL;?>"class="btn btn-warning">Visitar</a>
+                         <a href="<?php BASE_URL; ?>editar_loja?id_cliente=<?php echo $_SESSION['lgCliente']; ?>&id_loja=<?php echo $value['id_loja']; ?>" class="btn btn-warning">Editar loja</a>
+                         <a href="<?php BASE_URL; ?>editar_funcionamento?id_loja=<?php echo $value['id_loja']; ?>" class="btn btn-warning">Editar Horario</a></td>
+                    </tr>
+               
+                    
+                </tbody>
+                    <?php }?>
+            </table>
+       
+        
 </ul>
 </div>
 </div>

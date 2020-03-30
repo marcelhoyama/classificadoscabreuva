@@ -72,8 +72,8 @@
                 <select name="tipo_categoria" class="form-control" id="tipo_categoria">
                     <option></option>
                     
-                    <?php foreach ($viewData['listarCategoria'] as $value) : { ?>
-                            <option value="<?php echo $value['id_categorias']; ?>"><?php echo $value['nome']; ?></option>
+                    <?php foreach ($viewData['listarRamo'] as $value) : { ?>
+                            <option value="<?php echo $value['id_ramo']; ?>"><?php echo $value['nome']; ?></option>
 
                         <?php  } endforeach; ?>  
                  </select>

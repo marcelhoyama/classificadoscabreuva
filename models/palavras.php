@@ -2,7 +2,7 @@
 
 class palavras extends model {
 
-    public function cadastrarPalavra($palavra,$id_loja) {
+    public function cadastrarPalavra($palavra) {
         try {
            $sql = "INSERT INTO palavras_buscadas (palavra) VALUES (:palavra)";
            $sql=$this->db->prepare($sql);
@@ -36,10 +36,19 @@ echo "Falhou:".$ex->getMessage();
     public function buscarPalavra($palavra) {
         try{
           
+             $sql = "INSERT INTO palavras_buscadas SET palavra=:palavra,data=now()";
+           $sql=$this->db->prepare($sql);
+            $sql->bindValue(":palavra", $palavra);
+            
+            $sql->execute();
+              if($sql->rowCount()>0){
+          
+              }
+              
             $array=array();
-            $sql="SELECT * FROM loja WHERE palavra_chave1 LIKE :palavra OR palavra_chave2 LIKE :palavra";
+            $sql="SELECT * FROM loja WHERE (palavrachave LIKE :palavra OR nome_fantasia LIKE :palavra)AND status='0' ORDER BY nome_fantasia";
             $sql=$this->db->prepare($sql);
-            $sql->bindValue(":palavra",$palavra."%");
+            $sql->bindValue(":palavra","%".$palavra."%");
             $sql->execute();
             if($sql->rowCount()>0){
                 

@@ -215,7 +215,7 @@ class clientes extends model {
     public function listarRamo() {
         $array = array();
         try {
-            $sql = "SELECT * FROM ramo_atividade";
+            $sql = "SELECT * FROM ramo";
             $sql = $this->db->prepare($sql);
             $sql->execute();
             if ($sql->rowCount() > 0) {
