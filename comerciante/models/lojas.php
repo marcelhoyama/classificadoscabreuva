@@ -75,7 +75,7 @@ class lojas extends model {
         }
     }
 
-    public function cadastrar($id_funcionario, $id_cliente, $anuncio_site, $nome_fantasia, $razao_social, $endereco, $bairro, $cidade, $telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube, $instagram, $site, $id_ramo, $foto, $fotos, $fotos2, $palavrachave, $titulo, $cnpj, $cpf) {
+    public function cadastrar($id_funcionario, $id_cliente, $anuncio_site, $nome_fantasia, $razao_social, $endereco, $bairro, $cidade, $telefone1, $telefone2='', $status, $whatsapp='', $email='', $facebook='', $youtube='', $instagram='', $site='', $id_ramo, $foto, $fotos, $fotos2, $palavrachave='', $titulo, $cnpj='', $cpf='') {
         try {
             if (!empty($cnpj)) {
                 $sql = "SELECT cnpj FROM loja WHERE cnpj=:cnpj";

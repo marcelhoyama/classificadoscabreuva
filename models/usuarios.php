@@ -57,6 +57,87 @@ class usuarios extends model {
         }
     }
 
+     public function esquecisenha($email) {
+
+
+
+        $sql = "SELECT * FROM usuarios WHERE email = :email ";
+         $sql=$this->db->prepare($sql);
+             $sql->bindValue(":email",$email);
+                      $sql->execute();
+
+        if ($sql->rowCount() > 0) {
+            $sql = $sql->fetch();
+            $id = $sql['id'];
+            $token = md5(time() . rand(0, 9999) . rand(0, 9999));
+            $expirado = date('Y-m-d H:i', strtotime('+1 months'));
+            $sql = "INSERT INTO usuario_token (id_usuario, hash, expirado_em) VALUES (:id_usuario, :hash, :expirado_em)";
+
+            $sql= $this->db->prepare($sql);
+            $sql->bindValue(":id_usuario",$id);
+            $sql->bindValue(":hash",$token);
+            $sql->bindValue(":expirado_em", $expirado);;
+             $sql->execute();
+
+            $link = BASE_URL . "redefinir?token=" . $token;
+            $mensagem = "Clique no link para redefinir a senha:" . $link;
+            $assunto = "Redefinição de Senha";
+            $headers = "From: marecrisbr@gmail.com" . "\r\n" .
+                    "Reply-To:".$email."\r\n".
+                    "X-Mailer: PHP/" . phpversion();
+
+            mail($email, $assunto, $mensagem, $headers);
+           // echo $mensagem;
+           return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function redefinirSenha($token, $senha) {
+
+
+        $sql = "SELECT * FROM usuario_token WHERE hash = :hash AND used = 0 AND expirado_em > NOW()";
+
+         $sql=$this->db->prepare($sql);
+             $sql->bindValue(":hash",$token);
+             
+             $sql->execute();
+
+
+        if ($sql->rowCount() > 0) {
+
+
+            $sql = $sql->fetch();
+            $id = $sql['id_usuario'];
+
+        $sql = "UPDATE usuarios SET senha = :senha WHERE id = :id ";
+
+             $sql=$this->db->prepare($sql);
+             $sql->bindValue(":id",$id);
+             $sql->bindValue(":senha",$senha);
+             $sql->execute();
+            if ($sql->rowCount() > 0) {
+
+                $sql = "UPDATE usuario_token SET used = 1  WHERE hash = :hash ";
+
+                 $sql=$this->db->prepare($sql);
+             
+             $sql->bindValue(":hash",$token);
+             $sql->execute();
+                if ($sql->rowCount() > 0) {
+                    echo "Senha Alterado com sucesso! Volte a logar com a nova senha redefinida. ";
+                    exit;
+                }
+            }
+        } else {
+            echo "token usado ou invalido!";
+            exit;
+        }
+    }
+    
+    
+    
     public function cadastro($nome, $email, $telefone, $sexo, $senha, $resenha) {
         try {
             $sql = "SELECT email FROM usuarios WHERE email=:email ";

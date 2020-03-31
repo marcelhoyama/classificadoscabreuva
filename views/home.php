@@ -108,7 +108,7 @@
             <div id="linha" class="h3 text-center "></div> 
         </div>
         <div class="row">
-            <?php print_r($viewData['listaPorRamo']); ?>
+            <?php $viewData['listaPorRamo']; ?>
             <div class="col-md">
                 <a href="<?php BASE_URL;?>food"> <img src="assets/images/fastfood-cabreuva.jpg" id="icone" class="img-thumbnail"/></a>
                 Comidas <span class="badge badge-dark">3</span>

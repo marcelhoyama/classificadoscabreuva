@@ -31,7 +31,7 @@
                             <input type="submit" class="btnSubmit" value="Entrar" />
                         </div>
                         <div class="form-group">
-                            <a href="#" class="ForgetPwd">Esqueceu a senha?</a><a href="<?php BASE_URL;?>login_comerciante"  class="ForgetPwd"  >  Cadastrar-se</a>
+                            <a href="<?php BASE_URL;?>login_esqueci" class="ForgetPwd">Esqueceu a senha?</a><a href="<?php BASE_URL;?>login_comerciante"  class="ForgetPwd"  >  Cadastrar-se</a>
                         </div>
                    
                     
