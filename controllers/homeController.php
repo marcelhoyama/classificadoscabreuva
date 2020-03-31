@@ -11,6 +11,8 @@ class homeController extends controller{
     public function index(){
         $dados=array('lista_palavra'=>'');
         
+        $l=new lojas();
+        $dados['listaPorRamo']=$l->listarPorRamo();
         
         if(isset($_POST['buscar']) && !empty($_POST['buscar'])){
            

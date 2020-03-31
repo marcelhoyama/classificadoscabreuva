@@ -23,8 +23,8 @@
             <div class="navbar-collapse collapse" id="navbarMenu">
                 <ul class="navbar-nav ml-auto" >
                     <li class="nav-item"><a href="<?php BASE_URL; ?>home" class="nav-link">Home</a></li>
-                     <li class="nav-item"><a href="<?php BASE_URL; ?>comerciante/" class="nav-link">Comerciante</a></li>
-                    <li class="nav-item">  <a href="<?php BASE_URL; ?>prestacao-servico" class="nav-link">Prestador de Serviço</a></li>
+                     <li class="nav-item"><a href="<?php BASE_URL; ?>comerciante/" class="nav-link">Comerciante/Prestador de Serviço</a></li>
+<!--                    <li class="nav-item">  <a href="<?php BASE_URL; ?>prestacao-servico" class="nav-link">Prestador de Serviço</a></li>-->
                   <li class="nav-item">  <a href="<?php BASE_URL; ?>login_entrar" class="nav-link">Entrar</a></li>
          <!--             <li class="nav-item">  <a href="login/cadastrar" class="nav-link">Cadastrar-se</a></li>-->
 
@@ -44,21 +44,22 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h5 class="" style="color:#d1ecf1;"> Redes Sociais dos parceiros</h5>
+                <h5 class="" style="color:#d1ecf1;"> Apoiadores</h5>
          
                 <a href="#" id="link"> <p>IPC - Instituto Projeto Ceifeiros</p></a>
                 <a href="#" id="link"> <p>Guguili Baby</p></a>
                 <a href="#" id="link" > <p>Ótica Uniart</p></a>
+                <a href="#" id="link" > <p>Marisa Romão (Sebrae)</p></a>
            
-                <a href="https://www.dmrimoveiscabreuva.com.br" id="link">  <p>DMR Imoveis em Cabreúva</p></a>
-                <a href="http://www.didipedras.com.br" id="link">  <p>Didipedras Cabreúva</p></a>
+<!--                <a href="https://www.dmrimoveiscabreuva.com.br" id="link">  <p>DMR Imoveis em Cabreúva</p></a>
+                <a href="http://www.didipedras.com.br" id="link">  <p>Didipedras Cabreúva</p></a>-->
             </div>
             <div class="col ">
                 <h5 class="" style="color:#d1ecf1;">Mais Informações:</h5>
-                <ul>
-                    <li><a href="#" id="link">marecrisbr@gmail.com</a></li>
-                    <li><a href="https://api.whatsapp.com/send?phone=5511976726576&text=Quero%20Saber%20do%20Site%20Buscador%20Cabre%C3%BAva!" id="link"> <p>11-97672-6576 Marcel</p> </a></li>
-                </ul>
+                
+                    <a href="#" id="link">marecrisbr@gmail.com</a>
+                    <a href="https://api.whatsapp.com/send?phone=5511976726576&text=Quero%20Saber%20do%20Site%20Buscador%20Cabre%C3%BAva!" id="link"> <p>11-97672-6576 Marcel</p> </a>
+                
             </div>
 
         </div>

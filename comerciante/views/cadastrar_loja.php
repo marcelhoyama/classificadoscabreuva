@@ -25,10 +25,10 @@
         <div class="control-group col-sm">
                  <label for="">CNPJ:</label> <label class="text-danger">se não tiver registro CNPJ use seu CPF</label></br>
                
-                 <input type="text" class="form-control"  name="cnpj" placeholder="somente numeros" >
+                 <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="somente numeros" >
                    <label for="">CPF:</label> <label class="text-danger"></label></br>
                
-                 <input type="text" class="form-control"  name="cpf" placeholder="somente numeros" >
+                   <input type="text" class="form-control" id="cpf" name="cpf" placeholder="somente numeros" >
      
         </div>
 <!--             <div class="control-group col-sm">
@@ -68,7 +68,7 @@
 
         <div class="row">
             <div class="form-group col-sm-4">
-                <label for="tipo_categoria">Tipo de Categoria:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info">ajuda ?</a></label>
+                <label for="tipo_categoria">Tipo de Ramo de Atividade:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info"></a></label>
                 <select name="tipo_categoria" class="form-control" id="tipo_categoria">
                     <option></option>
                     
@@ -78,8 +78,11 @@
                         <?php  } endforeach; ?>  
                  </select>
             </div>
-
-<!-- Modal -->
+            <div class="form-group col-sm-4 mt-5">
+                <label for="tipo_categoria">Não encontrou? Cadastre seu ramo aqui:</label>
+                <button type="button" class="btn btn-primary" href="javascript;:" onclick="cadastrarRamo()">+</button>
+            </div>
+<!-- Modal ajuda Categoria -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -134,6 +137,7 @@
   </div>
 </div>   
           
+
         </div>     
 
         <div class="form-group">
@@ -176,16 +180,16 @@
         <div class="row">
     
         <div class="form-group col-sm-6">
-                <label for="telefone1">Telefone 1:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="telefone1" type="text" class="form-control" id="telefone1" placeholder="DDD+somente numeros" />
+                <label for="telefone1">Fixo 1:</label>  <label class="text-danger">campo obrigatorio*</label>
+                <input name="telefone1" type="text" class="form-control" id="telefone" placeholder="DDD+somente numeros" />
             </div>
         <div class="form-group col-sm-6">
                 <label for="telefone2">Telefone 2:</label>  <label class="text-danger"></label>
-                <input name="telefone2" type="text" class="form-control" id="telefone2" placeholder="DDD+somente numeros" />
+                <input name="telefone2" type="text" class="form-control" id="telefone" placeholder="DDD+somente numeros" />
             </div>
         <div class="form-group col-sm-6">
                 <label for="whatsapp">Whatsapp:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="whatsapp" type="text" class="form-control" id="telefone1" placeholder="DDD+numeros"/>
+                <input name="whatsapp" type="text" class="form-control" id="celular" placeholder="DDD+numeros"/>
             </div>
         </div>
         <div class="row">
@@ -337,4 +341,26 @@ precisa ver como fica no banco de dados
         </div>
     </form>
 
+    
+    
+</div>
+
+
+<!-- Modal tipo de ramo  id=modaltiporamo-->
+<div class="modal fade" id="modaltiporamo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Cadastrar tipo de Ramo de Atividade!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+       
+      </div>
+    </div>
+  </div>
 </div>

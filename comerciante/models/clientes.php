@@ -210,7 +210,7 @@ class clientes extends model {
     public function listarCliente($id) {
         $array = array();
         try {
-            $sql = "SELECT * FROM clientes WHERE id=:id";
+            $sql = "SELECT * FROM clientes WHERE id_clientes=:id";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(':id', $id);
             $sql->execute();
@@ -354,5 +354,6 @@ class clientes extends model {
              echo "Falhou:" . $ex->getMessage();
         }
     }
+    
 
 }

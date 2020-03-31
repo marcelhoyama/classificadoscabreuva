@@ -5,41 +5,36 @@
  */
  
 
-function tenhointeresse(id) {
-    $('#Modalvenda').modal('toggle');
+function cadastrarRamo() {
+    $('#modaltiporamo').modal('toggle');
     $.ajax({
-        url: 'tenhointeresse',
+        url: 'ajax',
         type: 'POST',
-        data: {id: id},
+        data: {},
         success: function (html) {
-             
-            $('#Modalvenda').find('.modal-body').html(html);
-            $('#Modalvenda').find('.modal-body').find('form').on('submit', function (e) {
-             
+        
+            $('#modaltiporamo').find('.modal-body').html(html);
+              
+            $('#modaltiporamo').find('form').on('submit', function (e) {
+                 
                 e.preventDefault();
-    
-                var nome = $(this).find('input[name=nome]').val(); 
+   
+                var nome = $(this).find('input[name=ramo]').val(); 
                
-                
-                var email = $(this).find('input[name=email]').val();
-                var telefone = $(this).find('input[name=fonefixo]').val();
-                var celular = $(this).find('input[name=fone]').val();
-                var id_tipo_assunto = $(this).find('input[name=id_tipo_assunto]').val();
-                 var tipo_assunto = $(this).find('input[name=tipo_assunto]').val();
-                var id_imovel = $(this).find('input[name=id_imovel]').val();
-                var id_tipo_imovel = $(this).find('input[name=id_tipo_imovel]').val();
-                 var tipo_imovel = $(this).find('input[name=tipo_imovel]').val();
-                
-                    
+              console.log(nome);
                 $.ajax({
-                    url: 'cadastrartenhointeresse',
+                    url: 'ajax/cadastrarRamo',
                     type: 'POST',
-                    data: {nome: nome, email: email, telefone: telefone, celular: celular, id_tipo_assunto: id_tipo_assunto,tipo_assunto: tipo_assunto, id_imovel: id_imovel, id_tipo_imovel: id_tipo_imovel, tipo_imovel:tipo_imovel},
+                    data: {nome: nome},
                     success: function () {
                         
                        alert('Cadastrado com Sucesso!');
-                     $('#Modalvenda').modal('hide');
+                   window.location.href=window.location.href;
 
+                    },
+                    error: function(){
+                        alert('Não foi possivel cadastrar!');
+                         $('#modaltiporamo').modal('hide');
                     }
                 });
 

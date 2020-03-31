@@ -34,7 +34,7 @@ class cadastrar_lojaController extends controller {
             //  variavel $id é do funcionario
             // variavel $id_cliente é do cliente
             $anuncio_site = addslashes(trim($_POST['anuncio_site']));
-            $tipo_categoria = addslashes(trim($_POST['tipo_categoria']));
+            $id_ramo = addslashes(trim($_POST['tipo_categoria']));
             $nome_fantasia = addslashes(trim($_POST['nome_fantasia']));
             $razao_social = addslashes(trim($_POST['razao_social']));
             $endereco = addslashes(trim($_POST['endereco']));
@@ -112,7 +112,7 @@ class cadastrar_lojaController extends controller {
             
 //            $l->cadastrar($id_funcionario, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria, $descricao, $chamada, $prova, $foto,$fotos,$fotos2, $apresentacao, $produtos, $acao,$palavrachave,$titulo);
             
-           if($dados['erro']=$l->cadastrar($id_funcionario, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria , $foto,$fotos,$fotos2,$palavrachave,$titulo,$cnpj,$cpf)){
+           if($dados['erro']=$l->cadastrar($id_funcionario, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$id_ramo , $foto,$fotos,$fotos2,$palavrachave,$titulo,$cnpj,$cpf)){
       
                
            }else{

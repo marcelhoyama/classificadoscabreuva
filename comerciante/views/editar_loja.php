@@ -75,7 +75,7 @@
 
         <div class="row">
             <div class="form-group col-sm-4">
-                <label for="tipo_categoria">Tipo do Ramo:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info">ajuda ?</a></label>
+                <label for="tipo_categoria">Tipo do Ramo:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info"></a></label>
                 <select name="tipo_categoria" class="form-control" id="tipo_categoria">
                    
                     
@@ -85,7 +85,10 @@
                         <?php  } endforeach; ?>  
                  </select>
             </div>
-
+<div class="form-group col-sm-4 mt-5">
+                <label for="tipo_categoria">Não encontrou? Cadastre seu ramo aqui:</label>
+                <button type="button" class="btn btn-primary" href="javascript;:" onclick="cadastrarRamo()">+</button>
+            </div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -339,4 +342,23 @@ precisa ver como fica no banco de dados
         </div>
     </form>
 
+</div>
+
+<!-- Modal tipo de ramo  id=modaltiporamo-->
+<div class="modal fade" id="modaltiporamo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Cadastrar tipo de Ramo de Atividade!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+       
+      </div>
+    </div>
+  </div>
 </div>

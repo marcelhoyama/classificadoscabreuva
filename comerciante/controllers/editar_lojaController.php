@@ -18,14 +18,14 @@ class editar_lojaController extends controller {
         
         $l = new lojas();
       
-        $dados['listarCategoria'] = $l->listarCategoria();
+        $dados['listarCategoria'] = $l->listarRamo();
         
            if (isset($_GET['id_cliente']) && !empty($_GET['id_cliente'])) {
             $id_cliente = $_GET['id_cliente'];
             
             $dados['nomeCliente'] = $c->getName($id_cliente);
             $dados['id_cliente'] = $id_cliente;
-        $dados['lojacliente']=$c->getIdLojaCliente($id_cliente);
+        $dados['lojacliente']=$c->listarCliente($id_cliente);
       
             
         }

@@ -9,11 +9,11 @@
     <div class="row" >
         <div class="col-sm-2">
             <div class="thumbnail ">
-                <a href="<?php BASE_URL; ?>cadastrar_loja?id_cliente=<?php echo $_SESSION['lgCliente']; ?>">
-                    <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" alt="cadastre seu comercio" width="128" height="128">
+                <a href="<?php BASE_URL; ?>cadastrar_loja?id_cliente=<?php echo $_SESSION['lgCliente']; ?>" class="btn btn-warning">Cadastrar seu comercio/serviço
+<!--                    <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" alt="cadastre seu comercio" width="128" height="128">-->
 
                 </a>  
-                <div class="h6">Vamos Cadastrar seu comercio/serviço</div>  
+                
             </div>
         </div>
 
@@ -53,23 +53,23 @@
             </div>
         </div>
 -->
-             <div class="col-sm-2">
+<!--             <div class="col-sm-2">
                     <div class="thumbnail" >
                         <a href="<?php BASE_URL; ?>cadastrar_funcionamento?id_cliente=<?php echo $_SESSION['lgCliente']; ?>" >
                             <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" alt="pesquisar imoveis" width="128" height="128">
                         </a>
                         <div class="h6"> Cadastrar Horario de Funcionamento</div>  
                     </div>
-                </div>
+                </div>-->
         
-                <div class="col-sm-2">
+<!--                <div class="col-sm-2">
                     <div class="thumbnail">
                         <a href="<?php BASE_URL; ?>cadastrar_ramo">
                             <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" alt="pesquisar interessados" width="128" height="128">
                         </a>
                         <div class="h6"> Cadastrar Tipo de Ramo</div>  
                     </div>
-                </div>  
+                </div>  -->
 
     </div>
 
@@ -81,7 +81,7 @@
         <ul class="list-group">
             <li class="list-group-item">
                 
-                <label>Total de Loja Cadastrado: </label><span class="badge"> <?php echo $totalloja['quantidade']; ?></span>
+                <label>Total de Loja sua Cadastrado: </label><span class="badge"> <?php echo $totalloja['quantidade']; ?></span>
             </li>
 
             <!--          <li class="list-group-item">
@@ -126,9 +126,9 @@
                          <td><?php echo $value['endereco'] ?></td>
                          
                         
-                         <td><a href="<?php BASE_URL;?>"class="btn btn-warning">Visitar</a>
+                         <td><a href="<?php BASE_URL;?>"class="btn btn-warning disabled" >Visitar</a>
                          <a href="<?php BASE_URL; ?>editar_loja?id_cliente=<?php echo $_SESSION['lgCliente']; ?>&id_loja=<?php echo $value['id_loja']; ?>" class="btn btn-warning">Editar loja</a>
-                         <a href="<?php BASE_URL; ?>editar_funcionamento?id_loja=<?php echo $value['id_loja']; ?>" class="btn btn-warning">Editar Horario</a></td>
+                         <a href="<?php BASE_URL; ?>editar_funcionamento?id_loja=<?php echo $value['id_loja']; ?>" class="btn btn-warning">Cadastrar/Editar Horario</a></td>
                     </tr>
                
                     

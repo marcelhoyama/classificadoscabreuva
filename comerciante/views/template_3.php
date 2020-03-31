@@ -54,9 +54,9 @@
     
     
     <!-- Menu lateral --------------Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<!--<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
     <br>
-<!-- Sidebar/menu -->
+ Sidebar/menu 
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:200px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4 mt-5">
@@ -82,25 +82,25 @@
       <li>  <a href="<?php BASE_URL;?>pesquisar_funcionario" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Funcionários</a></li>
       
       <li><a href="<?php BASE_URL;?>pesquisar_loja" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Lojas</a></li>
-<!--    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>-->
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
   </div>
 </nav>
-<!-- fim do menu lateral -->
+ fim do menu lateral -->
  
  <div class="container">
-     
-    <div class="" style="margin-left:200px;margin-top:-200px; ">
-            <body>
+     <div class="margem-top">
+   <!--  margem lateral  <div class="" style="margin-left:200px;margin-top:-200px; "></div> -->
+   <body class="mt-5">
   <!--  aqui onde vai o corpo das paginas do sistema -->
     <?php $this->loadViewInTemplate($viewName, $viewData); ?>
  </body>
-    </div>
-       
+    
+       </div>
  </div>
      
 <!-- Footer -->
@@ -108,8 +108,9 @@
   <p>Desenvolvido por <a href="https://www.buscadorcabreuva.com.br" title="ps-maciel publicidade" target="_blank" class="w3-hover-text-green">Marcel Hoyama</a></p>
 </footer>
 
-
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+ <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery-3.1.1.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!--        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
    <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.validate.js"></script>

@@ -456,107 +456,119 @@ class lojas extends model {
         }
     }
 
-    public function cadastrarFuncionamento($id_loja, $hora_domingo_inicio, $hora_domingo_fim, $domingo, $hora_segunda_inicio, $hora_segunda_fim, $segunda, $hora_terca_inicio, $hora_terca_fim, $terca, $hora_quarta_inicio, $hora_quarta_fim, $quarta, $hora_quinta_inicio, $hora_quinta_fim, $quinta, $hora_sexta_inicio, $hora_sexta_fim, $sexta, $hora_sabado_inicio, $hora_sabado_fim, $sabado) {
-        try {
-
-if(empty($segunda)){}else{
-            $sql = "INSERT INTO hora_func SET id_loja=:id_loja,id_dia_semana:id_dia,hora_inicio=: inicio, hora_fim=:fim";
+    public function funcionamento($id_loja,$nome) {
+        $sql = "INSERT INTO dia_semana SET id_loja=:id_loja,nome=:nome";
             $sql = $this->db->prepare($sql);
             $sql->bindParam(":id_loja", $id_loja);
-            $sql->bindParam(":id_dia", $segunda);
-            $sql->bindParam(":hora_inicio", $hora_segunda_inicio);
-            $sql->bindParam(":hora_fim", $hora_segunda_fim);
-
-
-            $sql->execute();
-
-}
-if(empty($terca)){}else{
-            $sql = "INSERT INTO hora_func SET id_loja=:id_loja,id_dia_semana:id_dia,hora_inicio=: inicio, hora_fim=:fim";
-            $sql = $this->db->prepare($sql);
-            $sql->bindParam(":id_loja", $id_loja);
-            $sql->bindParam(":id_dia", $terca);
-            $sql->bindParam(":hora_inicio", $hora_terca_inicio);
-            $sql->bindParam(":hora_fim", $hora_terca_fim);
-
-
-            $sql->execute();
-
-}
-
-if(empty($quarta)){}else{
-            $sql = "INSERT INTO hora_func SET id_loja=:id_loja,id_dia_semana:id_dia,hora_inicio=: inicio, hora_fim=:fim";
-            $sql = $this->db->prepare($sql);
-            $sql->bindParam(":id_loja", $id_loja);
-            $sql->bindParam(":id_dia", $quarta);
-            $sql->bindParam(":hora_inicio", $hora_quarta_inicio);
-            $sql->bindParam(":hora_fim", $hora_quarta_fim);
-
-
-            $sql->execute();
-}
-
-if(empty($quinta)){}else{
-            $sql = "INSERT INTO hora_func SET id_loja=:id_loja,id_dia_semana:id_dia,hora_inicio=: inicio, hora_fim=:fim";
-            $sql = $this->db->prepare($sql);
-            $sql->bindParam(":id_loja", $id_loja);
-            $sql->bindParam(":id_dia", $quinta);
-            $sql->bindParam(":hora_inicio", $hora_quinta_inicio);
-            $sql->bindParam(":hora_fim", $hora_quinta_fim);
-
-
-            $sql->execute();
-
-}
-
-if(empty($sexta)){}else{
-            $sql = "INSERT INTO hora_func SET id_loja=:id_loja,id_dia_semana:id_dia,hora_inicio=: inicio, hora_fim=:fim";
-            $sql = $this->db->prepare($sql);
-            $sql->bindParam(":id_loja", $id_loja);
-            $sql->bindParam(":id_dia", $sexta);
-            $sql->bindParam(":hora_inicio", $hora_sexta_inicio);
-            $sql->bindParam(":hora_fim", $hora_sexta_fim);
-
-
-            $sql->execute();
-}
-
-if(empty($sabado)){}else{
-
-            $sql = "INSERT INTO hora_func SET id_loja=:id_loja,id_dia_semana:id_dia,hora_inicio=: inicio, hora_fim=:fim";
-            $sql = $this->db->prepare($sql);
-            $sql->bindParam(":id_loja", $id_loja);
-            $sql->bindParam(":id_dia", $sabado);
-            $sql->bindParam(":hora_inicio", $hora_sabado_inicio);
-            $sql->bindParam(":hora_fim", $hora_sabado_fim);
-
-
-            $sql->execute();
-}
-
-if(empty($domingo)){}else{
-
-            $sql = "INSERT INTO hora_func SET id_loja=:id_loja,id_dia_semana=:id_dia,hora_inicio=: inicio, hora_fim=:fim";
-            $sql = $this->db->prepare($sql);
-            $sql->bindParam(":id_loja", $id_loja);
-            $sql->bindParam(":id_dia", $domingo);
-            $sql->bindParam(":inicio", $hora_domingo_inicio);
-            $sql->bindParam(":fim", $hora_domingo_fim);
-
-
-            $sql->execute();
-            if($sql->rowCount()>0){
-                echo 'cadastrou?';
-                exit;
-            }
-}
+            $sql->bindParam(":nome", $nome);
            
-        } catch (Exception $ex) {
-            echo 'Falhou:' . $ex->getMessage();
-        }
+
+
+            $sql->execute();
     }
 
-    public function editar($id_loja, $id_cliente, $anuncio_site, $nome_fantasia, $razao_social, $endereco, $bairro, $cidade, $telefone1, $telefone2 = '', $status, $whatsapp = '', $email = '', $facebook = '', $youtube = '', $instagram = '', $site = '', $tipo_categoria, $foto, $fotos, $fotos2, $palavrachave = '', $titulo = '', $cnpj = '') {
+
+//    public function cadastrarFuncionamento($id_loja, $hora_domingo_inicio, $hora_domingo_fim, $domingo, $hora_segunda_inicio, $hora_segunda_fim, $segunda, $hora_terca_inicio, $hora_terca_fim, $terca, $hora_quarta_inicio, $hora_quarta_fim, $quarta, $hora_quinta_inicio, $hora_quinta_fim, $quinta, $hora_sexta_inicio, $hora_sexta_fim, $sexta, $hora_sabado_inicio, $hora_sabado_fim, $sabado) {
+//        try {
+//
+//if(empty($segunda)){}else{
+//            $sql = "INSERT INTO hora_func SET id_loja=:id_loja,id_dia_semana:id_dia,hora_inicio=: inicio, hora_fim=:fim";
+//            $sql = $this->db->prepare($sql);
+//            $sql->bindParam(":id_loja", $id_loja);
+//            $sql->bindParam(":id_dia", $segunda);
+//            $sql->bindParam(":hora_inicio", $hora_segunda_inicio);
+//            $sql->bindParam(":hora_fim", $hora_segunda_fim);
+//
+//
+//            $sql->execute();
+//
+//}
+//if(empty($terca)){}else{
+//            $sql = "INSERT INTO hora_func SET id_loja=:id_loja,id_dia_semana:id_dia,hora_inicio=: inicio, hora_fim=:fim";
+//            $sql = $this->db->prepare($sql);
+//            $sql->bindParam(":id_loja", $id_loja);
+//            $sql->bindParam(":id_dia", $terca);
+//            $sql->bindParam(":hora_inicio", $hora_terca_inicio);
+//            $sql->bindParam(":hora_fim", $hora_terca_fim);
+//
+//
+//            $sql->execute();
+//
+//}
+//
+//if(empty($quarta)){}else{
+//            $sql = "INSERT INTO hora_func SET id_loja=:id_loja,id_dia_semana:id_dia,hora_inicio=: inicio, hora_fim=:fim";
+//            $sql = $this->db->prepare($sql);
+//            $sql->bindParam(":id_loja", $id_loja);
+//            $sql->bindParam(":id_dia", $quarta);
+//            $sql->bindParam(":hora_inicio", $hora_quarta_inicio);
+//            $sql->bindParam(":hora_fim", $hora_quarta_fim);
+//
+//
+//            $sql->execute();
+//}
+//
+//if(empty($quinta)){}else{
+//            $sql = "INSERT INTO hora_func SET id_loja=:id_loja,id_dia_semana:id_dia,hora_inicio=: inicio, hora_fim=:fim";
+//            $sql = $this->db->prepare($sql);
+//            $sql->bindParam(":id_loja", $id_loja);
+//            $sql->bindParam(":id_dia", $quinta);
+//            $sql->bindParam(":hora_inicio", $hora_quinta_inicio);
+//            $sql->bindParam(":hora_fim", $hora_quinta_fim);
+//
+//
+//            $sql->execute();
+//
+//}
+//
+//if(empty($sexta)){}else{
+//            $sql = "INSERT INTO hora_func SET id_loja=:id_loja,id_dia_semana:id_dia,hora_inicio=: inicio, hora_fim=:fim";
+//            $sql = $this->db->prepare($sql);
+//            $sql->bindParam(":id_loja", $id_loja);
+//            $sql->bindParam(":id_dia", $sexta);
+//            $sql->bindParam(":hora_inicio", $hora_sexta_inicio);
+//            $sql->bindParam(":hora_fim", $hora_sexta_fim);
+//
+//
+//            $sql->execute();
+//}
+//
+//if(empty($sabado)){}else{
+//
+//            $sql = "INSERT INTO hora_func SET id_loja=:id_loja,id_dia_semana:id_dia,hora_inicio=: inicio, hora_fim=:fim";
+//            $sql = $this->db->prepare($sql);
+//            $sql->bindParam(":id_loja", $id_loja);
+//            $sql->bindParam(":id_dia", $sabado);
+//            $sql->bindParam(":hora_inicio", $hora_sabado_inicio);
+//            $sql->bindParam(":hora_fim", $hora_sabado_fim);
+//
+//
+//            $sql->execute();
+//}
+//
+//if(empty($domingo)){}else{
+//
+//            $sql = "INSERT INTO hora_func SET id_loja=:id_loja,id_dia_semana=:id_dia,hora_inicio=: inicio, hora_fim=:fim";
+//            $sql = $this->db->prepare($sql);
+//            $sql->bindParam(":id_loja", $id_loja);
+//            $sql->bindParam(":id_dia", $domingo);
+//            $sql->bindParam(":inicio", $hora_domingo_inicio);
+//            $sql->bindParam(":fim", $hora_domingo_fim);
+//
+//
+//            $sql->execute();
+//            if($sql->rowCount()>0){
+//                echo 'cadastrou?';
+//                exit;
+//            }
+//}
+//           
+//        } catch (Exception $ex) {
+//            echo 'Falhou:' . $ex->getMessage();
+//        }
+//    }
+
+    public function editar($id_loja, $id_cliente, $anuncio_site, $nome_fantasia, $razao_social, $endereco, $bairro, $cidade, $telefone1, $telefone2 = '', $status, $whatsapp = '', $email = '', $facebook = '', $youtube = '', $instagram = '', $site = '', $id_ramo, $foto, $fotos, $fotos2, $palavrachave = '', $titulo = '', $cnpj = '') {
         try {
 
 
@@ -598,7 +610,7 @@ if(empty($domingo)){}else{
                 $slug = $this->slugNotRepetir($titulo, $id_loja);
 
 
-                $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj WHERE id_loja=:id_loja ";
+                $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj WHERE id_loja=:id_loja ";
 
 
                 $sql = $this->db->prepare($sql);
@@ -606,7 +618,7 @@ if(empty($domingo)){}else{
 
                 $sql->bindParam(":id_cliente", $id_cliente);
                 $sql->bindParam(":anuncio_site", $anuncio_site);
-                $sql->bindParam(":tipo_categoria", $tipo_categoria);
+               
                 $sql->bindParam(":nome_fantasia", $nome_fantasia);
                 $sql->bindParam(":razao_social", $razao_social);
                 $sql->bindParam(":endereco", $endereco);
@@ -636,7 +648,7 @@ if(empty($domingo)){}else{
 
                 $slug = $this->slugNotRepetir($titulo, $id_loja);
 
-                $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj WHERE id_loja=:id_loja ";
+                $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj WHERE id_loja=:id_loja ";
 
 
                 $sql = $this->db->prepare($sql);
@@ -644,7 +656,7 @@ if(empty($domingo)){}else{
 
                 $sql->bindParam(":id_cliente", $id_cliente);
                 $sql->bindParam(":anuncio_site", $anuncio_site);
-                $sql->bindParam(":tipo_categoria", $tipo_categoria);
+             
                 $sql->bindParam(":nome_fantasia", $nome_fantasia);
                 $sql->bindParam(":razao_social", $razao_social);
                 $sql->bindParam(":endereco", $endereco);
@@ -672,8 +684,17 @@ if(empty($domingo)){}else{
             }
             $sql->execute();
             if ($sql->rowCount() > 0) {
+                
+                //por enquanto mudar um tipo de ramo, pois falta ver como fazer multipla escolha
+  $sql = "UPDATE ramo_has_loja SET ramo_id_ramo=:id_ramo,loja_id_loja=:id_loja WHERE loja_id_loja=:id_loja AND ramo_id_ramo=:id_ramo ";
 
-                if (count($fotos) > 0) {
+                
+                            $sql = $this->db->prepare($sql);
+                            $sql->bindParam(":ramo_id_ramo", $id_ramo);
+                            $sql->bindParam(":loja_id_loja", $id_loja);
+                 $sql->execute();
+if ($sql->rowCount() > 0) {
+                            if (count($fotos) > 0) {
 
                     for ($q = 0; $q < count($fotos['tmp_name']); $q++) {
 
@@ -767,6 +788,7 @@ if(empty($domingo)){}else{
                         }
                     }
                 }
+            }
                 return TRUE;
             }
             if (count($fotos) > 0) {
@@ -946,7 +968,7 @@ if(empty($domingo)){}else{
         }
     }
 
-    public function listarCategoria() {
+    public function listarRamo() {
         try {
             $array = array();
             $sql = "SELECT * FROM ramo";
