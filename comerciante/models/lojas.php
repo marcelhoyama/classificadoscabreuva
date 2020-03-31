@@ -135,14 +135,14 @@ class lojas extends model {
 
 
 
-                            $sql = "INSERT INTO loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj,data=:data ";
+                            $sql = "INSERT INTO loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,ramo=:tipo_ramo,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj,data=NOW() ";
 
 
                             $sql = $this->db->prepare($sql);
                             $sql->bindParam(":id_funcionario", $id_funcionario);
                             $sql->bindParam(":id_cliente", $id_cliente);
                             $sql->bindParam(":anuncio_site", $anuncio_site);
-
+                            $sql->bindParam(":ramo",$tipo_ramo);
                             $sql->bindParam(":nome_fantasia", $nome_fantasia);
                             $sql->bindParam(":razao_social", $razao_social);
                             $sql->bindParam(":endereco", $endereco);
@@ -168,19 +168,12 @@ class lojas extends model {
                             $sql->bindParam(":slug", $slug);
                             $sql->bindParam(":titulo", $titulo);
                             $sql->bindParam(":cnpj", $cnpj);
-                            $sql->bindParam(":data", 'NOW()');
+                           
                             $sql->execute();
 
-                            $id = $this->db->lastInsertId();
+                          //  $id = $this->db->lastInsertId();
 
-                            $sql = "INSERT INTO ramo_has_loja SET ramo_id_ramo=:id_ramo,loja_id_loja=:id_loja ";
-
-
-                            $sql = $this->db->prepare($sql);
-                            $sql->bindParam(":ramo_id_ramo", $id_ramo);
-                            $sql->bindParam(":loja_id_loja", $id);
-
-                            if ($sql->rowCount() > 0) {
+                          
 
                                 if (count($fotos2) > 0) {
 
@@ -275,7 +268,7 @@ class lojas extends model {
                                         }
                                     }
                                 }
-                            }
+                            
                         }
                     }
                 }
@@ -312,14 +305,14 @@ class lojas extends model {
 
 
 
-                                    $sql = "INSERT INTO loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,categoria=:tipo_categoria,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,data=:data ";
+                                    $sql = "INSERT INTO loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,ramo=:tipo_ramo,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,data=NOW() ";
 
 
                                     $sql = $this->db->prepare($sql);
                                     $sql->bindParam(":id_funcionario", $id_funcionario);
                                     $sql->bindParam(":id_cliente", $id_cliente);
                                     $sql->bindParam(":anuncio_site", $anuncio_site);
-                                    $sql->bindParam(":tipo_categoria", $tipo_categoria);
+                                    $sql->bindParam(":ramo", $tipo_ramo);
                                     $sql->bindParam(":nome_fantasia", $nome_fantasia);
                                     $sql->bindParam(":razao_social", $razao_social);
                                     $sql->bindParam(":endereco", $endereco);
@@ -345,7 +338,6 @@ class lojas extends model {
                                     $sql->bindParam(":slug", $slug);
                                     $sql->bindParam(":titulo", $titulo);
 
-                                    $sql->bindParam(":data", 'NOW()');
                                     $sql->execute();
 
                                     $id = $this->db->lastInsertId();
@@ -568,9 +560,8 @@ class lojas extends model {
 //        }
 //    }
 
-    public function editar($id_loja, $id_cliente, $anuncio_site, $nome_fantasia, $razao_social, $endereco, $bairro, $cidade, $telefone1, $telefone2 = '', $status, $whatsapp = '', $email = '', $facebook = '', $youtube = '', $instagram = '', $site = '', $id_ramo, $foto, $fotos, $fotos2, $palavrachave = '', $titulo = '', $cnpj = '') {
+    public function editar($id_loja, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_ramo, $foto,$fotos,$fotos2,$palavrachave,$titulo) {
         try {
-
 
             if (!empty($foto['tmp_name'][0])) {
 
@@ -607,16 +598,16 @@ class lojas extends model {
 
 
 
+
                 $slug = $this->slugNotRepetir($titulo, $id_loja);
 
-
-                $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj WHERE id_loja=:id_loja ";
+                $sql = "UPDATE loja SET anuncio_site=:anuncio_site,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,ramo=:ramo,slug=:slug,titulo=:titulo,url_imagem_principal=:url_imagem_principal,palavrachave=:palavrachave WHERE id_loja=:id_loja ";
 
 
                 $sql = $this->db->prepare($sql);
                 $sql->bindParam(":id_loja", $id_loja);
 
-                $sql->bindParam(":id_cliente", $id_cliente);
+             
                 $sql->bindParam(":anuncio_site", $anuncio_site);
                
                 $sql->bindParam(":nome_fantasia", $nome_fantasia);
@@ -626,37 +617,32 @@ class lojas extends model {
                 $sql->bindParam(":cidade", $cidade);
                 $sql->bindParam(":telefone1", $telefone1);
                 $sql->bindParam(":telefone2", $telefone2);
-                $sql->bindParam(":status", $status);
+                $sql->bindParam(":ramo",$tipo_ramo);
                 $sql->bindParam(":whatsapp", $whatsapp);
                 $sql->bindParam(":email", $email);
                 $sql->bindParam(":facebook", $facebook);
                 $sql->bindParam(":youtube", $youtube);
                 $sql->bindParam(":instagram", $instagram);
                 $sql->bindParam(":site", $site);
-                $sql->bindParam(":descricao", $descricao);
-                $sql->bindParam(":chamada", $chamada);
-                $sql->bindParam(":prova", $prova);
-                $sql->bindParam(":apresentacao", $apresentacao);
-                $sql->bindParam(":produto", $produtos);
-                $sql->bindParam(":acao", $acao);
+
                 $sql->bindParam(":palavrachave", $palavrachave);
                 $sql->bindParam(":url_imagem_principal", $tmpname);
                 $sql->bindParam(":slug", $slug);
                 $sql->bindParam(":titulo", $titulo);
-                $sql->bindParam(":cnpj", $cnpj);
+              
             } else {
 
                 $slug = $this->slugNotRepetir($titulo, $id_loja);
 
-                $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj WHERE id_loja=:id_loja ";
+                 $sql = "UPDATE loja SET anuncio_site=:anuncio_site,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,ramo=:ramo,slug=:slug,titulo=:titulo,palavrachave=:palavrachave WHERE id_loja=:id_loja ";
 
 
                 $sql = $this->db->prepare($sql);
                 $sql->bindParam(":id_loja", $id_loja);
 
-                $sql->bindParam(":id_cliente", $id_cliente);
-                $sql->bindParam(":anuncio_site", $anuncio_site);
              
+                $sql->bindParam(":anuncio_site", $anuncio_site);
+               
                 $sql->bindParam(":nome_fantasia", $nome_fantasia);
                 $sql->bindParam(":razao_social", $razao_social);
                 $sql->bindParam(":endereco", $endereco);
@@ -664,36 +650,60 @@ class lojas extends model {
                 $sql->bindParam(":cidade", $cidade);
                 $sql->bindParam(":telefone1", $telefone1);
                 $sql->bindParam(":telefone2", $telefone2);
-                $sql->bindParam(":status", $status);
+               $sql->bindParam(":ramo",$tipo_ramo);
                 $sql->bindParam(":whatsapp", $whatsapp);
                 $sql->bindParam(":email", $email);
                 $sql->bindParam(":facebook", $facebook);
                 $sql->bindParam(":youtube", $youtube);
                 $sql->bindParam(":instagram", $instagram);
                 $sql->bindParam(":site", $site);
-                $sql->bindParam(":descricao", $descricao);
-                $sql->bindParam(":chamada", $chamada);
-                $sql->bindParam(":prova", $prova);
-                $sql->bindParam(":apresentacao", $apresentacao);
-                $sql->bindParam(":produto", $produtos);
-                $sql->bindParam(":acao", $acao);
+
                 $sql->bindParam(":palavrachave", $palavrachave);
+               
                 $sql->bindParam(":slug", $slug);
                 $sql->bindParam(":titulo", $titulo);
-                $sql->bindParam(":cnpj", $cnpj);
+                
+//   modelo antigo completo nao vai usar ainda
+//                             $sql = "UPDATE loja SET clientes_id_clientes=:id_cliente,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp=:whatsapp,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj WHERE id_loja=:id_loja ";
+
+
+//                $sql = $this->db->prepare($sql);
+//                $sql->bindParam(":id_loja", $id_loja);
+//
+//                $sql->bindParam(":id_cliente", $id_cliente);
+//                $sql->bindParam(":anuncio_site", $anuncio_site);
+//             
+//                $sql->bindParam(":nome_fantasia", $nome_fantasia);
+//                $sql->bindParam(":razao_social", $razao_social);
+//                $sql->bindParam(":endereco", $endereco);
+//                $sql->bindParam(":bairro", $bairro);
+//                $sql->bindParam(":cidade", $cidade);
+//                $sql->bindParam(":telefone1", $telefone1);
+//                $sql->bindParam(":telefone2", $telefone2);
+//                $sql->bindParam(":status", $status);
+//                $sql->bindParam(":whatsapp", $whatsapp);
+//                $sql->bindParam(":email", $email);
+//                $sql->bindParam(":facebook", $facebook);
+//                $sql->bindParam(":youtube", $youtube);
+//                $sql->bindParam(":instagram", $instagram);
+//                $sql->bindParam(":site", $site);
+//                $sql->bindParam(":descricao", $descricao);
+//                $sql->bindParam(":chamada", $chamada);
+//                $sql->bindParam(":prova", $prova);
+//                $sql->bindParam(":apresentacao", $apresentacao);
+//                $sql->bindParam(":produto", $produtos);
+//                $sql->bindParam(":acao", $acao);
+//                $sql->bindParam(":palavrachave", $palavrachave);
+//                $sql->bindParam(":slug", $slug);
+//                $sql->bindParam(":titulo", $titulo);
+//                $sql->bindParam(":cnpj", $cnpj);
             }
             $sql->execute();
+      
             if ($sql->rowCount() > 0) {
-                
-                //por enquanto mudar um tipo de ramo, pois falta ver como fazer multipla escolha
-  $sql = "UPDATE ramo_has_loja SET ramo_id_ramo=:id_ramo,loja_id_loja=:id_loja WHERE loja_id_loja=:id_loja AND ramo_id_ramo=:id_ramo ";
+         
+           
 
-                
-                            $sql = $this->db->prepare($sql);
-                            $sql->bindParam(":ramo_id_ramo", $id_ramo);
-                            $sql->bindParam(":loja_id_loja", $id_loja);
-                 $sql->execute();
-if ($sql->rowCount() > 0) {
                             if (count($fotos) > 0) {
 
                     for ($q = 0; $q < count($fotos['tmp_name']); $q++) {
@@ -788,7 +798,7 @@ if ($sql->rowCount() > 0) {
                         }
                     }
                 }
-            }
+            
                 return TRUE;
             }
             if (count($fotos) > 0) {
@@ -891,6 +901,7 @@ if ($sql->rowCount() > 0) {
         }
     }
 
+    
     public function slugNotRepetir($titulo, $id_loja) {
         try {
             if (isset($titulo) && !empty($titulo)) {
@@ -971,7 +982,7 @@ if ($sql->rowCount() > 0) {
     public function listarRamo() {
         try {
             $array = array();
-            $sql = "SELECT * FROM ramo";
+            $sql = "SELECT * FROM ramo ORDER BY nome";
             $sql = $this->db->prepare($sql);
             $sql->execute();
             if ($sql->rowCount() > 0) {
@@ -1021,7 +1032,7 @@ if ($sql->rowCount() > 0) {
     public function getDados($id_loja) {
         try {
             $array = array();
-            $sql = "SELECT * FROM loja l LEFT JOIN url_imagens u ON l.id_loja= u.loja_id_loja LEFT JOIN url_equipes e ON e.loja_id_loja=l.id_loja INNER JOIN ramo c ON c.id_ramo=l.categoria WHERE l.id_loja=:id_loja GROUP BY l.id_loja";
+            $sql = "SELECT * FROM loja l LEFT JOIN url_imagens u ON l.id_loja= u.loja_id_loja LEFT JOIN url_equipes e ON e.loja_id_loja=l.id_loja INNER JOIN ramo c ON c.id_ramo=l.ramo WHERE l.id_loja=:id_loja GROUP BY l.id_loja";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":id_loja", $id_loja);
             $sql->execute();

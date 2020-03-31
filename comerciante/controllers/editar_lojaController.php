@@ -52,7 +52,7 @@ class editar_lojaController extends controller {
             //  variavel $id é do funcionario
             // variavel $id_cliente é do cliente
        $anuncio_site = addslashes(trim($_POST['anuncio_site']));
-            $tipo_categoria = addslashes(trim($_POST['tipo_categoria']));
+            $tipo_ramo = addslashes(trim($_POST['tipo_categoria']));
             $nome_fantasia = addslashes(trim($_POST['nome_fantasia']));
             $razao_social = addslashes(trim($_POST['razao_social']));
             $endereco = addslashes(trim($_POST['endereco']));
@@ -66,14 +66,14 @@ class editar_lojaController extends controller {
             $youtube = addslashes(trim($_POST['youtube']));
             $instagram = addslashes(trim($_POST['instagram']));
             $site = addslashes(trim($_POST['site']));
-            $cnpj= addslashes(trim($_POST['cnpj']));
+ //          $cnpj= addslashes(trim($_POST['cnpj']));
 //            $descricao = addslashes(trim($_POST['descricao']));
 //            $chamada = addslashes(trim($_POST['chamada']));
 //            $prova = addslashes(trim($_POST['prova']));
 //            $apresentacao = addslashes(trim($_POST['apresentacao']));
 //            $produtos = addslashes(trim($_POST['produtos']));
 //            $acao = addslashes(trim($_POST['acao']));
-            $status='0';
+ //           $status='0';
             $palavrachave= addslashes(trim($_POST['palavrachave']));
             $titulo=$nome_fantasia;
 
@@ -128,7 +128,7 @@ class editar_lojaController extends controller {
             $l = new lojas();
             
             
-            if($l->editar($id_loja, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria, $foto,$fotos,$fotos2,$palavrachave,$titulo,$cnpj)){
+            if($l->editar($id_loja, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_ramo, $foto,$fotos,$fotos2,$palavrachave,$titulo)){
       // $dados['ok'] ="Atualizado com Sucesso!";
                  header("Location:".BASE_URL."editar_loja?id_loja=".$id_loja."&id_cliente=".$id_cliente);
            }else{

@@ -25,10 +25,10 @@
         <div class="control-group col-sm">
                  <label for="">CNPJ:</label> <label class="text-danger">se não tiver registro CNPJ use seu CPF</label></br>
                
-                 <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="somente numeros" >
+                 <input type="text" class="form-control" id="cnpj" name="cnpj" onblur="validarCNPJ(this.value);" placeholder="somente numeros" >
                    <label for="">CPF:</label> <label class="text-danger"></label></br>
                
-                   <input type="text" class="form-control" id="cpf" name="cpf" placeholder="somente numeros" >
+                   <input type="text" class="form-control" id="cpf" name="cpf" onblur="validarCPF(this.value);" placeholder="somente numeros" >
      
         </div>
 <!--             <div class="control-group col-sm">
@@ -299,34 +299,9 @@ precisa ver como fica no banco de dados
 
         </div>
      <script type="text/javascript">
-          $(function(){
-              
-          
-            $('.cadastrarimovel').on('submit',function(e){
-                 e.preventDefault();
-                 var form =$('.cadastrarimovel')[0];
-                 var data = new FormData(form);
-                 
-                 
-                 
-                 
-                     $.ajax({
-                        type:'POST',
-                        url:'cadastrarimovelController',
-                        data:data,
-                        contentType:false,
-                        processData:false,
-                        success:function(msg){
-                            alert(msg);
-                        }
-                        
-                     });
-              
-                 
-           
-                  
-             });
-             });
+  
+     
+
              </script>
 
         <div class="danger">
