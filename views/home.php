@@ -1,4 +1,6 @@
-
+<?php
+echo 'Current PHP version: ' . phpversion();
+?>
 
     <div class="container">
        
@@ -48,13 +50,12 @@
                 <?php if (isset($erro) && !empty($erro)): ?>
                     <div class="alert alert-warning alert-dismissible">
 
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong> Não foi possivel encontrar o que digitou!</strong> Deixei seu comentario <a href="#" class="alert-link">aqui</a>
+                        <?php echo $erro; ?>
 
                     </div>
                 <?php endif; ?>
-                <div class="form-group">
-                    <input class="btn btn-primary" type="submit" value="Buscar"/>
+                <div class="row">
+                    <input class=" btn-primary form-control-lg btn-lg btn-block" type="submit" value="Buscar"/>
                 </div>
 
             </form>  
@@ -79,6 +80,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Loja</th>
+                        <th scope="col">Temos</th>
                         <th scope="col">Horario</th>
                         <th scope="col">Telefone</th>
                         <th scope="col">Ação</th>
@@ -90,24 +92,26 @@
   
                 <tbody>
                     <tr>
-                        <th scope="row">1</th>
-                        <td><?php echo $value['nome_fantasia'] ?></td>
-                         <td><?php echo $value['horario'] ?></td>
+                        <th scope="row"><?php echo $value['id_loja'] ?></th>
+                         <td><?php echo $value['nome_fantasia'] ?></td>
+                            <td><?php echo $value['palavrachave'] ?></td>
+                         <td><?php echo $value['funcionamento'] ?></td>
                          <td><?php echo $value['telefone1'] ?></td>
                          
                         
-                         <td><a href="<?php BASE_URL;?>"class="btn btn-warning">Visitar</a></td>
+                         <td><a href="<?php BASE_URL;?>"class="btn btn-warning disabled" title="Em manutenção" >Visitar/em manutenção</a></td>
                     </tr>
                
                     
                 </tbody>
+                <?php }?>
             </table>
-           <?php }?>
+           
         <?php endif; ?>
         <div class="row">
             <div id="linha" class="h3 text-center "></div> 
         </div>
-        <div class="row">
+<!--        <div class="row">
             <?php $viewData['listaPorRamo']; ?>
             <div class="col-md">
                 <a href="<?php BASE_URL;?>food"> <img src="assets/images/fastfood-cabreuva.jpg" id="icone" class="img-thumbnail"/></a>
@@ -133,7 +137,7 @@
                 <a href=""> <img src="assets/images/restaurante-cabreuva.png" id="icone"  class="img-thumbnail"/></a>
                 Outros<span class="badge badge-dark">Dark</span>
             </div>
-        </div>
+        </div>-->
         
 
 <!--        <div class="row">

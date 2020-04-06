@@ -147,7 +147,7 @@ class usuarios extends model {
             //caso retorne 0 quer dizer que não existe o email
             if ($sql->rowCount() == 0) {
                 if ($senha == $resenha) {
-                    $sql = "INSERT usuarios SET nome=:nome, telefone=:telefone, data_2=:data, email=:email, senha=:senha, sexo=:sexo,status=:status ";
+                    $sql = "INSERT usuarios SET nome=:nome, telefone=:telefone, data_2=:data, email=:email, senha=:senha, sexo=:sexo,status=:status,data_2=NOW() ";
                     $sql = $this->db->prepare($sql);
 
                     $sql->bindValue(":nome", $nome);

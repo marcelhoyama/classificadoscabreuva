@@ -23,7 +23,7 @@
             <div class="navbar-collapse collapse" id="navbarMenu">
                 <ul class="navbar-nav ml-auto" >
                     <li class="nav-item"><a href="<?php BASE_URL; ?>home" class="nav-link">Home</a></li>
-                     <li class="nav-item"><a href="<?php BASE_URL; ?>comerciante/" class="nav-link">Comerciante/Prestador de Serviço</a></li>
+                     <li class="nav-item"><a href="<?php BASE_URL; ?>home_1" class="nav-link">Comerciante/Prestador de Serviço</a></li>
 <!--                    <li class="nav-item">  <a href="<?php BASE_URL; ?>prestacao-servico" class="nav-link">Prestador de Serviço</a></li>-->
                   <li class="nav-item">  <a href="<?php BASE_URL; ?>login_entrar" class="nav-link">Entrar</a></li>
          <!--             <li class="nav-item">  <a href="login/cadastrar" class="nav-link">Cadastrar-se</a></li>-->
@@ -46,10 +46,11 @@
             <div class="col">
                 <h5 class="" style="color:#d1ecf1;"> Apoiadores</h5>
          
-                <a href="#" id="link"> <p>IPC - Instituto Projeto Ceifeiros</p></a>
-                <a href="#" id="link"> <p>Guguili Baby</p></a>
-                <a href="#" id="link" > <p>Ótica Uniart</p></a>
+                <a href="http://psmaciel.buscadorcabreuva.com.br/" id="link"> <p>PS-Maciel Publicidade e Propaganda</p></a>
+                <a href="https://pt-br.facebook.com/guguilicasadefraldas/" id="link"> <p>Guguili Baby</p></a>
+                <a href="https://pt-br.facebook.com/oticauniart/" id="link" > <p>Ótica Uniart</p></a>
                 <a href="#" id="link" > <p>Marisa Romão (Sebrae)</p></a>
+                <a href="https://www.cabreuva.sp.gov.br/" id="link" > <p>Prefeitura de Cabreúva</p></a>
            
 <!--                <a href="https://www.dmrimoveiscabreuva.com.br" id="link">  <p>DMR Imoveis em Cabreúva</p></a>
                 <a href="http://www.didipedras.com.br" id="link">  <p>Didipedras Cabreúva</p></a>-->

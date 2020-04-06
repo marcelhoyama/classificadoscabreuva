@@ -9,12 +9,12 @@ if(ENVIRONMENT == 'development'){
     $config['dbuser']='root';
     $config['dbpass']='';
 }else{
-     define("BASE_URL", "https://lsseguranca.com.br/");
+        define("BASE_URL", "https://www.buscadorcabreuva.com.br/comerciante/");
   
-    $config['dbname']='lsseguranca';
+    $config['dbname']='u708362941_busca';
     $config['host']='localhost';
-    $config['dbuser']='root';
-    $config['dbpass']='';
+    $config['dbuser']='u708362941_busca';
+    $config['dbpass']='uP:i+c0!';
 }
     
     

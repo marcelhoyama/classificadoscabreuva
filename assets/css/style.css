@@ -13,6 +13,13 @@ and open the template in the editor.
    
     
 }
+
+.jumbotron-with-background {
+    background-image: url("../images/vista-cabreuva.jpg");
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 #food{
     background-image: url("../images/allfood-cabreuva.jpg");
     background-color: #10707f;

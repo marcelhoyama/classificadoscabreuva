@@ -17,9 +17,9 @@ class login_comercianteController extends controller {
             if (strlen($_POST['senha']) == 6 && strlen($_POST['resenha']) == 6) {
 
                 if ($_POST['senha'] == $_POST['resenha']) {
-
+          
                     if (!empty($_POST['nome']) && !empty($_POST['telefone']) && !empty($_POST['email']) && !empty($_POST['sexo']) && !empty($_POST['senha']) && !empty($_POST['resenha'])) {
-
+                        
                          $nome = ucwords(strtolower(addslashes(trim($_POST['nome']))));
                         
                         $telefone = addslashes(trim($_POST['telefone']));

@@ -19,9 +19,13 @@ class homeController extends controller{
             $palavra= addslashes(trim($_POST['buscar']));
             
             $p=new palavras();
-             echo "entrou controller-palavra foi=".$palavra;
+             
             
-            $dados['lista_palavra']=$p->buscarPalavra($palavra);
+            if($dados['lista_palavra']=$p->buscarPalavra($palavra)){
+               
+            }else{
+                 $dados['erro']='Nada encontrado! indique comerciantes e Prestadores de serviços para se cadastrarem aqui! Ajude mais pessoas.';
+            }
             
         }
        
