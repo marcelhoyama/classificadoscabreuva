@@ -81,13 +81,11 @@ class editar_lojaController extends controller {
 
             //se esta dando retorno false, porque tipo de foto esta indo com error,
             //ainda continua com erro mesmo tirado foto
-            if ($l->editar($id_loja, $anuncio_site, $nome_fantasia, $razao_social, $endereco, $bairro, $cidade, $telefone1, $telefone2, $whatsapp1, $whatsapp2, $email, $facebook, $youtube, $instagram, $site, $tipo_ramo, $palavrachave, $titulo, $delivery, $funcionamento)==true) {
+            $dados['erro']=$l->editar($id_loja,$id_cliente, $anuncio_site, $nome_fantasia, $razao_social, $endereco, $bairro, $cidade, $telefone1, $telefone2, $whatsapp1, $whatsapp2, $email, $facebook, $youtube, $instagram, $site, $tipo_ramo, $palavrachave, $titulo, $delivery, $funcionamento);
 
 
-                header("Location:" . BASE_URL . "editar_loja?id_loja=" . $id_loja . "&id_cliente=" . $id_cliente);
-            } else {
-                $dados['erro'] = "Confira todos os campos!";
-            }
+            
+            
         }
         $this->loadTemplate_3('editar_loja', $dados);
     }

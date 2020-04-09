@@ -19,7 +19,7 @@
            <button class="w3-bar-item btn btn-default w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open()">  <span class="navbar-toggler-icon"></span></button>
      
         <a class="navbar-brand" href="<?php BASE_URL; ?>home">   
-            <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" width="45" height="45" class="d-inline-block align-top" alt="">
+                                 <div class="h3">Buscador Cabreúva</div><!--<img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" width="45" height="45" class="d-inline-block align-top" alt="">-->
             </a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
             <span class="navbar-toggler-icon"></span>
@@ -105,7 +105,7 @@
      
 <!-- Footer -->
 <footer class="text-center ">
-  <p>Desenvolvido por <a href="https://www.buscadorcabreuva.com.br" title="ps-maciel publicidade" target="_blank" class="w3-hover-text-green">Marcel Hoyama</a></p>
+  <p>Desenvolvido por <a href="http://devmg.pe.hu" title="ps-maciel publicidade" target="_blank" class="w3-hover-text-green">Marcel Hoyama</a></p>
   <?php
 // mostra por exemplo 'Versão Atual do PHP: 4.1.1'
 echo 'Versão Atual do PHP: ' . phpversion();

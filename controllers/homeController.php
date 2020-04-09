@@ -13,6 +13,7 @@ class homeController extends controller{
         
         $l=new lojas();
         $dados['listaPorRamo']=$l->listarPorRamo();
+      
         
         if(isset($_POST['buscar']) && !empty($_POST['buscar'])){
            

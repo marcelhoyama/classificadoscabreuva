@@ -21,12 +21,12 @@
             
 		
             <label for="senha">Senha* (minimo 6 caracteres):</label> <label class="text-danger"> Se for alterar preencha!</label>
-            <input name="senha" type="password" class="form-control" id="senha" maxlength="6" >
+            <input name="senha" type="password" class="form-control" id="senha"  >
         </div>
         
         <div class="form-group">
             <label for="senha">Repita a Senha:</label> <label class="text-danger"> Se for alterar repreencha!</label></label>
-            <input name="resenha" type="password" class="form-control" id="resenha" placeholder="repita a senha" maxlength="6">
+            <input name="resenha" type="password" class="form-control" id="resenha" placeholder="repita a senha" >
         </div>
 
 	<div class="form-group">

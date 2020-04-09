@@ -4,17 +4,17 @@ class cadastrar_clientesController extends controller {
 
     public function __construct() {
         parent::__construct();
-        $f = new funcionarios();
-        $f->verificarLogin();
+        $c = new clientes();
+        $c->verificarLogin();
     }
 
     public function index() {
         $dados = array('erro' => '', 'ok' => '');
 
-        $f = new funcionarios();
+        $c = new clientes();
         $id = $_SESSION['lg'];
-        $dados['nomefunc'] = $f->getName($id);
-        $dados['id_funcionario'] = $id;
+        $dados['lgCliente'] = $f->getName($id);
+        $dados['id_cliente'] = $id;
         $c = new clientes();
 
 

@@ -43,7 +43,10 @@ class palavras extends model {
             }
 
             $array = array();
-            $sql = "SELECT * FROM loja  WHERE (loja.palavrachave LIKE :palavra OR loja.nome_fantasia LIKE :palavra)AND anuncio_site = '1' AND loja.status='0' ORDER BY loja.nome_fantasia";
+            $sql = "SELECT * FROM loja inner JOIN ramo ON ramo.id_ramo=loja.ramo" 
+." INNER JOIN palavra_chave p ON p.id_loja=loja.id_loja"
+." WHERE (loja.palavrachave LIKE :palavra OR loja.nome_fantasia LIKE :palavra OR ramo.nome LIKE :palavra OR p.pchave_nome LIKE :palavra)AND anuncio_site = '1' AND loja.status='0'" 
+." GROUP BY loja.id_loja";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":palavra", $palavra . "%");
             $sql->execute();
@@ -59,4 +62,7 @@ class palavras extends model {
         }
     }
 
+    
+    
+    
 }

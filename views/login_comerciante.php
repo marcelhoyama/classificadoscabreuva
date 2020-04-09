@@ -30,20 +30,20 @@
         <div class="radio">
             <strong>Sexo:</strong>
             <br>
-            <label><input type="radio" name="sexo" value="0" checked="checked">Mulher</label>
+            <label><input type="radio" name="sexo" value="1" checked="checked">Mulher</label>
             <br>
-             <label><input type="radio" name="sexo" value="1"/>Homem</label>
+             <label><input type="radio" name="sexo" value="2"/>Homem</label>
            
         </div>
 
       <div class="form-group">
             <label for="senha">Senha* (minimo 6 caracteres):</label> <label class="text-danger"> campo obrigatorio!</label>
-            <input name="senha" type="password" class="form-control" id="senha" maxlength="6" >
+            <input name="senha" type="password" class="form-control" id="senha" >
         </div>
         
         <div class="form-group">
             <label for="senha">Repita a Senha:</label> <label class="text-danger"> campo obrigatorio!</label>
-            <input name="resenha" type="password" class="form-control" id="resenha" placeholder="repita a senha" maxlength="6">
+            <input name="resenha" type="password" class="form-control" id="resenha" placeholder="repita a senha" >
         </div>
 
         <div class="form-group">

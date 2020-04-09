@@ -1,6 +1,4 @@
-<?php
-echo 'Current PHP version: ' . phpversion();
-?>
+
 
     <div class="container">
        

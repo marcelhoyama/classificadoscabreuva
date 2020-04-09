@@ -29,7 +29,7 @@
         <a class="nav-link" href="<?php BASE_URL; ?>login_entrar_1">Já sou Cadastrado</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link btn-danger" href="<?php BASE_URL;?>login_comerciante">Fazer parte</a>
+        <a class="nav-link btn-danger text-white" href="<?php BASE_URL;?>login_comerciante">Fazer parte</a>
       </li>
 <!--      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,13 +45,17 @@
   </div>
 </nav>
     </div>
+<div class="container">
 <body>
+    
     <?php $this->loadViewInTemplate($viewName,$viewData);?>
 </body>
+</div>
     <!-- Footer -->
    
-<footer class="container-fluid footer"> 
-    <div class="row footer-conteudo">
+    <footer class="container-fluid footer" id="conteudo1"> 
+    <div class="row text-white">
+        
         <div class="col-6">
             <h6>Endereço</h6>
             <li>Rua Fernando Nunes, nº 793 </li>
@@ -67,20 +71,20 @@
 
         </div>
     </div>
-  <div class="footer-conteudo2 mt-5">
+  <div class="footer-conteudo2 mt-5 " align="center">
       <a href="https://www.facebook.com/denilsonmacielps" target="_blank"> <i class="fa fa-facebook-official" style="width: 60px;"></i></a> 
-      <i class="fa fa-instagram w3-hover-opacity" style="width: 60px;"></i>
+      <a href="https://www.instagram.com/locutor_denilson" target="blank"><i class="fa fa-instagram w3-hover-opacity" style="width: 60px;"></i></a>
 <!--    <i class="fa fa-snapchat w3-hover-opacity"></i>
     <i class="fa fa-pinterest-p w3-hover-opacity"></i>
     <i class="fa fa-twitter w3-hover-opacity"></i>
     <i class="fa fa-linkedin w3-hover-opacity"></i>-->
  
     <p class="text-white mt-5">Buscador Cabreúva </p>
-    <p class="text-white"> Desenvolvido por <a class="text-white" href="https://www.buscadorcabreuva.com.br" target="_blank" title="Marcel Hoyama">PS-maciel</a></p>
+    <p class="text-white"> Desenvolvido por <a class="text-white" href="http://www.devmg.pe.hu" target="_blank" title="Marcel Hoyama">Marcel Hoyama</a></p>
 </div>
+        
 </footer>
-    
-
+  
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

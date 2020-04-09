@@ -200,11 +200,11 @@
         <div class="row">
 
             <div class="form-group col-sm-6">
-                <label for="telefone1">Telefone 1:</label>  <label class="text-danger"></label>
+                <label for="telefone1">Fixo 1:</label>  <label class="text-danger"></label>
                 <input name="telefone1" type="text" class="form-control" id="telefone" value="<?php echo $cliente['telefone1']; ?>"/>
             </div>
             <div class="form-group col-sm-6">
-                <label for="telefone2">Telefone 2:</label>  <label class="text-danger"></label>
+                <label for="telefone2">Fixo 2:</label>  <label class="text-danger"></label>
                 <input name="telefone2" type="text" class="form-control" id="telefone" value="<?php echo $cliente['telefone2']; ?>"/>
             </div>
             <div class="form-group col-sm-6">

@@ -42,7 +42,17 @@
                     </div>
                     <br>
                     <div class="w3-col ">
+                        <div class="row">
                         
+                        <a href="<?php echo $value['facebook'];?>"><img src="<?php BASE_URL; ?>assets/images/facebookcolor.png" class="rounded-circle"alt=""></a>                
+                                 
+                        <a href="<?php echo $value['instagram'];?>"><img src="<?php BASE_URL; ?>assets/images/instagram-cabreuva.png" class="rounded-circle" width="24" height="24" alt=""></a>       
+                                     
+            <a href="<?php echo $value['whatsapp'];?>"><img src="<?php BASE_URL; ?>assets/images/whatsapp-cabreuva.png" class="rounded-circle" width="24" height="24" alt=""></a>  
+            <a href="#"><img src="<?php BASE_URL; ?>assets/images/mail-cabreuva.png" class="rounded-circle" width="24" height="24" alt=""></a>
+            <a href="<?php echo $value['youtube'];?>"><img src="<?php BASE_URL; ?>assets/images/youtube-cabreuva.png" class="rounded-circle" width="24" height="24" alt=""></a>
+            <button type="button" class="btn btn-primary btn-sm ml-auto" data-toggle="modal" data-target="#exampleModalScrollable" title="Preços deixe seu email">Cardápio</button>
+                    </div>
 <!--                    <a href="#" class="btn btn-warning rounded">Evento<span class="badge badge-light">1</span>
                         <span class="sr-only">Mensagens não lidas</span>    </a>                
                      <a href="#" class="btn btn-warning rounded">Promoção<span class="badge badge-light">1</span>

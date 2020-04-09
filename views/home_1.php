@@ -2,20 +2,20 @@
 <title>Buscador Cabreúva | Comerciante</title>
 
     <div  class="jumbotron jumbotron-with-background">
-        <h1 class="text-white">O seu Comercio aparece no Buscador Cabreúva</h1>
-        <h4 class="text-white">Cadastre seu comercio e tenha os beneficios</h4>
+        <h1 class="text-warning">O seu Comercio aparece no Buscador Cabreúva</h1>
+        <h4 class="text-warning">Cadastre seu comercio e tenha os beneficios</h4>
         <a href="<?php BASE_URL;?>login_comerciante" class="btn btn-primary">Começar o Cadastro</a>
 </div>
   
 
-<div class="row" id="conteudo1">
+<div class="row" id="conteudo2">
  
     <div class="col">
         <h3>Passo 1</h3>
        <div class="card" style="width: 18rem;">
            
   <div class="card-body">
-    <h5 class="card-title text-dark">Faça seu Cadastro gratuito</h5>
+    <h5 class="card-title text-dark">Faça seu Cadastro gratuitamente</h5>
    
     <p class="card-text text-dark">Você envia suas informações.</p>
     
@@ -59,7 +59,7 @@
  
     
    
-    <div class="h1">Tenha mini site do seu comercio ou serviço, dentro da nossa plataforma! Seja mais visivel para seus futuros clientes.</div>
+<!--    <div class="h1">Tenha mini site do seu comercio ou serviço, dentro da nossa plataforma! Seja mais visivel para seus futuros clientes.</div>
                <div class="col">
                    <div class="card-body">
     <h5 class="card-title text-dark">Plano Básico </h5>
@@ -77,13 +77,13 @@
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
         laboris nisi ut aliquip ex ea commodo consequat.</p>
                </div>
-                 </div>
+                 </div>-->
 
        
   
 </div>
 
-<div class="row" id="conteudo1" >
+<div class="row mt-5" id="conteudo1" >
  
     
        
@@ -91,15 +91,15 @@
             <h1 class="text-white text-right">Em meio a Crise </h1>
       <h5 class="text-white text-right">Estamos na luta pelo crescimento de Cabreúva.Estamos junto com o comercio local.</h5>
 
-      <p class="text-white text-right">Vamos nos unir e ajudar uns aos outros, estamos criando essa plataforma simples, como um classficados virtual, em conjunto com os beneficios(desconto)com nossos parceiros local,com a Publicidade, propaganda e outros:</p>
+      <p class="text-white text-right">Vamos nos unir e ajudar uns aos outros, estamos criando essa plataforma simples, como um classificados virtual, em conjunto com os beneficios(desconto)com nossos parceiros local,com a Publicidade, propaganda e outros:</p>
     
-      <li>Carro de som</li>
-      <li>Entrega de panfletos</li>
-      <li>Patrocinio no Facebook na nossa pagina</li>
-      <li>Criação de artes em menu, cardápio</li>
-      <li>Estampa em camiseta para seu time</li>
-      <li>Cursos Básicos para seus colaboradores</li>
-      <li>Manutenção de computadores, redes a etc.</li>
+      <li class="text-white text-right">Carro de som</li>
+      <li class="text-white text-right">Entrega de panfletos</li>
+      <li class="text-white text-right">Patrocinio no Facebook na nossa pagina</li>
+<!--      <li>Criação de artes em menu, cardápio</li>
+      <li class="text-white">Estampa em camiseta para seu time</li>-->
+      <li class="text-white text-right">Cursos Básicos para seus colaboradores</li>
+      <li class="text-white text-right">Manutenção de computadores.</li>
       
           </div>
             <div class="col-4  "><img class="img-fluid" id="escolta" src="<?php BASE_URL; ?>assets/images/logo-branco.png"></div>
@@ -109,12 +109,12 @@
   
 </div>
 
-<div class="row" id="conteudo2" >
+<div class="row mt-5" id="conteudo2" >
 
     
     <h1>O buscador cabreúva é perfeito para seu comercio ou serviço para  se alanvacar.</h1>
     
-    <a href="<?php BASE_URL; ?>login_comerciante"class="btn btn-light">Quero fazer parte</a>
+    <a href="<?php BASE_URL; ?>login_comerciante"class="btn btn-primary">Quero fazer parte</a>
     
     
     <!--    <div class="col">
@@ -159,7 +159,7 @@
   
 </div>-->
     </div>
-<div class="row" id="conteudo1" >
+<div class="row mt-5" id="conteudo2" >
     
     <h2> Tire suas duvidas frequentes</h2>
     <div class="col">

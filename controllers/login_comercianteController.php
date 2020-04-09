@@ -36,7 +36,7 @@ class login_comercianteController extends controller {
                     $dados['erro'] = "Não confere a senha! Tente novamente! Por favor.";
                 }
             }else{
-                $dados['erro']="Não esta na regra de limites de caracteres.";
+                $dados['erro']="Não esta na regra de limites de caracteres no campo senha.";
             }
         }
 

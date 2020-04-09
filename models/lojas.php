@@ -295,6 +295,7 @@ class lojas extends model {
 //                            }
 //                        }
 //                    }
+                    $this->palavrachave($id_loja);
                 }// rowCount
             }// IF TITULO
         } catch (Exception $ex) {
@@ -413,7 +414,7 @@ class lojas extends model {
 //        }
    // }
 
-    public function editar($id_loja, $anuncio_site, $nome_fantasia, $razao_social, $endereco, $bairro, $cidade, $telefone1, $telefone2, $whatsapp1, $whatsapp2, $email, $facebook, $youtube, $instagram, $site, $tipo_ramo, $palavrachave, $titulo, $delivery, $funcionamento) {
+    public function editar($id_loja,$id_cliente,$anuncio_site, $nome_fantasia, $razao_social, $endereco, $bairro, $cidade, $telefone1, $telefone2, $whatsapp1, $whatsapp2, $email, $facebook, $youtube, $instagram, $site, $tipo_ramo, $palavrachave, $titulo, $delivery, $funcionamento) {
         try {
 
  
@@ -481,12 +482,13 @@ class lojas extends model {
              $sql->bindParam(":funcionamento", $funcionamento);
 
             $sql->execute();
-
+ 
+                $this->palavrachave($id_loja);
             if ($sql->rowCount() > 0) {
-                return TRUE;
-
-            } else{
-                echo 'erro atualizar';
+              header("Location:" . BASE_URL . "editar_loja?id_loja=" . $id_loja . "&id_cliente=" . $id_cliente);
+exit;
+            } else {
+                return "Confira todos os campos!";
             }
         } catch (Exception $ex) {
             echo 'Falhou:' . $ex->getMessage();
@@ -494,7 +496,50 @@ class lojas extends model {
     }
     
 
-    
+       
+    public function palavrachave($id_loja){
+        try{
+           
+              $sql="delete from palavra_chave where id_loja=:id_loja";
+             $sql=$this->db->prepare($sql);
+            $sql->bindValue(':id_loja', $id_loja);
+          
+            $sql->execute();
+            
+            
+          $sql="select palavrachave from loja where id_loja=:id_loja";
+             $sql=$this->db->prepare($sql);
+            $sql->bindValue(':id_loja', $id_loja);
+          
+            $sql->execute();
+            if($sql->rowCount()>0){
+           
+          
+               $resul=$sql->fetch(PDO::FETCH_ASSOC);
+         // $palavra= implode(",",$resul['palavrachave']); 
+          $palavra= explode(",", $resul['palavrachave']);
+          print_r($palavra);
+          foreach ($palavra as $value) {
+               $sql="insert into palavra_chave set pchave_nome=:pchave_nome,id_loja=:id_loja";
+               $value=trim($value);
+            $sql=$this->db->prepare($sql);
+            $sql->bindValue(':id_loja', $id_loja);
+            $sql->bindValue(':pchave_nome',$value);
+            $sql->execute();
+          }
+           if($sql->rowCount()>0){
+                
+            }
+         }else{
+             
+         }
+         
+           
+           
+        } catch (Exception $ex) {
+  echo "Falhou:" . $ex->getMessage();
+        }
+    }
     
     
     
@@ -616,7 +661,7 @@ class lojas extends model {
     public function listarLojas() { 
         $array = array();
         $sql = 'SELECT *,ramo.nome as nome_ramo,loja.funcionamento FROM loja '
-                . 'left join ramo on ramo.id_ramo=loja.ramo WHERE loja.status =1 ';
+                . 'left join ramo on ramo.id_ramo=loja.ramo WHERE loja.status =0 ';
         $sql = $this->db->prepare($sql);
         $sql->execute();
         if ($sql->rowCount() > 0) {
