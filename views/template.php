@@ -46,9 +46,10 @@
             <div class="col">
                 <h5 class="" style="color:#d1ecf1;"> Apoiadores</h5>
          
-                <a href="http://psmaciel.buscadorcabreuva.com.br/" id="link"> <p>PS-Maciel Publicidade e Propaganda</p></a>
-                <a href="https://pt-br.facebook.com/guguilicasadefraldas/" id="link"> <p>Guguili Baby</p></a>
-                <a href="https://pt-br.facebook.com/oticauniart/" id="link" > <p>Ótica Uniart</p></a>
+                <a href="https://psmaciel.buscadorcabreuva.com.br/" id="link" target="_blank"> <p>PS-Maciel Publicidade e Propaganda</p></a>
+                <a href="http://devmg.pe.hu/centrodigital/" id="link" target="_blank"> <p>Centro Digital de Informática</p></a>
+<!--                <a href="https://pt-br.facebook.com/guguilicasadefraldas/" id="link"> <p>Guguili Baby</p></a>
+                <a href="https://pt-br.facebook.com/oticauniart/" id="link" > <p>Ótica Uniart</p></a>-->
                 <a href="#" id="link" > <p>Marisa Romão (Sebrae)</p></a>
                 <a href="https://www.cabreuva.sp.gov.br/" id="link" > <p>Prefeitura de Cabreúva</p></a>
            

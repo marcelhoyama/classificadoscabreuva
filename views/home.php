@@ -73,15 +73,15 @@
        
         <?php if ($viewData['lista_palavra'] != ""): ?>
 <div class="h1 text-center"> Resultado</div>
-            <table class="table table-hover">
+            <table class="table table-hover table-responsive-sm">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Loja</th>
-                        <th scope="col">Temos</th>
+                      
                         <th scope="col">Horario</th>
                         <th scope="col">Telefone</th>
-                        <th scope="col">Ação</th>
+                        <!--<th scope="col">Ação</th>-->
                     </tr>
                 </thead>
 <?php foreach ($viewData['lista_palavra']as $value) { ?>
@@ -92,12 +92,12 @@
                     <tr>
                         <th scope="row"><?php echo $value['id_loja'] ?></th>
                          <td><?php echo $value['nome_fantasia'] ?></td>
-                            <td><?php echo $value['palavrachave'] ?></td>
+                           
                          <td><?php echo $value['funcionamento'] ?></td>
                          <td><?php echo $value['telefone1'] ?></td>
                          
                         
-                         <td><a href="<?php BASE_URL;?>"class="btn btn-warning disabled" title="Em manutenção" >Visitar/em manutenção</a></td>
+                         <!--<td><a href="<?php BASE_URL;?>"class="btn btn-warning disabled" title="Em manutenção" >Visitar/em manutenção</a></td>-->
                     </tr>
                
                     

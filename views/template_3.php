@@ -96,6 +96,8 @@
      <div class="margem-top">
    <!--  margem lateral  <div class="" style="margin-left:200px;margin-top:-200px; "></div> -->
    <body class="my-5">
+           <br>
+    <br>
   <!--  aqui onde vai o corpo das paginas do sistema -->
     <?php $this->loadViewInTemplate($viewName, $viewData); ?>
  </body>

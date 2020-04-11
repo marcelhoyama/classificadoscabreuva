@@ -89,7 +89,8 @@
                         
                          <td><a href="<?php BASE_URL;?>"class="btn btn-warning disabled" >Visitar</a>
                          <a href="<?php BASE_URL; ?>editar_loja?id_cliente=<?php echo $_SESSION['lgCliente']; ?>&id_loja=<?php echo $value['id_loja']; ?>" class="btn btn-warning">Editar loja</a>
-                         <a href="<?php BASE_URL; ?>editar_funcionamento?id_loja=<?php echo $value['id_loja']; ?>" class="btn btn-warning">Cadastrar/Editar Horario</a></td>
+                         <a href="<?php BASE_URL; ?>editar_funcionamento?id_loja=<?php echo $value['id_loja']; ?>" class="btn btn-warning">Horário</a>
+                          <a href="<?php BASE_URL; ?>cadastrar_foto?id_loja=<?php echo $value['id_loja']; ?>" class="btn btn-warning">Fotos</a></td>
                     </tr>
                
                     

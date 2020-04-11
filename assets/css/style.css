@@ -19,7 +19,21 @@ and open the template in the editor.
     background-position:center;
     background-repeat: no-repeat;
     background-size: cover;
+    
 }
+#jumbotron{
+/*        background: rgb(0, 0, 0);  fallback color 
+   background: rgba(0, 0, 0, 0.7);*/
+    }
+
+#texto{
+    
+    color: white; text-shadow: black 0.3em 0.3em 0.4em;
+           background: rgb(0, 0, 0); 
+   background: rgba(0, 0, 0, 0.7);
+  
+}
+
 #food{
     background-image: url("../images/allfood-cabreuva.jpg");
     background-color: #10707f;

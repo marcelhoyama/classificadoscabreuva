@@ -2,7 +2,9 @@
 
 <html lang="pt-br">
 <head>
-
+ 
+        <meta charset="UTF=8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"/>
 
 
 
@@ -57,7 +59,7 @@
     <div class="row text-white">
         
         <div class="col-6">
-            <h6>Endereço</h6>
+            <h6>Escritório</h6>
             <li>Rua Fernando Nunes, nº 793 </li>
             <li>Jacaré - Cabreúva/SP.</li>
 
@@ -65,15 +67,15 @@
           <div class="col-6">
             <h6>Contato:</h6>
             <li>Marcel (site e Informática) : (11) 9.7672-6576 whatsApp</li>
-            <li>Email: marecrisjp@hotmail.com</li>
+            <li>Email: suporte@buscadorcabreuva.com.br</li>
             <li>Denilson (publicidade, propaganda): (11) 9.7462-9961 whastApp</li>
-            <li>Email: macieldenilson@gmail.com</li>
+            <li>Email: publicidade@buscadorcabreuva.com.br</li>
 
         </div>
     </div>
   <div class="footer-conteudo2 mt-5 " align="center">
-      <a href="https://www.facebook.com/denilsonmacielps" target="_blank"> <i class="fa fa-facebook-official" style="width: 60px;"></i></a> 
-      <a href="https://www.instagram.com/locutor_denilson" target="blank"><i class="fa fa-instagram w3-hover-opacity" style="width: 60px;"></i></a>
+      <a href="https://www.facebook.com/denilsonmacielps" target="_blank"> <i class="text-white fa fa-facebook-official" style="width: 60px;"></i></a> 
+      <a href="https://www.instagram.com/locutor_denilson" target="blank"><i class="text-white fa fa-instagram w3-hover-opacity" style="width: 60px;"></i></a>
 <!--    <i class="fa fa-snapchat w3-hover-opacity"></i>
     <i class="fa fa-pinterest-p w3-hover-opacity"></i>
     <i class="fa fa-twitter w3-hover-opacity"></i>

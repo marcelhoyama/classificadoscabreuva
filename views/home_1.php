@@ -1,11 +1,15 @@
 
 <title>Buscador Cabreúva | Comerciante</title>
 
-    <div  class="jumbotron jumbotron-with-background">
-        <h1 class="text-warning">O seu Comercio aparece no Buscador Cabreúva</h1>
-        <h4 class="text-warning">Cadastre seu comercio e tenha os beneficios</h4>
+    <div id="jumbotron" class="jumbotron jumbotron-with-background">
+        <div id="jumbotron" > 
+        <div id="texto" class=" h1 text-white" >O seu Comercio aparece no Buscador Cabreúva
+        <div id="" class="h3 text-warning">Cadastre seu comercio e tenha os beneficios</div>
+        </div>
         <a href="<?php BASE_URL;?>login_comerciante" class="btn btn-primary">Começar o Cadastro</a>
-</div>
+
+            </div>
+    </div>
   
 
 <div class="row" id="conteudo2">
@@ -39,7 +43,7 @@
   <div class="card-body">
     <h5 class="card-title text-dark">Os beneficios </h5>
     
-    <p class="card-text text-dark">Os clientes tem uma busca centralizado, fácil de achar seu comercio.Descontos com nossos parceiros. Novas funcionalidades futuras.</p>
+    <p class="card-text text-dark">Os clientes tem uma busca centralizado, fácil de achar seu comercio.Descontos com nossos parceiros. Novas funcionalidades futuras ( Terá Mensalidade).</p>
 <!--    <li class="text-dark">Confiança e ética</li>
     <li class="text-dark">O humano e o bem estar como prioridade</li>
     <li class="text-dark">Responsabilidade Social e respeito mútuo </li>
@@ -99,10 +103,10 @@
 <!--      <li>Criação de artes em menu, cardápio</li>
       <li class="text-white">Estampa em camiseta para seu time</li>-->
       <li class="text-white text-right">Cursos Básicos para seus colaboradores</li>
-      <li class="text-white text-right">Manutenção de computadores.</li>
+      <li class="text-white text-right">Acessórios de Informática.</li>
       
           </div>
-            <div class="col-4  "><img class="img-fluid" id="escolta" src="<?php BASE_URL; ?>assets/images/logo-branco.png"></div>
+            <div class="col-4  "><img class="img-fluid shadow" id="escolta" src="<?php BASE_URL; ?>assets/images/logo-branco.png"></div>
              
       
 
@@ -161,7 +165,7 @@
     </div>
 <div class="row mt-5" id="conteudo2" >
     
-    <h2> Tire suas duvidas frequentes</h2>
+    <h2> Tire suas duvidas</h2>
     <div class="col">
 <!--    <div id="accordion">
         <div class="card">
