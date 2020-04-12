@@ -49,10 +49,14 @@ class cadastrar_lojaController extends controller {
             $youtube = addslashes(trim($_POST['youtube']));
             $instagram = addslashes(trim($_POST['instagram']));
             $site = addslashes(trim($_POST['site']));
-            $cnpj = addslashes(trim($_POST['cnpj']));
-            $cpf = addslashes(trim($_POST['cpf']));
-            $cpf= explode('.',$cpf);
-            $cpf=implode("",$cpf);
+            $cpfcnpj = addslashes(trim($_POST['cpfcnpj']));
+//            $cpf = addslashes(trim($_POST['cpf']));
+            $cpfcnpj= explode('.',$cpfcnpj);
+            $cpfcnpj=implode("",$cpfcnpj);
+            $cpfcnpj= explode('-',$cpfcnpj);
+            $cpfcnpj=implode("",$cpfcnpj);
+             $cpfcnpj= explode('/',$cpfcnpj);
+            $cpfcnpj=implode("",$cpfcnpj);
             $delivery= addslashes($_POST['delivery']);
               $funcionamento= addslashes($_POST['funcionamento']);
 //            $descricao = addslashes(trim($_POST['descricao']));
@@ -156,7 +160,7 @@ class cadastrar_lojaController extends controller {
             
 //            $l->cadastrar($id_funcionario, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp, $email, $facebook, $youtube,$instagram, $site,$tipo_categoria, $descricao, $chamada, $prova, $foto,$fotos,$fotos2, $apresentacao, $produtos, $acao,$palavrachave,$titulo);
             
-           if($dados['erro']=$l->cadastrar($id_funcionario, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp1, $whatsapp2, $email, $facebook, $youtube,$instagram, $site,$id_ramo ,$palavrachave,$titulo,$cnpj,$cpf,$delivery,$funcionamento)){
+           if($dados['erro']=$l->cadastrar($id_funcionario, $id_cliente, $anuncio_site ,$nome_fantasia, $razao_social, $endereco, $bairro,$cidade,$telefone1, $telefone2, $status, $whatsapp1, $whatsapp2, $email, $facebook, $youtube,$instagram, $site,$id_ramo ,$palavrachave,$titulo,$cpfcnpj,$delivery,$funcionamento)){
       
                
            }else{

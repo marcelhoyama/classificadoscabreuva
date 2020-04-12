@@ -23,12 +23,10 @@
         <div class="row">
             
         <div class="control-group col-sm">
-                 <label for="">CNPJ:</label> <label class="text-danger">se não tiver registro CNPJ use seu CPF</label></br>
+                 <label for="">CNPJ/CPF:</label> <label class="text-danger">se não tiver registro CNPJ use seu CPF</label></br>
                
-                 <input type="text" class="form-control" id="cnpj" name="cnpj" onblur="validarCNPJ(this.value);" placeholder="somente numeros" >
-                   <label for="">CPF:</label> <label class="text-danger"></label></br>
-               
-                   <input type="text" class="form-control" id="cpf" name="cpf" onblur="validarCPF(this.value);" placeholder="somente numeros" >
+                 <input type="text" class="form-control" id="cpfOuCnpj" name="cpfcnpj"  placeholder="somente numeros" >
+                  
      
         </div>
 <!--             <div class="control-group col-sm">
@@ -65,7 +63,7 @@
                 </div>
 
                 <div class="checkbox-inline">
-                    <label><input type="radio" name="delivery" id="status" value="0" >Não</label>
+                    <label><input type="radio" name="delivery" id="status" value="0" checked="" >Não</label>
                 </div>
           </div>
            <div class="form-group col">
@@ -195,7 +193,7 @@
              <label class="label "> Descreva aqui:</label>
              
            
-             <input type="text" class="form-control" name="funcionamento" />
+             <input type="text" class="form-control is-invalid" name="funcionamento" />
                
        
 
@@ -208,8 +206,8 @@
         <div class="row">
     
         <div class="form-group col-sm-6">
-                <label for="telefone1">Fixo 1:</label>  <label class="text-danger"></label>
-                <input name="telefone1" type="text" class="form-control" id="telefone" placeholder="DDD+somente numeros" />
+                <label for="telefone1">Delivery:</label>  <label class="text-danger"></label>
+                <input name="telefone1" type="text" class="form-control" id="tel" placeholder="DDD+somente numeros" />
             </div>
         <div class="form-group col-sm-6">
                 <label for="telefone2">fixo 2:</label>  <label class="text-danger"></label>
@@ -223,32 +221,42 @@
                 <label for="whatsapp">Whatsapp 2:</label>  <label class="text-danger"></label>
                 <input name="whatsapp2" type="text" class="form-control" id="celular" placeholder="DDD+numeros"/>
             </div>
-        </div>
-        <div class="row">
-        <div class="form-group col-sm-6">
-            
+                 <div class="form-group col-sm-6">
                 <label for="email">E-mail:</label>  <label class="text-danger"></label>
-                <input name="email" type="text" class="form-control" id="email" placeholder="exemplo: comercio@email.com"/>
-            </div>
-        <div class="form-group col-sm-6">
-                <label for="facebook">Facebook:</label>  <label class="text-danger"></label>
-                <input name="facebook" type="text" class="form-control" id="facebook" placeholder="link do fanpage"/>
-            </div>
-        <div class="form-group col-sm-6">
-                <label for="youtube">Youtube:</label>  <label class="text-danger"></label>
-                <input name="youtube" type="text" class="form-control" id="youtube" placeholder="link do canal"/>
+                <input name="email" type="text" class="form-control" id="email" placeholder="exemplo: comercio@email.com"/></div>
+            
+             <div class="form-group col-sm-6">
+                <label for="site">Site:</label>  <label class="text-danger"></label>
+                <input name="site" type="text" class="form-control" id="site" placeholder="https://example.com/users/"/>
             </div>
         </div>
-      <div class="row">
-        <div class="form-group col-sm-6">
-                <label for="instagram">Instagram:</label>  <label class="text-danger"></label>
-                <input name="instagram" type="text" class="form-control" id="instagram" placeholder="link do canal"/>
-            </div>
-        <div class="form-group col-sm-6">
-                <label for="site">Site:</label>  <label class="text-danger"></label>
-                <input name="site" type="text" class="form-control" id="site" placeholder="link do seu site"/>
-            </div>
       </div>
+       
+      
+       <label for="facebook">Complete sua URL</label>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon3">https://facebook.com/</span>
+  </div>
+    <input type="text" class="form-control" id="facebook" aria-describedby="basic-addon3" name="facebook">
+</div> 
+              <label for="youtube">Complete sua URL</label>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon3">https://youtube.com/</span>
+  </div>
+    <input type="text" class="form-control" id="youtube" aria-describedby="basic-addon3" name="youtube">
+</div> 
+      
+            <label for="instagram">Complete sua URL</label>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon3">https://instagram.com/</span>
+  </div>
+    <input type="text" class="form-control" id="instagram" aria-describedby="basic-addon3" name="instagram">
+</div> 
+     
+       
 <!--      <div class="h4 mt-5">Tenha em mente em UM produto ou serviço para cada solução que você tem! Para cada tipos de pessoas! </div>
           <div class="form-group">
             <label for="descricao">Breve descrição do seu nicho:</label> 
@@ -326,7 +334,8 @@ precisa ver como fica no banco de dados
         
              
      </div>
-        <div class="form-group">
+    <div class="row">
+      <div class="form-group">
             <button type="submit" class="btn btn-primary upload" >Cadastrar</button> 
 
 

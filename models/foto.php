@@ -50,13 +50,14 @@ class foto extends model {
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 
-            }
+            
             if (is_file("upload/fotos_principais/" . $url_principal)) {
 
                 unlink("upload/fotos_principais/" . $url_principal);
             }
-
-            return $id_loja;
+           
+            }
+           
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }
@@ -183,7 +184,7 @@ class foto extends model {
                     } else {
                         $height = $width / $ratio;
                     }
-
+// tem que liberar ou comentar no php configuração "extensaõ  gd ou gd2" 
                     $img = imagecreatetruecolor($width, $height);
                     if ($tipo == 'image/jpeg') {
                         $origi = imagecreatefromjpeg($diretorio . $tmpname);

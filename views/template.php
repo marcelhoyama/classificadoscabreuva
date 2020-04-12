@@ -59,7 +59,7 @@
             <div class="col ">
                 <h5 class="" style="color:#d1ecf1;">Mais Informações:</h5>
                 
-                    <a href="#" id="link">marecrisbr@gmail.com</a>
+                    <a href="#" id="link">suporte@buscadorcabreuva.com.br</a>
                     <a href="https://api.whatsapp.com/send?phone=5511976726576&text=Quero%20Saber%20do%20Site%20Buscador%20Cabre%C3%BAva!" id="link"> <p>11-97672-6576 Marcel</p> </a>
                 
             </div>
@@ -84,7 +84,13 @@
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/script.js"></script>
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.mask.js"></script>
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/validarcampos.js"></script>
+<script type="text/javascript">
 
+${(function(){
+        $('data-toogle="tooltip"]').tooltip();
+});
+
+</script>
 
 
 

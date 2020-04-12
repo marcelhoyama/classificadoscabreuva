@@ -46,7 +46,7 @@
                     <?php }?>
                 </div>
                 <div class="card-footer">
-                    <button hre class="btn btn-danger">Excluir</button>
+                    <a href="<?php BASE_URL;?>cadastrar_foto/excluirFotoPrincipal?id_loja=<?php echo $_GET['id_loja']; ?>"   class="btn btn-danger">Excluir</a>
                 </div>
             </div>
             </div> 

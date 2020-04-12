@@ -66,8 +66,7 @@ class cadastrar_fotoController extends controller {
           
   
         
-
-
+       
         
         
         
@@ -75,5 +74,14 @@ class cadastrar_fotoController extends controller {
 
         $this->loadTemplate_3('cadastrar_foto', $dados);
     }
+    
+ public function excluirFotoPrincipal() {
+    
+     $id_loja= $_GET['id_loja'];
+     $f=new foto();     
+     $f->excluirFotoPrincipal($id_loja);
+      header("Location:".BASE_URL."cadastrar_foto?id_loja=".$id_loja);
+            exit; 
+     }
 
 }

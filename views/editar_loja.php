@@ -24,12 +24,15 @@
         <div class="row">
 
             <div class="control-group col-sm">
-                <label for="">CNPJ:</label> <label class="text-danger"></label></br>
+                <label for="">CNPJ/CPF:</label> <label class="text-danger"></label></br>
 
-                <input type="text" class="form-control"  name="cnpj" value="<?php echo $cliente['cnpj']; ?>" disabled="" >
-                <label for="">CPF:</label> <label class="text-danger"></label></br>
-
-                <input type="text" class="form-control"  name="cpf" id="cpf" value="<?php echo $dadoscliente['cpf']; ?>" disabled="" >
+                  <?php if(strlen($cliente['cpfcnpj']) ==11): ?>
+                <input type="text" class="form-control" id="cpf" name="cpfcnpj" value="<?php echo $cliente['cpfcnpj']; ?>" disabled="">
+                
+                <?php else:?>
+                <input type="text" class="form-control" id="cnpj" name="cpfcnpj" value="<?php echo $cliente['cpfcnpj']; ?>" disabled="">
+              
+                <?php endif;?>
 
             </div>
 
@@ -200,8 +203,8 @@
         <div class="row">
 
             <div class="form-group col-sm-6">
-                <label for="telefone1">Fixo 1:</label>  <label class="text-danger"></label>
-                <input name="telefone1" type="text" class="form-control" id="telefone" value="<?php echo $cliente['telefone1']; ?>"/>
+                <label for="telefone1">Delivery:</label>  <label class="text-danger"></label>
+                <input name="telefone1" type="text" class="form-control" id="tel" value="<?php echo $cliente['telefone1']; ?>"/>
             </div>
             <div class="form-group col-sm-6">
                 <label for="telefone2">Fixo 2:</label>  <label class="text-danger"></label>
@@ -216,31 +219,38 @@
                 <input name="whatsapp2" type="text" class="form-control" id="celular" value="<?php echo $cliente['whatsapp2']; ?>"/>
             </div>
         </div>
-        <div class="row">
+        
             <div class="form-group col-sm-6">
 
                 <label for="email">E-mail:</label>  <label class="text-danger"></label>
                 <input name="email" type="text" class="form-control" id="email" value="<?php echo $cliente['email']; ?>"/>
             </div>
-            <div class="form-group col-sm-6">
-                <label for="facebook">Facebook:</label>  <label class="text-danger"></label>
-                <input name="facebook" type="text" class="form-control" id="facebook" value="<?php echo $cliente['facebook']; ?>"/>
-            </div>
-            <div class="form-group col-sm-6">
-                <label for="youtube">Youtube:</label>  <label class="text-danger"></label>
-                <input name="youtube" type="text" class="form-control" id="youtube" value="<?php echo $cliente['youtube']; ?>"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-sm-6">
-                <label for="instagram">Instagram:</label>  <label class="text-danger"></label>
-                <input name="instagram" type="text" class="form-control" id="instagram" value="<?php echo $cliente['instagram']; ?>"/>
-            </div>
-            <div class="form-group col-sm-6">
-                <label for="site">Site:</label>  <label class="text-danger"></label>
-                <input name="site" type="text" class="form-control" id="site" value="<?php echo $cliente['site']; ?>"/>
-            </div>
-        </div>
+           
+               <label for="facebook">Complete sua URL</label>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon3">https://facebook.com/</span>
+  </div>
+    <input type="text" class="form-control" id="facebook" aria-describedby="basic-addon3" name="facebook" value="<?php echo $cliente['facebook']; ?>">
+</div> 
+              <label for="youtube">Complete sua URL</label>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon3">https://youtube.com/</span>
+  </div>
+    <input type="text" class="form-control" id="youtube" aria-describedby="basic-addon3" name="youtube" value="<?php echo $cliente['youtube']; ?>">
+</div> 
+      
+            <label for="instagram">Complete sua URL</label>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon3">https://instagram.com/</span>
+  </div>
+    <input type="text" class="form-control" id="instagram" aria-describedby="basic-addon3" name="instagram" value="<?php echo $cliente['instagram']; ?>">
+</div> 
+     
+          
+        
         <!--      <div class="h4 mt-5">Tenha em mente em UM produto ou serviço para cada solução que você tem! Para cada tipos de pessoas! </div>
                   <div class="form-group">
                     <label for="descricao">Breve descrição do seu nicho:</label> 

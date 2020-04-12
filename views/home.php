@@ -81,7 +81,7 @@
                       
                         <th scope="col">Horario</th>
                         <th scope="col">Telefone</th>
-                        <!--<th scope="col">Ação</th>-->
+                        <th scope="col">WhatsApp</th>
                     </tr>
                 </thead>
 <?php foreach ($viewData['lista_palavra']as $value) { ?>
@@ -94,9 +94,29 @@
                          <td><?php echo $value['nome_fantasia'] ?></td>
                            
                          <td><?php echo $value['funcionamento'] ?></td>
-                         <td><?php echo $value['telefone1'] ?></td>
+                         <td><?php echo $value['telefone1'] ?> </td>
+                    <?php if($value['whatsapp1']==null):?>
                          
-                        
+                         <td></td>
+                         <?php else: ?>
+                         <td><img src="<?php BASE_URL;?>assets/images/whatsapp.png" height="30"/>
+                             
+                             <?php $whatsapp=explode('-',$whatsapp=$value['whatsapp1']);
+                                        $whatsapp= implode(" ", $whatsapp);
+                                     $whatsapp= explode(")", $whatsapp);
+                                      $whatsapp= implode(" ", $whatsapp);
+                                        $whatsapp= explode("(", $whatsapp);
+                                         $whatsapp= implode("", $whatsapp);
+                                           $whatsapp= explode(" ", $whatsapp);
+                                         $whatsapp= implode("", $whatsapp);
+                                        $whatsapp=trim($whatsapp);
+                                     
+                                     ?>
+                             
+                             
+                             
+                             <a href="https://api.whatsapp.com/send?phone=55<?php echo $whatsapp ?>&text=Oi%20 achei%20você%20no%20BuscadorCabreúva%20tudo%20bem!" class="alert-link"><?php echo $value['whatsapp1'] ?></a></td>
+       <?php endif;?>                 
                          <!--<td><a href="<?php BASE_URL;?>"class="btn btn-warning disabled" title="Em manutenção" >Visitar/em manutenção</a></td>-->
                     </tr>
                

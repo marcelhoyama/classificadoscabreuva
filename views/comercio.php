@@ -28,7 +28,8 @@
    <?php if( $value['delivery']=='0'){ ?>
                 
                  <?php }else{?>
-                    <h6 class="btn-warning">DELIVERY</h6>
+<button type="button" class="btn btn-lg btn-warning" data-toggle="tooltip" title="Ligue no<?php echo $value['telefone1'];?> peça que entregamos na sua casa." data-placement="bottom">DELIVERY</button>                    
+
                  <?php }?>
                     
                     <p class="card-text"><?php echo $value['nome_ramo'];?></p>
@@ -45,15 +46,54 @@
                     
                    
                             <div class="col"> 
-                        <a href="<?php echo $value['facebook'];?>"><img src="<?php BASE_URL; ?>assets/images/facebookcolor.png" class="rounded-circle"alt=""></a>                
-                                 
-                        <a href="<?php echo $value['instagram'];?>"><img src="<?php BASE_URL; ?>assets/images/instagram-cabreuva.png" class="rounded-circle" width="24" height="24" alt=""></a>       
+                                  <?php if($value['facebook']==null):?>
+                         
+                         
+                         <?php else: ?>
+                                <a href="https://facebook.com/<?php echo $value['facebook'];?>" target="_blank"><img src="<?php BASE_URL; ?>assets/images/facebookcolor.png" class="rounded-circle"alt=""></a>                <?php endif; ?>
+                                <?php if($value['instagram']==null):?>
+                         
+                         
+                         <?php else: ?>  
+                                <a href="https://instagram.com/<?php echo $value['instagram'];?>" target="_blank"><img src="<?php BASE_URL; ?>assets/images/instagram-cabreuva.png" class="rounded-circle" width="24" height="24" alt=""></a>       
+                   <?php endif; ?>     
+                        
+                                
+                                      <?php if($value['whatsapp1']==null):?>
+                         
+                         
+                         <?php else: ?>  
+                         <?php $whatsapp=explode('-',$whatsapp=$value['whatsapp1']);
+                                        $whatsapp= implode(" ", $whatsapp);
+                                     $whatsapp= explode(")", $whatsapp);
+                                      $whatsapp= implode(" ", $whatsapp);
+                                        $whatsapp= explode("(", $whatsapp);
+                                         $whatsapp= implode("", $whatsapp);
+                                           $whatsapp= explode(" ", $whatsapp);
+                                         $whatsapp= implode("", $whatsapp);
+                                        $whatsapp=trim($whatsapp);
                                      
-            <a href="<?php echo $value['whatsapp'];?>"><img src="<?php BASE_URL; ?>assets/images/whatsapp-cabreuva.png" class="rounded-circle" width="24" height="24" alt=""></a>  
-            <a href="#"><img src="<?php BASE_URL; ?>assets/images/mail-cabreuva.png" class="rounded-circle" width="24" height="24" alt=""></a>
-            <a href="<?php echo $value['youtube'];?>"><img src="<?php BASE_URL; ?>assets/images/youtube-cabreuva.png" class="rounded-circle" width="24" height="24" alt=""></a>
-
+                                     ?>
+                        
+                       
+                                <a href="https://api.whatsapp.com/send?phone=55<?php echo $whatsapp ?>&text=Oi%20 achei%20você%20no%20BuscadorCabreúva%20tudo%20bem!" target="_blank"><img src="<?php BASE_URL; ?>assets/images/whatsapp.png" class="rounded-circle" width="24" height="24" alt="<?php echo $value['email']; ?>"></a>  
+           
+                  <?php endif; ?>                 
+                                  <?php if($value['email']==null):?>
+                         
+                         
+                         <?php else: ?>  
+                                
+                                <a href="#"><img src="<?php BASE_URL; ?>assets/images/mail-cabreuva.png" class="rounded-circle" width="24" height="24" alt="<?php echo $value['email']?>" data-toggle="tooltip" title="Esse é o nosso email: <?php echo $value['email'];?>." data-placement="bottom"></a>
             
+              <?php endif; ?>  
+                  <?php if($value['youtube']==null):?>
+                         
+                         
+                         <?php else: ?>  
+            <a href="https://youtube.com/<?php echo $value['youtube'];?>" target="_blank"><img src="<?php BASE_URL; ?>assets/images/youtube-cabreuva.png" class="rounded-circle" width="24" height="24" alt=""></a>
+
+           <?php endif; ?>    
             
             
             

@@ -75,28 +75,17 @@ class lojas extends model {
         }
     }
 
-    public function cadastrar($id_funcionario, $id_cliente, $anuncio_site, $nome_fantasia, $razao_social = '', $endereco, $bairro, $cidade, $telefone1, $telefone2 = '', $status, $whatsapp1 = '', $whatsapp2 = '', $email = '', $facebook = '', $youtube = '', $instagram = '', $site = '', $id_ramo, $palavrachave = '', $titulo, $cnpj = '', $cpf = '', $delivery = '', $horario = '',$funcionamento='') {
+    public function cadastrar($id_funcionario, $id_cliente, $anuncio_site, $nome_fantasia, $razao_social = '', $endereco, $bairro, $cidade, $telefone1, $telefone2 = '', $status, $whatsapp1 = '', $whatsapp2 = '', $email = '', $facebook = '', $youtube = '', $instagram = '', $site = '', $id_ramo, $palavrachave = '', $titulo, $cpfcnpj = '', $delivery = '', $horario = '',$funcionamento='') {
         try {
-            if (!empty($cpf)) {
-                $sql = "SELECT cpf FROM clientes WHERE cpf=:cpf";
+          
+            if (!empty($cpfcnpj) && strlen($cpfcnpj) ==14 ) {
+                $sql = "SELECT cpfcnpj FROM loja WHERE cpfcnpj=:cpfcnpj";
                 $sql = $this->db->prepare($sql);
-                $sql->bindValue(":cpf", $cpf);
+                $sql->bindValue(":cpfcnpj", $cpfcnpj);
                 $sql->execute();
                 if ($sql->rowCount() > 0) {
-                    return "Já existe esse CPF! ";
-                } else {
-
-
-                    $sql = "UPDATE clientes SET cpf=:cpf  WHERE id_clientes=:id_cliente";
-                    $sql = $this->db->prepare($sql);
-
-                    $sql->bindValue(":id_cliente", $id_cliente);
-                    $sql->bindValue(":cpf", $cpf);
-                    $sql->execute();
-                    if ($sql->rowCount() > 0) {
-                        
-                    }//ROWCOUNT UPDATE CPF
-                } // FIM ELSE JA EXISTE CPF
+                    return "Já existe esse CNPJ! ";
+                } 
             }// EMPTY cpf
 
 
@@ -150,7 +139,7 @@ class lojas extends model {
                 }
 
 
-                $sql = "INSERT INTO loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp1=:whatsapp1,whatsapp2=:whatsapp2,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,ramo=:ramo,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cnpj=:cnpj,delivery=:delivery, funcionamento=:funcionamento,data=NOW() ";
+                $sql = "INSERT INTO loja SET clientes_id_clientes=:id_cliente,funcionarios_id_funcionarios=:id_funcionario,anuncio_site=:anuncio_site,status=:status,nome_fantasia=:nome_fantasia,razao_social=:razao_social,endereco=:endereco,bairro=:bairro,cidade=:cidade,telefone1=:telefone1,telefone2=:telefone2,whatsapp1=:whatsapp1,whatsapp2=:whatsapp2,email=:email,facebook=:facebook,youtube=:youtube,instagram=:instagram,site=:site,ramo=:ramo,descricao=:descricao,chamada=:chamada,prova=:prova,slug=:slug,titulo=:titulo,link_apresentacao=:apresentacao,link_produto=:produto,link_acao=:acao,palavrachave=:palavrachave,cpfcnpj=:cpfcnpj,delivery=:delivery, funcionamento=:funcionamento,data=NOW() ";
 
 
                 $sql = $this->db->prepare($sql);
@@ -183,12 +172,13 @@ class lojas extends model {
 //                $sql->bindParam(":url_imagem_principal", $tmpname);
                 $sql->bindParam(":slug", $slug);
                 $sql->bindParam(":titulo", $titulo);
-                $sql->bindParam(":cnpj", $cnpj);
+                $sql->bindParam(":cpfcnpj", $cpfcnpj);
                 $sql->bindParam(":delivery", $delivery);
                  $sql->bindParam(":funcionamento", $funcionamento);
 
                 $sql->execute(); ////
-                $id = $this->db->lastInsertId();
+                $id_loja = $this->db->lastInsertId();
+                
                 if ($sql->rowCount() > 0) {
 
 

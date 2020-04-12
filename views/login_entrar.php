@@ -1,7 +1,11 @@
+<head> 
+<meta charset="UTF=8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"/>
+
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style.css"/>
  
-  
+  </head>
     
         
         
@@ -15,7 +19,7 @@
 
 <div class="container login-container">
             <div class="row">
-                <div class="col-md-6 ml-auto login-form-2">
+                <div class="col-md-6 m-auto login-form-2">
                     <h1>Falta pouco para buscar que precisa!</h1>
                     <h3>Entre com seus dados</h3>
                     <form method="POST" id="login">
