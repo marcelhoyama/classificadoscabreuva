@@ -66,7 +66,7 @@
             <a href="<?php BASE_URL; ?>comercio"><button  class="btn btn-warning">Quero Ver Todos</button></a>
 <!--            <a href="<?php BASE_URL; ?>comercio"><button  class="btn btn-warning">Quero Ver as Promoções</button></a>
             <a href="<?php BASE_URL; ?>comercio"><button  class="btn btn-warning">Quero Ver os Eventos</button></a>-->
-
+<a href="<?php BASE_URL; ?>bairros"><button  class="btn btn-warning">Quero Ver por Bairros</button></a>
         </div>
                 </div>
             </div>

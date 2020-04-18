@@ -61,7 +61,7 @@
                 
                     <a href="#" id="link">suporte@buscadorcabreuva.com.br</a>
                     <a href="https://api.whatsapp.com/send?phone=5511976726576&text=Quero%20Saber%20do%20Site%20Buscador%20Cabre%C3%BAva!" id="link"> <p>11-97672-6576 Marcel</p> </a>
-                
+                    <a href="#" id="link"> O site é colaborativo, e o BuscadorCabreúva atua apenas como facilitador, ou seja, não se responsabiliza em relação aos produtos e serviços postados por terceiros.</a>
             </div>
 
         </div>

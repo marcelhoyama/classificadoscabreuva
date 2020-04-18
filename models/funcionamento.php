@@ -227,10 +227,10 @@ echo "Falhou:" . $ex->getMessage();
             $sql->bindValue(':id_loja',$id_loja);
             $sql->execute();
             if ($sql->rowCount() >0){
-                return TRUE;
+              
            
                 }else{
-                    return FALSE;
+                    return 'Confira o campo, tente novamente';
                 }
         } catch (Exception $ex) {
 echo "Falhou:" . $ex->getMessage();

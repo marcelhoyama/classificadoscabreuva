@@ -21,7 +21,7 @@
   <div class="card-body">
     <h5 class="card-title text-dark">Faça seu Cadastro gratuitamente</h5>
    
-    <p class="card-text text-dark">Você envia suas informações.</p>
+    <p class="card-text text-dark">Acesse o site: <a href="https://buscadorcabreuva.com.br/login_comerciante/">Cadastro aqui</a>  preencha seus dados e aceite os termos de uso.</p>
     
   </div>
 </div>
@@ -32,7 +32,7 @@
   <div class="card-body">
     <h5 class="card-title text-dark">Cadastre seu Comercio/Serviço</h5>
     
-    <p class="card-text text-dark">Você envia as Informações do estabelecimento/Serviço.</p>
+    <p class="card-text text-dark">Complete o cadastro da sua empresa para que seus anúncios apareçam no topo das pesquisas e tenham uma visibilidade maior. Isso inclui: nome da loja, logo da empresa, imagem, descrição do produto, endereço, contato e redes sociais.</p>
     <!--<p class="card-text text-dark">Depois veja nosso videos de como funciona a plataforma.</p>-->
   </div>
 </div>
@@ -43,13 +43,14 @@
   <div class="card-body">
     <h5 class="card-title text-dark">Os beneficios </h5>
     
-    <p class="card-text text-dark">Os clientes tem uma busca centralizado, fácil de achar seu comercio.Descontos com nossos parceiros. Novas funcionalidades futuras ( Terá Mensalidade).</p>
-<!--    <li class="text-dark">Confiança e ética</li>
-    <li class="text-dark">O humano e o bem estar como prioridade</li>
-    <li class="text-dark">Responsabilidade Social e respeito mútuo </li>
-    <li class="text-dark">Profissionalismo e Responsabilidade</li>
-    <li class="text-dark">Legalidade</li>
-    <li class="text-dark">Ações eficazes e de qualidade para desempenhar suas funções.</li>-->
+    
+ <li> Cadastro Gratuito;</li>
+<li>Sua empresa na internet;</li>
+<li>Simples, fácil e rápido;</li>
+<li>Acessível pelo computador, tablet e celular.</li>
+Além disso, o BuscadorCabreúva traz todos os comercios/prestação de serviços separadas por segmento de atuação, como “Alimentos e bebidas”, “Roupas”, “Animais”,Os clientes tem uma busca centralizado, fácil de achar seu comercio, entre outros. 
+
+<p class="card-text text-dark">Descontos com nossos parceiros. Novas funcionalidades futuras ( Terá Mensalidade).</p>
   </div>
 </div>
    </div>
@@ -186,5 +187,26 @@ Importante: Os planos só está disponível para o comercio ou serviço em Cabre
                 </div>
         </div>
     </div>-->
+        
+            <div id="accordion">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title"> <button class="btn btn-link" data-toggle="collapse" data-target="#c1" aria-controls="c1">Quais as vantagens de anunciar no Buscador Cabreúva?</button></div>
+            </div>
+            <div id="c1" class="collapse" data-parent="#accordion">
+               
+            <div class="card-body text-dark">
+                <li> 1- Gratuito;</li>
+<li>2- Sua empresa na internet;</li>
+<li>3- Simples, fácil e rápido;</li>
+<li>4- Acessível pelo computador, tablet e celular.</li>
+Além disso, o BuscadorCabreúva traz todos os comercios/prestação de serviços separadas por segmento de atuação, como “Alimentos e bebidas”, “Roupas”, “Animais”, entre outros. 
+            </div>
+                </div>
+        </div>
+    </div>
     </div>
 </div>
+
+
+

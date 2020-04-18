@@ -173,19 +173,38 @@
                 <label for="endereco">Endereço:</label>  <label class="text-danger">campo obrigatorio*</label>
                 <input name="endereco" type="text" class="form-control" id="endereco" placeholder="endereço do comercio" />
             </div>
-            <div class="row">
-            <div class="form-group col-sm-3">
-                <label for="bairro">Bairro:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="bairro" type="text" class="form-control" id="bairro"  />
+          
+                   
+           <div class="form-group">
+    <label for="bairro">Escolha o Bairro:</label><label class="text-danger">campo obrigatorio*</label>
+    <select class="form-control" id="bairro" name="bairro">
+       
+         <?php if($bairros=$viewData['listaBairros']==false): ?>
+                        <option></option>
+                    <?php else: ?>
+        <option></option>
+    <?php foreach ($bairros as $bairro) { ?>
+     
+        <option value="<?php echo $bairro['id_bairro'];?>"><?php echo $bairro['bairro_nome'];?></option>
+      
+    <?php } ?>
+   <?php endif;
+?>
+    </select>
+  
+  
+  </div>
+                 <div class="form-group mx-sm-3 mt-4">
+                
+                <button type="button" class="btn btn-primary btn-lg" href="javascript;:" onclick="cadastrarBairro()">Cadastre o Bairro aqui:</button>
             </div>
-
        
             <div class="form-group col-sm-3">
                 <label for="cidade">Cidade:</label>  <label class="text-danger">campo obrigatorio*</label>
                 <input name="cidade" type="text" class="form-control" id="cidade" />
             </div>
                   
-        </div>
+       
       
       
          <div class="row">         
@@ -206,15 +225,15 @@
         <div class="row">
     
         <div class="form-group col-sm-6">
-                <label for="telefone1">Delivery:</label>  <label class="text-danger"></label>
+                <label for="telefone1">Delivery Fixo 1:</label>  <label class="text-danger"></label>
                 <input name="telefone1" type="text" class="form-control" id="tel" placeholder="DDD+somente numeros" />
             </div>
         <div class="form-group col-sm-6">
-                <label for="telefone2">fixo 2:</label>  <label class="text-danger"></label>
+                <label for="telefone2">Fixo 2:</label>  <label class="text-danger"></label>
                 <input name="telefone2" type="text" class="form-control" id="telefone" placeholder="DDD+somente numeros" />
             </div>
         <div class="form-group col-sm-6">
-                <label for="whatsapp">Whatsapp 1:</label>  <label class="text-danger">campo obrigatorio*</label>
+                <label for="whatsapp">Delivery Whatsapp 1:</label>  <label class="text-danger">campo obrigatorio*</label>
                 <input name="whatsapp1" type="text" class="form-control" id="celular" placeholder="DDD+numeros"/>
             </div>
             <div class="form-group col-sm-6">
@@ -369,6 +388,25 @@ precisa ver como fica no banco de dados
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Cadastrar tipo de Ramo de Atividade!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal bairro  id=modalbairro-->
+<div class="modal fade" id="modalbairro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Cadastrar bairro</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

@@ -1,6 +1,6 @@
 <?php
 
-class ajaxController extends controller {
+class ajax_bairroController extends controller {
 
     public function __construct() {
         parent::__construct();
@@ -22,34 +22,41 @@ class ajaxController extends controller {
       
        
 
-        $this->loadView('ajax', $dados);
+        $this->loadView('ajax_bairro', $dados);
     }
     
-  public function cadastrarRamo() {
+  
+  
+  
+  
+  
+    public function cadastrarBairro() {
       
-      $dados=array('ramo'=>'');
+      $dados=array('bairro'=>'');
      
-        $l = new lojas();
+        $b = new bairros();
 
 
            $nome = addslashes(trim($_POST['nome']));
 
-           $dados['ramo'] = $l->cadastrarRamo($nome);
+           $dados['bairro'] = $b->cadastrarBairro($nome);
                 
-            echo json_encode($dados['ramo']);
+            echo json_encode($dados['bairro']);
            
       
    
   }
   
-  public function CarregaRamo(){
+   public function CarregaBairro(){
    
-   $dados=array('listarramo'=>'');
+   $dados=array('listarbairro'=>'');
    
-       $c = new clientes();
+       $b = new bairros();
   
-  $dados['listarramo']=$c->listarRamo();
+  $dados['listarbairro']=$b->listarBairros();
   
-  echo json_encode($dados['listarramo']);
+  echo json_encode($dados['listarbairro']);
   }
 }
+
+

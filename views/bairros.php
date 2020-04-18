@@ -28,19 +28,6 @@
    <?php if( $value['delivery']=='0'){ ?>
                 
                  <?php }else{?>
-                    
-                    
-                         <?php $whatsapp=explode('-',$whatsapp=$value['whatsapp1']);
-                                        $whatsapp= implode(" ", $whatsapp);
-                                     $whatsapp= explode(")", $whatsapp);
-                                      $whatsapp= implode(" ", $whatsapp);
-                                        $whatsapp= explode("(", $whatsapp);
-                                         $whatsapp= implode("", $whatsapp);
-                                           $whatsapp= explode(" ", $whatsapp);
-                                         $whatsapp= implode("", $whatsapp);
-                                        $whatsapp=trim($whatsapp);
-                                     
-                                     ?>
                     <a type="button" class="btn btn-lg btn-info" data-toggle="tooltip" title="Ligue no<?php echo $value['telefone1'];?> peça que entregamos na sua casa." data-placement="bottom" href="https://api.whatsapp.com/send?phone=55<?php echo $whatsapp ?>&text=Oi%20 achei%20você%20no%20BuscadorCabreúva%20tudo%20bem!" target="_blank"><img src="<?php BASE_URL; ?>assets/images/whatsapp.png" class="rounded-circle" width="24" height="24" alt="whastapp">TEMOS DELIVERY</a>
   <p class="card-text">Delivery: <?php echo $value['telefone1'];?></p>
 

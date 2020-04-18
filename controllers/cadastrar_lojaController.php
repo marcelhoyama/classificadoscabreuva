@@ -9,7 +9,7 @@ class cadastrar_lojaController extends controller {
     }
 
     public function index() {
-        $dados = array('erro' => '', 'ok' => '', 'listarRamo' => '', 'listarCliente' => '');
+        $dados = array('erro' => '', 'ok' => '', 'listarRamo' => '', 'listarCliente' => '','listarBairros'=>'');
 
 //        $f = new funcionarios();
 //        $id = $_SESSION['lg'];
@@ -18,7 +18,8 @@ class cadastrar_lojaController extends controller {
         $c = new clientes();
         $l = new lojas();
         $dados['listarRamo'] = $c->listarRamo();
-       
+       $b=new bairros();
+       $dados['listarBairros']=$b->listarBairros();
         
         if (isset($_GET['id_cliente']) && !empty($_GET['id_cliente'])) {
             $id_cliente = $_GET['id_cliente'];

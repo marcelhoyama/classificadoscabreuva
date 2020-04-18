@@ -3,11 +3,11 @@
 
 
 <div class="container">
-  <br>
+    <br>
     <div class="text-center h3 mt-5">Editar Loja</div>
 
     <form id="cadastrarloja" method="POST" enctype="multipart/form-data">
-      
+
         <div class="danger">
             <?php if (isset($erro) && !empty($erro)): ?>
                 <div class="alert alert-danger"><?php echo $erro; ?></div> 
@@ -26,20 +26,20 @@
             <div class="control-group col-sm">
                 <label for="">CNPJ/CPF:</label> <label class="text-danger"></label></br>
 
-                  <?php if(strlen($cliente['cpfcnpj']) ==11): ?>
-                <input type="text" class="form-control" id="cpf" name="cpfcnpj" value="<?php echo $cliente['cpfcnpj']; ?>" disabled="">
-                
-                <?php else:?>
-                <input type="text" class="form-control" id="cnpj" name="cpfcnpj" value="<?php echo $cliente['cpfcnpj']; ?>" disabled="">
-              
-                <?php endif;?>
+                <?php if (strlen($cliente['cpfcnpj']) == 11): ?>
+                    <input type="text" class="form-control" id="cpf" name="cpfcnpj" value="<?php echo $cliente['cpfcnpj']; ?>" disabled="">
+
+                <?php else: ?>
+                    <input type="text" class="form-control" id="cnpj" name="cpfcnpj" value="<?php echo $cliente['cpfcnpj']; ?>" disabled="">
+
+                <?php endif; ?>
 
             </div>
 
         </div>
 
 
-        
+
         <div class="row">
             <div class="form-group col-sm-3">
                 <label for="status">Anunciar loja/serviço no site:</label> <label class="text-danger">obrigatorio*</label></br>
@@ -177,21 +177,41 @@
             <input name="endereco" type="text" class="form-control" id="endereco" value="<?php echo $cliente['endereco']; ?>" />
         </div>
         <div class="row">
-            <div class="form-group col-sm-3">
-                <label for="bairro">Bairro:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="bairro" type="text" class="form-control" id="bairro" value="<?php echo $cliente['bairro']; ?>" />
+            <div class="col">
+                <div class="form-group">
+                    <label for="bairro">Escolha o Bairro:</label><label class="text-danger">campo obrigatorio*</label>
+                    <select class="form-control" id="bairro" name="bairro">
+
+                      
+                            <?php foreach ($viewData['listarBairros'] as $bairro) :{ ?>
+
+                                <option value="<?php echo $bairro['id_bairro']; ?>" <?php echo ($cliente['id_bairro'] == $bairro['id_bairro'] ) ? 'selected="selected"' : ''; ?>     ><?php echo $bairro['bairro_nome']; ?></option>
+
+
+
+
+                            <?php }endforeach; ?>
+                     
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group mx-sm-3 mt-4">
+
+                        <button type="button" class="btn btn-primary btn-lg" href="javascript;:" onclick="cadastrarBairro()">Cadastrar outro Bairro</button>
+                    </div>
+                </div>
             </div>
-
-
-            <div class="form-group col-sm-3">
-                <label for="cidade">Cidade:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="cidade" type="text" class="form-control" id="cidade" value="<?php echo $cliente['cidade']; ?>"/>
-            </div>
-
-
-
-
         </div>
+
+        <div class="form-group col-sm-3">
+            <label for="cidade">Cidade:</label>  
+            <input name="cidade" type="text" class="form-control" id="cidade" value="<?php echo $cliente['cidade']; ?>" disabled=""/>
+        </div>
+
+
+
+
+
 
         <div class="h5 mt-5"> Horario de Funcionamento</div>
         <div class="form-group ">
@@ -203,7 +223,7 @@
         <div class="row">
 
             <div class="form-group col-sm-6">
-                <label for="telefone1">Delivery:</label>  <label class="text-danger"></label>
+                <label for="telefone1">Delivery Fixo 1:</label>  <label class="text-danger"></label>
                 <input name="telefone1" type="text" class="form-control" id="tel" value="<?php echo $cliente['telefone1']; ?>"/>
             </div>
             <div class="form-group col-sm-6">
@@ -211,46 +231,51 @@
                 <input name="telefone2" type="text" class="form-control" id="telefone" value="<?php echo $cliente['telefone2']; ?>"/>
             </div>
             <div class="form-group col-sm-6">
-                <label for="whatsapp">Whatsapp 1:</label>  <label class="text-danger">campo obrigatorio*</label>
+                <label for="whatsapp">Delivery Whatsapp 1:</label>  <label class="text-danger">campo obrigatorio*</label>
                 <input name="whatsapp1" type="text" class="form-control" id="celular" value="<?php echo $cliente['whatsapp1']; ?>"/>
             </div>
             <div class="form-group col-sm-6">
                 <label for="whatsapp">Whatsapp 2:</label>  <label class="text-danger"></label>
                 <input name="whatsapp2" type="text" class="form-control" id="celular" value="<?php echo $cliente['whatsapp2']; ?>"/>
             </div>
-        </div>
         
-            <div class="form-group col-sm-6">
 
-                <label for="email">E-mail:</label>  <label class="text-danger"></label>
-                <input name="email" type="text" class="form-control" id="email" value="<?php echo $cliente['email']; ?>"/>
+        <div class="form-group col-sm-6">
+
+            <label for="email">E-mail:</label>  <label class="text-danger"></label>
+            <input name="email" type="text" class="form-control" id="email" value="<?php echo $cliente['email']; ?>"/>
+        </div>
+        <div class="form-group col-sm-6">
+
+            <label for="site">Site:</label>  <label class="text-danger"></label>
+            <input name="site" type="text" class="form-control" id="site" value="<?php echo $cliente['site']; ?>" placeholder="https://example.com/users/"/>
+        </div>
+</div>
+        <label for="facebook">Complete sua URL</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">https://facebook.com/</span>
             </div>
-           
-               <label for="facebook">Complete sua URL</label>
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon3">https://facebook.com/</span>
-  </div>
-    <input type="text" class="form-control" id="facebook" aria-describedby="basic-addon3" name="facebook" value="<?php echo $cliente['facebook']; ?>">
-</div> 
-              <label for="youtube">Complete sua URL</label>
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon3">https://youtube.com/</span>
-  </div>
-    <input type="text" class="form-control" id="youtube" aria-describedby="basic-addon3" name="youtube" value="<?php echo $cliente['youtube']; ?>">
-</div> 
-      
-            <label for="instagram">Complete sua URL</label>
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon3">https://instagram.com/</span>
-  </div>
-    <input type="text" class="form-control" id="instagram" aria-describedby="basic-addon3" name="instagram" value="<?php echo $cliente['instagram']; ?>">
-</div> 
-     
-          
-        
+            <input type="text" class="form-control" id="facebook" aria-describedby="basic-addon3" name="facebook" value="<?php echo $cliente['facebook']; ?>">
+        </div> 
+        <label for="youtube">Complete sua URL</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">https://youtube.com/</span>
+            </div>
+            <input type="text" class="form-control" id="youtube" aria-describedby="basic-addon3" name="youtube" value="<?php echo $cliente['youtube']; ?>">
+        </div> 
+
+        <label for="instagram">Complete sua URL</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">https://instagram.com/</span>
+            </div>
+            <input type="text" class="form-control" id="instagram" aria-describedby="basic-addon3" name="instagram" value="<?php echo $cliente['instagram']; ?>">
+        </div> 
+
+
+
         <!--      <div class="h4 mt-5">Tenha em mente em UM produto ou serviço para cada solução que você tem! Para cada tipos de pessoas! </div>
                   <div class="form-group">
                     <label for="descricao">Breve descrição do seu nicho:</label> 
@@ -327,6 +352,24 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Cadastrar tipo de Ramo de Atividade!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">  </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal bairro  id=modalbairro-->
+<div class="modal fade" id="modalbairro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Cadastrar bairro</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

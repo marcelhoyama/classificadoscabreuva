@@ -24,7 +24,8 @@ class editar_lojaController extends controller {
             $dados['nomeCliente'] = $c->getName($id_cliente);
             $dados['id_cliente'] = $id_cliente;
             $dados['lojacliente'] = $c->listarCliente($id_cliente);
-        }
+        } 
+       
 
 
         if (isset($_GET['id_loja']) && !empty($_GET['id_loja'])) {
@@ -36,6 +37,8 @@ class editar_lojaController extends controller {
 
             $dados['totalFotos'] = $l->totalFotos($id_loja);
             $dados['listfotos'] = $l->listarFotos($id_loja);
+             $b = new bairros();
+        $dados['listarBairros'] = $b->listarBairros();
         }
 
 
@@ -47,12 +50,12 @@ class editar_lojaController extends controller {
 
             //  variavel $id é do funcionario
             // variavel $id_cliente é do cliente
-           $anuncio_site = addslashes(trim($_POST['anuncio_site']));
+            $anuncio_site = addslashes(trim($_POST['anuncio_site']));
             $tipo_ramo = addslashes(trim($_POST['tipo_categoria']));
-         $nome_fantasia = addslashes(trim($_POST['nome_fantasia']));
-           $razao_social = addslashes(trim($_POST['razao_social']));
+            $nome_fantasia = addslashes(trim($_POST['nome_fantasia']));
+            $razao_social = addslashes(trim($_POST['razao_social']));
             $endereco = addslashes(trim($_POST['endereco']));
-            $bairro = addslashes(trim($_POST['bairro']));
+            $id_bairro = addslashes(trim($_POST['bairro']));
             $cidade = addslashes(trim($_POST['cidade']));
             $telefone1 = addslashes(trim($_POST['telefone1']));
             $telefone2 = addslashes(trim($_POST['telefone2']));
@@ -62,9 +65,9 @@ class editar_lojaController extends controller {
             $facebook = addslashes(trim($_POST['facebook']));
             $youtube = addslashes(trim($_POST['youtube']));
             $instagram = addslashes(trim($_POST['instagram']));
-             $site = addslashes(trim($_POST['site']));
+            $site = addslashes(trim($_POST['site']));
 
-           $delivery = addslashes($_POST['delivery']);
+            $delivery = addslashes($_POST['delivery']);
             $funcionamento = addslashes($_POST['funcionamento']);
             //          $cnpj= addslashes(trim($_POST['cnpj']));
 //            $descricao = addslashes(trim($_POST['descricao']));
@@ -74,18 +77,14 @@ class editar_lojaController extends controller {
 //            $produtos = addslashes(trim($_POST['produtos']));
 //            $acao = addslashes(trim($_POST['acao']));
 
-             $palavrachave = addslashes(trim($_POST['palavrachave']));
-             $titulo = $nome_fantasia;
+            $palavrachave = addslashes(trim($_POST['palavrachave']));
+            $titulo = $nome_fantasia;
 
             $l = new lojas();
 
             //se esta dando retorno false, porque tipo de foto esta indo com error,
             //ainda continua com erro mesmo tirado foto
-            $dados['erro']=$l->editar($id_loja,$id_cliente, $anuncio_site, $nome_fantasia, $razao_social, $endereco, $bairro, $cidade, $telefone1, $telefone2, $whatsapp1, $whatsapp2, $email, $facebook, $youtube, $instagram, $site, $tipo_ramo, $palavrachave, $titulo, $delivery, $funcionamento);
-
-
-            
-            
+            $dados['erro'] = $l->editar($id_loja, $id_cliente, $anuncio_site, $nome_fantasia, $razao_social, $endereco, $id_bairro, $cidade, $telefone1, $telefone2, $whatsapp1, $whatsapp2, $email, $facebook, $youtube, $instagram, $site, $tipo_ramo, $palavrachave, $titulo, $delivery, $funcionamento);
         }
         $this->loadTemplate_3('editar_loja', $dados);
     }

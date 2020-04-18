@@ -294,7 +294,7 @@ class clientes extends model {
     public function listarRamo() {
         $array = array();
         try {
-            $sql = "SELECT * FROM ramo";
+            $sql = "SELECT * FROM ramo ORDER BY nome";
             $sql = $this->db->prepare($sql);
             $sql->execute();
             if ($sql->rowCount() > 0) {
@@ -441,11 +441,13 @@ class clientes extends model {
     public function getIdLojaCliente($id_cliente) {
         try {
             $sql = "SELECT loja.delivery,loja.palavrachave,loja.anuncio_site, loja.cnpj, loja.id_loja,ramo.id_ramo,ramo.nome,"
-                    . " loja.nome_fantasia,clientes.nome ,loja.razao_social,loja.endereco,loja.bairro,loja.cidade,"
+                    . " loja.nome_fantasia,clientes.nome ,loja.razao_social,loja.endereco,b.bairro_nome,loja.cidade,"
                     . " loja.telefone1,loja.telefone2,loja.whatsapp1,loja.whatsapp2,loja.email,loja.facebook,"
                     . " loja.youtube,loja.instagram,loja.site,clientes.cpf,loja.url_imagem_principal"
                     . " FROM loja INNER JOIN clientes on clientes.id_clientes=loja.clientes_id_clientes "
                     . " left JOIN ramo ON ramo.id_ramo=loja.ramo"
+                    . " LEFT JOIN loja_has_bairros lb ON lb.id_loja = loja.id_loja"
+                    . " LEFT JOIN bairros b ON b.id_bairro=lb.id_bairros"
                     . " WHERE clientes_id_clientes =:id_cliente  ORDER BY loja.id_loja";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(':id_cliente', $id_cliente);
@@ -463,11 +465,13 @@ class clientes extends model {
     public function getLojaCliente($id_cliente) {
         try {
             $sql = "SELECT loja.delivery,loja.palavrachave,loja.anuncio_site, loja.cnpj, loja.id_loja,ramo.id_ramo,ramo.nome,"
-                    . " loja.nome_fantasia,clientes.nome ,loja.razao_social,loja.endereco,loja.bairro,loja.cidade,"
+                    . " loja.nome_fantasia,clientes.nome ,loja.razao_social,loja.endereco,b.bairro_nome,loja.cidade,"
                     . " loja.telefone1,loja.telefone2,loja.whatsapp1,loja.whatsapp2,loja.email,loja.facebook,"
                     . " loja.youtube,loja.instagram,loja.site,clientes.cpf,loja.url_imagem_principal"
                     . " FROM loja left JOIN clientes on clientes.id_clientes=loja.clientes_id_clientes "
                     . " left JOIN ramo ON ramo.id_ramo=loja.ramo"
+                    . " LEFT JOIN loja_has_bairros lb ON lb.id_loja = loja.id_loja"
+                    . " LEFT JOIN bairros b ON b.id_bairro=lb.id_bairros"
                     . " WHERE loja.clientes_id_clientes =:id_cliente ";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(':id_cliente', $id_cliente);

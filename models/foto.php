@@ -45,7 +45,7 @@ class foto extends model {
             }
 
 
-            $sql = "UPDATE loja SET url_imagem_principal=NULL WHERE id_loja='$id_loja'";
+            $sql = "UPDATE loja SET url_imagem_principal='' WHERE id_loja='$id_loja'";
 
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {

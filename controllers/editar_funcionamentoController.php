@@ -7,7 +7,7 @@ class editar_funcionamentoController extends controller {
         $c = new clientes();
         $c->verificarLogin();
     }
-
+//
     public function index() {
         $dados = array('erro' => '', 'ok' => '', 'lojacliente' => '');
 
@@ -30,18 +30,16 @@ class editar_funcionamentoController extends controller {
             $dados['id_cliente'] = $_SESSION['lgCliente'];
         }
 
-        if (isset($_POST['funcionamento']) && !empty($_POST['funcionamento'])) {
+        if (isset($_POST['funcionamento']) ) {
 
-            $id_loja = addslashes(($_GET['id_loja']));
+//            $id_loja = addslashes(($_GET['id_loja']));
 $funcionamento= addslashes(trim($_POST['funcionamento']));
 
 
-                    if ($dados['erro'] = $f->cadastrarFunc($id_loja, $funcionamento)==true) {
+                    $dados['erro'] = $f->cadastrarFunc($id_loja, $funcionamento);
                         header("Location:".BASE_URL."menuprincipal_loja");
-                       // header("Location:".BASE_URL."editar_funcionamento?id_loja=".$id_loja);
-                   }else{
-                       $dados['erro']='confira o campo, tente novamente';
-                   }
+                      
+                   
             }
             
             

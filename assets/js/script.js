@@ -265,10 +265,7 @@ function cadastrarRamo() {
         success: function (data) {
 
 // Adiciona a primeira linha.
-$("#tipo_categoria").append($('<option>', {
-value: '0',
-text: 'Selecione um tipo de ramo'
-}));
+$("#tipo_categoria").children('option:not(:first)').remove();
 
 tiposramos = JSON.parse(data);
 
@@ -294,6 +291,76 @@ text: ramo.nome
                     error: function(){
                         alert('Não foi possivel cadastrar!');
                          $('#modaltiporamo').modal('hide');
+                    }
+                });// ajax
+
+
+
+            }); //function submit
+           
+
+        }
+    });
+}
+
+
+function cadastrarBairro() {
+    $('#modalbairro').modal('toggle');
+    $.ajax({
+        url: 'ajax_bairro',
+        type: 'POST',
+        data: {},
+        success: function (html) {
+        
+            $('#modalbairro').find('.modal-body').html(html);
+              
+            $('#modalbairro').find('form').on('submit', function (e) {
+                 
+                e.preventDefault();
+   
+                var nome = $(this).find('input[name=bairro]').val(); 
+                var str = "";
+              
+                $.ajax({
+                    url: 'ajax_bairro/cadastrarBairro',
+                    type: 'POST',
+                    data: {nome: nome},
+                    
+                    success: function () {
+                   $.ajax({
+
+        url: 'ajax_bairro/CarregaBairro',
+        datatype: 'json',
+        contentType: 'application/json; charset=utf-8',
+        type: 'POST',
+      
+        success: function (data) {
+
+$("#bairro").children('option:not(:first)').remove();
+listabairros = JSON.parse(data);
+
+// Adiciona as demais linhas (dinâmico).
+$.each(listabairros, function(id,bairro) {
+$("#bairro").append($('<option>', {
+value: bairro.id_bairro,
+text: bairro.bairro_nome
+}));
+});
+
+
+
+            
+            $('#modalbairro').modal('hide');
+        },
+        error: function (error) {
+        }
+    });
+      
+ 
+                    },//sucess
+                    error: function(){
+                        alert('Não foi possivel cadastrar!');
+                         $('#modalbairro').modal('hide');
                     }
                 });// ajax
 
