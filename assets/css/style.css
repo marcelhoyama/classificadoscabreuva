@@ -15,7 +15,7 @@ and open the template in the editor.
 }
 
 .jumbotron-with-background {
-    background-image: url("../images/vista-cabreuva.jpg");
+    /*background-image: url("../images/vista-cabreuva.jpg");*/
     background-position:center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -211,3 +211,7 @@ width: 100%;
     padding: 20px;
 }
 
+#conteudo2{
+    
+    padding: 40px;
+}

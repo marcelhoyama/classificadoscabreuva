@@ -108,6 +108,42 @@ class foto extends model {
         }
     }
 
+    
+       public function listFotosAmbiente($id_loja) {
+        try {
+            
+            
+            $array = array();
+            $sql = "SELECT loja_id_loja,url FROM url_imagens INNER JOIN loja ON loja.id_loja=url_imagens.loja_id_loja WHERE url_imagens.loja_id_loja='$id_loja' ";
+            $sql = $this->db->query($sql);
+            if ($sql->rowCount() > 0) {
+                $array = $sql->fetchAll(PDO::FETCH_ASSOC);
+            }
+            return $array;
+        } catch (Exception $e) {
+            echo "Falhou:" . $e->getMessage();
+        }
+    }
+    
+        public function listFotoEquipe($id_loja) {
+        try {
+            
+            
+            $array = array();
+            $sql = "SELECT loja_id_loja,url FROM url_equipes INNER JOIN loja ON loja.id_loja=url_equipes.loja_id_loja WHERE url_equipes.loja_id_loja=:id_loja ";
+              $sql = $this->db->prepare($sql);
+
+                    $sql->bindValue(":id_loja", $id_loja);
+                   
+                    $sql->execute();
+            if ($sql->rowCount() > 0) {
+                $array = $sql->fetch();
+            }
+            return $array;
+        } catch (Exception $e) {
+            echo "Falhou:" . $e->getMessage();
+        }
+    }
 //    public function listFotosPrincipaisLoja() {
 //        try {
 //            $array = array();
@@ -140,16 +176,16 @@ class foto extends model {
 
 
 
-    public function cadastrarUrlPrincipalImagem($id_loja, $foto) {
+    public function cadastrarUrlPrincipalImagem($id_loja, $foto,$fotos, $fotos2) {
         try {
            
-          
-            $sql = "SELECT id_loja,url_imagem_principal FROM loja WHERE id_loja='$id_loja'";
-            $sql = $this->db->query($sql);
-            if ($sql->rowCount() > 0) {
-                $row = $sql->fetch();
-                $id_loja = $row['id_loja'];
-                $url_principal = $row['url_imagem_principal'];
+          echo 'foto time'.print_r($fotos2); 
+//            $sql = "SELECT id_loja,url_imagem_principal FROM loja WHERE id_loja='$id_loja'";
+//            $sql = $this->db->query($sql);
+//            if ($sql->rowCount() > 0) {
+//                $row = $sql->fetch();
+//                $id_loja = $row['id_loja'];
+//                $url_principal = $row['url_imagem_principal'];
             
 
 //
@@ -159,10 +195,10 @@ class foto extends model {
 //            if ($sql->rowCount() > 0) {}
 //                
             
-            if (is_file("upload/fotos_principais/" . $url_principal)) {
-
-                unlink("upload/fotos_principais/" . $url_principal);
-            }
+//            if (is_file("upload/fotos_principais/" . $url_principal)) {
+//
+//                unlink("upload/fotos_principais/" . $url_principal);
+//            }
               if (!empty($foto['tmp_name'][0])) {
 
   
@@ -197,32 +233,69 @@ class foto extends model {
                     $sql = "UPDATE loja SET url_imagem_principal='$tmpname' WHERE id_loja='$id_loja'";
 
                     $sql = $this->db->query($sql);
-                    if ($sql->rowCount() > 0) {
-     
-                        return TRUE;
-                    } else {
-
-                       
-                        
-                    }
+                    
+                    
                 }
-            }
-            
-        }else{
-            //aqui eh tratar o nome das fotos enviados
-            //se contagem as fotos for maior de 0 faça que o nome do arquivo seja mudado com o tempo(relogio) crie criptografia randomica
-            // e salve no diretorio upload   com o comando especifico do PHP
+              }
+                    
+                    
+                    
+                    
+                    
+                         if (count($fotos) > 0) {
 
-            if (!empty($foto['tmp_name'][0])) {
+                        for ($q = 0; $q < count($fotos['tmp_name']); $q++) {
 
-  
-                $tipo = $foto['type'];
+                            $tipo2 = $fotos['type'][$q];
+
+
+                            if (in_array($tipo2, array('image/jpeg', 'image/png'))) {
+
+                                $tmpname = md5(time() . rand(0, 999)) . '.jpg';
+                                $diretorio = "upload/ambiente/";
+
+                                move_uploaded_file($fotos['tmp_name'][$q], $diretorio . $tmpname);
+
+                                list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
+                                $ratio = $width_orig / $height_orig;
+//limite permitido proporcional
+                                $width = 960;
+                                $height = 720;
+                                if ($width / $height > $ratio) {
+                                    $width = $height + $ratio;
+                                } else {
+                                    $height = $width / $ratio;
+                                }
+
+                                $img = imagecreatetruecolor($width, $height);
+                                if ($fotos['type'][$q] == 'image/jpeg') {
+                                    $origi = imagecreatefromjpeg($diretorio . $tmpname);
+                                } elseif ($tipo2 == 'image/png') {
+                                    $origi = imagecreatefrompng($diretorio . $tmpname);
+                                }
+
+                                imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
+                                imagejpeg($img, $diretorio . $tmpname, 80);
+
+                                $sql = "INSERT INTO url_imagens SET loja_id_loja='$id_loja', url='$tmpname'";
+
+                                $sql = $this->db->query($sql);
+                               
+                            }
+                        }
+                    }
+                    
+                       echo 'veio time';
+                         if (!empty($fotos2['tmp_name'][0])) {
+
+                          
+                $tipo = $fotos2['type'];
 
                 if (in_array($tipo, array('image/jpeg', 'image/png'))) {
                     $tmpname = md5(time() . rand(0, 999)) . '.jpg';
-                    $diretorio = "upload/fotos_principais/";
+                    $diretorio = "upload/equipes/";
 
-                    move_uploaded_file($foto['tmp_name'], $diretorio . $tmpname);
+                    move_uploaded_file($fotos2['tmp_name'], $diretorio . $tmpname);
   
 
                     list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
@@ -234,7 +307,7 @@ class foto extends model {
                     } else {
                         $height = $width / $ratio;
                     }
-
+// tem que liberar ou comentar no php configuração "extensaõ  gd ou gd2" 
                     $img = imagecreatetruecolor($width, $height);
                     if ($tipo == 'image/jpeg') {
                         $origi = imagecreatefromjpeg($diretorio . $tmpname);
@@ -244,24 +317,81 @@ class foto extends model {
     
                     imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
                     imagejpeg($img, $diretorio . $tmpname, 80);
-                    $sql = "UPDATE loja SET url_imagem_principal='$tmpname' WHERE id_loja='$id_loja'";
+                    $sql = "INSERT url_equipes SET url='$tmpname',loja_id_loja='$id_loja'";
 
                     $sql = $this->db->query($sql);
-                    if ($sql->rowCount() > 0) {
-     
-                        return TRUE;
-                    } else {
-
-                       
-                        
-                    }
-                }
-            }
-            }
+                                if ($sql->rowCount() > 0) {
+                                    //return true;
+                                } else {
+                                    //return FALSE;
+                                }
+                            }
+                        }
+                    
+                 
+                
             
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }
     }
 
-}
+
+    
+    
+    public function cadastrarImagemAmbiente($fotos) {
+        
+        
+        
+             if (count($fotos) > 0) {
+
+                        for ($q = 0; $q < count($fotos['tmp_name']); $q++) {
+
+                            $tipo2 = $fotos['type'][$q];
+
+
+                            if (in_array($tipo2, array('image/jpeg', 'image/png'))) {
+
+                                $tmpname = md5(time() . rand(0, 999)) . '.jpg';
+                                $diretorio = "upload/ambiente";
+
+                                move_uploaded_file($fotos['tmp_name'][$q], $diretorio . $tmpname);
+
+                                list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
+                                $ratio = $width_orig / $height_orig;
+//limite permitido proporcional
+                                $width = 900;
+                                $height = 350;
+                                if ($width / $height > $ratio) {
+                                    $width = $height + $ratio;
+                                } else {
+                                    $height = $width / $ratio;
+                                }
+
+                                $img = imagecreatetruecolor($width, $height);
+                                if ($fotos['type'][$q] == 'image/jpeg') {
+                                    $origi = imagecreatefromjpeg($diretorio . $tmpname);
+                                } elseif ($tipo == 'image/png') {
+                                    $origi = imagecreatefrompng($diretorio . $tmpname);
+                                }
+
+                                imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
+                                imagejpeg($img, $diretorio . $tmpname, 80);
+
+                                $sql = "INSERT INTO url_imagens SET loja_id_loja='$id', url='$tmpname'";
+
+                                $sql = $this->db->query($sql);
+                                if ($sql->rowCount() > 0) {
+                                    //return true;
+                                } else {
+                                    //return FALSE;
+                                }
+                            }
+                        }
+                    }
+        
+    }
+    
+    
+    
+        }

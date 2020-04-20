@@ -52,7 +52,7 @@
                   
                         <div class="row">
                     <div class="col">
-                    <!--<a href="<?php BASE_URL;?>food" class="btn btn-primary">Ver mais</a>-->
+                    <a href="<?php BASE_URL;?>loja?id_loja=<?php echo $value['id_loja'];?>" class="btn btn-primary">Ver Loja</a>
                     
     
                     </div>

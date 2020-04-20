@@ -1,6 +1,6 @@
 <?php
 
-class cadastrar_fotoController extends controller {
+class cadastrar_produtoController extends controller {
 
     public function __construct() {
         parent::__construct();
@@ -82,7 +82,7 @@ $dados['listFotoEquipe']=$f->listFotoEquipe($id_loja);
 
 
 
-        $this->loadTemplate_3('cadastrar_foto', $dados);
+        $this->loadTemplate_3('cadastrar_produto', $dados);
     }
 
     public function excluirFotoPrincipal() {

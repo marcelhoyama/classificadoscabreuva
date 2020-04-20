@@ -526,7 +526,7 @@ class lojas extends model {
 
     public function listarLojas() {
         $array = array();
-        $sql = "SELECT *,ramo.nome as nome_ramo,loja.funcionamento FROM loja"
+        $sql = "SELECT *,loja.id_loja as id_loja,ramo.nome as nome_ramo,loja.funcionamento FROM loja"
                 . " LEFT JOIN loja_has_bairros lb ON lb.id_loja = loja.id_loja"
                     . " LEFT JOIN bairros b ON b.id_bairro=lb.id_bairros "
                 . " left join ramo on ramo.id_ramo=loja.ramo WHERE loja.status =0 AND loja.anuncio_site=1 ";
@@ -542,15 +542,17 @@ class lojas extends model {
     public function getDados($id_loja) {
         try {
             $array = array();
-            $sql = "SELECT * FROM loja l LEFT JOIN url_imagens u ON l.id_loja= u.loja_id_loja "
+            $sql = "SELECT *,e.url as equipe FROM loja l LEFT JOIN url_imagens u ON l.id_loja= u.loja_id_loja"
                     . " LEFT JOIN url_equipes e ON e.loja_id_loja=l.id_loja"
                     . " LEFT JOIN loja_has_bairros lb ON lb.id_loja = l.id_loja"
-                    . " LEFT JOIN bairros b ON b.id_bairro=lb.id_bairros "
+                    . " LEFT JOIN bairros b ON b.id_bairro=lb.id_bairros"
                     . " WHERE l.id_loja=:id_loja GROUP BY l.id_loja";
             $sql = $this->db->prepare($sql);
-            $sql->bindValue(":id_loja", $id_loja);
+           $sql->bindValue(":id_loja", $id_loja);
             $sql->execute();
+           
             if ($sql->rowCount() > 0) {
+               
                 $array = $sql->fetch(PDO::FETCH_ASSOC);
                 return $array;
             }

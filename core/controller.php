@@ -38,6 +38,11 @@ public function __construct() {
         
     }
     
+     public function loadTemplate_loja($viewName, $viewData=array()) {
+        
+        require 'views/template_loja.php';
+        
+    }
     public function loadViewInTemplate($viewName, $viewData=array()) {
         extract($viewData);
         require 'views/'.$viewName.'.php';

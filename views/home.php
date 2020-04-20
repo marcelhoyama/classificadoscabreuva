@@ -222,7 +222,46 @@
 
         </div>-->
 
- 
+<!-- Icons Grid -->
+  <section class="features-icons bg-light text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+                <i class="icon-screen-desktop m-auto text-primary" style="height: 80px"></i>
+            </div>
+            <h3>Encontre o que você precisa</h3>
+            <p class="lead mb-0">
+Aqui você encontra desde profissionais qualificados, produtos variados a serviços para o seu negócio.</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="icon-layers m-auto text-primary"></i>
+            </div>
+            <h3>Faça sua escolha</h3>
+            <p class="lead mb-0">
+Depois de escolher o que precisa, leia atentamente as informações sobre o produto/serviço/loja.</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="icon-check m-auto text-primary"></i>
+            </div>
+            <h3>Contrate o serviço</h3>
+            <p class="lead mb-0">
+Pronto! Agora é só entrar em contato com o fornecedor via telefone, e-mail, whatsApp ou redes sociais e fazer bons negócios!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
     </div>
     <br>
 

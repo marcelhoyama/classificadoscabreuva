@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="<?php BASE_URL; ?>assets/css/style.css"/>
+<link rel="stylesheet" href="<?php BASE_URL; ?>assets/css/landing-page.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -47,22 +48,23 @@
   </div>
 </nav>
     </div>
-<div class="container">
+
 <body>
     
     <?php $this->loadViewInTemplate($viewName,$viewData);?>
 </body>
-</div>
+
     <!-- Footer -->
    
     <footer class="container-fluid footer" id="conteudo1"> 
-    <div class="row text-white">
+    <div class="row text-white ">
         
-        <div class="col-6">
+        <div class="col-6 text-right">
             <h6>Escritório</h6>
             <li>Rua Fernando Nunes, nº 793 </li>
             <li>Jacaré - Cabreúva/SP.</li>
-
+            <br>
+            <li><a href="<?php BASE_URL;?>termo" class="link text-white">Termo de uso e Privacidade</a></li>
         </div>
           <div class="col-6">
             <h6>Contato:</h6>
@@ -70,7 +72,7 @@
             <li>Email: suporte@buscadorcabreuva.com.br</li>
             <li>Denilson (publicidade, propaganda): (11) 9.7462-9961 whastApp</li>
             <li>Email: publicidade@buscadorcabreuva.com.br</li>
-
+            
         </div>
     </div>
   <div class="footer-conteudo2 mt-5 " align="center">

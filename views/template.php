@@ -7,7 +7,10 @@
         <link rel="stylesheet" href="<?php BASE_URL; ?>assets/css/bootstrap.min.css"/>
          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/2c2e52caea.js" crossorigin="anonymous"></script>
+         <link rel="stylesheet" href="<?php BASE_URL; ?>assets/css/vendor/css/simple-line-icons.css"/>
+             <link rel="stylesheet" href="<?php BASE_URL; ?>assets/css/vendor/css/all.min.css"/>
         <link rel="stylesheet" href="<?php BASE_URL; ?>assets/css/style.css"/>
+          <link rel="stylesheet" href="<?php BASE_URL; ?>assets/css/landing-page.min.css"/>
 
         <title>Buscador Cabreúva </title>
     </head>
@@ -65,8 +68,9 @@
             </div>
 
         </div>
-        <div class="footer-copyright">
-            <a href="http://www.devmg.pe.hu" id="link"><p class="text-center text-warning " >@BuscadorCabreuva 2020</p></a>
+        <div class="footer-copyright text-center">
+            <a href="http://www.devmg.pe.hu" id="link" class="text-center text-warning ">@BuscadorCabreuva 2020</a>
+            - <a href="<?php BASE_URL;?>termo" id="link" class="text-center text-warning ">Termo de uso e Privacidade</a>
         </div>
     </div>
 </footer>

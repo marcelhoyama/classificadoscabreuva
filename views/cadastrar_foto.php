@@ -20,10 +20,10 @@
         </div>
         
          <?php // $cliente=$viewData['lojacliente'];?>
-        <div class="row">
+       
             
        
-  <?php $foto=$viewData['fotoPrincipal'];?>
+  <?php print_r($foto=$viewData['fotoPrincipal']);?>
        
         <div class="row">
             <div class="form-group">
@@ -56,30 +56,34 @@
        
             
             
+            <hr>        
             
-            
-            
-            
+              <?php print_r($fotoambiente=$viewData['listFotosAmbiente']);?>
+          
             
 <div class="row my-5">
     
         <div class="form-group">
               <div class="h6 text-danger">Fase de teste</div><br>
-            <label for="arquivos" class="form-group">Adicionar no MAXIMO 35 Fotos do ambiente:</label>
+            <label for="arquivos" class="form-group">Adicionar no MAXIMO 3 Fotos de Banner: (900x350)</label>
             <input id="fotos" name="arquivos[]" type="file"  multiple="" class="form-control"/>
                <label class="form-group">*Somente tipo de arquivo de JPEG, PNG E JPG</label>
 
         </div>
-  <div class="col-md-5">
+    
+    <?php foreach ($fotoambiente as $value) {?>
+        
+    
+  <div class="col">
             <div class="card">
                 <div class="card-header">
-                    Ambiente
+                    Banner: (900x350) 1
                 </div>
                 <div class="card-body">
-                    <?php if($foto['url_imagem_principal']==null){ ?>
+                    <?php if($value['url']==null){ ?>
                                <img src="assets/images/sem-imagem.gif" class="img-fluid"/>
                     <?php }else{?>
-                    <img src="upload/fotos_principais/<?php echo $foto['url_imagem_principal'];?>" class="img-fluid"/>
+                    <img src="upload/ambiente/<?php echo $value['url'];?>" class="img-fluid"/>
                     <?php }?>
                 </div>
                 <div class="card-footer">
@@ -87,7 +91,8 @@
                 </div>
             </div>
             </div> 
-</div>
+    <?php }?>
+    
             
             
             
@@ -96,7 +101,7 @@
             
             
             
-            
+            <hr>
             
             
             
@@ -109,11 +114,11 @@
             
             
       <div class="row">
-
+<?php print_r($fotoequipe=$viewData['listFotoEquipe']); ?>
         <div class="form-group">
             <div class="h6 text-danger">Fase de teste</div><br>
-            <label for="arquivos2" class="form-group">Adicionar  Fotos de todos do time:</label>
-            <input id="fotos2" name="arquivos2[]" type="file"  multiple="" class="form-control"/>
+            <label for="arquivo2" class="form-group">Adicionar UMA foto de todos do time:</label>
+            <input id="fotos2" name="arquivo2" type="file"   class="form-control"/>
  <label class="form-group">*Somente tipo de arquivo de JPEG, PNG E JPG</label>
         </div>
   <div class="col-md-5">
@@ -122,10 +127,10 @@
                     Time
                 </div>
                 <div class="card-body">
-                    <?php if($foto['url_imagem_principal']==null){ ?>
+                    <?php if($fotoequipe['url']==''){ ?>
                                <img src="assets/images/sem-imagem.gif" class="img-fluid"/>
                     <?php }else{?>
-                    <img src="upload/fotos_principais/<?php echo $foto['url_imagem_principal'];?>" class="img-fluid"/>
+                    <img src="upload/equipes/<?php echo $fotoequipe['url'];?>" class="img-fluid"/>
                     <?php }?>
                 </div>
                 <div class="card-footer">
@@ -135,13 +140,17 @@
             </div> 
 
       </div>
-            <div class="row mt-5">
+            <hr>
             
-            <div class="form-group">
-            <button type="submit" class="btn btn-primary upload form-control" >Cadastrar</button> 
-
+           
+           
+            
+            <div class="">
+           
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
 </div>
-        </div>
+       
+          
       <!--area de links de videos-->
 <!--      <div class="h5 mt-5">Videos de apresentação, seus produtos/serviços, chamada de ação</div>
       <div class="h6">Post os links</div>
@@ -187,6 +196,7 @@
 
     
     
+
 </div>
 
 
