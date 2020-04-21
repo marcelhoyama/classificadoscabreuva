@@ -23,7 +23,7 @@
        
             
        
-  <?php print_r($foto=$viewData['fotoPrincipal']);?>
+ 
        
         <div class="row">
             <div class="form-group">
@@ -32,7 +32,9 @@
                 <input name="arquivo1" type="file" class="form-control" />
                 <label class="form-group">*Somente tipo de arquivo de JPEG, PNG E JPG</label>
             </div>
-   
+    <?php if($viewData['fotoPrincipal']==NULL):?>
+    
+            <?php else: $foto=$viewData['fotoPrincipal']; ?>
             <div class="col-md-5">
             <div class="card">
                 <div class="card-header">
@@ -40,16 +42,17 @@
                 </div>
                 <div class="card-body">
                     <?php if($foto['url_imagem_principal']==null){ ?>
-                               <img src="assets/images/sem-imagem.gif" class="img-fluid"/>
+                               <img src="assets/images/sem-imagem.gif" class="img-responsive"/>
                     <?php }else{?>
                     <img src="upload/fotos_principais/<?php echo $foto['url_imagem_principal'];?>" class="img-fluid"/>
                     <?php }?>
                 </div>
                 <div class="card-footer">
-                    <a href="<?php BASE_URL;?>cadastrar_foto/excluirFotoPrincipal?id_loja=<?php echo $_GET['id_loja']; ?>"   class="btn btn-danger">Excluir</a>
+                  <a href="<?php BASE_URL;?>cadastrar_foto/excluirFotoPrincipal?id_loja=<?php echo $_GET['id_loja']; ?>"   class="btn btn-danger">Excluir</a>
                 </div>
             </div>
             </div> 
+            <?php endif; ?>
         </div>
        
 
@@ -58,7 +61,7 @@
             
             <hr>        
             
-              <?php print_r($fotoambiente=$viewData['listFotosAmbiente']);?>
+              <?php $fotoambiente=$viewData['listFotosAmbiente'];?>
           
             
 <div class="row my-5">
@@ -70,11 +73,12 @@
                <label class="form-group">*Somente tipo de arquivo de JPEG, PNG E JPG</label>
 
         </div>
-    
+     </div>   
+            <div class="row">
     <?php foreach ($fotoambiente as $value) {?>
         
-    
-  <div class="col">
+            
+  <div class="col-md-4 mb-3">
             <div class="card">
                 <div class="card-header">
                     Banner: (900x350) 1
@@ -87,19 +91,20 @@
                     <?php }?>
                 </div>
                 <div class="card-footer">
-                    <button hre class="btn btn-danger">Excluir</button>
+                     <a href="<?php BASE_URL;?>cadastrar_foto/excluirFotoAmbiente?id_url_imagens=<?php echo $value['id_url_imagens']; ?>&url_imagem=<?php echo $value['url']; ?>&id_loja=<?php echo $_GET['id_loja']; ?>"   class="btn btn-danger">Excluir</a>
                 </div>
             </div>
             </div> 
+            
     <?php }?>
     
+            </div>    
             
             
             
             
             
-            
-            
+        
             
             <hr>
             
@@ -114,30 +119,35 @@
             
             
       <div class="row">
-<?php print_r($fotoequipe=$viewData['listFotoEquipe']); ?>
+
         <div class="form-group">
             <div class="h6 text-danger">Fase de teste</div><br>
             <label for="arquivo2" class="form-group">Adicionar UMA foto de todos do time:</label>
             <input id="fotos2" name="arquivo2" type="file"   class="form-control"/>
  <label class="form-group">*Somente tipo de arquivo de JPEG, PNG E JPG</label>
         </div>
+          
+          <?php if($viewData['listFotoEquipe']==null): ?>
+          
+          <?php else: $fotoequipe=$viewData['listFotoEquipe'];?>
   <div class="col-md-5">
             <div class="card">
                 <div class="card-header">
-                    Time
+                  De preferência  Toda a equipe (900x350)
                 </div>
                 <div class="card-body">
-                    <?php if($fotoequipe['url']==''){ ?>
+                    <?php if($fotoequipe['url']==NULL){ ?>
                                <img src="assets/images/sem-imagem.gif" class="img-fluid"/>
                     <?php }else{?>
                     <img src="upload/equipes/<?php echo $fotoequipe['url'];?>" class="img-fluid"/>
                     <?php }?>
                 </div>
                 <div class="card-footer">
-                    <button hre class="btn btn-danger">Excluir</button>
+                    <a href="<?php BASE_URL;?>cadastrar_foto/excluirFotoEquipe?id_loja=<?php echo $_GET['id_loja']; ?>"   class="btn btn-danger">Excluir</a>
                 </div>
             </div>
             </div> 
+          <?php endif;?>
 
       </div>
             <hr>
@@ -197,6 +207,6 @@
     
     
 
-</div>
+
 
 

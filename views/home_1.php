@@ -175,8 +175,24 @@ Importante: Os planos só está disponível para o comercio ou serviço em Cabre
                 </div>
         </div>
     </div>
+
+      <div id="accordion">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title"> <button class="btn btn-link" data-toggle="collapse" data-target="#c2" aria-controls="c1">O que eu preciso para me cadastrar?</button></div>
+            </div>
+            <div id="c2" class="collapse" data-parent="#accordion">
+               
+            <div class="card-body text-dark">
+              
+<p>Para fazer parte do BuscadorCabreúva você precisa ter um CNPJ /CPF para sua empresa e também um celular com Android compativel com WhatsApp para que possa receber pedidos dos consumidores e internet em seu local de trabalho para receber os pedidos. </p>
+            </div>
+                </div>
+        </div>
+    </div>
     </div>
 </div>
+
 
 
 

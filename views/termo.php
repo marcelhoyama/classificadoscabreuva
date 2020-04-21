@@ -6,8 +6,8 @@
 
 
  
-    <h2>Termo de Uso e Politica de Privacidade</h2>
-            <h3 class="">BUSCADOR CABREÚVA</h3>
+    <h2 class="text-center">Termo de Uso e Politica de Privacidade</h2>
+            <h3 class="text-center">BUSCADOR CABREÚVA</h3>
      
 
       <p class="">O site www.buscadorcabreuva.com.br/home_1 oferece online, interativo gratuito, idealizado para oferecer um ambiente virtual de interação. O serviço está associado a uma base de dados que permite armazenar as informações fornecidas pelo USUÁRIO para consulta e emissão de relatórios.
@@ -113,5 +113,8 @@ O BUSCADOR CABREÚVA não garante a disponibilidade e a continuidade do funciona
 
 <h4>10. FORO</h4>
 <p>As Partes elegem o foro da Cabreúva, Distrito Jacaré, como competente para dirimir quaisquer controvérsias decorrentes deste TERMO, independentemente de qualquer outro, por mais privilegiado que seja ou venha a ser.</p>
+
+
+<p><strong>Última atualização: 19 de abril de 2020</strong></p>
 
 </div>

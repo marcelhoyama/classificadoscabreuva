@@ -63,10 +63,10 @@
  <div class="row">
             <div class="col mt-3">
         <div class="form-group">
-            <a href="<?php BASE_URL; ?>comercio"><button  class="btn btn-warning">Quero Ver Todos</button></a>
+            <a href="<?php BASE_URL; ?>comercio"><button  class="btn btn-warning">Ver Todos</button></a>
 <!--            <a href="<?php BASE_URL; ?>comercio"><button  class="btn btn-warning">Quero Ver as Promoções</button></a>
             <a href="<?php BASE_URL; ?>comercio"><button  class="btn btn-warning">Quero Ver os Eventos</button></a>-->
-<a href="<?php BASE_URL; ?>bairros"><button  class="btn btn-warning">Quero Ver por Bairros</button></a>
+<a href="<?php BASE_URL; ?>bairros"><button  class="btn btn-warning">Ver por Bairros</button></a>
         </div>
                 </div>
             </div>

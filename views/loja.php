@@ -43,11 +43,11 @@
                 <?php foreach ($viewData['fotosambiente'] as $value) { ?>
                     
              
-                <img class="d-block img-fluid" src="upload/ambiente/<?php echo $value['url'] ?>" alt="First slide"  width="350" >
+                <img class="d-block " src="upload/ambiente/<?php echo $value['url'] ?>" alt="First slide" height="350" width="900" >
             </div>
             <div class="carousel-item">
                  <?php  } ?>
-              <img class="d-block img-fluid" src="upload/equipes/<?php echo $loja['equipe'] ?>" alt="Second slide">
+                <img class="d-block " src="upload/equipes/<?php echo $loja['equipe'] ?>" alt="Second slide" height="350" width="900">
          
             </div>
           </div>

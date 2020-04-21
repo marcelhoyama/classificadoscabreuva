@@ -2,31 +2,25 @@
 
 class foto extends model {
 
-    public function excluirFoto($id) {
-        $id_imovel = 0;
-        $url_imagem = 0;
+    public function excluirFotoImagens($id_loja,$id_url,$url) {
+       
         try {
-            $sql = "SELECT * FROM url_imagens WHERE id_url_imagens='$id'";
-            $sql = $this->db->query($sql);
-            if ($sql->rowCount() > 0) {
-                $row = $sql->fetch();
-                $id_loja = $row['loja_id_loja'];
-                $url_imagem = $row['url'];
-            }
-
-
-            $sql = "DELETE FROM url_imagens WHERE id_url_imagens='$id'";
+     
+            
+            $sql = "DELETE FROM url_imagens WHERE id_url_imagens='$id_url' AND url='$url'";
 
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 
-            }
-            if (is_file("upload/" . $url_imagem)) {
+            
+            if (is_file("upload/ambiente/" . $url)) {
 
-                unlink("upload/" . $url_imagem);
+                unlink("upload/ambiente/" . $url);
             }
-
-            return $id_loja;
+            }
+             header("Location:" . BASE_URL . "cadastrar_foto?id_loja=" . $id_loja);
+        exit;
+        
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }
@@ -45,7 +39,7 @@ class foto extends model {
             }
 
 
-            $sql = "UPDATE loja SET url_imagem_principal='' WHERE id_loja='$id_loja'";
+            $sql = "UPDATE loja SET url_imagem_principal=NULL WHERE id_loja='$id_loja'";
 
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
@@ -63,6 +57,38 @@ class foto extends model {
         }
     }
 
+        public function excluirFotoEquipe($id) {
+//        $id = 0;
+//        $url = 0;
+        try {
+            $sql = "SELECT id, url FROM "
+                    . "loja INNER JOIN url_equipes ON loja.id_loja=url_equipes.loja_id_loja WHERE loja.id_loja='$id'";
+            $sql = $this->db->query($sql);
+            if ($sql->rowCount() > 0) {
+                $row = $sql->fetch();
+            echo'id'.    $id = $row['id'];
+            echo 'url'.   $url = $row['url'];
+           
+            }
+
+
+            $sql = "DELETE FROM url_equipes WHERE id='$id'";
+
+            $sql = $this->db->query($sql);
+            if ($sql->rowCount() > 0) {
+                
+         
+            if (is_file("upload/equipes/" . $url)) {
+
+                unlink("upload/equipes/" . $url);
+            }
+           
+            }
+           
+        } catch (Exception $ex) {
+            echo "Falhou:" . $ex->getMessage();
+        }
+    }
     public function listFotos($id_loja) {
         try {
             $array = array();
@@ -97,10 +123,10 @@ class foto extends model {
             
             
             $array = array();
-            $sql = "SELECT id_loja,url_imagem_principal FROM loja WHERE id_loja='$id_loja' ";
+            $sql = "SELECT url_imagem_principal FROM loja WHERE id_loja='$id_loja' ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
-                $array = $sql->fetch(PDO::FETCH_ASSOC);
+                $array = $sql->fetch();
             }
             return $array;
         } catch (Exception $e) {
@@ -114,7 +140,7 @@ class foto extends model {
             
             
             $array = array();
-            $sql = "SELECT loja_id_loja,url FROM url_imagens INNER JOIN loja ON loja.id_loja=url_imagens.loja_id_loja WHERE url_imagens.loja_id_loja='$id_loja' ";
+            $sql = "SELECT *,loja_id_loja,url FROM url_imagens INNER JOIN loja ON loja.id_loja=url_imagens.loja_id_loja WHERE url_imagens.loja_id_loja=$id_loja ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -130,7 +156,7 @@ class foto extends model {
             
             
             $array = array();
-            $sql = "SELECT loja_id_loja,url FROM url_equipes INNER JOIN loja ON loja.id_loja=url_equipes.loja_id_loja WHERE url_equipes.loja_id_loja=:id_loja ";
+            $sql = "SELECT url_equipes.loja_id_loja,url_equipes.url FROM url_equipes INNER JOIN loja ON loja.id_loja=url_equipes.loja_id_loja WHERE loja.id_loja=:id_loja ";
               $sql = $this->db->prepare($sql);
 
                     $sql->bindValue(":id_loja", $id_loja);
@@ -179,7 +205,7 @@ class foto extends model {
     public function cadastrarUrlPrincipalImagem($id_loja, $foto,$fotos, $fotos2) {
         try {
            
-          echo 'foto time'.print_r($fotos2); 
+         
 //            $sql = "SELECT id_loja,url_imagem_principal FROM loja WHERE id_loja='$id_loja'";
 //            $sql = $this->db->query($sql);
 //            if ($sql->rowCount() > 0) {
@@ -199,6 +225,7 @@ class foto extends model {
 //
 //                unlink("upload/fotos_principais/" . $url_principal);
 //            }
+            if(isset($foto)){
               if (!empty($foto['tmp_name'][0])) {
 
   
@@ -237,10 +264,10 @@ class foto extends model {
                     
                 }
               }
+            }
                     
                     
-                    
-                    
+                   if(isset($fotos)){ 
                     
                          if (count($fotos) > 0) {
 
@@ -285,7 +312,9 @@ class foto extends model {
                         }
                     }
                     
-                       echo 'veio time';
+                   }
+                      
+                   if(isset($fotos2)){
                          if (!empty($fotos2['tmp_name'][0])) {
 
                           
@@ -328,8 +357,8 @@ class foto extends model {
                             }
                         }
                     
-                 
-                
+                   }
+                return TRUE;
             
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
