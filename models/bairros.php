@@ -35,8 +35,11 @@ class bairros extends model {
     public function ListarObairro($bairro){
         try{
            
-                                  
-          $sql="select * from loja where bairro=:bairro";
+                $array=array();                  
+          $sql="SELECT *,loja.id_loja as id_loja,ramo.nome as nome_ramo,loja.funcionamento FROM loja"
+                . " LEFT JOIN loja_has_bairros lb ON lb.id_loja = loja.id_loja"
+                    . " LEFT JOIN bairros b ON b.id_bairro=lb.id_bairros "
+                . " left join ramo on ramo.id_ramo=loja.ramo WHERE loja.status =0 AND loja.anuncio_site=1 AND b.id_bairro=:bairro";
              $sql=$this->db->prepare($sql);
             $sql->bindValue(':bairro', $bairro);
           
@@ -44,7 +47,8 @@ class bairros extends model {
             if($sql->rowCount()>0){
            
           
-               $resul=$sql->fetchAll(PDO::FETCH_ASSOC);
+               $array=$sql->fetchAll(PDO::FETCH_ASSOC);
+               return $array;
             }
            
         } catch (Exception $ex) {

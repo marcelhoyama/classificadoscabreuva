@@ -35,8 +35,8 @@
         </div>-->
 <div class="jumbotron">
     
- <div class="h1 text-center mt-5"> Buscador Cabreúva</div>
- <div class="h5 text-center">Encontre Lojas e Serviços</div>
+ <h1 class="text-center mt-5"> Buscador Cabreúva</h1>
+ <h2 class="text-center">Encontre Lojas e Serviços em Cabreúva</h2>
         <div id="buscador">
 
             <form method="POST">
@@ -53,7 +53,7 @@
                     </div>
                 <?php endif; ?>
                 <div class="row">
-                    <input class=" btn-primary form-control-lg btn-lg btn-block" type="submit" value="Buscar"/>
+                    <button class="btn btn-primary form-control-lg btn-lg btn-block" type="submit"> Buscar</button>
                 </div>
 
             </form>  
@@ -233,7 +233,7 @@
             </div>
             <h3>Encontre o que você precisa</h3>
             <p class="lead mb-0">
-Aqui você encontra desde profissionais qualificados, produtos variados a serviços para o seu negócio.</p>
+Aqui você encontra desde prestadores de serviços, produtos variados , para a sua necessidade.</p>
           </div>
         </div>
         <div class="col-lg-4">
@@ -243,7 +243,7 @@ Aqui você encontra desde profissionais qualificados, produtos variados a servi�
             </div>
             <h3>Faça sua escolha</h3>
             <p class="lead mb-0">
-Depois de escolher o que precisa, leia atentamente as informações sobre o produto/serviço/loja.</p>
+Depois de escolher o que precisa, leia atentamente as informações sobre o produto/serviço/loja ou entre em contato de seus respectivos responsaveis.</p>
           </div>
         </div>
         <div class="col-lg-4">
@@ -251,9 +251,9 @@ Depois de escolher o que precisa, leia atentamente as informações sobre o prod
             <div class="features-icons-icon d-flex">
               <i class="icon-check m-auto text-primary"></i>
             </div>
-            <h3>Contrate o serviço</h3>
+            <h3>Contate o serviço</h3>
             <p class="lead mb-0">
-Pronto! Agora é só entrar em contato com o fornecedor via telefone, e-mail, whatsApp ou redes sociais e fazer bons negócios!</p>
+Pronto! Agora é só entrar em contato com o comerciante/prestador de serviço via telefone, e-mail, whatsApp ou redes sociais e fazer bons negócios/compras!</p>
           </div>
         </div>
       </div>
