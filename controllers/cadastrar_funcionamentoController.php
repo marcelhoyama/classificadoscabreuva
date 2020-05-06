@@ -14,9 +14,8 @@ class cadastrar_funcionamentoController extends controller {
 
 
         $id = $_SESSION['lgCliente'];
-//        $dados['nomefunc'] = $f->getName($id);
-//        $dados['id_funcionario'] = $id;
-        $id_loja=$_POST['id_loja'];
+
+        $id_loja=$_GET['id_loja'];
         $c = new clientes();
         $l = new lojas();
         $f = new funcionamento();

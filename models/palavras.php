@@ -45,7 +45,8 @@ class palavras extends model {
             $array = array();
             $sql = "SELECT *,loja.id_loja as id_loja FROM loja inner JOIN ramo ON ramo.id_ramo=loja.ramo" 
 ." LEFT JOIN palavra_chave p ON p.id_loja=loja.id_loja"
-." WHERE (loja.palavrachave LIKE :palavra OR loja.nome_fantasia LIKE :palavra OR ramo.nome LIKE :palavra OR p.pchave_nome LIKE :palavra)AND anuncio_site = '1' AND loja.status='0'" 
+                    . " LEFT JOIN produtos ON produtos.id_loja=loja.id_loja"
+." WHERE (loja.palavrachave LIKE :palavra OR loja.nome_fantasia LIKE :palavra OR ramo.nome LIKE :palavra OR p.pchave_nome LIKE :palavra OR produtos.produto_nome LIKE :palavra)AND anuncio_site = '1' AND loja.status='0'" 
 ." GROUP BY loja.id_loja";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":palavra", $palavra . "%");

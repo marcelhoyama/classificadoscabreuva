@@ -1,9 +1,18 @@
+ 
 <!DOCTYPE html> 
 <html lang="pt-br">
 
     <head>
+         
         <meta charset="UTF=8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"/>
+        <meta name="description" content="Encontre que precisa de produtos, lojas, prestadores de serviços, autônomos, conforme sua necessidade. O nosso site mostra que tem para você. O conforto para vc"> 
+        <meta name="keywords" content="produtos,comercio,lojas,cabreuva,jacare,contato,telefone,horario,funcionamento,desconto,delivery,compra,venda,promoção,show,ofertas,vendedor,vendas,colina,vilarejo,bonfim,centro,cururu,bananal,pinhal"> 
+        <meta name="robots" content=""> 
+        <meta name="revisit-after" content="1 month"> 
+        <meta name="language" content="Portuguese"> 
+        <meta name="generator" content="N/A"> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="stylesheet" href="<?php BASE_URL; ?>assets/css/bootstrap.min.css"/>
          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/2c2e52caea.js" crossorigin="anonymous"></script>

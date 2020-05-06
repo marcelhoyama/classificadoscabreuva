@@ -1,10 +1,10 @@
 
-<title>Cadastrar Produtos</title>
+<title>Editar Produto</title>
     
-
+<?php $getProduto=$viewData['getProduto']; ?>
 <div class="container">
 
-    <div class="text-center h3">Cadastrar Produtos</div>
+    <div class="text-center h3">Editar Produto</div>
    
     <form id="cadastrarloja" method="POST" enctype="multipart/form-data">
           
@@ -19,7 +19,7 @@
             <?php endif; ?>
         </div>
         
-         <?php // $cliente=$viewData['lojacliente'];?>
+      
         <div class="h6 text-danger">Fase de teste</div><br>
             
            <div class="form-group">
@@ -29,75 +29,79 @@
                 <label class="form-group">*Somente tipo de arquivo de JPEG, PNG E JPG</label>
             </div>
 
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-header">
+                    Foto do Produto
+                </div>
+                <div class="card-body">
+                    <?php if($getProduto['produto_imagem']==null){ ?>
+                               <img src="assets/images/sem-imagem.gif" class="img-fluid"/>
+                    <?php }else{?>
+                    <img src="assets/images/produtos/<?php echo $getProduto['produto_imagem'];?>" class="img-fluid"/>
+                    <?php }?>
+                </div>
+                <div class="card-footer">
+                    <a href="<?php BASE_URL;?>editar_produto/excluirFotoProduto?id_produto=<?php echo $_GET['id_produto']; ?>"   class="btn btn-danger">Excluir</a>
+                </div>
+            </div>
+            </div> 
         
         
   
   <div class="form-group">
       <label for="codigo">Codigo</label><label class="text-danger">*obrigatorio</label>
-    <input type="text" class="form-control" id="codigo" name="codigo" placeholder="">
+      <input type="text" class="form-control" id="codigo" name="codigo" value="<?php echo $getProduto['produto_codigo']; ?>">
   </div>
   <div class="form-group">
     <label for="nome">Nome do produto</label><label class="text-danger">*obrigatorio</label>
-    <input type="text" class="form-control" id="nome" name="nome" placeholder="">
+    <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $getProduto['produto_nome']; ?>">
   </div>
          <div class="form-group">
     <label for="tamanho">Tamanho</label>
-    <input type="text" class="form-control" id="tamanho" name="tamanho" placeholder="">
+    <input type="text" class="form-control" id="tamanho" name="tamanho" value="<?php echo $getProduto['produto_tamanho']; ?>">
   </div>      
         <div class="form-group">
     <label for="cor">Cor</label><label class="text-danger">*obrigatorio</label>
-    <input type="text" class="form-control" id="cor" name="cor" placeholder="">
+    <input type="text" class="form-control" id="cor" name="cor" value="<?php echo $getProduto['produto_cor']; ?>">
   </div>      
        
  <div class="form-group">
     <label for="valor">Valor</label><label class="text-danger">*obrigatorio</label>
-    <input type="text" class="form-control" id="valor" name="valor" placeholder="">
+    <input type="text" class="form-control" id="valor" name="valor" value="<?php echo $getProduto['produto_valor']; ?>">
   </div>
          <div class="form-group">
     <label for="desconto">Desconto em porcentagem</label><label class="text-danger">*obrigatorio</label>
-    <input type="text" class="form-control" id="desconto" name="desconto" placeholder="">
+    <input type="text" class="form-control" id="desconto" name="desconto" value="<?php echo $getProduto['produto_desconto']; ?>">
   </div>
          <div class="form-group">
     <label for="quantidade">Quantidade</label><label class="text-danger">*obrigatorio</label>
-    <input type="number" class="form-control" id="qtd" name="qtd" placeholder="">
+    <input type="number" class="form-control" id="qtd" name="qtd" value="<?php echo $getProduto['produto_quantidade']; ?>">
   </div>   
           <div class="form-group">
     <label for="peso">Peso</label>
-    <input type="text" class="form-control" id="peso" name="peso" placeholder="">
+    <input type="text" class="form-control" id="peso" name="peso" value="<?php echo $getProduto['produto_peso']; ?>">
   </div>
-           <div class="row form-group">
-     
-        <div class="form-inline">
-            <div class="form-group mb-2">
-                <label for="tipo_categoria">Tipo de Categoria:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info"></a></label>
-                <select name="tipo_categoria" class="form-control" id="tipo_categoria">
-                    <option></option>
-                    
-                    <?php foreach ($viewData['listarCategoria'] as $value) : { ?>
-                            <option value="<?php echo $value['id_categoria']; ?>"><?php echo $value['categoria_nome']; ?></option>
-
-                        <?php  } endforeach; ?>  
-                 </select>
-            </div>
-            <div class="form-group mx-sm-3 mb-2">
-                
-                <button type="button" class="btn btn-primary btn-lg" href="javascript;:" onclick="cadastrarCategoria()">Cadastre a categoria aqui:</button>
-            </div>
-             </div>
-        </div>      
+        <div class="form-group">
+    <label for="categoria">Categoria</label><label class="text-danger">*obrigatorio</label>
+    <select class="form-control" name="categoria">
+        <option>Escolher...</option>
+    </select>
+   
+  </div>      
        
   <div class="form-group">
     <label for="descricao">Descrição do produto</label><label class="text-danger">*obrigatorio</label>
-    <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
+    <textarea class="form-control" id="descricao" name="descricao" rows="3"><?php echo $getProduto['produto_descricao']; ?></textarea>
   </div>
 
      <div class="form-group">
     <label for="devolucao">Politica de Devolução/ Garantia</label><label class="text-danger">*obrigatorio</label>
-    <textarea class="form-control" id="devolucao" name="devolucao" rows="3"></textarea>
+    <textarea class="form-control" id="devolucao" name="devolucao" rows="3"><?php echo $getProduto['produto_devolucao']; ?></textarea>
   </div>       
   
 
-       
+ 
             
             
             <hr>        
@@ -106,7 +110,7 @@
             
             <div class="">
            
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Atualizar</button>
 </div>
        
           
@@ -141,21 +145,3 @@
 </div>
 
 
-<!-- Modal tipo de ramo  id=modaltiporamo-->
-<div class="modal fade" id="modaltipocategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Cadastrar tipo de categoria!</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">  </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-       
-      </div>
-    </div>
-  </div>
-</div>

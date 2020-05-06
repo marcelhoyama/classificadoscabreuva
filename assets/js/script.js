@@ -373,6 +373,81 @@ text: bairro.bairro_nome
     });
 }
 
+
+
+
+
+
+function cadastrarCategoria() {
+    $('#modaltipocategoria').modal('toggle');
+    $.ajax({
+        url: 'ajax_categoria',
+        type: 'POST',
+        data: {},
+        success: function (html) {
+        
+            $('#modaltipocategoria').find('.modal-body').html(html);
+              
+            $('#modaltipocategoria').find('form').on('submit', function (e) {
+                 
+                e.preventDefault();
+   
+                var nome = $(this).find('input[name=categoria]').val(); 
+                var str = "";
+              
+                $.ajax({
+                    url: 'ajax_categoria/cadastrarCategoria',
+                    type: 'POST',
+                    data: {nome: nome},
+                    
+                    success: function () {
+                   $.ajax({
+
+        url: 'ajax_categoria/CarregaCategoria',
+        datatype: 'json',
+        contentType: 'application/json; charset=utf-8',
+        type: 'POST',
+      
+        success: function (data) {
+
+// Adiciona a primeira linha.
+$("#tipo_categoria").children('option:not(:first)').remove();
+
+listarcategoria = JSON.parse(data);
+
+// Adiciona as demais linhas (dinâmico).
+$.each(listarcategoria, function(nome) {
+$("#tipo_categoria").append($('<option>', {
+value: nome.id_categoria,
+text: nome.categoria_nome
+}));
+});
+
+
+
+            
+            $('#modaltipocategoria').modal('hide');
+        },
+        error: function (error) {
+        }
+    })
+      
+ 
+                    },//sucess
+                    error: function(){
+                        alert('Não foi possivel cadastrar!');
+                         $('#modaltipocategoria').modal('hide');
+                    }
+                });// ajax
+
+
+
+            }); //function submit
+           
+
+        }
+    });
+}
 function tenhointeresseeditar(id_interessado) {
     $('#Modalvenda').modal('toggle');
     $.ajax({

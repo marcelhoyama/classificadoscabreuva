@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <div class="text-center h3">Cadastrar Fotos</div>
+    <div class="text-center h3">Cadastrar Foto da Loja (na pesquisa)</div>
    
     <form id="cadastrarloja" method="POST" enctype="multipart/form-data">
           
@@ -28,14 +28,15 @@
         <div class="row">
             <div class="form-group">
                    <div class="h6 text-danger">Fase de teste</div><br>
-                <label for="arquivo1" class="form-group">Adicionar UMA Foto da "logo" da sua loja</label>
+                <label for="arquivo1" class="form-group">Adicionar UMA Foto da "logo" da sua loja (500x500)</label>
                 <input name="arquivo1" type="file" class="form-control" />
                 <label class="form-group">*Somente tipo de arquivo de JPEG, PNG E JPG</label>
+            </div>
             </div>
     <?php if($viewData['fotoPrincipal']==NULL):?>
     
             <?php else: $foto=$viewData['fotoPrincipal']; ?>
-            <div class="col-md-5">
+            <div class="col-md">
             <div class="card">
                 <div class="card-header">
                     foto principal
@@ -53,7 +54,7 @@
             </div>
             </div> 
             <?php endif; ?>
-        </div>
+        
        
 
        
@@ -64,7 +65,7 @@
               <?php $fotoambiente=$viewData['listFotosAmbiente'];?>
           
             
-<div class="row my-5">
+<!--<div class="row my-5">
     
         <div class="form-group">
               <div class="h6 text-danger">Fase de teste</div><br>
@@ -73,8 +74,8 @@
                <label class="form-group">*Somente tipo de arquivo de JPEG, PNG E JPG</label>
 
         </div>
-     </div>   
-            <div class="row">
+     </div>   -->
+<!--            <div class="row">
     <?php foreach ($fotoambiente as $value) {?>
         
             
@@ -149,7 +150,7 @@
             </div> 
           <?php endif;?>
 
-      </div>
+      </div>-->
             <hr>
             
            

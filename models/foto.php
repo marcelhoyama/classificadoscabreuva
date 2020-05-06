@@ -89,6 +89,38 @@ class foto extends model {
             echo "Falhou:" . $ex->getMessage();
         }
     }
+    
+    
+        public function excluirFotoProduto($id) {
+        $id_produto = 0;
+        $produto_imagem = 0;
+        try {
+            $sql = "SELECT id_produtos,produto_imagem FROM produtos WHERE id_produtos='$id'";
+            $sql = $this->db->query($sql);
+            if ($sql->rowCount() > 0) {
+                $row = $sql->fetch();
+                $id_produto = $row['id_produtos'];
+                $produto_imagem = $row['produto_imagem'];
+            }
+
+
+            $sql = "UPDATE produtos SET produto_imagem=NULL WHERE id_produtos='$id_produto'";
+
+            $sql = $this->db->query($sql);
+            if ($sql->rowCount() > 0) {
+                
+            
+            if (is_file("assets/images/produtos/" . $produto_imagem)) {
+
+                unlink("assets/images/produtos//" . $produto_imagem);
+            }
+           
+            }
+           
+        } catch (Exception $ex) {
+            echo "Falhou:" . $ex->getMessage();
+        }
+    }
     public function listFotos($id_loja) {
         try {
             $array = array();

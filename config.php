@@ -9,7 +9,7 @@ if(ENVIRONMENT == 'development'){
     $config['dbuser']='root';
     $config['dbpass']='';
 }else{
-     define("BASE_URL", "http://buscadorcabreuva.com.br/");
+     define("BASE_URL", "https://buscadorcabreuva.com.br/");
   
     $config['dbname']='classificadoscabreuva';
     $config['host']='localhost';

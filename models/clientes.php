@@ -464,10 +464,7 @@ class clientes extends model {
 
     public function getLojaCliente($id_cliente) {
         try {
-            $sql = "SELECT loja.delivery,loja.palavrachave,loja.anuncio_site, loja.cnpj, loja.id_loja,ramo.id_ramo,ramo.nome,"
-                    . " loja.nome_fantasia,clientes.nome ,loja.razao_social,loja.endereco,b.bairro_nome,loja.cidade,"
-                    . " loja.telefone1,loja.telefone2,loja.whatsapp1,loja.whatsapp2,loja.email,loja.facebook,"
-                    . " loja.youtube,loja.instagram,loja.site,clientes.cpf,loja.url_imagem_principal"
+            $sql = "SELECT *,ramo.nome as nome_ramo"
                     . " FROM loja left JOIN clientes on clientes.id_clientes=loja.clientes_id_clientes "
                     . " left JOIN ramo ON ramo.id_ramo=loja.ramo"
                     . " LEFT JOIN loja_has_bairros lb ON lb.id_loja = loja.id_loja"
@@ -479,6 +476,10 @@ class clientes extends model {
 
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($array as $value) {
+                    $value['id_loja'];
+                }
+               $_SESSION['id_loja']=$value['id_loja'];
                 return $array;
             }
         } catch (Exception $ex) {

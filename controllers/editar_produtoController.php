@@ -1,6 +1,6 @@
 <?php
 
-class cadastrar_produtoController extends controller {
+class editar_produtoController extends controller {
 
     public function __construct() {
         parent::__construct();
@@ -17,8 +17,9 @@ class cadastrar_produtoController extends controller {
 
         $f = new foto();
 $p=new produtos();
-$dados['listarCategoria']=$p->listarCategoria();
-        $id_loja = addslashes(trim($_GET['id_loja']));
+       
+        $id_produto= addslashes(trim($_GET['id_produto']));
+        $dados['getProduto']=$p->getProduto($id_produto);
 //        $dados['fotoPrincipal'] = $f->listFotoPrincipal($id_loja);
 //$dados['listFotosAmbiente']=$f->listFotosAmbiente($id_loja);
 //$dados['listFotoEquipe']=$f->listFotoEquipe($id_loja);
@@ -70,10 +71,26 @@ $dados['listarCategoria']=$p->listarCategoria();
 //                $dados['erro'] = "Não possivel incluir!";
 //            }
 
+ 
 
 
+if( isset($_POST['nome']) && !empty($_POST['nome']) || isset($_POST['cor']) && !empty($_POST['cor']) || isset($_POST['valor']) && !empty($_POST['valor']) || isset($_POST['desconto']) && !empty($_POST['desconto']) || isset($_POST['qtd']) && !empty($_POST['qtd']) || isset($_POST['descricao']) && !empty($_POST['descricao']) || isset($_POST['devolucao']) && !empty($_POST['devolucao'])  ){
+    
+   
 
-if(isset($_POST['codigo']) && !empty($_POST['codigo']) || isset($_POST['nome']) && !empty($_POST['nome']) || isset($_POST['cor']) && !empty($_POST['cor']) || isset($_POST['valor']) && !empty($_POST['valor']) || isset($_POST['desconto']) && !empty($_POST['desconto']) || isset($_POST['qtd']) && !empty($_POST['qtd']) || isset($_POST['tipo_categoria']) && !empty($_POST['tipo_categoria']) || isset($_POST['descricao']) && !empty($_POST['descricao']) || isset($_POST['devolucao']) && !empty($_POST['devolucao'])  ){
+
+    
+//    $codigo= addslashes(trim($_POST['codigo']));
+    $nome= addslashes(trim($_POST['nome']));
+    $cor= addslashes(trim($_POST['cor']));
+    $valor= addslashes(trim($_POST['valor']));
+    $desconto= addslashes(trim($_POST['desconto']));
+    $qtd= addslashes(trim($_POST['qtd']));
+//    $categoria= addslashes(trim($_POST['categoria']));
+    $descricao= addslashes(trim($_POST['descricao']));
+    $devolucao= addslashes(trim($_POST['devolucao']));
+    $tamanho= addslashes(trim($_POST['tamanho']));
+    $peso= addslashes(trim($_POST['peso']));
     
      if (isset($_FILES['arquivo'])) {
             $foto = $_FILES['arquivo'];
@@ -81,32 +98,25 @@ if(isset($_POST['codigo']) && !empty($_POST['codigo']) || isset($_POST['nome']) 
         } else {
             $foto = array();
         }
-
-    
-    $id_loja= addslashes(trim($_GET['id_loja']));
-    $codigo= addslashes(trim($_POST['codigo']));
-    $nome= addslashes(trim($_POST['nome']));
-    $cor= addslashes(trim($_POST['cor']));
-    $valor= addslashes(trim($_POST['valor']));
-    $desconto= addslashes(trim($_POST['desconto']));
-    $qtd= addslashes(trim($_POST['qtd']));
-    $id_categoria= addslashes(trim($_POST['tipo_categoria']));
-    $descricao= addslashes(trim($_POST['descricao']));
-    $devolucao= addslashes(trim($_POST['devolucao']));
-    $tamanho= addslashes(trim($_POST['tamanho']));
-    $peso= addslashes(trim($_POST['peso']));
-    
-    
     $p=new produtos();
-    $p->cadastrar($id_loja, $codigo,$foto, $nome, $cor, $tamanho, $valor, $desconto, $qtd, $peso, $id_categoria, $descricao, $devolucao);
+    $p->editar($id_produto,$foto, $nome, $cor, $tamanho, $valor, $desconto, $qtd, $peso, $descricao, $devolucao);
     
 }
 
+ 
 
 
-        $this->loadTemplate_3('cadastrar_produto', $dados);
+
+        $this->loadTemplate_3('editar_produto', $dados);
     }
 
-   
+    public function excluirFotoProduto() {
+
+        $id_produto = $_GET['id_produto'];
+        $f = new foto();
+        $f->excluirFotoProduto($id_produto);
+        header("Location:" . BASE_URL . "editar_produto?id_produto=" . $id_produto);
+        exit;
+    }
 
 }

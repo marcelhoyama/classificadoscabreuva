@@ -1,4 +1,4 @@
-
+<title>Buscador cabreúva, aqui você encontra produtos, lojas, prestadores de serviços, autônomos </title> 
 
     <div class="container">
        
@@ -36,7 +36,7 @@
 <div class="jumbotron">
     
  <h1 class="text-center mt-5"> Buscador Cabreúva</h1>
- <h2 class="text-center">Encontre Lojas e Serviços em Cabreúva</h2>
+ <h2 class="text-center">Encontre Lojas, Serviços  e  produtos em Cabreúva</h2>
         <div id="buscador">
 
             <form method="POST">
@@ -253,7 +253,7 @@ Depois de escolher o que precisa, leia atentamente as informações sobre o prod
             </div>
             <h3>Contate o serviço</h3>
             <p class="lead mb-0">
-Pronto! Agora é só entrar em contato com o comerciante/prestador de serviço via telefone, e-mail, whatsApp ou redes sociais e fazer bons negócios/compras!</p>
+Pronto! Agora é só entrar em contato com o comerciante/prestador de serviço/vendedor via telefone, e-mail, whatsApp ou redes sociais e fazer bons negócios/compras!</p>
           </div>
         </div>
       </div>
@@ -272,4 +272,5 @@ Pronto! Agora é só entrar em contato com o comerciante/prestador de serviço v
         </div>
     </div>
 </div>
+    
 

@@ -56,6 +56,43 @@ class lojas extends model {
         }
     }
 
+    
+     public function cadastrarCategoria($categoria) {
+        try {
+            $ramo = ucfirst(trim(strtolower($categoria)));
+            $sql = "INSERT INTO categorias SET categoria_nome=:categoria";
+            $sql = $this->db->prepare($sql);
+
+            $sql->bindValue(":categoria", $categoria);
+
+            $sql->execute();
+            if ($sql->rowCount() > 0) {
+                
+            } else {
+                Return 'Não foi possivel cadastrar, verifique o campo!';
+            }
+        } catch (Exception $ex) {
+            echo 'Falhou:' . $ex->getMessage();
+        }
+    }
+    
+    
+        public function listarCategoria() {
+        $array = array();
+        try {
+            $sql = "SELECT * FROM categorias ORDER BY categoria_nome";
+            $sql = $this->db->prepare($sql);
+            $sql->execute();
+            if ($sql->rowCount() > 0) {
+                $array = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $array;
+            }
+        } catch (Exception $ex) {
+            echo 'Falhou:' . $ex->getMessage();
+        }
+    }
+    
+    
     public function pesquisarCliente($palavra) {
         try {
             $array = array();
@@ -177,7 +214,7 @@ class lojas extends model {
 
                 $sql->execute(); ////
                 $id_loja = $this->db->lastInsertId();
-
+  
                 if ($sql->rowCount() > 0) {
 
                     $sql = "INSERT INTO loja_has_bairros SET id_loja=:id_loja,id_bairros=:id_bairro ";
@@ -554,6 +591,7 @@ class lojas extends model {
             if ($sql->rowCount() > 0) {
                
                 $array = $sql->fetch(PDO::FETCH_ASSOC);
+                
                 return $array;
             }
         } catch (Exception $ex) {

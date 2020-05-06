@@ -1,27 +1,30 @@
 
-<title>Cadastrar Ramo </title>
+<title>Cadastrar Categoria </title>
 
 
 <div class="container">
     
-    <div class="text-center h3">Cadastrar tipo de ramo</div>
+    <div class="text-center h3">Cadastrar tipo de Categoria</div>
    
     <form id="cadastrarfuncionamento" method="POST" >
           
-    
+   
         
-      
+         <?php  $lojas=$viewData['lojacliente'];?>
+        
         
         
         <div class="row">
             
-                <label>Tipo de Ramo: </label>
-                <input name="ramo" class="form-control" type="text">
+                <label>Tipo de Categoria: </label>
+                <input name="categoria" class="form-control" type="text">
                 
                 
             
             <button type="submit" class="btn btn-primary">Salvar</button>
         </div>
 
- </form>
      
+ </form>
+        
+

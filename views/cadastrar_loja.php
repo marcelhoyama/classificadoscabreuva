@@ -201,7 +201,7 @@
        
             <div class="form-group col-sm-3">
                 <label for="cidade">Cidade:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="cidade" type="text" class="form-control" id="cidade" />
+                <input name="cidade" type="text" class="form-control" id="cidade" value="Cabreúva" disabled="" />
             </div>
                   
        
