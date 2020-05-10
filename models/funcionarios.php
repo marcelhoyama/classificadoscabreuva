@@ -12,7 +12,7 @@ class funcionarios extends model{
             $id=$_SESSION['lg'];
             $ip=$_SERVER['REMOTE_ADDR'];
             
-            $sql="SELECT * FROM funcionarios WHERE id_funcionarios=:id AND ip=:ip";
+            $sql="SELECT * FROM funcionarios WHERE id_funcionario=:id AND funcionario_ip=:ip";
             $sql=$this->db->prepare($sql);
             $sql->bindValue(":id",$id);
             $sql->bindValue(":ip",$ip);
@@ -29,7 +29,7 @@ class funcionarios extends model{
     public function logar($email,$senha) {
         try{
             
-            $sql="SELECT * FROM funcionarios WHERE email=:email AND senha=:senha";
+            $sql="SELECT * FROM funcionarios WHERE funcionario_email=:email AND funcionario_senha=:senha";
        $sql=$this->db->prepare($sql);
        $sql->bindValue(":email",$email);
        $sql->bindValue(":senha", $senha);
@@ -37,12 +37,12 @@ class funcionarios extends model{
         
         if($sql->rowCount()>0){
             $sql=$sql->fetch();
-        $_SESSION['lg']=$sql['id_funcionarios'];
-        $_SESSION['lgname']=$sql['nome'];
+        $_SESSION['lg']=$sql['id_funcionario'];
+        $_SESSION['lgname']=$sql['funcionario_nome'];
         $id=$_SESSION['lg'];
         $ip=$_SERVER['REMOTE_ADDR'];
        
-        $sql="UPDATE funcionarios SET ip=:ip WHERE id_funcionarios=:id";
+        $sql="UPDATE funcionarios SET funcionario_ip=:ip WHERE id_funcionario=:id";
         $sql=$this->db->prepare($sql);
         $sql->bindValue(":ip",$ip);
         $sql->bindValue(":id",$id);
@@ -68,13 +68,13 @@ class funcionarios extends model{
     public function getName($id) {
         try{
             $array=array();
-             $sql="SELECT nome FROM funcionarios WHERE id_funcionarios=:id";
+             $sql="SELECT funcionario_nome FROM funcionarios WHERE id_funcionario=:id";
              $sql= $this->db->prepare($sql);
              $sql->bindValue(":id",$id);
              $sql->execute();
              if($sql->rowCount()>0){
              $array=$sql->fetch();
-             $nome=$array['nome'];
+             $nome=$array['funcionario_nome'];
              return $nome;
              }
         } catch (Exception $ex) {
@@ -86,7 +86,7 @@ echo "Falhou:".$ex->getMessage();
     public function getDados($id) {
         try{
             $array=array();
-            $sql="SELECT * FROM funcionarios WHERE id_funcionarios=:id";
+            $sql="SELECT * FROM funcionarios WHERE id_funcionario=:id";
             $sql= $this->db->prepare($sql);
              $sql->bindValue(":id",$id);
              $sql->execute();
@@ -102,13 +102,11 @@ echo "Falhou:".$ex->getMessage();
     public function updatePerfil($id,$nome,$telefone,$endereco,$sexo) {
         try{
             $array=array();
-            $sql="UPDATE funcionarios SET nome=:nome, telefone=:telefone, endereco=:endereco, sexo=:sexo WHERE id_funcionarios=:id";
+            $sql="UPDATE funcionarios SET funcionario_nome=:nome WHERE id_funcionario=:id";
             $sql= $this->db->prepare($sql);
               $sql->bindValue(":id",$id);
             $sql->bindValue(":nome",$nome);
-            $sql->bindValue(":telefone",$telefone);
-            $sql->bindValue(":endereco",$endereco);
-             $sql->bindValue(":sexo",$sexo);
+          
               $sql->bindValue(":senha",$senha);
              
            $sql->execute();
@@ -123,13 +121,11 @@ echo "Falhou:".$ex->getMessage();
      public function updatePerfilSenha($id,$nome,$telefone,$endereco,$sexo,$senha) {
         try{
             
-            $sql="UPDATE funcionarios SET nome=:nome, telefone=:telefone, endereco=:endereco, sexo=:sexo, senha=:senha WHERE id_funcionarios=:id";
+            $sql="UPDATE funcionarios SET funcionario_nome=:nome, funcionario_senha=:senha WHERE id_funcionario=:id";
             $sql= $this->db->prepare($sql);
                $sql->bindValue(":id",$id);
             $sql->bindValue(":nome",$nome);
-            $sql->bindValue(":telefone",$telefone);
-            $sql->bindValue(":endereco",$endereco);
-             $sql->bindValue(":sexo",$sexo);
+       
               $sql->bindValue(":senha",$senha);
            $sql->execute();
         

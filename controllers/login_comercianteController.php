@@ -19,7 +19,7 @@ class login_comercianteController extends controller {
                 if ($_POST['senha'] == $_POST['resenha']) {
           
                     if (!empty($_POST['nome']) && !empty($_POST['telefone']) && !empty($_POST['email']) && !empty($_POST['sexo']) && !empty($_POST['senha']) && !empty($_POST['resenha'])) {
-                        
+                        // as iniciais do nome maiusculo ,remover espaços desnecessarios
                          $nome = ucwords(strtolower(addslashes(trim($_POST['nome']))));
                         
                         $telefone = addslashes(trim($_POST['telefone']));

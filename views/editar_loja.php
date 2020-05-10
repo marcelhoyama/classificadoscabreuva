@@ -42,7 +42,7 @@
 
         <div class="row">
             <div class="form-group col-sm-3">
-                <label for="status">Anunciar loja/serviço no site:</label> <label class="text-danger">obrigatorio*</label></br>
+                <label for="status">Anunciar no site:</label> <label class="text-danger">obrigatorio*</label></br>
                 <div class="checkbox-inline">
                     <label>
                         <input type="radio" name="anuncio_site"  value="1" <?php echo ($cliente['anuncio_site'] == "1") ? 'checked' : ''; ?> >
@@ -86,8 +86,13 @@
 
 
         <div class="row">
-            <div class="form-group col-sm-4">
-                <label for="tipo_categoria">Tipo do Ramo:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL ?>ramo_atividade" class="text-info"></a></label>
+           
+            
+            
+                <label for="tipo_categoria">Tipo do Ramo:</label><label class="text-danger">Campo Obrigatorio* 
+           </label>
+                <div class="form-inline">
+                    <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL ?>ramo_atividade" class="text-info"></a>
                 <select name="tipo_categoria" class="form-control" id="tipo_categoria">
 
 
@@ -96,11 +101,14 @@
 
                         <?php } endforeach; ?>  
                 </select>
+         
+            <div class="form-group col-sm-4 ">
+               
+                <button type="button" class="btn btn-primary" href="javascript;:" onclick="cadastrarRamo()">Cadastre outro ramo</button>
             </div>
-            <div class="form-group col-sm-4 mt-5">
-                <label for="tipo_categoria">Não encontrou? Cadastre seu ramo aqui:</label>
-                <button type="button" class="btn btn-primary" href="javascript;:" onclick="cadastrarRamo()">+</button>
-            </div>
+             </div>
+                </div>
+        <br>
             <!-- Modal -->
             <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -156,7 +164,7 @@
                 </div>
             </div>   
 
-        </div>     
+            
 
         <div class="form-group">
             <label for="nome_fantasia">Nome fantasia:</label>  <label class="text-danger">campo obrigatorio*</label>
@@ -177,7 +185,7 @@
             <input name="endereco" type="text" class="form-control" id="endereco" value="<?php echo $cliente['endereco']; ?>" />
         </div>
         <div class="row">
-            <div class="col">
+            <div class="form-inline">
                 <div class="form-group">
                     <label for="bairro">Escolha o Bairro:</label><label class="text-danger">campo obrigatorio*</label>
                     <select class="form-control" id="bairro" name="bairro">
@@ -195,9 +203,9 @@
                     </select>
                 </div>
                 <div class="col-sm-3">
-                    <div class="form-group mx-sm-3 mt-4">
+                    <div class="form-group mx-sm-3">
 
-                        <button type="button" class="btn btn-primary btn-lg" href="javascript;:" onclick="cadastrarBairro()">Cadastrar outro Bairro</button>
+                        <button type="button" class="btn btn-primary" href="javascript;:" onclick="cadastrarBairro()">Cadastrar outro Bairro</button>
                     </div>
                 </div>
             </div>
@@ -251,14 +259,14 @@
             <input name="site" type="text" class="form-control" id="site" value="<?php echo $cliente['site']; ?>" placeholder="https://example.com/users/"/>
         </div>
 </div>
-        <label for="facebook">Complete sua URL</label>
+        <label for="facebook">Complete sua URL Fanpage</label>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon3">https://facebook.com/</span>
             </div>
             <input type="text" class="form-control" id="facebook" aria-describedby="basic-addon3" name="facebook" value="<?php echo $cliente['facebook']; ?>">
         </div> 
-        <label for="youtube">Complete sua URL</label>
+        <label for="youtube">Complete sua URL seu Canal</label>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon3">https://youtube.com/</span>
@@ -266,7 +274,7 @@
             <input type="text" class="form-control" id="youtube" aria-describedby="basic-addon3" name="youtube" value="<?php echo $cliente['youtube']; ?>">
         </div> 
 
-        <label for="instagram">Complete sua URL</label>
+        <label for="instagram">Complete sua URL Canal</label>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon3">https://instagram.com/</span>

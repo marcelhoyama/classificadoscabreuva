@@ -58,22 +58,28 @@
     <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $getProduto['produto_nome']; ?>">
   </div>
          <div class="form-group">
-    <label for="tamanho">Tamanho</label>
+    <label for="tamanho">Tamanho(s) disponivel(is)</label>
     <input type="text" class="form-control" id="tamanho" name="tamanho" value="<?php echo $getProduto['produto_tamanho']; ?>">
   </div>      
         <div class="form-group">
-    <label for="cor">Cor</label><label class="text-danger">*obrigatorio</label>
+    <label for="cor">Core(s) disponivel(is)</label><label class="text-danger">*obrigatorio</label>
     <input type="text" class="form-control" id="cor" name="cor" value="<?php echo $getProduto['produto_cor']; ?>">
   </div>      
        
  <div class="form-group">
     <label for="valor">Valor</label><label class="text-danger">*obrigatorio</label>
+     <div class="input-group-prepend">
+          <div class="input-group-text">R$</div>
     <input type="text" class="form-control" id="valor" name="valor" value="<?php echo $getProduto['produto_valor']; ?>">
   </div>
+ </div>
          <div class="form-group">
     <label for="desconto">Desconto em porcentagem</label><label class="text-danger">*obrigatorio</label>
+     <div class="input-group-prepend">
+          <div class="input-group-text">%</div>
     <input type="text" class="form-control" id="desconto" name="desconto" value="<?php echo $getProduto['produto_desconto']; ?>">
   </div>
+         </div>
          <div class="form-group">
     <label for="quantidade">Quantidade</label><label class="text-danger">*obrigatorio</label>
     <input type="number" class="form-control" id="qtd" name="qtd" value="<?php echo $getProduto['produto_quantidade']; ?>">
@@ -82,14 +88,18 @@
     <label for="peso">Peso</label>
     <input type="text" class="form-control" id="peso" name="peso" value="<?php echo $getProduto['produto_peso']; ?>">
   </div>
-        <div class="form-group">
-    <label for="categoria">Categoria</label><label class="text-danger">*obrigatorio</label>
+        <div class="form-inline">
+            <label for="categoria">Categoria</label><label class="text-danger">*obrigatorio</label>
+        <div class="form-group mx-sm-3 mb-2">
+    
     <select class="form-control" name="categoria">
         <option>Escolher...</option>
     </select>
    
-  </div>      
-       
+  </div>  
+            <button type="button" class="btn btn-primary mb-2" href="javascript;:" onclick="cadastrarCategoria()">Cadastrar outra categoria</button>
+        </div> 
+        
   <div class="form-group">
     <label for="descricao">Descrição do produto</label><label class="text-danger">*obrigatorio</label>
     <textarea class="form-control" id="descricao" name="descricao" rows="3"><?php echo $getProduto['produto_descricao']; ?></textarea>
@@ -145,3 +155,21 @@
 </div>
 
 
+<!-- Modal tipo de ramo  id=modaltiporamo-->
+<div class="modal fade" id="modaltipocategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Cadastrar tipo de categoria!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+       
+      </div>
+    </div>
+  </div>
+</div>

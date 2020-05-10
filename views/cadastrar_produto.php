@@ -33,7 +33,7 @@
         
   
   <div class="form-group">
-      <label for="codigo">Codigo</label><label class="text-danger">*obrigatorio</label>
+      <label for="codigo">Codigo de controle seu</label><label class="text-danger">*obrigatorio</label>
     <input type="text" class="form-control" id="codigo" name="codigo" placeholder="">
   </div>
   <div class="form-group">
@@ -41,22 +41,29 @@
     <input type="text" class="form-control" id="nome" name="nome" placeholder="">
   </div>
          <div class="form-group">
-    <label for="tamanho">Tamanho</label>
+    <label for="tamanho">Tamanho(s) disponivel(is)</label>
     <input type="text" class="form-control" id="tamanho" name="tamanho" placeholder="">
   </div>      
         <div class="form-group">
-    <label for="cor">Cor</label><label class="text-danger">*obrigatorio</label>
+    <label for="cor">Cor(es) disponivel(is)</label><label class="text-danger">*obrigatorio</label>
     <input type="text" class="form-control" id="cor" name="cor" placeholder="">
   </div>      
        
  <div class="form-group">
     <label for="valor">Valor</label><label class="text-danger">*obrigatorio</label>
+     <div class="input-group-prepend">
+          <div class="input-group-text">R$</div>
     <input type="text" class="form-control" id="valor" name="valor" placeholder="">
   </div>
+ 
+</div>
          <div class="form-group">
     <label for="desconto">Desconto em porcentagem</label><label class="text-danger">*obrigatorio</label>
+     <div class="input-group-prepend">
+          <div class="input-group-text">%</div>
     <input type="text" class="form-control" id="desconto" name="desconto" placeholder="">
   </div>
+         </div>
          <div class="form-group">
     <label for="quantidade">Quantidade</label><label class="text-danger">*obrigatorio</label>
     <input type="number" class="form-control" id="qtd" name="qtd" placeholder="">
@@ -68,10 +75,11 @@
            <div class="row form-group">
      
         <div class="form-inline">
+            <label for="tipo_categoria" class="mx-sm-3 mb-2">Tipo de Categoria:</label><label class="text-danger mx-sm-3 mb-2">Campo Obrigatorio*</label>
             <div class="form-group mb-2">
-                <label for="tipo_categoria">Tipo de Categoria:</label><label class="text-danger">Campo Obrigatorio* <a data-toggle="modal" data-target="#exampleModalLong" href="<?php BASE_URL?>ramo_atividade" class="text-info"></a></label>
+               
                 <select name="tipo_categoria" class="form-control" id="tipo_categoria">
-                    <option></option>
+                    <option>Escolher...</option>
                     
                     <?php foreach ($viewData['listarCategoria'] as $value) : { ?>
                             <option value="<?php echo $value['id_categoria']; ?>"><?php echo $value['categoria_nome']; ?></option>
@@ -81,7 +89,7 @@
             </div>
             <div class="form-group mx-sm-3 mb-2">
                 
-                <button type="button" class="btn btn-primary btn-lg" href="javascript;:" onclick="cadastrarCategoria()">Cadastre a categoria aqui:</button>
+                <button type="button" class="btn btn-primary " href="javascript;:" onclick="cadastrarCategoria()">Cadastrar outra categoria</button>
             </div>
              </div>
         </div>      

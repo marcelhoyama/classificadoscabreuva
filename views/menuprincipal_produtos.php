@@ -44,10 +44,10 @@
        
 
    <div class="row"> 
-    <div class="h3">Faltou completar</div>
+    <div class="h3"></div>
         <div class="col-sm">
             <div class="thumbnail ">
-                <a href="<?php BASE_URL; ?>cadastrar_produto?id_loja=<?php echo $_SESSION['id_loja']; ?>" class="btn btn-warning">Cadastrar Produtos
+                <a href="<?php BASE_URL; ?>cadastrar_produto?id_loja=<?php echo $_SESSION['id_loja']; ?>" class="btn btn-warning">Cadastrar Mais Produtos
 <!--                    <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" alt="cadastre seu comercio" width="128" height="128">-->
 
                 </a>  

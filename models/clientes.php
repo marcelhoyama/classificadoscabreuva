@@ -11,7 +11,7 @@ class clientes extends model {
             $id = $_SESSION['lgCliente'];
             $ip = $_SERVER['REMOTE_ADDR'];
 
-            $sql = "SELECT * FROM clientes WHERE id_clientes=:id AND ip=:ip";
+            $sql = "SELECT * FROM clientes WHERE id_clientes=:id AND cliente_ip=:ip";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":id", $id);
             $sql->bindValue(":ip", $ip);
@@ -28,7 +28,7 @@ class clientes extends model {
 
     public function logar($email, $senha) {
         try {
-            $sql = "SELECT * FROM clientes WHERE email=:email AND senha=:senha";
+            $sql = "SELECT * FROM clientes WHERE cliente_email=:email AND cliente_senha=:senha";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":email", $email);
             $sql->bindValue(":senha", $senha);
@@ -37,11 +37,11 @@ class clientes extends model {
             if ($sql->rowCount() > 0) {
                 $sql = $sql->fetch();
                 $_SESSION['lgCliente'] = $sql['id_clientes'];
-                $_SESSION['lgname'] = $sql['nome'];
+                $_SESSION['lgname'] = $sql['cliente_nome'];
                 $id = $_SESSION['lgCliente'];
                 $ip = $_SERVER['REMOTE_ADDR'];
 
-                $sql = "UPDATE clientes SET ip=:ip WHERE id_clientes=:id";
+                $sql = "UPDATE clientes SET cliente_ip=:ip WHERE id_clientes=:id";
                 $sql = $this->db->prepare($sql);
                 $sql->bindValue(":ip", $ip);
                 $sql->bindValue(":id", $id);
@@ -62,7 +62,7 @@ class clientes extends model {
 
 
 
-        $sql = "SELECT * FROM clientes WHERE email = :email ";
+        $sql = "SELECT * FROM clientes WHERE cliente_email = :email ";
         $sql = $this->db->prepare($sql);
         $sql->bindValue(":email", $email);
         $sql->execute();
@@ -72,7 +72,7 @@ class clientes extends model {
             $id = $sql['id_clientes'];
             $token = md5(time() . rand(0, 9999) . rand(0, 9999));
             $expirado = date('Y-m-d H:i', strtotime('+1 months'));
-            $sql = "INSERT INTO clientes_token (id_cliente, hash, expirado_em) VALUES (:id_cliente, :hash, :expirado_em)";
+            $sql = "INSERT INTO clientes_token (clientes_id_clientes, cliente_hash, cliente_expirado_em) VALUES (:id_cliente, :hash, :expirado_em)";
 
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":id_cliente", $id);
@@ -103,7 +103,7 @@ class clientes extends model {
 
 
          
-            $sql = "SELECT * FROM clientes_token WHERE hash = :hash AND used = 0 AND expirado_em > NOW()";
+            $sql = "SELECT * FROM clientes_token WHERE cliente_hash = :hash AND cliente_used = 0 AND cliente_expirado_em > NOW()";
         
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":hash", $token);
@@ -115,9 +115,9 @@ class clientes extends model {
                
 
                 $sql = $sql->fetch();
-                $id = $sql['id_cliente'];
+                $id = $sql['clientes_id_clientes'];
 
-                $sql = "UPDATE clientes SET senha ='$senha' WHERE id_clientes = $id";
+                $sql = "UPDATE clientes SET cliente_senha ='$senha' WHERE id_clientes = $id";
                
               
                 $sql = $this->db->prepare($sql);
@@ -127,7 +127,7 @@ class clientes extends model {
                
                 if ($sql->rowCount() > 0) {
                 
-                    echo $sql = "UPDATE clientes_token SET used = 1  WHERE hash ='$token'";
+                    echo $sql = "UPDATE clientes_token SET cliente_used = 1  WHERE cliente_hash ='$token'";
                   
                     $sql = $this->db->prepare($sql);
                     
@@ -155,7 +155,7 @@ class clientes extends model {
     public function verificarCPF($cpf) {
         try {
 
-            $sql = "SELECT cpf FROM clientes WHERE cpf=:cpf";
+            $sql = "SELECT cliente_cpf FROM clientes WHERE cliente_cpf=:cpf";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":cpf", $cpf);
             $sql->execute();
@@ -174,7 +174,7 @@ class clientes extends model {
             $array = array();
             $array1 = array();
             $array2 = array();
-            $sql = "SELECT *,c.email email,c.status status FROM clientes C LEFT JOIN loja l ON c.id_clientes=l.clientes_id_clientes WHERE c.nome LIKE :palavra";
+            $sql = "SELECT * FROM clientes c LEFT JOIN lojas l ON c.id_clientes=l.clientes_id_clientes WHERE c.cliente_nome LIKE :palavra";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":palavra", $palavra . "%");
             $sql->execute();
@@ -196,7 +196,7 @@ class clientes extends model {
     public function cadastrar($nome, $email, $telefone, $sexo, $senha, $resenha) {
         try {
 
-            $sql = "SELECT email FROM clientes WHERE email=:email ";
+            $sql = "SELECT cliente_email FROM clientes WHERE cliente_email=:email ";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":email", $email);
             $sql->execute();
@@ -205,7 +205,7 @@ class clientes extends model {
 
                 if ($senha == $resenha) {
 
-                    $sql = "INSERT INTO clientes SET nome=:nome,telefone=:telefone,sexo=:sexo,email=:email,senha=:senha,data=NOW() ";
+                    $sql = "INSERT INTO clientes SET cliente_nome=:nome,cliente_celular=:telefone,cliente_sexo=:sexo,cliente_email=:email,cliente_senha=:senha,cliente_data_cadastro=NOW() ";
                     $sql = $this->db->prepare($sql);
 
 
@@ -249,7 +249,7 @@ class clientes extends model {
 
 
             $id_funcionario = 1;
-            $sql = "UPDATE clientes SET nome=:nome,telefone=:telefone,sexo=:sexo,email=:email, status=:status WHERE id_clientes=:id";
+            $sql = "UPDATE clientes SET cliente_nome=:nome,cliente_celular=:telefone,cliente_sexo=:sexo,cliente_email=:email, cliente_situacao=:status WHERE id_clientes=:id";
             $sql = $this->db->prepare($sql);
 
 
@@ -276,7 +276,7 @@ class clientes extends model {
     public function listarClientes() {
         $array = array();
         try {
-            $sql = "SELECT *,loja.id_loja id_lojas FROM clientes INNER JOIN loja ON loja.clientes_id_clientes=clientes.id_clientes";
+            $sql = "SELECT *,lojas.id_loja id_loja FROM clientes INNER JOIN lojas ON lojas.clientes_id_clientes=clientes.id_clientes";
             $sql = $this->db->prepare($sql);
             $sql->execute();
             if ($sql->rowCount() > 0) {
@@ -294,7 +294,7 @@ class clientes extends model {
     public function listarRamo() {
         $array = array();
         try {
-            $sql = "SELECT * FROM ramo ORDER BY nome";
+            $sql = "SELECT * FROM ramos ORDER BY ramos_nome";
             $sql = $this->db->prepare($sql);
             $sql->execute();
             if ($sql->rowCount() > 0) {
@@ -328,14 +328,14 @@ class clientes extends model {
     public function getName($id) {
 
         try {
-            $sql = "SELECT nome FROM clientes WHERE id_clientes=:id";
+            $sql = "SELECT cliente_nome FROM clientes WHERE id_clientes=:id";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(':id', $id);
             $sql->execute();
             if ($sql->rowCount() > 0) {
 
                 $array = $sql->fetch();
-                $nome = $array['nome'];
+                $nome = $array['cliente_nome'];
                 return $nome;
             } else {
                 return false;
@@ -348,7 +348,7 @@ class clientes extends model {
     public function getDados($id) {
         $array = array();
         try {
-            $sql = "SELECT *,c.endereco as endereco,c.email as email,COUNT(l.clientes_id_clientes) as quantidade FROM clientes c RIGHT JOIN loja l ON c.id_clientes=l.clientes_id_clientes WHERE c.id_clientes=:id";
+            $sql = "SELECT *,c.cliente_endereco as endereco,c.cliente_email as email,COUNT(l.clientes_id_clientes) as quantidade FROM clientes c RIGHT JOIN lojas l ON c.id_clientes=l.clientes_id_clientes WHERE c.id_clientes=:id";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(':id', $id);
             $sql->execute();
@@ -369,7 +369,7 @@ class clientes extends model {
         $array = array();
         try {
 
-            $sql = "UPDATE clientes SET nome=:nome, telefone=:telefone, endereco=:endereco WHERE id_clientes=:id";
+            $sql = "UPDATE clientes SET cliente_nome=:nome, cliente_telefone=:telefone, cliente_endereco=:endereco WHERE id_clientes=:id";
             $sql = $this->db->prepare($sql);
 
             $sql->bindValue(':id', $id);
@@ -398,7 +398,7 @@ class clientes extends model {
 
         try {
 
-            $sql = "UPDATE clientes SET nome=:nome, telefone=:telefone, endereco=:endereco, senha=:senha WHERE id_clientes=:id";
+            $sql = "UPDATE clientes SET cliente_nome=:nome, cliente_celular=:telefone, cliente_endereco=:endereco, senha=:senha WHERE id_clientes=:id";
             $sql = $this->db->prepare($sql);
 
             $sql->bindValue(':id', $id);
@@ -424,7 +424,7 @@ class clientes extends model {
 
     public function qtdLojaCliente($id) {
         try {
-            $sql = "SELECT id_loja,nome_fantasia,COUNT(id_loja) AS 'quantidade' FROM loja WHERE clientes_id_clientes = :id";
+            $sql = "SELECT id_loja,loja_nome_fantasia,COUNT(id_loja) AS 'quantidade' FROM lojas WHERE clientes_id_clientes = :id";
             $sql = $this->db->prepare($sql);
             $sql->bindValue('id', $id);
             $sql->execute();
@@ -440,15 +440,19 @@ class clientes extends model {
 
     public function getIdLojaCliente($id_cliente) {
         try {
-            $sql = "SELECT loja.delivery,loja.palavrachave,loja.anuncio_site, loja.cnpj, loja.id_loja,ramo.id_ramo,ramo.nome,"
-                    . " loja.nome_fantasia,clientes.nome ,loja.razao_social,loja.endereco,b.bairro_nome,loja.cidade,"
-                    . " loja.telefone1,loja.telefone2,loja.whatsapp1,loja.whatsapp2,loja.email,loja.facebook,"
-                    . " loja.youtube,loja.instagram,loja.site,clientes.cpf,loja.url_imagem_principal"
-                    . " FROM loja INNER JOIN clientes on clientes.id_clientes=loja.clientes_id_clientes "
-                    . " left JOIN ramo ON ramo.id_ramo=loja.ramo"
-                    . " LEFT JOIN loja_has_bairros lb ON lb.id_loja = loja.id_loja"
-                    . " LEFT JOIN bairros b ON b.id_bairro=lb.id_bairros"
-                    . " WHERE clientes_id_clientes =:id_cliente  ORDER BY loja.id_loja";
+            $sql = "SELECT loja_delivery,palavra_chave_nome,loja_anunciar, loja_cnpj_cpf,id_loja,id_ramo,ramos_nome,"
+                    . " loja_nome_fantasia,cliente_nome ,loja_razao_social,loja_endereco,bairro_nome,cidade_nome,"
+                    . " loja_fixo,loja_celular,delivery_fixo,delivery_celular,loja_email,loja_facebook,"
+                    . " loja_youtube,loja_instagram,loja_site,cliente_cpf,loja_imagem_principal"
+                    . " FROM lojas INNER JOIN clientes on clientes.id_clientes=lojas.clientes_id_clientes "
+                    . "LEFT JOIN subramos_has_lojas subr ON subr.lojas_id_loja=lojas.id_loja"
+                    . " left JOIN subramos ON subramos.id_subramos=subr.subramos_id_subramos"
+                    . " LEFT JOIN ramos ON ramos.id_ramo=subramos.ramos_id_ramo"
+                    . " LEFT JOIN lojas_has_bairros lb ON lb.lojas_id_loja = lojas.id_loja"
+                    . " LEFT JOIN bairros b ON b.id_bairros=lb.bairros_id_bairros"
+                    . " LEFT JOIN cidades ON cidades.id_cidades=b.cidades_id_cidades"
+                    . " LEFT JOIN palavraschaves p ON p.lojas_id_loja=lojas.id_loja"
+                    . " WHERE clientes_id_clientes =:id_cliente  ORDER BY lojas.id_loja";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(':id_cliente', $id_cliente);
             $sql->execute();
@@ -464,12 +468,15 @@ class clientes extends model {
 
     public function getLojaCliente($id_cliente) {
         try {
-            $sql = "SELECT *,ramo.nome as nome_ramo"
-                    . " FROM loja left JOIN clientes on clientes.id_clientes=loja.clientes_id_clientes "
-                    . " left JOIN ramo ON ramo.id_ramo=loja.ramo"
-                    . " LEFT JOIN loja_has_bairros lb ON lb.id_loja = loja.id_loja"
-                    . " LEFT JOIN bairros b ON b.id_bairro=lb.id_bairros"
-                    . " WHERE loja.clientes_id_clientes =:id_cliente ";
+            $sql = "SELECT * FROM lojas left JOIN clientes on clientes.id_clientes=lojas.clientes_id_clientes "
+                     . "LEFT JOIN subramos_has_lojas subr ON subr.lojas_id_loja=lojas.id_loja"
+                    . " left JOIN subramos ON subramos.id_subramos=subr.subramos_id_subramos"
+                    . " LEFT JOIN ramos ON ramos.id_ramo=subramos.ramos_id_ramo"
+                    . " LEFT JOIN lojas_has_bairros lb ON lb.lojas_id_loja = lojas.id_loja"
+                    . " LEFT JOIN bairros b ON b.id_bairros=lb.bairros_id_bairros"
+                    . " LEFT JOIN cidades ON cidades.id_cidades=b.cidades_id_cidades"
+                    . " LEFT JOIN palavraschaves p ON p.lojas_id_loja=lojas.id_loja"
+                    . " WHERE lojas.clientes_id_clientes =:id_cliente ";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(':id_cliente', $id_cliente);
             $sql->execute();

@@ -11,7 +11,7 @@ class usuarios extends model {
             $id = $_SESSION['lgUsuario'];
             $ip = $_SERVER['REMOTE_ADDR'];
 
-            $sql = "SELECT * FROM usuarios WHERE id_usuarios=:id AND ip=:ip";
+            $sql = "SELECT * FROM usuarios WHERE id_usuario=:id AND ip=:ip";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":id", $id);
             $sql->bindValue(":ip", $ip);
@@ -26,7 +26,7 @@ class usuarios extends model {
 
     public function logar($email, $senha) {
         try {
-            $sql = "SELECT * FROM usuarios WHERE email=:email AND senha=:senha";
+            $sql = "SELECT * FROM usuarios WHERE usuario_email=:email AND usuario_senha=:senha";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":email", $email);
             $sql->bindValue(":senha", $senha);
@@ -35,12 +35,12 @@ class usuarios extends model {
             if ($sql->rowCount() > 0) {
 
                 $sql = $sql->fetch();
-                $_SESSION['lgUsuario'] = $sql['id_usuarios'];
-                $_SESSION['lgname'] = $sql['nome'];
+                $_SESSION['lgUsuario'] = $sql['id_usuario'];
+                $_SESSION['lgname'] = $sql['usuario_nome'];
                 $id = $_SESSION['lgUsuario'];
                 $ip = $_SERVER['REMOTE_ADDR'];
 
-                $sql = "UPDATE usuarios SET ip=:ip WHERE id_usuarios=:id";
+                $sql = "UPDATE usuarios SET usuario_ip=:ip WHERE id_usuario=:id";
                 $sql = $this->db->prepare($sql);
                 $sql->bindValue(":ip", $ip);
                 $sql->bindValue(":id", $id);
@@ -61,7 +61,7 @@ class usuarios extends model {
 
 
 
-        $sql = "SELECT * FROM usuarios WHERE email = :email ";
+        $sql = "SELECT * FROM usuarios WHERE usuario_email = :email ";
          $sql=$this->db->prepare($sql);
              $sql->bindValue(":email",$email);
                       $sql->execute();
@@ -71,7 +71,7 @@ class usuarios extends model {
             $id = $sql['id'];
             $token = md5(time() . rand(0, 9999) . rand(0, 9999));
             $expirado = date('Y-m-d H:i', strtotime('+1 months'));
-            $sql = "INSERT INTO usuario_token (id_usuario, hash, expirado_em) VALUES (:id_usuario, :hash, :expirado_em)";
+            $sql = "INSERT INTO usuarios_token (id_usuario_token, usuario_hash, usuario_expirado_em) VALUES (:id_usuario, :hash, :expirado_em)";
 
             $sql= $this->db->prepare($sql);
             $sql->bindValue(":id_usuario",$id);
@@ -82,7 +82,7 @@ class usuarios extends model {
             $link = BASE_URL . "redefinir?token=" . $token;
             $mensagem = "Clique no link para redefinir a senha:" . $link;
             $assunto = "Redefinição de Senha";
-            $headers = "From: marecrisbr@gmail.com" . "\r\n" .
+            $headers = "From: suporte@buscadorcabreuva.com.br" . "\r\n" .
                     "Reply-To:".$email."\r\n".
                     "X-Mailer: PHP/" . phpversion();
 
@@ -97,7 +97,7 @@ class usuarios extends model {
     public function redefinirSenha($token, $senha) {
 
 
-        $sql = "SELECT * FROM usuario_token WHERE hash = :hash AND used = 0 AND expirado_em > NOW()";
+        $sql = "SELECT * FROM usuarios_token WHERE usuario_hash = :hash AND usuario_used = 0 AND usuario_expirado_em > NOW()";
 
          $sql=$this->db->prepare($sql);
              $sql->bindValue(":hash",$token);
@@ -111,7 +111,7 @@ class usuarios extends model {
             $sql = $sql->fetch();
             $id = $sql['id_usuario'];
 
-        $sql = "UPDATE usuarios SET senha = :senha WHERE id = :id ";
+        $sql = "UPDATE usuarios SET usuario_senha = :senha WHERE id_usuario = :id ";
 
              $sql=$this->db->prepare($sql);
              $sql->bindValue(":id",$id);
@@ -119,7 +119,7 @@ class usuarios extends model {
              $sql->execute();
             if ($sql->rowCount() > 0) {
 
-                $sql = "UPDATE usuario_token SET used = 1  WHERE hash = :hash ";
+                $sql = "UPDATE usuarios_token SET usuario_used = 1  WHERE usuario_hash = :hash ";
 
                  $sql=$this->db->prepare($sql);
              
@@ -140,14 +140,14 @@ class usuarios extends model {
     
     public function cadastro($nome, $email, $telefone, $sexo, $senha, $resenha) {
         try {
-            $sql = "SELECT email FROM usuarios WHERE email=:email ";
+            $sql = "SELECT usuario_email FROM usuarios WHERE usuario_email=:email ";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":email", $email);
             $sql->execute();
             //caso retorne 0 quer dizer que não existe o email
             if ($sql->rowCount() == 0) {
                 if ($senha == $resenha) {
-                    $sql = "INSERT usuarios SET nome=:nome, telefone=:telefone, data_2=:data, email=:email, senha=:senha, sexo=:sexo,status=:status,data_2=NOW() ";
+                    $sql = "INSERT usuarios SET usuario_nome=:nome, usuario_celular=:telefone, usuario_data_cadastro=:data, usuario_email=:email, usuario_senha=:senha, usuario_sexo=:sexo,usuario_situacao=:status,usuario_data_cadastro=NOW() ";
                     $sql = $this->db->prepare($sql);
 
                     $sql->bindValue(":nome", $nome);
@@ -161,16 +161,16 @@ class usuarios extends model {
 
                     if ($sql->rowCount() > 0) {
                         $id = $this->db->lastInsertId();
-                        $sql = "SELECT * FROM usuarios WHERE id_usuarios=$id";
+                        $sql = "SELECT * FROM usuarios WHERE id_usuario=$id";
                         $sql = $this->db->prepare($sql);
                         $sql->execute();
                         $sql = $sql->fetch();
-                        $_SESSION['lgUsuario'] = $sql['id_usuarios'];
-                        $_SESSION['lgname'] = $sql['nome'];
+                        $_SESSION['lgUsuario'] = $sql['id_usuario'];
+                        $_SESSION['lgname'] = $sql['usuario_nome'];
                         $id = $_SESSION['lgUsuario'];
                         $ip = $_SERVER['REMOTE_ADDR'];
 
-                        $sql = "UPDATE usuarios SET ip=:ip WHERE id_usuarios=:id";
+                        $sql = "UPDATE usuarios SET usuario_ip=:ip WHERE id_usuario=:id";
                         $sql = $this->db->prepare($sql);
                         $sql->bindValue(":ip", $ip);
                         $sql->bindValue(":id", $id);
@@ -198,13 +198,13 @@ class usuarios extends model {
     public function getNome($id) {
         try {
             $array = array();
-            $sql = "SELECT nome FROM usuarios WHERE id_usuarios=:id";
+            $sql = "SELECT usuario_nome FROM usuarios WHERE id_usuario=:id";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":id", $id);
             $sql->execute();
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetch();
-                $nome = $array['nome'];
+                $nome = $array['usuario_nome'];
                 return $nome;
             }
         } catch (Exception $ex) {
@@ -215,29 +215,44 @@ class usuarios extends model {
     public function getDados($id) {
         try {
             $array = array();
-            $sql = "SELECT * FROM usuarios WHERE id_usuarios=:id";
+            $sql = "SELECT * FROM usuarios WHERE id_usuario=:id";
         } catch (Exception $ex) {
             
         }
     }
 
-    public function updatePerfil($id, $nome, $bairro, $cidade, $telefone, $data, $endereco, $email, $sexo) {
+    public function updatePerfil($id, $nome, $id_bairro, $telefone, $endereco, $email, $sexo,$senha) {
         try {
             $array = array();
-            $sql = "UPDATE usuarios SET nome=:nome,bairro=:bairro, cidade=:cidade, telefone=:telefone, endereco=:endereco,email=:email, sexo=:sexo WHERE id_usuarios=:id";
+            $sql = "UPDATE usuarios SET usuario_nome=:nome, usuario_celular=:telefone, usuario_endereco=:endereco,usuario_email=:email, usuario_sexo=:sexo, usuario_senha=:senha WHERE id_usuario=:id";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(":id", $id);
             $sql->bindValue(":nome", $nome);
-            $sql->bindValue(":bairro", $bairro);
+       
             $sql->bindValue(":telefone", $telefone);
-            $sql->bindValue(":data_2", $data);
+           
             $sql->bindValue(":endereco", $endereco);
-            $sql->bindValue(":email", $email);
+            
             $sql->bindValue(":sexo", $sexo);
-
+    $sql->bindValue(":senha", $senha);
 
             $sql->execute();
-
+            $sql="SELECT usuarios_id_usuario FROM usuarios_has_bairros WHERE usuarios_id_usuario=$id";
+            $sql = $this->db->prepare($sql);
+              $sql->execute();
+              if($sql->rowCount()==0){
+$sql="INSERT INTO usuarios_has_bairros SET usuarios_id_usuario=:id_usuario,bairros_id_bairros=:id_bairro";
+ $sql = $this->db->prepare($sql);
+            $sql->bindValue(":id_usuario", $id);
+            $sql->bindValue(":id_bairro", $id_bairro);
+$sql->execute();
+              } else {
+                  $sql="UPDATE usuarios_has_bairros SET bairros_id_bairros=:id_bairro WHERE usuarios_id_usuario=:id_usuario";
+ $sql = $this->db->prepare($sql);
+            $sql->bindValue(":id_usuario", $id);
+            $sql->bindValue(":id_bairro", $id_bairro);
+$sql->execute();
+              }
             header("Location:" . BASE_URL . "perfil?id=" . $id);
             exit();
         } catch (Exception $ex) {
@@ -245,28 +260,6 @@ class usuarios extends model {
         }
     }
 
-    public function updatePerfilSenha($id, $nome, $bairro, $cidade, $telefone, $data, $endereco, $email, $sexo, $senha) {
-        try {
-
-            $sql = "UPDATE usuarios SET nome=:nome,bairro=:bairro, cidade=:cidade, telefone=:telefone, endereco=:endereco,email=:email, sexo=:sexo, senha=:senha WHERE id_usuarios=:id";
-            $sql = $this->db->prepare($sql);
-            $sql->bindValue(":id", $id);
-            $sql->bindValue(":nome", $nome);
-            $sql->bindValue(":bairro", $bairro);
-            $sql->bindValue(":telefone", $telefone);
-            $sql->bindValue(":data_2", $data);
-            $sql->bindValue(":endereco", $endereco);
-            $sql->bindValue(":email", $email);
-            $sql->bindValue(":sexo", $sexo);
-            $sql->bindValue(":senha", $senha);
-
-            $sql->execute();
-
-            header("Location:" . BASE_URL . "perfil?id=" . $id);
-            exit();
-        } catch (Exception $ex) {
-            echo "Falhou:" . $ex->getMessage();
-        }
-    }
+   
 
 }

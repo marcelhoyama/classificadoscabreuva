@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <div class="text-center h3">Cadastrar Banner da sua Vitrine</div>
+    <div class="text-center h3">Banner da sua Vitrine</div>
    
     <form id="cadastrarloja" method="POST" enctype="multipart/form-data">
           
@@ -104,7 +104,7 @@
          
            
            
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar/Atualizar</button>
 
        
           
